@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+  <id>One page checkout</id>
+  <version>1.0.0</version>
+  <vqmver required="true">2.4.0</vqmver>
+  <author>yuri.korolov@gmail.com</author>
+ 	<file path="system/library/tax.php">
+    <operation error="skip">
+      <search position="replace"><![CDATA[if (isset($this->session->data['payment_address'])) {]]></search>
+			<add><![CDATA[if (isset($this->session->data['payment_address']['country_id'])) {]]></add>
+		</operation>
+	</file>  
+ 	<file path="catalog/controller/total/coupon.php">
+    <operation error="skip">
+      <search position="before"><![CDATA[public function coupon() {]]></search>
+			<add><![CDATA[
+				
+	public function coupon_1page() {
+		$this->load->language('total/coupon');
+
+		$json = array();
+
+		$this->load->model('total/coupon');
+
+		if (isset($this->request->post['coupon'])) {
+			$coupon = $this->request->post['coupon'];
+		} else {
+			$coupon = '';
+		}
+
+		$coupon_info = $this->model_total_coupon->getCoupon($coupon);
+
+		if (empty($this->request->post['coupon'])) {
+			$json['error'] = $this->language->get('error_empty');
+
+			unset($this->session->data['coupon']);
+		} elseif ($coupon_info) {
+			$this->session->data['coupon'] = $this->request->post['coupon'];
+
+			$this->session->data['success'] = $this->language->get('text_success');
+
+			$json['redirect'] = $this->url->link('checkout/onepagecheckout');
+		} else {
+			$json['error'] = $this->language->get('error_coupon');
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}	
+	
+			]]></add>
+		</operation>
+	</file>
+ 	<file path="catalog/controller/checkout/cart.php">  	
+    <operation error="skip">
+      <search position="replace"><![CDATA[$data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');]]></search>
+			<add><![CDATA[$data['checkout'] = $this->url->link('checkout/onepagecheckout', '', 'SSL');]]></add>
+		</operation>
+	</file>  
+</modification>

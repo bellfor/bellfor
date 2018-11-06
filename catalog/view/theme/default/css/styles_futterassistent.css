@@ -1,0 +1,1736 @@
+.warning-message {
+	display: none;
+	padding-top: 4px;
+	color: #ff0000;
+}
+
+#step-1 .antwort {
+	margin-left: 190px;
+}
+	
+
+#content_inhaltstpl h2 strong {
+	font-size: 19px;
+}
+/* Außenlayout */
+
+.form-discount {
+	width: 320px;
+	margin: 30px auto 0;
+  border: 1px solid #dbdbdb;
+  padding-bottom: 3px;
+}
+.form-discount .form-group {
+	padding: 0 10px;
+}
+.form-discount .form-control {
+	border-radius: 0;
+	margin-bottom: 10px;
+}
+
+.form-discount .button_green {
+	width: 100%;
+	background-color: #A7AA79; 
+  background-image: -webkit-linear-gradient(#A7AA79, #5D6122);
+  background-image: -o-linear-gradient(#A7AA79, #5D6122);
+  background-image: linear-gradient(#A7AA79, #5D6122);
+  background-position: left center;
+  background-repeat: repeat-x;
+  border: 1px solid #7e842e;
+  color: #FFF;
+  display: block;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  padding: 6px 10px;
+  text-decoration: none
+  text-align: center;
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.form-discount .button_green:hover,
+.form-discount .button_green:focus {
+  background-image: -webkit-linear-gradient(#5D6122,#A7AA79 );
+  background-image: -o-linear-gradient(#5D6122,#A7AA79);
+  background-image: linear-gradient(#5D6122,#A7AA79);
+
+}
+#content_inhaltstpl.tpl_futterassistent  .content_column_left > h3 {
+	margin-top: 8px;
+	margin-bottom: 9px;
+}
+#content_inhaltstpl.tpl_futterassistent h1.headline {
+	margin-bottom:40px;
+	margin-top: 0;
+}
+.tpl_futterassistent .content_column_left .zurueck_zu_startseite{
+	margin-bottom:20px;
+	margin-top: -10px;
+}
+
+
+.tpl_futterassistent .questions_wrapper,
+.tpl_futterassistent .ueberblick_wrapper{
+	background-color:#F1F1F1;
+}
+.tpl_futterassistent .questions_wrapper{
+	padding: 30px 0;
+	margin-bottom: 15px;
+}
+
+.tpl_futterassistent .question_wrapper{
+	margin-bottom: 20px;
+}
+
+.tpl_futterassistent .question_wrapper:last-child{
+	margin-bottom: 0px;
+}
+
+/* Styles für die Schritte */
+.tpl_futterassistent .schritte ul {
+   width: 100%;
+   margin-bottom: -50px;
+   text-align: center;
+   
+}
+
+.tpl_futterassistent .schritte ul li {
+	width: auto;
+	padding: 0;
+}
+.tpl_futterassistent .schritte span {
+    text-transform:uppercase;
+}
+
+.tpl_futterassistent .schritte a{
+    //background: url("../images/web/futterassistent/kreis.png") no-repeat scroll 0 0;
+    background-color: #E1E2AA;
+    display: inline-block;
+    height: 28px;
+    border-radius: 50%;
+    line-height: 28px;
+    margin-left: 7px;
+    text-align: center;
+    vertical-align: middle;
+    width: 28px;
+}
+
+.tpl_futterassistent .schritte a.active, .tpl_futterassistent .schritte a.clickable:hover{
+	border-radius: 50%;
+    //background: url("../images/web/futterassistent/kreis_active.png") no-repeat scroll 0 0;
+	background-color: #7E842E;
+	color: #fff;
+}
+
+.tpl_futterassistent .schritte a.disable{
+	cursor: default;
+}
+
+/* Fragenstyles */
+
+.tpl_futterassistent .frage{
+	float:left;
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.tpl_futterassistent .question_wrapper > .frage{
+	float:left;
+	width: 190px;
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 15px;
+}
+
+.tpl_futterassistent .question_wrapper > .frage span,
+.tpl_futterassistent .question_wrapper .frage span{
+	color: #ff0000;
+    font-size: 18px;
+    font-weight: normal;
+    padding-left: 3px;
+}
+
+.tpl_futterassistent .question_wrapper > .frage span.underline{
+	text-decoration:underline;
+	font-size: 16px;
+}
+
+.tpl_futterassistent .question_wrapper.name > .frage,
+.tpl_futterassistent .question_wrapper.rasse > .frage,
+.tpl_futterassistent .question_wrapper.geburtstag > .frage,
+.tpl_futterassistent .question_wrapper.gewicht > .frage {
+    line-height:30px;
+}
+
+.tpl_futterassistent .tierart .frage,
+.tpl_futterassistent .altersgruppe .frage,
+.tpl_futterassistent .gewichtsgrad .frage
+{
+	margin-top: 44px;
+}
+.tpl_futterassistent .aktivitaet .frage {
+	margin-top: 0px;
+}
+
+.gewichtsgrad .dog-weight {
+	max-width: 100%;
+	margin-top: -20%;
+	margin-bottom: 10px;
+	border: 1px solid #000;
+}
+.gewichtsgrad ul {
+	border-bottom: 1px solid #87856e;
+}
+
+.gewichtsgrad label {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 30px;
+	padding: 5px;
+	border: 1px solid #87856e;
+	border-bottom: none;
+	background-color: #fff;
+	text-align: left;
+	font-size: 400;
+}
+.gewichtsgrad label:after,
+.gewichtsgrad label:before {
+	content: '';
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	width: 12px;
+	height: 12px;
+	margin-top: -6px;
+	border-radius: 50%;
+	background-color: #F1F2E7;
+	opacity: 1;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+}
+.gewichtsgrad label:before {
+	opacity: 0;
+	background-color: #A2B729;
+	-webkit-transform: translateY(8px);
+	-ms-transform: translateY(8px);
+	-o-transform: translateY(8px);
+	transform: translateY(8px);
+}
+
+.gewichtsgrad label.checked-input:after {
+	opacity: 0;
+	-webkit-transform: translateY(-6px);
+	-ms-transform: translateY(-6px);
+	-o-transform: translateY(-6px);
+	transform: translateY(-6px);
+}
+
+.gewichtsgrad label.checked-input:before {
+	opacity: 1;
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+}
+.tpl_futterassistent .gewichtsgrad .frage {
+	float: none;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.tpl_futterassistent .aktivitaet .wizard_img_wrapper {
+	height: auto;
+	min-height: 200px;
+	width: 25%;
+	border-radius: 0;
+	border-bottom: none;
+	border-left: none;
+	border-top: none;
+	background-color: #fff;
+}
+
+.tpl_futterassistent .aktivitaet .answer-wrapper {
+	overflow: hidden;
+	border: 1px dashed #87856e;
+	background-color: #fff;
+}
+.tpl_futterassistent .aktivitaet .wizard_img_wrapper .wizard_img {
+	min-height: 80px;
+	margin-bottom: 6px;
+}
+
+.tpl_futterassistent .aktivitaet .wizard_img.checked:after {
+	left: 50%;
+	bottom: 3px;
+	top: auto;
+	-webkit-transform: translateX(-30%);
+	-ms-transform: translateX(-30%);
+	-o-transform: translateX(-30%);
+	transform: translateX(-30%);
+
+}
+.tpl_futterassistent .aktivitaet .wizard_img:before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 3px;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;
+
+}
+.tpl_futterassistent .aktivitaet .wizard_img_wrapper .wizard_img_text {
+	position: relative;
+	bottom: auto;
+	width: 100%;
+	background-color: #fff;
+}
+.tpl_futterassistent .aktivitaet .wizard_img_wrapper p {
+	margin-top: 5px;
+}
+
+
+
+/* Text- und Selectfelder */
+.tpl_futterassistent input[type="text"]{
+	width: 280px;
+	border: 1px dashed #87856e;
+	border-radius: 3px;
+	padding: 0px 10px;
+	line-height: 28px;
+	color: #87856E;
+	font-style: italic;
+	height: 28px;
+}
+
+.tpl_futterassistent select{
+	width: 280px;
+	border: 1px dashed #87856e;
+	border-radius: 3px;
+	height: 28px;
+	color: #87856E;
+	font-style: italic;
+	padding: 5px 10px;
+}
+
+
+/* Checkbox- / Radibutton-Images */
+.tpl_futterassistent .wizard_img {
+	height: 100%;
+    width: 100%;
+	position: relative;
+}
+
+.tpl_futterassistent .wizard_img_wrapper{
+	height: 62px;
+	border: 1px dashed #87856e;
+	border-radius: 3px;
+	background:#FFFFFF;
+	cursor: pointer;
+	position: relative;
+	float: left;
+}
+
+.tpl_futterassistent .wizard_img.checked:after{
+    background-image: url("../images/web/ws_success.png");
+    background-repeat: no-repeat;
+    content: "";
+    display: block;
+    height: 32px;
+    position: absolute;
+    right: -12px;
+    top: -2px;
+    width: 32px;
+}
+
+.tpl_futterassistent .question_wrapper .wizard_img_text{
+	bottom: 5px;
+    font-size: 12px;
+    padding-right: 18px;
+    position: absolute;
+	width: 88px;
+	padding: 0 3px;
+	text-align: center;
+	color:#87856E; 
+   	hyphens: auto; 
+   	line-height: 12px;
+}
+
+.tpl_futterassistent .wizard_img{
+	background-repeat: no-repeat;
+	background-position: center 5px;
+}
+
+
+/* ------------------ Seite 1 -------------------- */
+
+/* Frage 1 - Tierart */ 
+.tpl_futterassistent .tierart .wizard_img_wrapper{
+	width: 112px;
+}
+
+.tpl_futterassistent .tierart .antworten .frage{
+	width: 74px;
+	text-align: center;
+}
+
+.tpl_futterassistent .tierart .wizard_img_text{
+	bottom: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    padding-right: 18px;
+	text-align: left;
+    width: auto;
+}
+
+
+.tpl_futterassistent .tierart .hund .wizard_img_text{
+	color:#84A4B4;
+}
+
+.tpl_futterassistent .tierart .katze .wizard_img_text{
+	color:#9AAA58;
+}
+
+.tpl_futterassistent .tierart .wizard_img_wrapper .wizard_img.hunde_klasse {
+	background-image: url(../images/web/futterassistent/hund.png);
+	background-repeat: no-repeat;
+	background-position: 18px center;
+}
+
+.tpl_futterassistent .tierart .wizard_img_wrapper .wizard_img.katze_klasse {
+	background-image: url(../images/web/futterassistent/katze.png);
+	background-repeat: no-repeat;
+	background-position: 18px 4px;
+}
+
+/* Frage 3 - Rasse */
+.tpl_futterassistent .rasse .antwort{
+	position: relative;
+}
+
+.tpl_futterassistent .rasse .antwort div.wizard_suggest {
+    display: none;
+    position: absolute;
+    width: 350px;
+	background-color: rgba(135, 131, 84, 0.5);
+	max-height: 400px;
+	z-index: 120;
+}
+
+.tpl_futterassistent .rasse .antwort div.wizard_suggest .wizard_suggest_wrapper {
+    background-color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 7px;
+    max-height: 360px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 10px;
+    width: 335px;
+}
+
+.tpl_futterassistent .wizard_suggest_element {
+		overflow: hidden;
+    cursor: pointer;
+    min-height: 36px;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.tpl_futterassistent .wizard_suggest_image {
+    background-color: #f5f3e6;
+    //background-image:url(../images/web/futterassistent/seite1/hund/rasse.png);
+		background-repeat:no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+    float: left;
+    height: 36px;
+    margin-right: 10px;
+    width: 36px;
+}
+
+.tpl_futterassistent.wizard_type_katze .wizard_suggest_image {
+  background-image:url(../images/web/futterassistent/seite1/katze/rasse.png);
+	background-repeat:no-repeat;
+}
+
+.tpl_futterassistent.wizard_type_hund .wizard_suggest_image {
+   background-image:url(../images/web/futterassistent/seite1/hund/rasse.png);
+	background-repeat:no-repeat;
+}
+
+.tpl_futterassistent .wizard_suggest_text {
+  width: auto;
+  padding-top: 5px;
+  margin-left: 46px;
+  line-height: 1em;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 1.2em;
+	color:#87856E;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+
+.tpl_futterassistent .wizard_suggest_element:hover,
+.tpl_futterassistent .wizard_suggest_element_selected,
+.tpl_futterassistent .wizard_suggest_element:hover .wizard_suggest_text {
+	color:#7E842E;
+	
+
+}
+.tpl_futterassistent .wizard_suggest_element:hover .wizard_suggest_text {
+	font-weight: 700;
+	-webkit-transform: translateX(4px);
+	-ms-transform: translateX(4px);
+	-o-transform: translateX(4px);
+	transform: translateX(4px);
+}
+
+/* Frage 4 - Altersgruppe */
+.tpl_futterassistent .question_wrapper.altersgruppe .wizard_img_wrapper,
+.tpl_futterassistent .question_wrapper.gewichtsgrad .wizard_img_wrapper
+{
+    margin-right: 10px;
+    width: 93px;
+}
+
+.tpl_futterassistent.wizard_type_hund .altersgruppe_Junior{
+	background-image:url(../images/web/futterassistent/seite1/hund/junior.png);
+}
+
+.tpl_futterassistent.wizard_type_hund .altersgruppe_Adult{
+	background-image:url(../images/web/futterassistent/seite1/hund/adult.png);
+}
+
+.tpl_futterassistent.wizard_type_hund .altersgruppe_Senior{
+	background-image:url(../images/web/futterassistent/seite1/hund/senior.png);
+}
+
+.tpl_futterassistent.wizard_type_katze .altersgruppe_Junior{
+	background-image:url(../images/web/futterassistent/seite1/katze/junior.png);
+}
+
+.tpl_futterassistent.wizard_type_katze .altersgruppe_Adult{
+	background-image:url(../images/web/futterassistent/seite1/katze/adult.png);
+}
+
+.tpl_futterassistent.wizard_type_katze .altersgruppe_Senior{
+	background-image:url(../images/web/futterassistent/seite1/katze/senior.png);
+	background-position: center 7px;
+}
+
+
+/* Frage 5 - Geburtstag */
+.tpl_futterassistent select.ws_wiz_question_geburtstag{
+	width: 77px;
+}
+
+.tpl_futterassistent select.ws_wiz_question_geburtsjahr{
+	width: 77px;
+	margin-left: 8px;
+}
+
+.tpl_futterassistent select.ws_wiz_question_geburtsmonat{
+	width: 126px;
+	margin-left: 8px;
+}
+
+/* Frage 6 - Geschlecht */
+.tpl_futterassistent .wizard_wrapper{
+    float: left;
+    width: 140px;
+}
+
+.tpl_futterassistent .question_wrapper.geschlecht .wizard_img,
+.tpl_futterassistent .question_wrapper.kastriert .wizard_img{
+    display: block;
+    height: 20px;
+    width: 20px;
+	border: 1px dashed #87856e;
+	border-radius: 3px;
+	float: left;
+	cursor:pointer;
+	background-color: #ffffff;
+}
+
+
+
+.tpl_futterassistent .question_wrapper.geschlecht .checkbox_bezeichnung,
+.tpl_futterassistent .question_wrapper.kastriert .checkbox_bezeichnung{
+    height: 22px;
+    padding: 2px 0 0 30px; 
+}
+
+.tpl_futterassistent .question_wrapper.geschlecht  .wizard_img.checked::after,
+.tpl_futterassistent .question_wrapper.kastriert  .wizard_img.checked::after {
+    top: -10px;
+}
+
+.tpl_futterassistent .question_wrapper.geschlecht{
+	margin-bottom: 10px;
+}
+
+.tpl_futterassistent .question_wrapper.geschlecht .antwort div .checkbox_bezeichnung{
+	background-image:url(../images/web/futterassistent/male.png);
+	background-repeat: no-repeat;
+	width: 100px;
+	padding-right: 20px;
+	margin-right: 30px;
+	background-position:right center;
+}
+
+.tpl_futterassistent .question_wrapper.geschlecht .antwort div:first-child .checkbox_bezeichnung{
+	background-image:url(../images/web/futterassistent/female.png);
+	background-repeat: no-repeat;
+	width: 95px;
+}
+
+
+/* ------------------ Seite 2 -------------------- */
+/* Frage 1 - Gewicht */
+.tpl_futterassistent .gewicht input[type="text"]{
+	width: 73px;
+	margin-right: 10px;
+}
+
+.tpl_futterassistent #error_wrong_val, .tpl_futterassistent #error_val_range {
+    display:none;
+}
+
+/* Frage 2 - Gewichtsgrad */
+
+.tpl_futterassistent .question_wrapper.gewichtsgrad .wizard_img_text{
+	letter-spacing: -0.5px;
+}
+
+/* Hund */
+.tpl_futterassistent.wizard_type_Hund .gewichtsgrad_untergewichtig{
+	background-image:url(../images/web/futterassistent/seite2/hund/untergewicht.png);
+}
+.tpl_futterassistent.wizard_type_Hund .gewichtsgrad_normalgewichtig{
+	background-image:url(../images/web/futterassistent/seite2/hund/normalgewicht.png);
+}
+.tpl_futterassistent.wizard_type_Hund .gewichtsgrad_uebergewichtig{
+	background-image:url(../images/web/futterassistent/seite2/hund/uebergewicht.png);
+}
+.tpl_futterassistent.wizard_type_Hund .aktivitaet_sehr.aktiv{
+	background-image:url(../images/web/futterassistent/seite2/hund/sehr_aktiv.png);
+}
+.tpl_futterassistent.wizard_type_Hund .aktivitaet_aktiv{
+	background-image:url(../images/web/futterassistent/seite2/hund/aktiv.png);
+}
+.tpl_futterassistent.wizard_type_Hund .aktivitaet_weniger.aktiv{
+	background-image:url(../images/web/futterassistent/seite2/hund/weniger_aktiv.png);
+}
+
+.tpl_futterassistent.wizard_type_Hund .aktivitaet_sport.aktiv{
+	background-image:url(../images/web/futterassistent/seite2/hund/configurator-sprite-step3.png);
+	background-position: center 0;
+
+}
+
+
+/* Katze */
+.tpl_futterassistent.wizard_type_Katze .gewichtsgrad_untergewichtig{
+	background-image:url(../images/web/futterassistent/seite2/katze/untergewicht.png);
+}
+.tpl_futterassistent.wizard_type_Katze .gewichtsgrad_normalgewichtig{
+	background-image:url(../images/web/futterassistent/seite2/katze/normalgewicht.png);
+}
+.tpl_futterassistent.wizard_type_Katze .gewichtsgrad_uebergewichtig{
+	background-image:url(../images/web/futterassistent/seite2/katze/uebergewicht.png);
+}
+.tpl_futterassistent.wizard_type_Katze .aktivitaet_sehr.aktiv{
+	background-image:url(../images/web/futterassistent/seite2/katze/sehr_aktiv.png);
+}
+.tpl_futterassistent.wizard_type_Katze .aktivitaet_aktiv{
+	background-image:url(../images/web/futterassistent/seite2/katze/aktiv.png);
+}
+.tpl_futterassistent.wizard_type_Katze .aktivitaet_weniger.aktiv{
+	background-image:url(../images/web/futterassistent/seite2/katze/weniger_aktiv.png);
+}
+/* ------------------ Seite 4 -------------------- */
+
+.tpl_futterassistent .question_wrapper.trocken_nassfutter .antwort .frage {
+	float: none;
+	width: auto;
+	padding-bottom: 2px;
+	padding-right: 16px;
+}
+
+.tpl_futterassistent .trocken_nassfutter .antwort ul {
+	text-align: center;
+}
+.tpl_futterassistent .trocken_nassfutter .antwort li {
+	overflow: hidden;
+	padding: 0;
+	vertical-align: top;
+	text-align: center;
+}
+
+.tpl_futterassistent.wizard_type_Hund .trocken_nassfutter_Extrudiert{
+	background-image:url(../images/web/futterassistent/seite3/hund/extruded-food.png);
+}
+
+.tpl_futterassistent.wizard_type_Hund .trocken_nassfutter_Kaltgepresst{
+	background-image:url(../images/web/futterassistent/seite3/hund/cold-pressed-food.jpg);
+}
+
+.tpl_futterassistent.wizard_type_Hund .trocken_nassfutter_Nassfutter{
+	background-image:url(../images/web/futterassistent/seite3/hund/wet-dog-food.jpg);
+}
+
+.tpl_futterassistent.wizard_type_Hund .trocken_nassfutter_Beides{
+	background-image:url(../images/web/futterassistent/seite3/hund/trocken-nassfutter.png);
+}
+
+/* ------------------ Seite 6 -------------------- */
+/* Frage 1 - Erkrankungen */
+.tpl_futterassistent .question_wrapper.erkrankung > .frage,
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit > .frage{
+	float: none;
+	width: auto;
+	text-align: left;
+	padding: 0 0 10px 25px;
+}
+
+.tpl_futterassistent .question_wrapper.erkrankung > .antwort{
+	padding: 0 0 0 25px;	
+}
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .wizard_img_wrapper {
+	width: 98px;
+	margin: 0 15px 15px 0;
+}
+.tpl_futterassistent .question_wrapper.erkrankung .wizard_img_wrapper
+{
+	width: 110px;
+	height: 88px;
+	margin: 0 15px 15px 0;
+}
+
+.tpl_futterassistent .question_wrapper.erkrankung
+{
+	margin:0;
+}
+
+
+.tpl_futterassistent .question_wrapper.erkrankung .wizard_img_text {
+    width: 100%;
+    text-align: center;
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .frage,
+.tpl_futterassistent .question_wrapper.erkrankung .frage{
+	padding-bottom:15px;
+}
+
+/* Hund */
+.tpl_futterassistent.wizard_type_Hund .erkrankung_TränendeAugen{
+	background-image:url(../images/web/futterassistent/seite3/hund/augen.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Sehnen {
+	background-image:url(../images/web/futterassistent/seite3/hund/sehnen.jpg);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Diabetes{
+	background-image:url(../images/web/futterassistent/seite3/hund/diabetis_mellitus.png);
+}
+
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Knocken{
+	background-image:url(../images/web/futterassistent/seite3/hund/bone.png);
+}
+
+
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Mudigkeit{
+	background-image:url(../images/web/futterassistent/seite3/hund/tired.png);
+}
+
+
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Immunsystem{
+	background-image:url(../images/web/futterassistent/seite3/hund/immunsystem.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Fruchtbarkeit{
+	background-image:url(../images/web/futterassistent/seite3/hund/fruchtbarkeit_und_zucht.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Harnwege{
+	background-image:url(../images/web/futterassistent/seite3/hund/harnwege.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Haut{
+	background-image:url(../images/web/futterassistent/seite3/hund/haut_und_fell.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Herz{
+	background-image:url(../images/web/futterassistent/seite3/hund/herz.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Leber{
+	background-image:url(../images/web/futterassistent/seite3/hund/leber.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Magen{
+	background-image:url(../images/web/futterassistent/seite3/hund/magen_darm.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Nieren{
+	background-image:url(../images/web/futterassistent/seite3/hund/nieren.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Ohren{
+	background-image:url(../images/web/futterassistent/seite3/hund/ohren.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Gelenke{
+	background-image:url(../images/web/futterassistent/seite3/hund/gelenke.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Pankreas{
+	background-image:url(../images/web/futterassistent/seite3/hund/pankreas.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Parasiten{
+	background-image:url(../images/web/futterassistent/seite3/hund/parasiten.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Pfoten{
+	background-image:url(../images/web/futterassistent/seite3/hund/pfoten.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Regeneration{
+	background-image:url(../images/web/futterassistent/seite3/hund/regeneration.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Stress{
+	background-image:url(../images/web/futterassistent/seite3/hund/stress.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Tumor{
+	background-image:url(../images/web/futterassistent/seite3/hund/tumor.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Uebergewicht{
+	background-image:url(../images/web/futterassistent/seite3/hund/uebergewicht.png);
+}
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Zahnpflege{
+	background-image:url(../images/web/futterassistent/seite3/hund/zahnpflege.png);
+}
+
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Würmer{
+	background-image:url(../images/web/futterassistent/seite3/hund/wurmkur.jpg);
+}
+
+.tpl_futterassistent.wizard_type_Hund .erkrankung_RegenerationMuskelauf{
+	background-image:url(../images/web/futterassistent/seite3/hund/regeneration-icon.png);
+}
+
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Giardien{
+	background-image:url(../images/web/futterassistent/seite3/hund/giardien.jpg);
+}
+
+.tpl_futterassistent.wizard_type_Hund .erkrankung_Kondition_Aufbau{
+	background-image:url(../images/web/futterassistent/seite3/hund/condition-aufbau.png);
+}
+
+
+
+/* Katze */
+.tpl_futterassistent.wizard_type_Katze .erkrankung_TränendeAugen{
+	background-image:url(../images/web/futterassistent/seite3/katze/augen.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Diabetes{
+	background-image:url(../images/web/futterassistent/seite3/katze/diabetis_mellitus.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Fruchtbarkeit{
+	background-image:url(../images/web/futterassistent/seite3/katze/fruchtbarkeit_und_zucht.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Gelenke{
+	background-image:url(../images/web/futterassistent/seite3/katze/gelenke.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Harnwege{
+	background-image:url(../images/web/futterassistent/seite3/katze/harnwege.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Haut{
+	background-image:url(../images/web/futterassistent/seite3/katze/haut_und_fell.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Herz{
+	background-image:url(../images/web/futterassistent/seite3/katze/herz.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Leber{
+	background-image:url(../images/web/futterassistent/seite3/katze/leber.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Magen{
+	background-image:url(../images/web/futterassistent/seite3/katze/magen_darm.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Nieren{
+	background-image:url(../images/web/futterassistent/seite3/katze/nieren.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Ohren{
+	background-image:url(../images/web/futterassistent/seite3/katze/ohren.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Gelenke{
+	background-image:url(../images/web/futterassistent/seite3/katze/gelenke.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Pankreas{
+	background-image:url(../images/web/futterassistent/seite3/katze/pankreas.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Parasiten{
+	background-image:url(../images/web/futterassistent/seite3/katze/parasiten.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Pfoten{
+	background-image:url(../images/web/futterassistent/seite3/katze/pfoten.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Regeneration{
+	background-image:url(../images/web/futterassistent/seite3/katze/regeneration.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Stress{
+	background-image:url(../images/web/futterassistent/seite3/katze/stress.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Tumor{
+	background-image:url(../images/web/futterassistent/seite3/katze/tumor.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Uebergewicht{
+	background-image:url(../images/web/futterassistent/seite3/katze/uebergewicht.png);
+}
+.tpl_futterassistent.wizard_type_Katze .erkrankung_Zahnpflege{
+	background-image:url(../images/web/futterassistent/seite3/katze/zahnpflege.png);
+}
+
+
+/* ------------------ Seite 4 -------------------- */
+/* Frage 1 - Unverträglichkeiten */
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit > .antwort{
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unvertraeglichkeit_15 .wizard_img_wrapper,
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unvertraeglichkeit_32 .wizard_img_wrapper
+{
+	clear: both;
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unvertraeglichkeit_15 .wizard_img_wrapper,
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unvertraeglichkeit_16 .wizard_img_wrapper,
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unvertraeglichkeit_17 .wizard_img_wrapper,
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unvertraeglichkeit_32 .wizard_img_wrapper,
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unvertraeglichkeit_33 .wizard_img_wrapper {
+	margin-top: 30px;
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unterueberschriften{
+	float:left;
+	width: 130px;
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unterueberschriften p{
+	text-align:right;
+	width: 100%;
+	line-height: 18px;
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unterueberschriften p.ueberschrift1{
+	margin-top:43px;
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unterueberschriften p.ueberschrift2{
+	margin-top:280px;
+}
+
+.tpl_futterassistent .question_wrapper.unvertraeglichkeit .unterueberschriften p.ueberschrift3{
+	margin-top:378px;
+}
+
+/* Hund */
+/* Fleisch */
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Huhn{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/gefluegel.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Schwein{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/schwein.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Ente{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/ente.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Fisch{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/fisch.png);
+}
+
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Lachs {
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/lachs.jpg);
+}
+
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Forelle {
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/forelle.jpg);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Hase{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/hase.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Kaninchen{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/kaninchen.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Kaenguru{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/kaenguru.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Lamm{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/lamm.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Pferd{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/pferd.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Truthahn{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/pute.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Rentier{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/renntier.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Rind{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/rind.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Strauss{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/strauss.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Wild{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/wild.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Ziege{
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/ziege.png);
+}
+/* Gemüse und Getreide */
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Chicoree{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/chicco.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Erbsen{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/erbsen.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Karotten{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/karotten.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Kartoffel{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/kartoffel.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Kuerbis{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/kuerbis.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Mais{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/mais.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Pastinake{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/pastinake.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Reis{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/reis.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Suesskartoffel{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/suesskartoffeln.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Dinkel{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/dinkel.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Gerste{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/gerste.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Hafer{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/hafer.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Hirse{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/hirse.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Roggen{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/roggen.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Soja{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/soja.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Weizen{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/weizen.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Gluten{
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/gluten.png);
+}
+/* Sonstiges */
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Ei{
+	background-image:url(../images/web/futterassistent/seite4/hund/sonstiges/ei.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Hefe{
+	background-image:url(../images/web/futterassistent/seite4/hund/sonstiges/hefe.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Kaese{
+	background-image:url(../images/web/futterassistent/seite4/hund/sonstiges/kaese.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Kraeuter{
+	background-image:url(../images/web/futterassistent/seite4/hund/sonstiges/kraeuter.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Milch{
+	background-image:url(../images/web/futterassistent/seite4/hund/sonstiges/milch.png);
+}
+.tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Sorten_Beispiele{
+	// background-position: -25px 5px;
+	background-image:url(../images/web/futterassistent/seite4/hund/gemuese/pease.png);
+}
+
+.tpl_futterassistent .question_wrapper .unvertraeglichkeit_Sorten_Beispiele + .wizard_img_text {
+	// padding-left: 35px;
+}
+/* Katze */
+/* Fleisch */
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Huhn{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/gefluegel.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Ente{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/ente.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Fisch{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/fisch.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Hase{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/hase.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Kaninchen{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/kaninchen.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Kaenguru{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/kaenguru.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Lamm{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/lamm.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Pferd{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/pferd.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Pute{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/pute.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Rentier{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/renntier.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Rind{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/rind.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Strauss{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/strauss.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Wild{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/wild.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Ziege{
+	background-image:url(../images/web/futterassistent/seite4/katze/fleisch/ziege.png);
+}
+/* Gemüse und Getreide */
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Chicoree{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/chicco.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Erbsen{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/erbsen.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Karotten{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/karotten.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Kartoffel{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/kartoffel.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Kuerbis{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/kuerbis.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Mais{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/mais.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Pastinake{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/pastinake.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Reis{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/reis.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Suesskartoffel{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/suesskartoffeln.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Dinkel{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/dinkel.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Gerste{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/gerste.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Hafer{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/hafer.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Hirse{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/hirse.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Roggen{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/roggen.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Soja{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/soja.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Weizen{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/weizen.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Gluten{
+	background-image:url(../images/web/futterassistent/seite4/katze/gemuese/gluten.png);
+}
+/* Sonstiges */
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Ei{
+	background-image:url(../images/web/futterassistent/seite4/katze/sonstiges/ei.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Hefe{
+	background-image:url(../images/web/futterassistent/seite4/katze/sonstiges/hefe.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Kaese{
+	background-image:url(../images/web/futterassistent/seite4/katze/sonstiges/kaese.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Kraeuter{
+	background-image:url(../images/web/futterassistent/seite4/katze/sonstiges/kraeuter.png);
+}
+.tpl_futterassistent.wizard_type_Katze .unvertraeglichkeit_Milch{
+	background-image:url(../images/web/futterassistent/seite4/katze/sonstiges/milch.png);
+}
+
+
+
+/* Fehlerkennzeichnung */
+.tpl_futterassistent .antwort span.error{
+    color: #aa0000;
+	display: block;
+	font-size: 12px;
+    margin-right: 20px;
+    padding: 0;
+    width: 75px;
+	float:right;
+	line-height: 12px;
+}
+
+.tpl_futterassistent .question_wrapper.altersgruppe .antwort span.error,
+.tpl_futterassistent .question_wrapper.gewichtsgrad .antwort span.error,
+.tpl_futterassistent .question_wrapper.aktivitaet .antwort span.error{
+	margin-top: 35px;
+}
+
+.tpl_futterassistent .question_wrapper.error,
+.tpl_futterassistent .question_wrapper.error > .frage span,
+.tpl_futterassistent .question_wrapper.geburtstag .frage.error,
+.tpl_futterassistent .question_wrapper.geburtstag > .frage.error span{
+	color: #aa0000;
+}
+
+.tpl_futterassistent .question_wrapper.error input[type="text"],
+.tpl_futterassistent .question_wrapper.error select,
+.tpl_futterassistent .question_wrapper.geburtstag .ws_wiz_question_geburtsjahr.error{
+	border: 1px dashed #aa0000;
+}
+
+
+/* Übersicht */
+.tpl_futterassistent .content_column_left .small{
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+
+.tpl_futterassistent .antwort_wrapper{
+	margin-bottom: 5px;
+}
+
+.tpl_futterassistent .content_column_left .ueberblick_wrapper{
+	padding: 25px 20px;
+	font-size: 12px;
+	position: relative;
+}
+
+.tpl_futterassistent .content_column_left .ueberblick_wrapper:before{
+	width:38px;
+	height: 42px;
+	display: block;
+	position: absolute;
+	right: 10px;
+	top: -10px;
+}
+
+.tpl_futterassistent.wizard_type_Hund .content_column_left .ueberblick_wrapper:before{
+	content: url(../images/web/futterassistent/pfote_hund.png);
+}
+
+.tpl_futterassistent.wizard_type_Katze .content_column_left .ueberblick_wrapper:before{
+	content: url(../images/web/futterassistent/pfote_katze.png);
+}
+
+.tpl_futterassistent .antwort_wrapper .antwort{
+	color: #7E842E;
+}
+
+.tpl_futterassistent .antwort_wrapper.name .bezeichnung,
+.tpl_futterassistent .antwort_wrapper.name .antwort,
+.tpl_futterassistent .antwort_wrapper.name .bezeichnung{
+	display: none;
+}
+
+.tpl_futterassistent .antwort_wrapper.name .antwort{
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #87856E;
+	border-bottom: 1px dashed #87856e;
+	display: block;
+	padding-bottom: 3px;
+	margin-bottom:20px;
+}
+ .dog-rasse-0 { background-image: url(../images/web/futterassistent/rasse-2/affenpinscher.jpg); }
+ .dog-rasse-1 { background-image: url(../images/web/futterassistent/rasse-2/afghanischerwindhund.jpg); }
+ .dog-rasse-2 { background-image: url(../images/web/futterassistent/rasse-2/aidi.jpg); }
+ .dog-rasse-3 { background-image: url(../images/web/futterassistent/rasse-2/ainuhund.jpg); }
+ .dog-rasse-4 { background-image: url(../images/web/futterassistent/rasse-2/airedale-terrier.jpg); }
+ .dog-rasse-5 { background-image: url(../images/web/futterassistent/rasse-2/akbash.jpg); }
+ .dog-rasse-6 { background-image: url(../images/web/futterassistent/rasse-2/akitainu.jpg); }
+ .dog-rasse-7 { background-image: url(../images/web/futterassistent/rasse-2/alapahabluebloodbulldog.jpg); }
+ .dog-rasse-8 { background-image: url(../images/web/futterassistent/rasse-2/alaskanmalamute.jpg); }
+ .dog-rasse-9 { background-image: url(../images/web/futterassistent/rasse-2/alpenlaendischedachsbracke.jpg); }
+ .dog-rasse-10 { background-image: url(../images/web/futterassistent/rasse-2/altdaenischervorstehhund.jpg); }
+ .dog-rasse-11 { background-image: url(../images/web/futterassistent/rasse-2/americanbulldog.jpg); }
+ .dog-rasse-12 { background-image: url(../images/web/futterassistent/rasse-2/americanfoxhound.jpg); }
+ .dog-rasse-13 { background-image: url(../images/web/futterassistent/rasse-2/americanstaghound.jpg); }
+ .dog-rasse-14 { background-image: url(../images/web/futterassistent/rasse-2/americantoyterrier.jpg); }
+ .dog-rasse-15 { background-image: url(../images/web/futterassistent/rasse-2/americanwaterspaniel.jpg); }
+ .dog-rasse-16 { background-image: url(../images/web/futterassistent/rasse-2/amerikanischercockerspaniel.jpg); }
+ .dog-rasse-17 { background-image: url(../images/web/futterassistent/rasse-2/amerikanischerpit-bullterrier.jpg); }
+ .dog-rasse-18 { background-image: url(../images/web/futterassistent/rasse-2/amerikanischerstaffordshire-terrier.jpg); }
+ .dog-rasse-19 { background-image: url(../images/web/futterassistent/rasse-2/anglo-francaisdepetitevenerie.jpg); }
+ .dog-rasse-20 { background-image: url(../images/web/futterassistent/rasse-2/appenzellersennenhund.jpg); }
+ .dog-rasse-21 { background-image: url(../images/web/futterassistent/rasse-2/ariegeois.jpg); }
+ .dog-rasse-22 { background-image: url(../images/web/futterassistent/rasse-2/australiancattledog.jpg); }
+ .dog-rasse-23 { background-image: url(../images/web/futterassistent/rasse-2/australiankelpie.jpg); }
+ .dog-rasse-24 { background-image: url(../images/web/futterassistent/rasse-2/australianshepherddog.jpg); }
+ .dog-rasse-25 { background-image: url(../images/web/futterassistent/rasse-2/australiansilkyterrier.jpg); }
+ .dog-rasse-26 { background-image: url(../images/web/futterassistent/rasse-2/australianterrier.jpg); }
+ .dog-rasse-27 { background-image: url(../images/web/futterassistent/rasse-2/azawakh.jpg); }
+ .dog-rasse-28 { background-image: url(../images/web/futterassistent/rasse-2/balearenlaufhund.jpg); }
+ .dog-rasse-29 { background-image: url(../images/web/futterassistent/rasse-2/balkanbracke.jpg); }
+ .dog-rasse-30 { background-image: url(../images/web/futterassistent/rasse-2/barbet.jpg); }
+ .dog-rasse-31 { background-image: url(../images/web/futterassistent/rasse-2/barsoi.jpg); }
+ .dog-rasse-32 { background-image: url(../images/web/futterassistent/rasse-2/basenji.jpg); }
+ .dog-rasse-33 { background-image: url(../images/web/futterassistent/rasse-2/bassetartesien-normand.jpg); }
+ .dog-rasse-34 { background-image: url(../images/web/futterassistent/rasse-2/bassetbleudegascogne.jpg); }
+ .dog-rasse-35 { background-image: url(../images/web/futterassistent/rasse-2/bassetfauvedebretagne.jpg); }
+ .dog-rasse-36 { background-image: url(../images/web/futterassistent/rasse-2/bassethound.jpg); }
+ .dog-rasse-37 { background-image: url(../images/web/futterassistent/rasse-2/bayerischergebirgsschweisshund.jpg); }
+ .dog-rasse-38 { background-image: url(../images/web/futterassistent/rasse-2/beagle.jpg); }
+ .dog-rasse-39 { background-image: url(../images/web/futterassistent/rasse-2/beagle-harrier.jpg); }
+ .dog-rasse-40 { background-image: url(../images/web/futterassistent/rasse-2/beardedcollie.jpg); }
+ .dog-rasse-41 { background-image: url(../images/web/futterassistent/rasse-2/beauceron.jpg); }
+ .dog-rasse-42 { background-image: url(../images/web/futterassistent/rasse-2/bedlington-terrier.jpg); }
+ .dog-rasse-43 { background-image: url(../images/web/futterassistent/rasse-2/bergamaskerhirtenhund.jpg); }
+ .dog-rasse-44 { background-image: url(../images/web/futterassistent/rasse-2/bergerdepyrenees.jpg); }
+ .dog-rasse-45 { background-image: url(../images/web/futterassistent/rasse-2/bergerdepyreneeslanghaarig.jpg); }
+ .dog-rasse-46 { background-image: url(../images/web/futterassistent/rasse-2/bergerpicard.jpg); }
+ .dog-rasse-47 { background-image: url(../images/web/futterassistent/rasse-2/bernerlaufhund.jpg); }
+ .dog-rasse-48 { background-image: url(../images/web/futterassistent/rasse-2/bernerniederlaufhund.jpg); }
+ .dog-rasse-49 { background-image: url(../images/web/futterassistent/rasse-2/bernersennenhund.jpg); }
+ .dog-rasse-50 { background-image: url(../images/web/futterassistent/rasse-2/bernhardiner.jpg); }
+ .dog-rasse-51 { background-image: url(../images/web/futterassistent/rasse-2/bichonfrise.jpg); }
+ .dog-rasse-52 { background-image: url(../images/web/futterassistent/rasse-2/bichonyorkie.jpg); }
+ .dog-rasse-53 { background-image: url(../images/web/futterassistent/rasse-2/billy.jpg); }
+ .dog-rasse-54 { background-image: url(../images/web/futterassistent/rasse-2/black-and-tancoonhound.jpg); }
+ .dog-rasse-55 { background-image: url(../images/web/futterassistent/rasse-2/bloodhound.jpg); }
+ .dog-rasse-56 { background-image: url(../images/web/futterassistent/rasse-2/bluetickcoonhound.jpg); }
+ .dog-rasse-57 { background-image: url(../images/web/futterassistent/rasse-2/bobtail.jpg); }
+ .dog-rasse-58 { background-image: url(../images/web/futterassistent/rasse-2/boerboel.jpg); }
+ .dog-rasse-59 { background-image: url(../images/web/futterassistent/rasse-2/bologneser.jpg); }
+ .dog-rasse-60 { background-image: url(../images/web/futterassistent/rasse-2/bolonkazwetna.jpg); }
+ .dog-rasse-61 { background-image: url(../images/web/futterassistent/rasse-2/bordeauxdogge.jpg); }
+ .dog-rasse-62 { background-image: url(../images/web/futterassistent/rasse-2/border-collie.jpg); }
+ .dog-rasse-63 { background-image: url(../images/web/futterassistent/rasse-2/border-terrier.jpg); }
+ .dog-rasse-64 { background-image: url(../images/web/futterassistent/rasse-2/bosnischerrauhhaarigerlaufhund.jpg); }
+ .dog-rasse-65 { background-image: url(../images/web/futterassistent/rasse-2/bostonterrier.jpg); }
+ .dog-rasse-66 { background-image: url(../images/web/futterassistent/rasse-2/bouvierdesflandres.jpg); }
+ .dog-rasse-67 { background-image: url(../images/web/futterassistent/rasse-2/boxer.jpg); }
+ .dog-rasse-68 { background-image: url(../images/web/futterassistent/rasse-2/brabancon.jpg); }
+ .dog-rasse-69 { background-image: url(../images/web/futterassistent/rasse-2/braccoitaliano.jpg); }
+ .dog-rasse-70 { background-image: url(../images/web/futterassistent/rasse-2/braquedelariege.jpg); }
+ .dog-rasse-71 { background-image: url(../images/web/futterassistent/rasse-2/braquedubourbonnais.jpg); }
+ .dog-rasse-72 { background-image: url(../images/web/futterassistent/rasse-2/braquedauvergne.jpg); }
+ .dog-rasse-73 { background-image: url(../images/web/futterassistent/rasse-2/braquefrancaisdegascoine.jpg); }
+ .dog-rasse-74 { background-image: url(../images/web/futterassistent/rasse-2/braquefrancaisdespyrenees.jpg); }
+ .dog-rasse-75 { background-image: url(../images/web/futterassistent/rasse-2/braquesaint-germain.jpg); }
+ .dog-rasse-76 { background-image: url(../images/web/futterassistent/rasse-2/terrierbrasileiro.jpg); }
+ .dog-rasse-77 { background-image: url(../images/web/futterassistent/rasse-2/briard.jpg); }
+ .dog-rasse-78 { background-image: url(../images/web/futterassistent/rasse-2/briquetgriffonvendeen.jpg); }
+ .dog-rasse-79 { background-image: url(../images/web/futterassistent/rasse-2/broholmer.jpg); }
+ .dog-rasse-80 { background-image: url(../images/web/futterassistent/rasse-2/bull-boxer.jpg); }
+ .dog-rasse-81 { background-image: url(../images/web/futterassistent/rasse-2/bulldog.jpg); }
+ .dog-rasse-82 { background-image: url(../images/web/futterassistent/rasse-2/bullmastiff.jpg); }
+ .dog-rasse-83 { background-image: url(../images/web/futterassistent/rasse-2/bullterrier.jpg); }
+ .dog-rasse-84 { background-image: url(../images/web/futterassistent/rasse-2/cadebestiar.jpg); }
+ .dog-rasse-85 { background-image: url(../images/web/futterassistent/rasse-2/cadebou.jpg); }
+ .dog-rasse-86 { background-image: url(../images/web/futterassistent/rasse-2/cairn-terrier.jpg); }
+ .dog-rasse-87 { background-image: url(../images/web/futterassistent/rasse-2/canecorso.jpg); }
+ .dog-rasse-88 { background-image: url(../images/web/futterassistent/rasse-2/caodaserradaestrela.jpg); }
+ .dog-rasse-89 { background-image: url(../images/web/futterassistent/rasse-2/caodaserradeaires.jpg); }
+ .dog-rasse-90 { background-image: url(../images/web/futterassistent/rasse-2/caodeaguaportegues.jpg); }
+ .dog-rasse-91 { background-image: url(../images/web/futterassistent/rasse-2/caodocastrolaboreiro.jpg); }
+ .dog-rasse-92 { background-image: url(../images/web/futterassistent/rasse-2/carolinadog.jpg); }
+ .dog-rasse-93 { background-image: url(../images/web/futterassistent/rasse-2/catahoulaleoparddog.jpg); }
+ .dog-rasse-94 { background-image: url(../images/web/futterassistent/rasse-2/cavalierkingcharlesspaniel.jpg); }
+ .dog-rasse-95 { background-image: url(../images/web/futterassistent/rasse-2/ceskyfousek.jpg); }
+ .dog-rasse-96 { background-image: url(../images/web/futterassistent/rasse-2/ceskyterrier.jpg); }
+ .dog-rasse-97 { background-image: url(../images/web/futterassistent/rasse-2/chesapeakebayretriever.jpg); }
+ .dog-rasse-98 { background-image: url(../images/web/futterassistent/rasse-2/chiendartois.jpg); }
+ .dog-rasse-99 { background-image: url(../images/web/futterassistent/rasse-2/chihuahuakurzhaarig.jpg); }
+ .dog-rasse-100 { background-image: url(../images/web/futterassistent/rasse-2/chihuahualanghaarig.jpg); }
+ .dog-rasse-101 { background-image: url(../images/web/futterassistent/rasse-2/chinesischerschopfhund.jpg); }
+ .dog-rasse-102 { background-image: url(../images/web/futterassistent/rasse-2/chinesischerschopfhundpowderpuff.jpg); }
+ .dog-rasse-103 { background-image: url(../images/web/futterassistent/rasse-2/chinook.jpg); }
+ .dog-rasse-104 { background-image: url(../images/web/futterassistent/rasse-2/chow-chow.jpg); }
+ .dog-rasse-105 { background-image: url(../images/web/futterassistent/rasse-2/cirnecodelletna.jpg); }
+ .dog-rasse-106 { background-image: url(../images/web/futterassistent/rasse-2/clumber-spaniel.jpg); }
+ .dog-rasse-107 { background-image: url(../images/web/futterassistent/rasse-2/cockerpoo.jpg); }
+ .dog-rasse-108 { background-image: url(../images/web/futterassistent/rasse-2/cotondetulear.jpg); }
+ .dog-rasse-109 { background-image: url(../images/web/futterassistent/rasse-2/curly-coatedretriever.jpg); }
+ .dog-rasse-110 { background-image: url(../images/web/futterassistent/rasse-2/dalmatiner.jpg); }
+ .dog-rasse-111 { background-image: url(../images/web/futterassistent/rasse-2/dandie-dinmont-terrier.jpg); }
+ .dog-rasse-112 { background-image: url(../images/web/futterassistent/rasse-2/daenischerbauernhund.jpg); }
+ .dog-rasse-113 { background-image: url(../images/web/futterassistent/rasse-2/deerhound.jpg); }
+ .dog-rasse-114 { background-image: url(../images/web/futterassistent/rasse-2/deutschdrahthaar.jpg); }
+ .dog-rasse-115 { background-image: url(../images/web/futterassistent/rasse-2/deutschkurzhaar.jpg); }
+ .dog-rasse-116 { background-image: url(../images/web/futterassistent/rasse-2/deutschlanghaar.jpg); }
+ .dog-rasse-117 { background-image: url(../images/web/futterassistent/rasse-2/deutschedogge.jpg); }
+ .dog-rasse-118 { background-image: url(../images/web/futterassistent/rasse-2/deutscherjagdterrier.jpg); }
+ .dog-rasse-119 { background-image: url(../images/web/futterassistent/rasse-2/deutscherpinscher.jpg); }
+ .dog-rasse-120 { background-image: url(../images/web/futterassistent/rasse-2/deutscherschaeferhund.jpg); }
+ .dog-rasse-121 { background-image: url(../images/web/futterassistent/rasse-2/schaeferbraunerlanghaarigerschlag.jpg); }
+ .dog-rasse-122 { background-image: url(../images/web/futterassistent/rasse-2/schaefercremefarbenerlanghaarigerschlag.jpg); }
+ .dog-rasse-123 { background-image: url(../images/web/futterassistent/rasse-2/schaeferschwarzerlanghaarigerschlag.jpg); }
+ .dog-rasse-124 { background-image: url(../images/web/futterassistent/rasse-2/wachtelhund.jpg); }
+ .dog-rasse-125 { background-image: url(../images/web/futterassistent/rasse-2/deutscherwolfsspitz.jpg); }
+ .dog-rasse-126 { background-image: url(../images/web/futterassistent/rasse-2/dingo.jpg); }
+ .dog-rasse-127 { background-image: url(../images/web/futterassistent/rasse-2/dobermann.jpg); }
+ .dog-rasse-128 { background-image: url(../images/web/futterassistent/rasse-2/argentinischedogge.jpg); }
+ .dog-rasse-129 { background-image: url(../images/web/futterassistent/rasse-2/jugoslawischerdreifarbigerlaufhund.jpg); }
+ .dog-rasse-130 { background-image: url(../images/web/futterassistent/rasse-2/drentsepatrijshond.jpg); }
+ .dog-rasse-131 { background-image: url(../images/web/futterassistent/rasse-2/drever.jpg); }
+ .dog-rasse-132 { background-image: url(../images/web/futterassistent/rasse-2/dunker.jpg); }
+ .dog-rasse-133 { background-image: url(../images/web/futterassistent/rasse-2/englischercocker-spaniel.jpg); }
+ .dog-rasse-134 { background-image: url(../images/web/futterassistent/rasse-2/englishcoonhound.jpg); }
+ .dog-rasse-135 { background-image: url(../images/web/futterassistent/rasse-2/englishfoxhound.jpg); }
+ .dog-rasse-136 { background-image: url(../images/web/futterassistent/rasse-2/englishsetter.jpg); }
+ .dog-rasse-137 { background-image: url(../images/web/futterassistent/rasse-2/englishspringerspaniel.jpg); }
+ .dog-rasse-138 { background-image: url(../images/web/futterassistent/rasse-2/englishtoyterrier.jpg); }
+ .dog-rasse-139 { background-image: url(../images/web/futterassistent/rasse-2/entlebuchersennenhund.jpg); }
+ .dog-rasse-140 { background-image: url(../images/web/futterassistent/rasse-2/epagneulbleudepicardie.jpg); }
+ .dog-rasse-141 { background-image: url(../images/web/futterassistent/rasse-2/epagneulbreton.jpg); }
+ .dog-rasse-142 { background-image: url(../images/web/futterassistent/rasse-2/epagneuldepont-audemer.jpg); }
+ .dog-rasse-143 { background-image: url(../images/web/futterassistent/rasse-2/epagneulfrancais.jpg); }
+ .dog-rasse-144 { background-image: url(../images/web/futterassistent/rasse-2/epagneulpicard.jpg); }
+ .dog-rasse-145 { background-image: url(../images/web/futterassistent/rasse-2/eskimohund.jpg); }
+ .dog-rasse-146 { background-image: url(../images/web/futterassistent/rasse-2/eurasier.jpg); }
+ .dog-rasse-147 { background-image: url(../images/web/futterassistent/rasse-2/fieldspaniel.jpg); }
+ .dog-rasse-148 { background-image: url(../images/web/futterassistent/rasse-2/filabrasileiro.jpg); }
+ .dog-rasse-149 { background-image: url(../images/web/futterassistent/rasse-2/finnenspitz.jpg); }
+ .dog-rasse-150 { background-image: url(../images/web/futterassistent/rasse-2/finnischerlapphund.jpg); }
+ .dog-rasse-151 { background-image: url(../images/web/futterassistent/rasse-2/finnenbracke.jpg); }
+ .dog-rasse-152 { background-image: url(../images/web/futterassistent/rasse-2/flatcoatedretriever.jpg); }
+ .dog-rasse-153 { background-image: url(../images/web/futterassistent/rasse-2/drahthaar-foxterrier.jpg); }
+ .dog-rasse-154 { background-image: url(../images/web/futterassistent/rasse-2/glatthaar-foxterrier.jpg); }
+ .dog-rasse-155 { background-image: url(../images/web/futterassistent/rasse-2/franzoesischebulldogge.jpg); }
+ .dog-rasse-156 { background-image: url(../images/web/futterassistent/rasse-2/francaistricolore.jpg); }
+ .dog-rasse-157 { background-image: url(../images/web/futterassistent/rasse-2/francaisblancetnoir.jpg); }
+ .dog-rasse-158 { background-image: url(../images/web/futterassistent/rasse-2/glenofimaalterrier.jpg); }
+ .dog-rasse-159 { background-image: url(../images/web/futterassistent/rasse-2/goldenretriever.jpg); }
+ .dog-rasse-160 { background-image: url(../images/web/futterassistent/rasse-2/gordonsetter.jpg); }
+ .dog-rasse-161 { background-image: url(../images/web/futterassistent/rasse-2/gosdatura.jpg); }
+ .dog-rasse-162 { background-image: url(../images/web/futterassistent/rasse-2/grandanglo-francaisblancetnoir.jpg); }
+ .dog-rasse-163 { background-image: url(../images/web/futterassistent/rasse-2/grandanglo-francaistricolore.jpg); }
+ .dog-rasse-164 { background-image: url(../images/web/futterassistent/rasse-2/grandbassetgriffonvendeen.jpg); }
+ .dog-rasse-165 { background-image: url(../images/web/futterassistent/rasse-2/grandbleudegascogne.jpg); }
+ .dog-rasse-166 { background-image: url(../images/web/futterassistent/rasse-2/grandgasconsaintongeois.jpg); }
+ .dog-rasse-167 { background-image: url(../images/web/futterassistent/rasse-2/grandgriffonvendeen.jpg); }
+ .dog-rasse-168 { background-image: url(../images/web/futterassistent/rasse-2/greyhound.jpg); }
+ .dog-rasse-169 { background-image: url(../images/web/futterassistent/rasse-2/griffonapoildur.jpg); }
+ .dog-rasse-170 { background-image: url(../images/web/futterassistent/rasse-2/griffonbelge.jpg); }
+ .dog-rasse-171 { background-image: url(../images/web/futterassistent/rasse-2/griffonbruxellois.jpg); }
+ .dog-rasse-172 { background-image: url(../images/web/futterassistent/rasse-2/griffonfauvedebretagne.jpg); }
+ .dog-rasse-173 { background-image: url(../images/web/futterassistent/rasse-2/griffonnivernais.jpg); }
+ .dog-rasse-174 { background-image: url(../images/web/futterassistent/rasse-2/groenendael.jpg); }
+ .dog-rasse-175 { background-image: url(../images/web/futterassistent/rasse-2/groenlandhund.jpg); }
+ .dog-rasse-176 { background-image: url(../images/web/futterassistent/rasse-2/grossermuensterlaender.jpg); }
+ .dog-rasse-177 { background-image: url(../images/web/futterassistent/rasse-2/grosserschweizersennenhund.jpg); }
+ .dog-rasse-178 { background-image: url(../images/web/futterassistent/rasse-2/grosspudel.jpg); }
+ .dog-rasse-179 { background-image: url(../images/web/futterassistent/rasse-2/hamilton-stoevare.jpg); }
+ .dog-rasse-180 { background-image: url(../images/web/futterassistent/rasse-2/hannoverscherschweisshund.jpg); }
+ .dog-rasse-181 { background-image: url(../images/web/futterassistent/rasse-2/harrier.jpg); }
+ .dog-rasse-182 { background-image: url(../images/web/futterassistent/rasse-2/havaneser.jpg); }
+ .dog-rasse-183 { background-image: url(../images/web/futterassistent/rasse-2/himalaja-schaeferhund.jpg); }
+ .dog-rasse-184 { background-image: url(../images/web/futterassistent/rasse-2/nederlandseherdershond.jpg); }
+ .dog-rasse-185 { background-image: url(../images/web/futterassistent/rasse-2/nederlandseherdershondlanghaarig.jpg); }
+ .dog-rasse-186 { background-image: url(../images/web/futterassistent/rasse-2/nederlandseherdershondrauhaar.jpg); }
+ .dog-rasse-187 { background-image: url(../images/web/futterassistent/rasse-2/smoushond.jpg); }
+ .dog-rasse-188 { background-image: url(../images/web/futterassistent/rasse-2/hovawart.jpg); }
+ .dog-rasse-189 { background-image: url(../images/web/futterassistent/rasse-2/hygen-hund.jpg); }
+ .dog-rasse-190 { background-image: url(../images/web/futterassistent/rasse-2/illyrischerschaeferhund.jpg); }
+ .dog-rasse-191 { background-image: url(../images/web/futterassistent/rasse-2/soft-coatedwheatenterrier.jpg); }
+ .dog-rasse-192 { background-image: url(../images/web/futterassistent/rasse-2/irishsetter.jpg); }
+ .dog-rasse-193 { background-image: url(../images/web/futterassistent/rasse-2/irishred-and-whitesetter.jpg); }
+ .dog-rasse-194 { background-image: url(../images/web/futterassistent/rasse-2/irishterrier.jpg); }
+ .dog-rasse-195 { background-image: url(../images/web/futterassistent/rasse-2/irishwaterspaniel.jpg); }
+ .dog-rasse-196 { background-image: url(../images/web/futterassistent/rasse-2/irishwolfhound.jpg); }
+ .dog-rasse-197 { background-image: url(../images/web/futterassistent/rasse-2/islaenderspitz.jpg); }
+ .dog-rasse-198 { background-image: url(../images/web/futterassistent/rasse-2/istrianerkurzhaarigebracke.jpg); }
+ .dog-rasse-199 { background-image: url(../images/web/futterassistent/rasse-2/istrianerrauhhaarigebracke.jpg); }
+ .dog-rasse-200 { background-image: url(../images/web/futterassistent/rasse-2/istrianerschaeferhund.jpg); }
+ .dog-rasse-201 { background-image: url(../images/web/futterassistent/rasse-2/italienischeswindspiel.jpg); }
+ .dog-rasse-202 { background-image: url(../images/web/futterassistent/rasse-2/jack-russell-terrier.jpg); }
+ .dog-rasse-203 { background-image: url(../images/web/futterassistent/rasse-2/jaemthund.jpg); }
+ .dog-rasse-204 { background-image: url(../images/web/futterassistent/rasse-2/japan-chin.jpg); }
+ .dog-rasse-205 { background-image: url(../images/web/futterassistent/rasse-2/japanischerspitz.jpg); }
+ .dog-rasse-206 { background-image: url(../images/web/futterassistent/rasse-2/japanischerterrier.jpg); }
+ .dog-rasse-207 { background-image: url(../images/web/futterassistent/rasse-2/jura-laufhundbruno.jpg); }
+ .dog-rasse-208 { background-image: url(../images/web/futterassistent/rasse-2/jura-laufhundsaint-hubert.jpg); }
+ .dog-rasse-209 { background-image: url(../images/web/futterassistent/rasse-2/kaihund.jpg); }
+ .dog-rasse-210 { background-image: url(../images/web/futterassistent/rasse-2/kanaanhund.jpg); }
+ .dog-rasse-211 { background-image: url(../images/web/futterassistent/rasse-2/kanarischedogge.jpg); }
+ .dog-rasse-212 { background-image: url(../images/web/futterassistent/rasse-2/karabash.jpg); }
+ .dog-rasse-213 { background-image: url(../images/web/futterassistent/rasse-2/karelischerbaerenhund.jpg); }
+ .dog-rasse-214 { background-image: url(../images/web/futterassistent/rasse-2/kaukasischerschaeferhund.jpg); }
+ .dog-rasse-215 { background-image: url(../images/web/futterassistent/rasse-2/kerryblueterrier.jpg); }
+ .dog-rasse-216 { background-image: url(../images/web/futterassistent/rasse-2/kerry-beagle.jpg); }
+ .dog-rasse-217 { background-image: url(../images/web/futterassistent/rasse-2/kingcharlesspaniel.jpg); }
+ .dog-rasse-218 { background-image: url(../images/web/futterassistent/rasse-2/kleinermuensterlaender.jpg); }
+ .dog-rasse-219 { background-image: url(../images/web/futterassistent/rasse-2/komondor.jpg); }
+ .dog-rasse-220 { background-image: url(../images/web/futterassistent/rasse-2/jindo.jpg); }
+ .dog-rasse-221 { background-image: url(../images/web/futterassistent/rasse-2/kroatischerschaeferhund.jpg); }
+ .dog-rasse-222 { background-image: url(../images/web/futterassistent/rasse-2/kromfohrlaender.jpg); }
+ .dog-rasse-223 { background-image: url(../images/web/futterassistent/rasse-2/kurzhaarigercollie.jpg); }
+ .dog-rasse-224 { background-image: url(../images/web/futterassistent/rasse-2/kurzhaardackel.jpg); }
+ .dog-rasse-225 { background-image: url(../images/web/futterassistent/rasse-2/magyarvizsla.jpg); }
+ .dog-rasse-226 { background-image: url(../images/web/futterassistent/rasse-2/kuvasz.jpg); }
+ .dog-rasse-227 { background-image: url(../images/web/futterassistent/rasse-2/kyileo.jpg); }
+ .dog-rasse-228 { background-image: url(../images/web/futterassistent/rasse-2/labradoodle.jpg); }
+ .dog-rasse-229 { background-image: url(../images/web/futterassistent/rasse-2/labradorretriever.jpg); }
+ .dog-rasse-230 { background-image: url(../images/web/futterassistent/rasse-2/laekenois.jpg); }
+ .dog-rasse-231 { background-image: url(../images/web/futterassistent/rasse-2/lagottoromagnolo.jpg); }
+ .dog-rasse-232 { background-image: url(../images/web/futterassistent/rasse-2/lakeland-terrier.jpg); }
+ .dog-rasse-233 { background-image: url(../images/web/futterassistent/rasse-2/lancashireheeler.jpg); }
+ .dog-rasse-234 { background-image: url(../images/web/futterassistent/rasse-2/landseer.jpg); }
+ .dog-rasse-235 { background-image: url(../images/web/futterassistent/rasse-2/langhaarigercollie.jpg); }
+ .dog-rasse-236 { background-image: url(../images/web/futterassistent/rasse-2/langhaardackel.jpg); }
+ .dog-rasse-237 { background-image: url(../images/web/futterassistent/rasse-2/lapplaenderrentierhund.jpg); }
+ .dog-rasse-238 { background-image: url(../images/web/futterassistent/rasse-2/leonberger.jpg); }
+ .dog-rasse-239 { background-image: url(../images/web/futterassistent/rasse-2/lhasaapso.jpg); }
+ .dog-rasse-240 { background-image: url(../images/web/futterassistent/rasse-2/loewchen.jpg); }
+ .dog-rasse-241 { background-image: url(../images/web/futterassistent/rasse-2/lucas-terrier.jpg); }
+ .dog-rasse-242 { background-image: url(../images/web/futterassistent/rasse-2/lurcher.jpg); }
+ .dog-rasse-243 { background-image: url(../images/web/futterassistent/rasse-2/luzernerlaufhund.jpg); }
+ .dog-rasse-244 { background-image: url(../images/web/futterassistent/rasse-2/malinois.jpg); }
+ .dog-rasse-245 { background-image: url(../images/web/futterassistent/rasse-2/malteser.jpg); }
+ .dog-rasse-246 { background-image: url(../images/web/futterassistent/rasse-2/manchester-terrier.jpg); }
+ .dog-rasse-247 { background-image: url(../images/web/futterassistent/rasse-2/maremmanerhirtenhund.jpg); }
+ .dog-rasse-248 { background-image: url(../images/web/futterassistent/rasse-2/mastiff.jpg); }
+ .dog-rasse-249 { background-image: url(../images/web/futterassistent/rasse-2/mastinespanol.jpg); }
+ .dog-rasse-250 { background-image: url(../images/web/futterassistent/rasse-2/mastinonapoletano.jpg); }
+ .dog-rasse-251 { background-image: url(../images/web/futterassistent/rasse-2/mexikanischernackthund.jpg); }
+ .dog-rasse-252 { background-image: url(../images/web/futterassistent/rasse-2/mexikanischertoy-nackthund.jpg); }
+ .dog-rasse-253 { background-image: url(../images/web/futterassistent/rasse-2/mexikanischerzwergnackthund.jpg); }
+ .dog-rasse-254 { background-image: url(../images/web/futterassistent/rasse-2/zwergbullterrier.jpg); }
+ .dog-rasse-255 { background-image: url(../images/web/futterassistent/rasse-2/northamericanshepherd.jpg); }
+ .dog-rasse-256 { background-image: url(../images/web/futterassistent/rasse-2/mittelasiatischerschaeferhund.jpg); }
+ .dog-rasse-257 { background-image: url(../images/web/futterassistent/rasse-2/mittelasiatischerschaeferhundkurzhaarig.jpg); }
+ .dog-rasse-258 { background-image: url(../images/web/futterassistent/rasse-2/mittelspitz.jpg); }
+ .dog-rasse-259 { background-image: url(../images/web/futterassistent/rasse-2/jugoslawischergebirgslaufhund.jpg); }
+ .dog-rasse-260 { background-image: url(../images/web/futterassistent/rasse-2/mops.jpg); }
+ .dog-rasse-261 { background-image: url(../images/web/futterassistent/rasse-2/mudi.jpg); }
+ .dog-rasse-262 { background-image: url(../images/web/futterassistent/rasse-2/koikerhond.jpg); }
+ .dog-rasse-263 { background-image: url(../images/web/futterassistent/rasse-2/neufundlaender.jpg); }
+ .dog-rasse-264 { background-image: url(../images/web/futterassistent/rasse-2/neuguinea-dingo.jpg); }
+ .dog-rasse-265 { background-image: url(../images/web/futterassistent/rasse-2/neuseelaendischerhuntaway.jpg); }
+ .dog-rasse-266 { background-image: url(../images/web/futterassistent/rasse-2/norfolk-terrier.jpg); }
+ .dog-rasse-267 { background-image: url(../images/web/futterassistent/rasse-2/norrbottenspitz.jpg); }
+ .dog-rasse-268 { background-image: url(../images/web/futterassistent/rasse-2/norwegischerbuhund.jpg); }
+ .dog-rasse-269 { background-image: url(../images/web/futterassistent/rasse-2/norwegischerelchhund.jpg); }
+ .dog-rasse-270 { background-image: url(../images/web/futterassistent/rasse-2/schwarzernorwegischerelchhund.jpg); }
+ .dog-rasse-271 { background-image: url(../images/web/futterassistent/rasse-2/lundehund.jpg); }
+ .dog-rasse-272 { background-image: url(../images/web/futterassistent/rasse-2/norwich-terrier.jpg); }
+ .dog-rasse-273 { background-image: url(../images/web/futterassistent/rasse-2/novascotiaducktollingretriever.jpg); }
+ .dog-rasse-274 { background-image: url(../images/web/futterassistent/rasse-2/oldeenglishbulldogge.jpg); }
+ .dog-rasse-275 { background-image: url(../images/web/futterassistent/rasse-2/oesterreichischerpinscher.jpg); }
+ .dog-rasse-276 { background-image: url(../images/web/futterassistent/rasse-2/ostsibirischerlaika.jpg); }
+ .dog-rasse-277 { background-image: url(../images/web/futterassistent/rasse-2/otterhound.jpg); }
+ .dog-rasse-278 { background-image: url(../images/web/futterassistent/rasse-2/papillon.jpg); }
+ .dog-rasse-279 { background-image: url(../images/web/futterassistent/rasse-2/parson-russell-terrier.jpg); }
+ .dog-rasse-280 { background-image: url(../images/web/futterassistent/rasse-2/patterdaleterrier.jpg); }
+ .dog-rasse-281 { background-image: url(../images/web/futterassistent/rasse-2/pekinese.jpg); }
+ .dog-rasse-282 { background-image: url(../images/web/futterassistent/rasse-2/perdigueiroportugues.jpg); }
+ .dog-rasse-283 { background-image: url(../images/web/futterassistent/rasse-2/perdiguerodeburgos.jpg); }
+ .dog-rasse-284 { background-image: url(../images/web/futterassistent/rasse-2/perrodeaguas.jpg); }
+ .dog-rasse-285 { background-image: url(../images/web/futterassistent/rasse-2/inkanackthund.jpg); }
+ .dog-rasse-286 { background-image: url(../images/web/futterassistent/rasse-2/peruvianincaorchid.jpg); }
+ .dog-rasse-287 { background-image: url(../images/web/futterassistent/rasse-2/petitbassetgriffonvendeen.jpg); }
+ .dog-rasse-288 { background-image: url(../images/web/futterassistent/rasse-2/petitbleudegascogne.jpg); }
+ .dog-rasse-289 { background-image: url(../images/web/futterassistent/rasse-2/petitgriffondegascogne.jpg); }
+ .dog-rasse-290 { background-image: url(../images/web/futterassistent/rasse-2/phalene.jpg); }
+ .dog-rasse-291 { background-image: url(../images/web/futterassistent/rasse-2/pharaonenhund.jpg); }
+ .dog-rasse-292 { background-image: url(../images/web/futterassistent/rasse-2/plotthound.jpg); }
+ .dog-rasse-293 { background-image: url(../images/web/futterassistent/rasse-2/plummer-terrier.jpg); }
+ .dog-rasse-294 { background-image: url(../images/web/futterassistent/rasse-2/podencocanario.jpg); }
+ .dog-rasse-295 { background-image: url(../images/web/futterassistent/rasse-2/podengoportuguesomedio.jpg); }
+ .dog-rasse-296 { background-image: url(../images/web/futterassistent/rasse-2/podengoportuguesopequeno.jpg); }
+ .dog-rasse-297 { background-image: url(../images/web/futterassistent/rasse-2/pointer.jpg); }
+ .dog-rasse-298 { background-image: url(../images/web/futterassistent/rasse-2/poitevin.jpg); }
+ .dog-rasse-299 { background-image: url(../images/web/futterassistent/rasse-2/ogarpolski.jpg); }
+ .dog-rasse-300 { background-image: url(../images/web/futterassistent/rasse-2/polnischerniederungshuetehund.jpg); }
+ .dog-rasse-301 { background-image: url(../images/web/futterassistent/rasse-2/podhalenhund.jpg); }
+ .dog-rasse-302 { background-image: url(../images/web/futterassistent/rasse-2/porcelaine.jpg); }
+ .dog-rasse-303 { background-image: url(../images/web/futterassistent/rasse-2/save-bracke.jpg); }
+ .dog-rasse-304 { background-image: url(../images/web/futterassistent/rasse-2/praszkykrysavik.jpg); }
+ .dog-rasse-305 { background-image: url(../images/web/futterassistent/rasse-2/kleinmittelpudel.jpg); }
+ .dog-rasse-306 { background-image: url(../images/web/futterassistent/rasse-2/pudelpointer.jpg); }
+ .dog-rasse-307 { background-image: url(../images/web/futterassistent/rasse-2/puli.jpg); }
+ .dog-rasse-308 { background-image: url(../images/web/futterassistent/rasse-2/pumi.jpg); }
+ .dog-rasse-309 { background-image: url(../images/web/futterassistent/rasse-2/pyrenaenhund.jpg); }
+ .dog-rasse-310 { background-image: url(../images/web/futterassistent/rasse-2/mastindelospirineos.jpg); }
+ .dog-rasse-311 { background-image: url(../images/web/futterassistent/rasse-2/rafeirodoalentejo.jpg); }
+ .dog-rasse-312 { background-image: url(../images/web/futterassistent/rasse-2/rampur-windhund.jpg); }
+ .dog-rasse-313 { background-image: url(../images/web/futterassistent/rasse-2/ratero.jpg); }
+ .dog-rasse-314 { background-image: url(../images/web/futterassistent/rasse-2/rauhhaardackel.jpg); }
+ .dog-rasse-315 { background-image: url(../images/web/futterassistent/rasse-2/rauhhaarigerbernerniederlaufhund.jpg); }
+ .dog-rasse-316 { background-image: url(../images/web/futterassistent/rasse-2/redbonecoonhound.jpg); }
+ .dog-rasse-317 { background-image: url(../images/web/futterassistent/rasse-2/rhodesianridgeback.jpg); }
+ .dog-rasse-318 { background-image: url(../images/web/futterassistent/rasse-2/riesenschnauzer.jpg); }
+ .dog-rasse-319 { background-image: url(../images/web/futterassistent/rasse-2/rottweiler.jpg); }
+ .dog-rasse-320 { background-image: url(../images/web/futterassistent/rasse-2/russischeuropaeischerlaika.jpg); }
+ .dog-rasse-321 { background-image: url(../images/web/futterassistent/rasse-2/schwarzerrussischerterrier.jpg); }
+ .dog-rasse-322 { background-image: url(../images/web/futterassistent/rasse-2/saarloos-wolfshund.jpg); }
+ .dog-rasse-323 { background-image: url(../images/web/futterassistent/rasse-2/sabuesoespanol.jpg); }
+ .dog-rasse-324 { background-image: url(../images/web/futterassistent/rasse-2/saluki.jpg); }
+ .dog-rasse-325 { background-image: url(../images/web/futterassistent/rasse-2/samojede.jpg); }
+ .dog-rasse-326 { background-image: url(../images/web/futterassistent/rasse-2/schapendoes.jpg); }
+ .dog-rasse-327 { background-image: url(../images/web/futterassistent/rasse-2/schiller-stoevare.jpg); }
+ .dog-rasse-328 { background-image: url(../images/web/futterassistent/rasse-2/schipperke.jpg); }
+ .dog-rasse-329 { background-image: url(../images/web/futterassistent/rasse-2/schnauzer.jpg); }
+ .dog-rasse-330 { background-image: url(../images/web/futterassistent/rasse-2/schnuerenpudel.jpg); }
+ .dog-rasse-331 { background-image: url(../images/web/futterassistent/rasse-2/schwedischerlapphund.jpg); }
+ .dog-rasse-332 { background-image: url(../images/web/futterassistent/rasse-2/schweizerlaufhund.jpg); }
+ .dog-rasse-333 { background-image: url(../images/web/futterassistent/rasse-2/luzernerniederlaufhund.jpg); }
+ .dog-rasse-334 { background-image: url(../images/web/futterassistent/rasse-2/schweizerniederlaufhund.jpg); }
+ .dog-rasse-335 { background-image: url(../images/web/futterassistent/rasse-2/scottishterrier.jpg); }
+ .dog-rasse-336 { background-image: url(../images/web/futterassistent/rasse-2/sealyham-terrier.jpg); }
+ .dog-rasse-337 { background-image: url(../images/web/futterassistent/rasse-2/segugioitaliano.jpg); }
+ .dog-rasse-338 { background-image: url(../images/web/futterassistent/rasse-2/sharpei.jpg); }
+ .dog-rasse-339 { background-image: url(../images/web/futterassistent/rasse-2/sheltie.jpg); }
+ .dog-rasse-340 { background-image: url(../images/web/futterassistent/rasse-2/shibainu.jpg); }
+ .dog-rasse-341 { background-image: url(../images/web/futterassistent/rasse-2/shihtzu.jpg); }
+ .dog-rasse-342 { background-image: url(../images/web/futterassistent/rasse-2/shikoku.jpg); }
+ .dog-rasse-343 { background-image: url(../images/web/futterassistent/rasse-2/shilohshepherd.jpg); }
+ .dog-rasse-344 { background-image: url(../images/web/futterassistent/rasse-2/siberianhusky.jpg); }
+ .dog-rasse-345 { background-image: url(../images/web/futterassistent/rasse-2/skyeterrier.jpg); }
+ .dog-rasse-346 { background-image: url(../images/web/futterassistent/rasse-2/sloughi.jpg); }
+ .dog-rasse-347 { background-image: url(../images/web/futterassistent/rasse-2/slovenskycuvac.jpg); }
+ .dog-rasse-348 { background-image: url(../images/web/futterassistent/rasse-2/slovenskykopov.jpg); }
+ .dog-rasse-349 { background-image: url(../images/web/futterassistent/rasse-2/slowakischervorstehhund.jpg); }
+ .dog-rasse-350 { background-image: url(../images/web/futterassistent/rasse-2/smaland-stoevare.jpg); }
+ .dog-rasse-351 { background-image: url(../images/web/futterassistent/rasse-2/spanischerwindhund.jpg); }
+ .dog-rasse-352 { background-image: url(../images/web/futterassistent/rasse-2/spinone.jpg); }
+ .dog-rasse-353 { background-image: url(../images/web/futterassistent/rasse-2/stabyhond.jpg); }
+ .dog-rasse-354 { background-image: url(../images/web/futterassistent/rasse-2/staffordshire-bullterrier.jpg); }
+ .dog-rasse-355 { background-image: url(../images/web/futterassistent/rasse-2/steirischerauhhaarigehochgebirgsbracke.jpg); }
+ .dog-rasse-356 { background-image: url(../images/web/futterassistent/rasse-2/suedrussischerschaeferhund.jpg); }
+ .dog-rasse-357 { background-image: url(../images/web/futterassistent/rasse-2/sussex-spaniel.jpg); }
+ .dog-rasse-358 { background-image: url(../images/web/futterassistent/rasse-2/tervueren.jpg); }
+ .dog-rasse-359 { background-image: url(../images/web/futterassistent/rasse-2/thairidgeback.jpg); }
+ .dog-rasse-360 { background-image: url(../images/web/futterassistent/rasse-2/tibet-spaniel.jpg); }
+ .dog-rasse-361 { background-image: url(../images/web/futterassistent/rasse-2/tibet-terrier.jpg); }
+ .dog-rasse-362 { background-image: url(../images/web/futterassistent/rasse-2/tibetdogge.jpg); }
+ .dog-rasse-363 { background-image: url(../images/web/futterassistent/rasse-2/tibetischerkyiapso.jpg); }
+ .dog-rasse-364 { background-image: url(../images/web/futterassistent/rasse-2/tosainu.jpg); }
+ .dog-rasse-365 { background-image: url(../images/web/futterassistent/rasse-2/toy-pudel.jpg); }
+ .dog-rasse-366 { background-image: url(../images/web/futterassistent/rasse-2/treeingwalkercoonhound.jpg); }
+ .dog-rasse-367 { background-image: url(../images/web/futterassistent/rasse-2/tschechoslowakischerwolfshund.jpg); }
+ .dog-rasse-368 { background-image: url(../images/web/futterassistent/rasse-2/ungarischebracke.jpg); }
+ .dog-rasse-369 { background-image: url(../images/web/futterassistent/rasse-2/ungarischerwindhund.jpg); }
+ .dog-rasse-370 { background-image: url(../images/web/futterassistent/rasse-2/vaestgoetaspets.jpg); }
+ .dog-rasse-371 { background-image: url(../images/web/futterassistent/rasse-2/volpino.jpg); }
+ .dog-rasse-372 { background-image: url(../images/web/futterassistent/rasse-2/waeller.jpg); }
+ .dog-rasse-373 { background-image: url(../images/web/futterassistent/rasse-2/weimaraner.jpg); }
+ .dog-rasse-374 { background-image: url(../images/web/futterassistent/rasse-2/weisserschaefer.jpg); }
+ .dog-rasse-375 { background-image: url(../images/web/futterassistent/rasse-2/welshcorgiecardigan.jpg); }
+ .dog-rasse-376 { background-image: url(../images/web/futterassistent/rasse-2/welshcorgiepembroke.jpg); }
+ .dog-rasse-377 { background-image: url(../images/web/futterassistent/rasse-2/welshspringerspaniel.jpg); }
+ .dog-rasse-378 { background-image: url(../images/web/futterassistent/rasse-2/welshterrier.jpg); }
+ .dog-rasse-379 { background-image: url(../images/web/futterassistent/rasse-2/westhighlandwhiteterrier.jpg); }
+ .dog-rasse-380 { background-image: url(../images/web/futterassistent/rasse-2/westsibirischerlaika.jpg); }
+ .dog-rasse-381 { background-image: url(../images/web/futterassistent/rasse-2/wetterhond.jpg); }
+ .dog-rasse-382 { background-image: url(../images/web/futterassistent/rasse-2/whippet.jpg); }
+ .dog-rasse-383 { background-image: url(../images/web/futterassistent/rasse-2/keeshond.jpg); }
+ .dog-rasse-384 { background-image: url(../images/web/futterassistent/rasse-2/yorkshireterrier.jpg); }
+ .dog-rasse-385 { background-image: url(../images/web/futterassistent/rasse-2/zwergpinscher.jpg); }
+ .dog-rasse-386 { background-image: url(../images/web/futterassistent/rasse-2/zwergpudel.jpg); }
+ .dog-rasse-387 { background-image: url(../images/web/futterassistent/rasse-2/zwergschnauzer.jpg); }
+ .dog-rasse-388 { background-image: url(../images/web/futterassistent/rasse-2/zwergspitz.jpg); }
+
+
+
+
+
+
+@media only screen and (max-width:768px) {
+	.question_wrapper {
+		padding: 0 10px;
+
+	} 
+
+	.tpl_futterassistent .question_wrapper > .frage {
+		float: none;
+		text-align: left;
+	}
+
+	
+}
+
+@media only screen and (max-width:480px) {
+	.tpl_futterassistent .schritte ul {
+		margin-bottom: 10px;
+	}
+
+	.tpl_futterassistent input[type="text"] {
+		width: 100%;
+	}
+
+	.gewichtsgrad, .unvertraeglichkeit  {
+		padding: 0;
+	}
+
+	.gewichtsgrad .frage {
+		font-size: 11px;
+	}
+
+	.gewichtsgrad label {
+		height: auto;
+	}
+
+	.form-discount {
+		width: 100%;
+	}
+}
+
+/*Loading*/
+.step-1 {
+	display:    none;
+	position:   absolute;
+	z-index:    1000;
+	top:        0;
+	left:       0;
+	height:     100%;
+	width:      100%;
+	background: rgba( 255, 255, 255, .8 )
+	url('http://i.stack.imgur.com/FhHRx.gif')
+	50% 50%
+	no-repeat;
+}
+.loading {
+	overflow: hidden;
+}
+
+.loading {
+	display: block;
+}

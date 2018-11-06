@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+  <id>Google Sitemap Fix</id>
+  <version>1.0.0</version>
+  <vqmver required="true">2.4.0</vqmver>
+  <author>yuri.korolov@gmail.com</author>
+  <file name="catalog/controller/feed/google_sitemap.php">
+    <operation error="skip">
+      <search position="replace"><![CDATA[$output .= '<image:caption>' . $product['name'] . '</image:caption>';]]></search>
+      <add><![CDATA[
+					$output .= '<image:caption>' . htmlentities ($product['name']) . '</image:caption>';
+        ]]></add>
+    </operation>
+	
+  <operation error="skip">
+      <search position="replace"><![CDATA[$output .= '<image:title>' . $product['name'] . '</image:title>';]]></search>
+      <add><![CDATA[
+					$output .= '<image:title>' . htmlentities ($product['name']) . '</image:title>';		  
+        ]]></add>
+    </operation>	
+  </file>
+</modification>

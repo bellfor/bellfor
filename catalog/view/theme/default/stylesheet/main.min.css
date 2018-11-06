@@ -1,0 +1,177 @@
+*::-webkit-input-placeholder {
+  color: #666;
+  opacity: 1; }
+
+*:-moz-placeholder {
+  color: #666;
+  opacity: 1; }
+
+*::-moz-placeholder {
+  color: #666;
+  opacity: 1; }
+
+*:-ms-input-placeholder {
+  color: #666;
+  opacity: 1; }
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid {
+  color: #666; }
+
+body input:required:valid,
+body textarea:required:valid {
+  color: #666; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: start;
+  background-color: #d9dd6c;
+  background-image: url(../img/bellfor_header.jpg);
+  background-position: 0 0;
+  background-repeat: repeat-x; }
+
+.button_blue {
+  background-color: #7e842e;
+  background-image: url(../img/gradient.png);
+  background-position: bottom;
+  background-repeat: repeat-x;
+  border-color: #7e842e;
+  border-style: solid;
+  border-width: 1px;
+  color: #fff;
+  display: inline-block;
+  font-family: Arial,Tahoma,Verdana;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: start;
+  text-decoration: none; }
+  .button_blue:hover {
+    background-color: #7e842e;
+    background-image: none;
+    color: white;
+    cursor: pointer; }
+
+a.button_set .button-outer {
+  background-color: transparent;
+  background-image: url(../img/button-left.png);
+  display: inline-block;
+  background-position: left top;
+  background-repeat: no-repeat; }
+
+a.button_set .button-inner {
+  background-color: transparent;
+  background-image: url(../img/button-right.png);
+  display: inline-block;
+  line-height: 14px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  background-position: right top;
+  background-repeat: no-repeat; }
+
+input {
+  background-color: white;
+  background-image: url(../img/gradient-small-reverse.png);
+  color: #666666;
+  font-family: Arial, Tahoma, Verdana;
+  font-size: 12px;
+  height: 24px;
+  background-position: left top;
+  background-repeat: repeat-x;
+  border-color: #a3a3a3;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px; }
+
+/*==========  Desktop First  ==========*/
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {
+  /**/ }
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  /**/ }
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  /**/ }
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  /**/ }
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  /**/ }
+
+/*==========  Mobile First  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  /**/ }
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  /**/ }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  /**/ }
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  /**/ }
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  /**/ }
+
+.header .menu ul {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  float: right; }
+  .header .menu ul li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 6px 10px;
+    color: #ffffff;
+    border-right: 1px solid #939393;
+    background-color: #b7b7b7;
+    margin: 0;
+    float: left; }
+    .header .menu ul li .glyphicon-triangle-bottom {
+      font-size: 9px;
+      margin-left: 5px; }
+    .header .menu ul li:hover {
+      background-color: #939393; }
+
+.header .customer_login_inside {
+  float: right;
+  width: 180px;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+  padding: 10px;
+  background-color: #b7b7b7; }
+  .header .customer_login_inside label {
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 0; }
+  .header .customer_login_inside .submit-container {
+    display: inline-block;
+    margin-top: 10px; }
+  .header .customer_login_inside .customer_login_links {
+    margin-top: 8px; }
+    .header .customer_login_inside .customer_login_links a {
+      color: white;
+      text-decoration: none; }
+      .header .customer_login_inside .customer_login_links a:hover {
+        color: white;
+        text-decoration: underline; }

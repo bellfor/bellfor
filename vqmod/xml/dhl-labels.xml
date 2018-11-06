@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>DHL Shipping Labels</id>
+	<version>1.1.0</version>
+	<vqmver>2.4.0</vqmver>
+	<author>opencart.design</author>
+    
+
+    <file name="admin/view/template/sale/order_info.tpl">
+        <operation>
+            <search position="before"><![CDATA[<a href="<?php echo $invoice; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_invoice_print; ?>" class="btn btn-info">]]></search>
+            <add><![CDATA[<div style="float: right; margin-left: 3px;"><a href="<?php echo $dhl_label_url; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_address; ?>" class="btn btn-success"><i class="fa fa-file-text"></i></a></div>]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[<td><?php echo $text_invoice; ?></td>]]></search>
+            <add><![CDATA[
+			<td><?php echo $text_dhl_tracking; ?></td>
+                <td id="dhl-tracking" class="text-right"><?php echo $dhl_tracking_no; ?></td>
+                <td style="width: 1%;" class="text-center"><?php if (!$dhl_tracking_no) { ?>
+                  <button id="button-dhl-tracking" data-loading-text="<?php echo $text_loading; ?>" data-toggle="tooltip" title="<?php echo $button_generate; ?>" class="btn btn-success btn-xs"><i class="fa fa-file-text"></i></button>
+                  <?php } else { ?>
+                  <button id="button-dhl-tracking" data-loading-text="<?php echo $text_loading; ?>" data-toggle="tooltip" title="<?php echo $button_generate; ?>" class="btn btn-success btn-xs"><i class="fa fa-refresh"></i></button>
+                  <?php } ?></td>
+              </tr>
+              <tr>
+			]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[$(document).delegate('#button-invoice', 'click', function() {]]></search>
+            <add><![CDATA[
+			$(document).delegate('#button-dhl-tracking', 'click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/dhltrackingno&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-dhl-tracking').button('loading');
+		},
+		complete: function() {
+			$('#button-dhl-tracking').button('reset');
+		},
+		success: function(json) {
+			$('.alert').remove();
+
+			if (json['error']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['dhl_tracking_no']) {
+				$('#dhl-tracking').html(json['dhl_tracking_no']);
+
+				$('#button-dhl-tracking').replaceWith('<button id="button-dhl-tracking" class="btn btn-success btn-xs"><i class="fa fa-refresh"></i></button>');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+			]]></add>
+        </operation>		
+    </file>
+
+    <file name="admin/model/sale/order.php">
+        <operation>
+            <search position="before"><![CDATA['shipping_code'           => $order_query->row['shipping_code'],]]></search>
+            <add><![CDATA[
+	    'tracking'           => $order_query->row['tracking'],
+			]]></add>
+        </operation>			
+        <operation>
+            <search position="before"><![CDATA[public function createInvoiceNo($order_id)]]></search>
+            <add><![CDATA[
+			
+        public function getOrderWeight($order_id) {
+	        //$query = $this->db->query("SELECT SUM(p.weight * op.quantity) AS weight FROM " . DB_PREFIX . "order_product op LEFT JOIN " . DB_PREFIX . "product p ON op.product_id = p.product_id WHERE op.order_id = '" . (int)$order_id . "'");
+            $query = $this->db->query("SELECT (SUM(p.weight * op.quantity) + 0.1) AS weight FROM " . DB_PREFIX . "order_product op LEFT JOIN " . DB_PREFIX . "product p ON op.product_id = p.product_id WHERE op.order_id = '" . (int)$order_id . "'");    
+        
+		if ($query->row['weight']) {
+			$weight = $query->row['weight'];
+		} else {
+			$weight = 1;
+		}
+		return $weight;
+	    }			
+
+	    public function dhlTrackingNo($order_id, $tracking) {
+		$order_info = $this->getOrder($order_id);
+
+		if ($order_info) {
+		
+			$this->db->query("UPDATE `" . DB_PREFIX . "order` SET tracking = '" . $tracking . "' WHERE order_id = '" . (int)$order_id . "'");
+
+		}
+	}			
+			]]></add>
+        </operation>	
+	</file>	
+    
+    <file name="admin/controller/sale/order.php">
+        <operation>
+            <search position="before"><![CDATA[class ControllerSaleOrder extends Controller {]]></search>
+            <add><![CDATA[
+			        include (DIR_SYSTEM."vendor/GMIntraship.php");
+			]]></add>
+        </operation>	
+	
+        <operation>
+            <search position="before"><![CDATA[$data['text_invoice']]]></search>
+            <add><![CDATA[
+			$data['text_dhl_tracking'] = $this->language->get('text_dhl_tracking');
+			]]></add>
+        </operation>	
+
+        <operation>
+            <search position="before"><![CDATA[if ($order_info['invoice_no'])]]></search>
+            <add><![CDATA[
+			
+			if (isset($order_info['tracking'])&&!empty($order_info['tracking'])) {
+			    $dhldata = explode("|", $order_info['tracking']);
+				$data['dhl_tracking_no'] = $dhldata[0];
+				$data['dhl_label_url'] = $dhldata[1];				
+			} else {
+				$data['dhl_tracking_no'] = '';
+				$data['dhl_label_url'] = '';				
+			}
+			]]></add>
+        </operation>	
+		
+        <operation>
+            <search position="after"><![CDATA[ $data['invoice'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'], 'SSL'); ]]></search>
+            <add><![CDATA[ $data['dhl_label'] = $this->url->link('sale/order/dhllabel', 'token=' . $this->session->data['token'] . $url, 'SSL'); ]]></add>
+        </operation>
+        
+        <operation>
+            <search position="after"><![CDATA[ $data['button_invoice_print'] = $this->language->get('button_invoice_print'); ]]></search>
+            <add><![CDATA[ $data['button_address'] = $this->language->get('button_address'); ]]></add>
+        </operation>
+        
+        <operation>
+            <search position="after"><![CDATA[ $data['invoice'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], 'SSL'); ]]></search>
+            <add><![CDATA[  $data['dhl_label'] = $this->url->link('sale/order/dhllabel', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], 'SSL'); ]]></add>
+        </operation>
+        
+        <operation> 
+            <search position="before"><![CDATA[ public function createInvoiceNo() { ]]></search>
+            <add><![CDATA[
+							
+		public function dhlTrackingNo() {		
+		
+		$this->load->language('sale/order');
+
+		$json = array();
+
+		if (!$this->user->hasPermission('modify', 'sale/order')) {
+			$json['error'] = $this->language->get('error_permission');
+		} elseif (isset($this->request->get['order_id'])) {
+			if (isset($this->request->get['order_id'])) {
+				$order_id = $this->request->get['order_id'];
+			} else {
+				$order_id = 0;
+			}
+
+			$this->load->model('sale/order');
+			
+		$order_info = $this->model_sale_order->getOrder($order_id);		
+		$data['weight'] = $this->model_sale_order->getOrderWeight($order_id);		
+		
+            include (DIR_SYSTEM."vendor/dhl-label.php");	
+
+			$this->model_sale_order->dhlTrackingNo($order_id, $dhl_tracking_no);			
+
+			if ($dhl_tracking_no) {
+				$json['dhl_tracking_no'] = $dhl_tracking_no;
+			} else {
+				$json['error'] = $this->language->get('error_action');
+			}
+		}	
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+		}
+
+		public function dhlLabel() {
+		echo "Tracking number is not set";
+	    }  
+	]]></add>
+        </operation>
+    </file>  
+    
+    <file name="admin/language/*/sale/order.php">
+        <operation>
+            <search position="before"><![CDATA[  // Entry ]]></search>
+            <add><![CDATA[ $_['button_address'] = 'Print DHL Label'; ]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[$_['text_invoice']]]></search>
+            <add><![CDATA[ $_['text_dhl_tracking']               = 'DHL Tracking';]]></add>
+        </operation>		
+    </file>
+</modification>

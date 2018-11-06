@@ -1,0 +1,81 @@
+@CHARSET "ISO-8859-1";
+
+:focus {
+	outline: 0;
+}
+body {
+	margin:0;
+	padding:0;
+	font-size:14px;
+	font-family:  Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	color:#FFF;
+	background: #F39B1D;
+	width:205px;
+}
+.cb_err {
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 14px;
+	color: #D43E3F;
+	float: right;
+	width: 150px;
+	margin-top: 10px;
+}
+a {
+	outline:none;
+}
+.clean {
+	width:0;
+	height:0;
+	font-size:0;
+	line-height:1px;
+	margin:0;
+	padding:0;
+	clear:both;
+}
+h1 {
+	margin:0 0 10px 0;
+	padding:0;
+	font-size:15px;
+	line-height:18px;
+	font-weight: normal;
+}
+form {
+	margin: 0;
+	padding: 0;
+}
+input {
+	width: 158px;
+	padding: 6px 8px;
+	border: 1px dashed #87856e;
+	font-size: 14px;
+	line-height: 20px;
+	border-radius: 3px;
+	margin-top: 0;
+	display: inline-block;
+	float: left;
+}
+#rcb_box {
+	background: transparent;
+	width:155px;
+	height: 120px;
+	padding:20px 35px 0 15px;
+	margin: 0;
+}
+#rcicon {
+	background: url("/_pool/front/layout/2382_2/img/call_icon.png") 0 0 no-repeat;
+	width: 39px;
+	height: 39px;
+	position: absolute;
+	top: 7px;
+	left: 157px;
+}
+#rcb_box_content {
+	font-size: 11px;
+	width: 150px;
+}
+#callback_backlink a {
+	display: inline-block;
+	color: #4f4d3a;
+	margin-top:10px;
+}

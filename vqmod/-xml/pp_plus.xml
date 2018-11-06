@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id><![CDATA[PayPal Plus Payment Method]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.3.2]]></vqmver>
+	<author><![CDATA[Maximilian Bartke - webent.de]]></author>
+	<file name="catalog/view/theme/*/template/common/header.tpl">
+		<operation>
+			<search position="before"><![CDATA[</head>]]></search>
+			<add><![CDATA[<script src="https://www.paypalobjects.com/webstatic/ppplus/ppplus.min.js" type="text/javascript"></script>]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/view/theme/*/template/common/success.tpl">
+		<operation>
+			<search position="before"><![CDATA[<?php echo $text_message; ?>]]></search>
+			<add><![CDATA[
+			<?php 
+			
+				if(isset($instruction_type))
+				{
+					echo $text_headline_kauf_auf_rechnung;
+					echo $text_bank_name." ".$bank_name."<br />";
+					echo $text_payee." ".$account_holder_name."<br />";
+					echo "IBAN: ".$international_bank_account_number."<br />";
+					echo "BIC: ".$bank_identifier_code."<br /><br />";
+					
+					echo $text_betrag." ".$amount."<br />";
+					echo $text_zahlungsziel." ".$payment_due_date."<br />";
+					echo $text_verwendungszweck." ".$reference_number."<br />";
+				}
+			?>
+			]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/view/theme/*/template/checkout/payment_method.tpl">
+		<operation>
+			<search position="replace"><![CDATA[<?php echo $payment_method['title']; ?>]]></search>
+			<add><![CDATA[<?php if($payment_method['code'] != "pp_plus") { echo $payment_method['title']; } else { echo $payment_method['title'].' <div id="ppp_notification" class="alert alert-warning" style="display: none">'.$ppp_notification.'</div>'; ?><div id="ppplus" style="height: 100%;width:600px; max-width:100%;"> </div><?php } ?>]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/view/theme/*/template/checkout/payment_method.tpl">
+		<operation>
+			<search position="bottom"></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			 var ppp = PAYPAL.apps.PPP({
+			 "approvalUrl": "<?php echo $pp_plus_link; ?>",
+			 "placeholder": "ppplus",
+			 "country": "<?php echo $country; ?>",
+			 "language": "<?php echo $language; ?>",
+			 "buttonLocation": "outside",
+			 "enableContinue":  function (data) {
+				$("input[name='payment_method'][value='pp_plus']").prop("checked", true);
+				$('#button-payment-method').prop('disabled', false);
+				$('#ppp_notification').hide();
+			 },
+			 "disableContinue":  function (data) {
+				 if ($("input[name='payment_method'][value='pp_plus']").is(":checked")) {
+					$('#button-payment-method').prop('disabled', true);
+					$('#ppp_notification').show();
+				}
+			 },
+			 "preselection": "none",
+			 "showPuiOnSandbox": true,
+			 "showLoadingIndicator": true,
+			 "mode": "<?php echo str_replace('.','',$pp_plus_mode); ?>",
+			 "useraction": "commit"
+			 });
+			 
+			$(document).ready( function() {
+				$('input[name=payment_method]').change(function(){
+					if (!$("input[name='payment_method'][value='pp_plus']").is(":checked")) {
+						$('#button-payment-method').prop('disabled', false);
+						$('#ppp_notification').hide();
+						ppp.deselectPaymentMethod();
+					}
+					else {
+						$('#button-payment-method').prop('disabled', true);
+						$('#ppp_notification').show();
+					}
+				});			
+				
+			});
+			//--></script>
+			]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/controller/checkout/payment_method.php">
+		<operation>
+			<search position="before"><![CDATA[$data['scripts'] = $this->document->getScripts();]]></search>
+			<add><![CDATA[
+			
+			if($this->config->get('pp_plus_test') == 1)
+			{
+				$data['pp_plus_mode'] = ".sandbox";
+			} else {
+				$data['pp_plus_mode'] = "";
+			}
+			
+			$this->load->language('payment/pp_plus');
+			$data['ppp_notification'] = $this->language->get('ppp_notification');
+			
+			$data['pp_plus_link'] = $this->sentData($this->getToken(), $total);
+			$data['country'] = $this->session->data['payment_address']['iso_code_2'];
+			$data['language'] = str_replace("-", "_", $this->config->get('config_language'));
+			]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/controller/checkout/success.php">
+		<operation>
+			<search position="before"><![CDATA[$this->load->language('checkout/success');]]></search>
+			<add><![CDATA[
+				$this->load->language('payment/pp_plus');
+				
+				$data['text_headline_kauf_auf_rechnung'] = $this->language->get('text_headline_kauf_auf_rechnung');
+				$data['text_bank_name'] = $this->language->get('text_bank_name');
+				$data['text_payee'] = $this->language->get('text_payee');
+				$data['text_betrag'] = $this->language->get('text_betrag');
+				$data['text_zahlungsziel'] = $this->language->get('text_zahlungsziel');
+				$data['text_verwendungszweck'] = $this->language->get('text_verwendungszweck');
+			]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/controller/checkout/confirm.php">
+		<operation>
+			<search position="replace"><![CDATA[$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);]]></search>
+			<add><![CDATA[if($this->session->data['payment_method']['code'] != "pp_plus") { $this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data); } else { $this->session->data['order_data'] = $order_data; }]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/controller/checkout/success.php">
+		<operation>
+			<search position="before"><![CDATA[$data['continue'] = $this->url->link('common/home');]]></search>
+			<add><![CDATA[
+			if(isset($this->session->data['order_data']) && isset($this->request->get['paymentId']))
+			{
+				if ($this->request->get['PayerID']) {
+				
+					$jsons='{ "payer_id" : "'.urlencode(html_entity_decode($this->request->get['PayerID'])).'" }';
+
+					if($this->config->get('pp_plus_test') == 1)
+					{
+						$mode= ".sandbox";
+					} else {
+						$mode= "";
+					}
+					
+					$ch = curl_init();
+					$headers=array('Content-Type:application/json','Authorization:Bearer '.$this->getToken()); 
+					curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+					curl_setopt($ch, CURLOPT_URL, "https://api".$mode.".paypal.com/v1/payments/payment/".urlencode(html_entity_decode($this->request->get['paymentId']))."/execute");
+					curl_setopt($ch, CURLOPT_HEADER, false);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, $jsons);
+					$result = curl_exec($ch);
+					$json = json_decode($result);
+					curl_close($ch);
+					
+					if(isset($json->payment_instruction))
+					{
+					
+						$instruction_type = $json->payment_instruction->instruction_type;
+						
+						if($instruction_type == "PAY_UPON_INVOICE")
+						{
+							$data['instruction_type'] = "PAY_UPON_INVOICE";
+							$reference_number = $json->payment_instruction->reference_number;
+							$data['reference_number'] = $reference_number;
+							
+							$bank_name = $json->payment_instruction->recipient_banking_instruction->bank_name;
+							$data['bank_name'] = $bank_name;
+							$account_holder_name = $json->payment_instruction->recipient_banking_instruction->account_holder_name;
+							$data['account_holder_name'] = $account_holder_name;
+							$international_bank_account_number = $json->payment_instruction->recipient_banking_instruction->international_bank_account_number;
+							$data['international_bank_account_number'] = $international_bank_account_number;
+							$bank_identifier_code = $json->payment_instruction->recipient_banking_instruction->bank_identifier_code;
+							$data['bank_identifier_code'] = $bank_identifier_code;
+							
+							$amount = $json->payment_instruction->amount->value . " " . $json->payment_instruction->amount->currency;
+							$amount = str_replace(".", ",", $amount);
+							$data['amount'] = $amount;
+							
+							$payment_due_date = $json->payment_instruction->payment_due_date;
+							$payment_due_date = strtotime($payment_due_date);
+							$data['payment_due_date'] = date('d.m.Y',$payment_due_date);
+						}
+					}
+					
+					$payed=$json->transactions[0]->related_resources[0]->sale->state;  
+					if ($payed=='completed' || $payed=='pending') {
+						$this->load->model('checkout/order');
+						$this->model_checkout_order->addOrderHistory($this->model_checkout_order->addOrder($this->session->data['order_data']), $this->config->get('pp_plus_order_status_id'));
+					}
+				} 
+				
+				$this->cart->clear();
+
+				unset($this->session->data['shipping_method']);
+				unset($this->session->data['shipping_methods']);
+				unset($this->session->data['payment_method']);
+				unset($this->session->data['payment_methods']);
+				unset($this->session->data['guest']);
+				unset($this->session->data['comment']);
+				unset($this->session->data['order_id']);
+				unset($this->session->data['order_data']);
+				unset($this->session->data['coupon']);
+				unset($this->session->data['reward']);
+				unset($this->session->data['voucher']);
+				unset($this->session->data['vouchers']);
+				unset($this->session->data['totals']);
+			}
+			]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/controller/checkout/success.php">
+		<operation>
+			<search position="bottom" offset="1"></search>
+			<add><![CDATA[
+			public function getToken()
+			{
+				$clientId = $this->config->get('pp_plus_clientId');
+				$secret = $this->config->get('pp_plus_secret');
+
+				if($this->config->get('pp_plus_test') == 1)
+				{
+					$mode= ".sandbox";
+				} else {
+					$mode= "";
+				}
+				
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, "https://api".$mode.".paypal.com/v1/oauth2/token");
+				curl_setopt($ch, CURLOPT_HEADER, false);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+				curl_setopt($ch, CURLOPT_USERPWD, $clientId.":".$secret);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
+				$result = curl_exec($ch);
+				$json = json_decode($result);
+				$access_token=$json->access_token;
+				curl_close($ch);
+				
+				return $access_token;
+			}
+			]]></add>
+		</operation>			
+	</file>
+	<file name="catalog/controller/checkout/payment_method.php">
+		<operation>
+			<search position="bottom" offset="2"></search>
+			<add><![CDATA[
+			public function getToken()
+			{
+				$clientId = $this->config->get('pp_plus_clientId');
+				$secret = $this->config->get('pp_plus_secret');
+
+				if($this->config->get('pp_plus_test') == 1)
+				{
+					$mode= ".sandbox";
+				} else {
+					$mode= "";
+				}
+				
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, "https://api".$mode.".paypal.com/v1/oauth2/token");
+				curl_setopt($ch, CURLOPT_HEADER, false);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+				curl_setopt($ch, CURLOPT_USERPWD, $clientId.":".$secret);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
+				$result = curl_exec($ch);
+				$json = json_decode($result);
+				$access_token=$json->access_token;
+				curl_close($ch);
+				
+				return $access_token;
+			}
+			
+			public function sentData($token, $total)
+			{
+				$tax_total = $this->cart->getTaxes();
+				$tax = 0; // initialize tax;
+				foreach($tax_total as $value){
+				 $tax += $value;
+				}
+				$tax = money_format('%i', $tax);
+				
+				$total = money_format('%i', $total);
+				//$shipping = $this->tax->calculate($this->session->data['shipping_method']['cost'], $this->session->data['shipping_method']['tax_class_id'], $this->config->get('config_tax'));
+				//$shipping = money_format('%i', $shipping);
+				
+				//$subtotal = $total - $shipping - $tax;
+				
+				if($this->config->get('pp_plus_test') == 1)
+				{
+					$mode= ".sandbox";
+				} else {
+					$mode= "";
+				}
+				
+				$currency = $this->session->data['currency'];
+				
+				$order_data = array();
+				
+				if ($this->customer->isLogged()) {
+					$this->load->model('account/customer');
+
+					$customer_info = $this->model_account_customer->getCustomer($this->customer->getId());
+
+					$order_data['customer_id'] = $this->customer->getId();
+					$order_data['customer_group_id'] = $customer_info['customer_group_id'];
+					$order_data['firstname'] = $customer_info['firstname'];
+					$order_data['lastname'] = $customer_info['lastname'];
+					$order_data['email'] = $customer_info['email'];
+					$order_data['telephone'] = $customer_info['telephone'];
+					$order_data['fax'] = $customer_info['fax'];
+					$order_data['custom_field'] = json_decode($customer_info['custom_field'], true);
+				} elseif (isset($this->session->data['guest'])) {
+					$order_data['customer_id'] = 0;
+					$order_data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
+					$order_data['firstname'] = $this->session->data['guest']['firstname'];
+					$order_data['lastname'] = $this->session->data['guest']['lastname'];
+					$order_data['email'] = $this->session->data['guest']['email'];
+					$order_data['telephone'] = $this->session->data['guest']['telephone'];
+					$order_data['fax'] = $this->session->data['guest']['fax'];
+					$order_data['custom_field'] = $this->session->data['guest']['custom_field'];
+				}
+				
+				$code = $this->session->data['payment_address']['iso_code_2'];
+				
+				$fields = '{
+				"intent":"sale",
+				"redirect_urls":{
+				  "return_url":"'.$this->url->link('checkout/success', '', true).'",
+				  "cancel_url":"'.$this->url->link('checkout/checkout', '', true).'"
+				},
+				"payer":{
+				  "payment_method":"paypal",
+				  "payer_info":{
+					"first_name":"'.$this->session->data['payment_address']['firstname'].'",
+					"last_name":"'.$this->session->data['payment_address']['lastname'].'",
+					"billing_address":{
+						"line1":"'.$this->session->data['payment_address']['address_1'].'",
+						"line2":"'.$this->session->data['payment_address']['address_2'].'",
+						"city":"'.$this->session->data['payment_address']['city'].'",
+						"postal_code":"'.$this->session->data['payment_address']['postcode'].'",
+						"country_code":"'.$code.'"
+					}
+				  }
+				},
+				"transactions":[
+				{
+				  "amount":{
+					"total":"'.$total.'",
+					"currency":"'.$currency.'"
+					
+				  },
+					"item_list":{';
+				
+				if ($this->cart->hasShipping()) {
+					$order_data['shipping_firstname'] = $this->session->data['shipping_address']['firstname'];
+					$order_data['shipping_lastname'] = $this->session->data['shipping_address']['lastname'];
+					$order_data['shipping_address_1'] = $this->session->data['shipping_address']['address_1'];
+					$order_data['shipping_address_2'] = $this->session->data['shipping_address']['address_2'];
+					$order_data['shipping_city'] = $this->session->data['shipping_address']['city'];
+					$order_data['shipping_postcode'] = $this->session->data['shipping_address']['postcode'];
+					$order_data['shipping_zone'] = $this->session->data['shipping_address']['zone'];
+					$order_data['shipping_zone_id'] = $this->session->data['shipping_address']['zone_id'];
+					$order_data['shipping_country'] = $this->session->data['shipping_address']['country'];	
+					$order_data['iso_code_2'] = $this->session->data['shipping_address']['iso_code_2'];	
+				} else {
+					$order_data['shipping_firstname'] = $this->session->data['payment_address']['firstname'];
+					$order_data['shipping_lastname'] = $this->session->data['payment_address']['lastname'];
+					$order_data['shipping_company'] = '';
+					$order_data['shipping_address_1'] = $this->session->data['payment_address']['address_1'];
+					$order_data['shipping_address_2'] = $this->session->data['payment_address']['address_2'];
+					$order_data['shipping_city'] = $this->session->data['payment_address']['city'];
+					$order_data['shipping_postcode'] = $this->session->data['payment_address']['postcode'];
+					$order_data['shipping_zone'] = '';
+					$order_data['shipping_zone_id'] = '';
+					$order_data['shipping_country'] = '';
+					$order_data['iso_code_2'] = $this->session->data['payment_address']['iso_code_2'];
+				}
+				
+				$code = $order_data['iso_code_2'];
+				
+				$fields .= '
+						  "shipping_address":{
+						  "recipient_name":"'.$order_data['shipping_firstname'].' '.$order_data['shipping_lastname'].'",
+						  "line1":"'.$order_data['shipping_address_1'].'",
+						  "line2":"'.$order_data['shipping_address_2'].'",
+						  "city":"'.$order_data['shipping_city'].'",
+						  "postal_code":"'.$order_data['shipping_postcode'].'",
+						  "country_code":"'.$code.'"
+						}
+					},
+				  "description":"Warenkorb"
+				}
+				]
+				}';
+
+				if($this->config->get('pp_plus_test') == 1)
+				{
+					$mode= ".sandbox";
+				} else {
+					$mode= "";
+				}
+				
+				$ch = curl_init();
+				$headers=array('Content-Type:application/json','Authorization:Bearer '.$token); 
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+				curl_setopt($ch, CURLOPT_URL, "https://api".$mode.".paypal.com/v1/payments/payment");
+				curl_setopt($ch, CURLOPT_HEADER, false);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+				$result = curl_exec($ch);
+				//print_r($result)."<br /><br />"; print_r(json_decode($fields)); die();
+				$json = json_decode($result);
+				$link_pay=$json->links[1]->href;
+				
+				return $link_pay;
+			}
+			]]></add>
+		</operation>			
+	</file>
+	
+	
+</modification>

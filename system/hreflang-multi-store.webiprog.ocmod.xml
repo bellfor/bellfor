@@ -1,0 +1,179 @@
+<modification>
+	<name><![CDATA[<b style="color:#cc0000">Href-lang Tags (sub-shop)</b>]]></name>
+	<code>href-lang-tags-per-sub-shop</code>
+	<version>3.0.0</version>
+	<author><![CDATA[webiprog]]></author>
+	<link>http://www.bellfor.info</link>
+	<jbond>oppo</jbond>
+
+    <file path="catalog/controller/common/header.php">
+        <operation error="skip" info="We need href-lang module to crosslink all pages between the countries.">
+            <search index="" regex="false" trim="true"><![CDATA[// END ADD flagswitchermultistore]]></search>
+            <add position="after"><![CDATA[
+
+        //	ADD HREFLANG ALTERNATE
+        //fixed by oppo webiprog.com  12.12.2017
+        if (isset($data['all_stores']) && is_array($data['all_stores'])) {
+            $this->load->model('localisation/language');
+            $languages = $this->model_localisation_language->getLanguages();
+            $active_langs = array();
+            foreach ($languages as $lang) {
+                if ($lang['status']) {
+                    $active_langs[$lang['code']]=$lang['language_id'];
+                }
+            }
+
+            $store_urls = $store_lang_codes = array();
+            $sql = 'SELECT
+			`s`.`store_id`,`s`.`value`
+			FROM `' . DB_PREFIX . 'setting` s
+			WHERE `s`.`code` = "config" AND `s`.`key` = "config_language"
+			ORDER BY `s`.`store_id`
+			';
+            $query = $this->db->query($sql);
+            if (!empty($query->rows) && is_array($query->rows)) {
+                foreach ($query->rows as $kl=>$lcode) {
+                    $store_lang_codes[$lcode['store_id']] = $lcode['value'];
+
+                    if ( array_key_exists($lcode['value'], $active_langs)) {
+                        $store_urls[$lcode['store_id']] = $this->rewriteHreflang($this->request->get, $active_langs[$lcode['value']]);
+                    }
+                }
+            }
+            /*
+            $this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id'));
+            */
+
+            $hreflang_lang = array();
+            foreach ($flagswitcher as $mova) {
+                $iso_code_2 = $mova['iso_code_2'];
+                if (array_key_exists($mova['store_id'], $store_lang_codes) && !empty($store_lang_codes[$mova['store_id']])) {
+                    // de-AT , de-DE" ,de-CH", en-GB"
+                    //$iso_code_2 = strtolower ($store_lang_codes[$mova['store_id']].'-'.$mova['iso_code_2']);
+					$iso_code_2 = trim($store_lang_codes[$mova['store_id']].'-'.$mova['iso_code_2']);
+                }
+                if ($data['store_ssl']) {
+                    $hreflang_link = $mova['store_ssl'];
+                } else {
+                    $hreflang_link = $mova['store_url'];
+                }
+
+				//fixed by oppo webiprog.com  21.12.2017 
+				// its looks like you forgot https for AT, NL, UK in href lang tags
+				$hreflang_link = str_replace( 'http://', 'https://', $hreflang_link );
+
+                $href = '';
+                if (isset($store_urls[$mova['store_id']])) {
+                    $href = rtrim($hreflang_link, '/').$store_urls[$mova['store_id']];
+                }
+
+                $hreflang_lang[$iso_code_2]=$href;
+            }
+            $data['hreflang_lang'] = $hreflang_lang;
+        }
+        //	END ADD HREFLANG ALTERNATE
+
+             ]]></add>
+        </operation>
+
+        <operation>
+            <search trim="true" index="0"><![CDATA[return $this->load->view('default/template/common/header.tpl', $data);]]></search>
+            <add position="after" trim="false" offset="2"><![CDATA[	
+    //fixed by oppo webiprog.com  19.12.2017
+	// add a Sef link reference for other subdomains
+	protected function rewriteHreflang($data, $lang=null)
+    {
+        if (is_null($lang)) {
+            $lang = $this->config->get('config_language_id');
+        }
+        $url = '';
+
+        // skip default link
+        if (isset($this->request->get['route']) && $lang!=$this->config->get('config_language_id') && !empty($data) && is_array($data)) {
+            foreach ($data as $key => $value) {
+                if (isset($data['route'])) {
+                    if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+                        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "' AND alias_language = " . (int)$lang);
+
+
+                        if ($query->num_rows && $query->row['keyword']) {
+                            $url .= '/' . $query->row['keyword'];
+
+                            unset($data[$key]);
+                        }
+
+                        // UNIVERSAL_FEED start
+                    } elseif ($data['route'] == 'feed/universal_feed' && $key == 'universal_feed_id') {
+                        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
+
+                        if ($query->num_rows) {
+                            $url .= '/' . $query->row['keyword'];
+
+                            unset($data[$key]);
+                        }
+                        // UNIVERSAL_FEED end
+                    } elseif ($key == 'path') {
+                        $categories = explode('_', $value);
+
+                        foreach ($categories as $category) {
+                            $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "' AND alias_language = " . (int)$lang);
+
+
+                            if ($query->num_rows && $query->row['keyword']) {
+                                $url .= '/' . $query->row['keyword'];
+                            } else {
+                                $url = '';
+
+                                break;
+                            }
+                        }
+
+                        unset($data[$key]);
+                    }
+                }
+            }
+        }
+        if ($url=='') {
+            if (!isset($_SERVER['REQUEST_URI'])) {
+                $_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
+                if (isset($_SERVER['QUERY_STRING'])) {
+                    $_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
+                }
+            }
+
+            if ($_SERVER['HTTP_HOST'] == 'localhost') {
+                $array_uri = explode('/', $_SERVER['REQUEST_URI']);
+                array_shift($array_uri);
+                array_shift($array_uri);
+                $pg_uri_r = array_filter($array_uri);
+                $url = '/'.implode('/', $pg_uri_r);
+            } else {
+                $url = $_SERVER['REQUEST_URI'];
+            }
+        }
+
+
+        return $url;
+    }
+	// end fixed by oppo webiprog.com  19.12.2017
+	]]></add>
+        </operation>
+
+
+    </file>
+
+    <file path="catalog/view/theme/*/template/common/header.tpl">
+        <operation>
+            <search trim="false" index="0"><![CDATA[<base href="<?php echo $base; ?>" />]]></search>
+            <add position="after"><![CDATA[    <?php
+	//fixed by oppo webiprog.com  12.12.2017
+	//	ADD HREFLANG ALTERNATE
+	if(!empty($hreflang_lang) && is_array($hreflang_lang) && count($hreflang_lang)) {
+
+		foreach ($hreflang_lang as $lang=>$href) {
+		echo '<link rel="alternate" href="'.$href.'" hreflang="'.$lang.'" />'.PHP_EOL;
+		}
+	}; ?>]]></add>
+        </operation>
+    </file>
+</modification>

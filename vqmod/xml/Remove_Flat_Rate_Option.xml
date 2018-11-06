@@ -1,0 +1,37 @@
+<modification>         
+	<id>Remove Flat Rate Option, when Free Shipping</id>         
+    <version>2.0.0.0</version>         
+    <vqmver>2.5.1</vqmver>         
+    <author>opencart.design</author> 
+<file name="catalog/controller/checkout/shipping_method.php">
+      <operation>
+         <search position="after"><![CDATA[
+            $data['shipping_methods'] = $this->session->data['shipping_methods'];
+         ]]></search>
+         <add><![CDATA[
+         if (isset($data['shipping_methods']['free'])) {
+		 foreach ($data['shipping_methods'] as $sm_key => $sm_val) {
+		 if ($sm_key !== 'free') {
+		 unset($data['shipping_methods'][$sm_key]);
+		 }
+		 }
+		 }
+         ]]></add>
+      </operation>
+   </file>
+<file name="catalog/controller/payment/amazon_login_pay.php">
+      <operation>
+         <search position="before"><![CDATA[$this->session->data['lpa']['shipping_methods'] = $quotes;]]></search>
+         <add><![CDATA[
+
+         if (isset($quotes['free'])) {
+		 foreach ($quotes as $sm_key => $sm_val) {
+		 if ($sm_key !== 'free') {
+		 unset($quotes[$sm_key]);
+		 }
+		 }
+		 }
+         ]]></add>
+      </operation>
+   </file>
+</modification>

@@ -1,0 +1,24 @@
+<modification>
+	<id>Klarna Invoice Pro</id>
+	<version>1.0.0</version>
+	<vqmver>2.5.1</vqmver>
+	<author>opencart.design</author>
+
+	<file name="catalog/controller/checkout/checkout.php">
+		<operation>
+			<search position="replace"><![CDATA[$this->document->addScript('http://cdn.klarna.com/public/kitt/toc/v1.0/js/klarna.terms.min.js');]]></search>
+			<add><![CDATA[
+			]]></add>
+		</operation>	
+		<operation>
+			<search position="after"><![CDATA[// Required by klarna]]></search>
+			<add><![CDATA[
+		if ($this->config->get('klarna_account') || $this->config->get('klarna_invoice_pro')) {
+			$this->document->addScript('http://cdn.klarna.com/public/kitt/core/v1.0/js/klarna.min.js');
+			$this->document->addScript('http://cdn.klarna.com/public/kitt/toc/v1.1/js/klarna.terms.min.js');
+
+		}
+			]]></add>
+		</operation>
+		</file>
+</modification>

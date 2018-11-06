@@ -1,0 +1,35 @@
+<modification>
+   <name><![CDATA[<font color="#cc0000"><b>Bellfor Referral to success page</font>]]></name>
+   <code>bellfor_referral_to_success_page</code>
+    <version><![CDATA[<b>1.0</b>]]></version>
+    <author><![CDATA[<font color="#CC0000"><b>oppo</font>]]></author>
+
+  <file path="catalog/controller/checkout/success.php">
+    <operation>
+      <search ><![CDATA[$data['header'] = $this->load->controller('common/header');]]></search>
+      <add position="after">
+        <![CDATA[ 
+        //fixed by oppo webiprog.com  11.04.2018
+        $data['bellfor_referral_to_success'] = false;
+        $referral_bellfor_status = $this->config->get('referral_bellfor_status');
+        if(!empty($referral_bellfor_status)) {
+            $data['bellfor_referral_to_success'] = $this->load->controller('module/referral_bellfor');
+        }
+        ]]>
+    </add>
+    </operation>
+  </file>
+  <file path="catalog/view/theme/*/template/common/success.tpl">
+    <operation>
+      <search ><![CDATA[<?php echo $content_bottom; ?></div>]]></search>
+      <add position="before"><![CDATA[
+      <?php
+      //fixed by oppo webiprog.com  11.04.2018
+      if(!empty($bellfor_referral_to_success)) {?>
+      <div class="clearfix"></div><div class="bellfor_referral_to_success"><?php echo $bellfor_referral_to_success ; ?></div>
+      <?php } ; ?>
+	  ]]>
+      </add>
+    </operation>
+  </file>
+</modification>

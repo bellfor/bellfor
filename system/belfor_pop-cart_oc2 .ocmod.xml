@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+<name><![CDATA[<b style="color:#ff6633">Bellfor Pop-Up cart</b>]]></name>
+    <code>Notice_of_adding</code>
+    <version>1.0</version>
+    <author><![CDATA[Kamenskiy fix by webiprog]]></author>
+    <link>http://www.bellfor.info</link>
+    <jbond>oppo</jbond>
+
+    <file path="catalog/controller/common/header.php">
+        <operation>
+            <search><![CDATA[
+            $data['title'] = $this->document->getTitle();]]></search>
+            <add position="after"><![CDATA[
+                        //fixed by oppo webiprog.com  04.04.2018
+                    if ($this->config->get('notice_add_status')){
+                        $this->document->addStyle('catalog/view/theme/default/stylesheet/noty.css');
+                        $this->document->addScript('catalog/view/javascript/notice_add.min.js'); 
+                    }
+            ]]></add>
+        </operation>
+    </file>  
+    <file path="catalog/controller/checkout/cart.php">
+        <operation>
+            <search><![CDATA[
+            $json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));]]></search>
+            <add position="after"><![CDATA[
+            //fixed by oppo webiprog.com  04.04.2018
+                    if ($this->config->get('notice_add_status')){                   
+                        $json['notice_add_layout'] = $this->config->get('notice_add_layout');
+                        $json['notice_add_timeout'] = $this->config->get('notice_add_timeout');
+                        $json['notice_add_status'] = $this->config->get('notice_add_status');
+                        $this->load->model('tool/image');               
+                        if ($product_info['image']) {
+                        $image = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height'));
+                        } else {
+                        $image = '';
+                        }                   
+                        $json['href'] = $image;
+                    }
+            ]]></add>
+        </operation>
+    </file>  
+
+        <file path="catalog/view/theme/*/template/product/product.tpl">
+        <operation>
+            <search><![CDATA[
+            $('html, body').animate({ scrollTop: 0 }, 'slow');]]></search>
+            <add position="replace"><![CDATA[       
+             if(json['notice_add_status']){   
+             }else{
+             $('html, body').animate({ scrollTop: 0 }, 'slow');
+             }   
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+            $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');]]></search>
+            <add position="after"><![CDATA[
+                        if(json['notice_add_status']){
+                        if(json['href']){
+                        var success_text = '<div class="cart_pop_main">\
+                                            <div class="cart_pop_img_div"><img class="img-thumbnail cart_pop_img" src="'+json['href']+'" alt=""></div>\
+                                            <div class="cart_pop_success">' + json['success'] + '</div>\
+                                        </div>';
+                                        }else {
+                        var success_text = '<div class="cart_pop_main">\
+                                            <div class="cart_pop_success">' + json['success'] + '</div>\
+                                        </div>';                                        
+                                        }
+
+                    var n = new Noty({
+                    type: 'success',
+                    layout: json['notice_add_layout'],
+                    text:  success_text ,
+                    textAlign:"right",
+                    animateOpen:{"height":"toggle"},
+                    timeout: json['notice_add_timeout'],
+                    progressBar: false,
+                    closeWith: 'button',
+                }).show();
+                }
+
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+            $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');]]></search>
+            <add position="replace"><![CDATA[
+                if(json['notice_add_status']){
+                }else{
+                $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                }
+            ]]></add>
+        </operation>    
+    </file> 
+</modification>

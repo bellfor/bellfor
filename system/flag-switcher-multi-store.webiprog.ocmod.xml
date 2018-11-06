@@ -1,0 +1,31 @@
+<modification>
+
+	<name><![CDATA[<b style="color:#ff8000">Multistores Switcher in header</b>]]></name>
+	<code>flag-switcher-multi-store</code>
+	<version>1.0.0</version>
+	<author><![CDATA[webiprog]]></author>
+	<link>http://www.bellfor.info</link>
+	<jbond>oppo</jbond>
+
+    <file path="catalog/controller/common/header.php">
+        <operation error="skip">
+            <search index="" regex="false" trim="true"><![CDATA[$data['cart'] = $this->load->controller('common/cart');]]></search>
+            <add position="after"><![CDATA[
+	    // ADD flagswitchermultistore        
+		//fixed by oppo webiprog.com  23.11.2017
+		$this->load->model('setting/flagswitchermultistore');
+		$flagswitcher = $this->model_setting_flagswitchermultistore->flagSwitcherMultistore();
+        $data['current_store'] = $this->config->get('config_name');
+		$data['current_store_id'] = $this->config->get('config_store_id');
+        $data['all_stores'] = $flagswitcher;
+		if ($this->request->server['HTTPS']) {
+			$data['store_ssl'] =  true;
+		} else {
+			$data['store_ssl'] = false;
+		}
+		// END ADD flagswitchermultistore
+             ]]></add>
+        </operation>
+    </file>
+
+</modification>

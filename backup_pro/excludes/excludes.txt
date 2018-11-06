@@ -1,0 +1,9 @@
+image/cache
+temp
+*.tar
+*.tgz
+*.gz
+*.zip
+../config.php
+admin/config.php
+

@@ -1,0 +1,49 @@
+<modification>
+	<name><![CDATA[<b style="color:#ff8000">add Pixel code</b>]]></name>
+	<code>add-pixel-code</code>
+	<version>2.0.0</version>
+	<author><![CDATA[webiprog]]></author>
+	<link>http://www.bellfor.info</link>
+	<jbond>oppo</jbond>
+
+  <file path="catalog/view/theme/*/template/common/footer.tpl">
+    <operation>
+      <search ><![CDATA[</footer>]]></search>
+      <add position="after">
+        <![CDATA[
+<?php 
+// add Pixel code: fixed by oppo webiprog.com  21.11.2017
+$url_bellfor = $_SERVER["HTTP_HOST"];
+if ($url_bellfor == 'www.bellfor.info' || $url_bellfor == 'localhost')
+{
+	if (!isset($_SERVER['REQUEST_URI']))
+	{
+		$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
+		if (isset($_SERVER['QUERY_STRING']))
+		{
+			$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
+		}
+	}
+	$request_uri = $_SERVER['REQUEST_URI'];
+	$url_array_pixel_code = array('/index.php?route=checkout/success', '/Muensterlaender-Landschmaus/LANDGUT-SCHMAUS-42.html', '/Nahrungsergaenzung-Hund--Haut---Fell--Gelenke/Gelenke---Knochen---30-Kapseln.html');
+
+	$search_keys = count(array_filter($url_array_pixel_code, function($var) use($request_uri) {
+		return strpos($request_uri,$var) === 0; }
+	));
+
+	if ($search_keys>0)
+	{
+		?>
+<!-- Begin add Pixel code -->
+<script src="//cdn.conative.de/serve/pct/1511/pct.js"></script>
+<!-- End add Pixel code -->
+<?php
+	}
+}
+
+?>
+]]>
+      </add>
+    </operation>
+  </file>
+</modification>

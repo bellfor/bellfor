@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name><![CDATA[<b style="color:#ff8000">Bellfor to Marsapet GmbH</b>]]></name>
+	<id>Bellfor to Marsapet GmbH</id>
+	<code>bellfor-to-marsapet-gmbh</code>
+	<version>1.0.0</version>
+	<author><![CDATA[webiprog vs oppo ]]></author>
+	<link>http://www.bellfor.info</link>
+	<jbond>oppo</jbond>
+
+	  <!-- all replace -->
+	  <!-- <file path="catalog/model/checkout/order.php">
+        <operation error="log" info="Replace store_name">
+            <search index="" regex="false" trim="true"><![CDATA['store_name'              => $order_query->row['store_name'],]]></search>
+            <add position="replace" offset="0"><![CDATA[// fix oppo 23.11.2017 'store_name'              => $order_query->row['store_name'],
+				'store_name'              => 'Marsapet GmbH',]]></add>
+        </operation>
+    </file> -->
+<!-- only one text_new_greeting replace -->
+<file path="catalog/model/checkout/order.php">
+        <operation error="log" info="Replace store_name">
+            <search index="" regex="false" trim="true"><![CDATA[$data['text_greeting'] = sprintf($language->get('text_new_greeting'), $order_info['store_name']);]]></search>
+            <add position="replace" offset="0"><![CDATA[$data['text_greeting'] = sprintf($language->get('text_new_greeting'), 'Marsapet GmbH'); //fix oppo 23.11.2017]]></add>
+        </operation>
+    </file>
+</modification>

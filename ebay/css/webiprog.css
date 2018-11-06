@@ -1,0 +1,220 @@
+/* ===== Webiprog start ===== */
+body {
+    background-image: url(../img/bellfor_header.jpg)!important;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+}
+div#nmb-pagecontainer {
+    background-color: transparent;
+}
+#nmb-topNav {
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: none;
+    border-width: 10px;
+    box-sizing: border-box;
+}
+#nmb-topNav {
+    max-width: 1170px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#nmb-topNav .nmb-nav {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    -o-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    float: none!important;
+}
+#nmb-topNav .nmb-nav li {
+    margin: 0;
+}
+#nmb-topNav .nmb-nav li a {
+    color: #fff;
+    background: url(../img/separator-30-vert.png) right center no-repeat,#b7b7b7!important;
+    border-radius: 0;
+    line-height: 1;
+    padding: 4px 10px 3px;
+    text-decoration: none;
+    transition: all .3s;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+}
+#nmb-topNav .nmb-nav li a:hover {
+    background-color: #939393!important;
+}
+#nmb-topNav .nmb-nav li:last-child a {
+    background-image: none!important;
+}
+#nmb-topNav .nmb-nav li a span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1.42857143;
+}
+header#nmb-header {
+    border-bottom: none;
+    background-color: transparent;
+    width: 100%;
+    max-width: 1170px;
+}
+#nmb-content {
+    background-color: #fff;
+    border-top: none;
+    max-width: 1170px;
+    padding-bottom: 15px;
+    width: 100%;
+}
+div#nmb-pageback h1 {
+    color: #7e842e;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 30px;
+}
+div.nmb-tags {
+    margin-bottom: 0;
+}
+div.nmb-tags > span {
+    display: block;
+    background-color: #fff;
+    border-bottom: none;
+    border-top: 1px dotted #666;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    color: #666;
+    font-size: 11px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 700;
+    line-height: 1.42857143;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
+}
+div.nmb-tags > span:hover {
+    background-color: #fff;
+}
+div.nmb-tags > span:last-child {
+    border-bottom: 1px dotted #666;
+}
+div.nmb-varkombi {
+    margin-top: 0;
+}
+div#nmb-pageback h3 {
+    display: none;
+}
+div.nmb-varkombi > span {
+    display: block;
+    background-color: #fff;
+    border-bottom: 1px dotted #666;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    color: #666;
+    font-size: 11px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 700;
+    line-height: 1.42857143;
+    padding: 10px;
+}
+div.nmb-varkombi > span:hover {
+    background-color: #fff;
+}
+div#nmb-gallery label {
+    border-color: #ccc;
+    margin: 3px;
+}
+.nmb-panel-group {
+    margin-bottom: 0;
+    padding: 5px;
+}
+div#nmb-pageback h4 {
+    border-bottom: none;
+    color: #7e842e;
+    font-family: Arial,Helvetica,Sans-Serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 13px;
+    margin-top: 13px;
+    padding: 0;
+    text-align: start;
+    text-decoration: none;
+}
+div#nmb-pageback h5 {
+    color: #666;
+    font-family: Arial,Helvetica,Sans-Serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+}
+div#nmb-pageback p {
+    color: #666;
+    font-family: Arial,Helvetica,Sans-Serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42857143;
+}
+.nmb-panel.nmb-panel-default > .nmb-panel-heading {
+    border-bottom: none;
+    padding: 0;
+}
+.nmb-panel-body {
+    padding: 0;
+}
+.nmb-payment, .nmb-shipping {
+    background-color: #7e852e;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+    -o-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+}
+div#nmb-pageback .nmb-payment p, div#nmb-pageback .nmb-shipping p {
+    color: #fff;
+}
+#nmb-cc {
+    display: none;
+}
+footer#nmb-fc {
+    background-color: #f9f9f9;
+    margin-top: 0;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 1170px;
+}
+#nmb-fc * {
+    display: none;
+}
+
+span.nmb-priceTag
+{
+	color: #7e842e;
+}
+
+a.btn-nmb
+{
+	background-color:#7e842e;
+}
+
+
+/* ===== Webiprog start ===== */

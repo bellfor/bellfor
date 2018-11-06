@@ -1,0 +1,88 @@
+<modification>
+	<id>Trusted Shops module</id>
+	<version>1.1.1</version>
+	<vqmver>1.1.1</vqmver>
+	<author>yuri.korolov@gmail.com</author>
+
+<file name="catalog/controller/common/footer.php">
+		<operation>
+			<search position="after"><![CDATA[$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));]]></search>
+ 			<add><![CDATA[  			$collectorders = array();				
+			if (!empty($this->session->data['last_order_id'])) {	
+			$collectorders['order_id'] = $this->session->data['last_order_id'];
+			$this->load->model('checkout/order');
+		    $order_info = $this->model_checkout_order->getOrder($this->session->data['last_order_id']);	 
+			//print_r($order_info);
+			
+			if ($this->customer->isLogged()) {
+				$this->load->model('account/customer');
+				$customer_info = $this->model_account_customer->getCustomer($this->customer->getId());
+				$collectorders['email'] = $customer_info['email'];
+			} else {
+				$collectorders['email'] = $order_info['email'];
+			}
+			
+				
+			$collectorders['total'] =  $order_info['total'];
+			//$collectorders['currency_code'] = $this->currency->getCode();
+			$collectorders['currency_code'] = $order_info['currency_code'];
+			$collectorders['payment_method'] = $order_info['payment_method'];
+			
+	
+			//print_r($collectorders);
+		
+			$data['trustedshop_collectorders'] = $collectorders;
+			}
+			]]></add>
+		</operation>
+	</file>					
+	
+	<file name="catalog/view/theme/*/template/common/footer.tpl">
+		<operation>
+			<search position="before"><![CDATA[</body>]]></search>
+ 			<add><![CDATA[
+<?php if (isset($_GET['route']) && ($_GET['route'] == 'checkout/success')) { ?>			
+
+					
+					<div id="trustedShopsCheckout" style="display: none;">
+	<span id="tsCheckoutOrderNr"><?php echo $trustedshop_collectorders['order_id']; ?></span>
+	<span id="tsCheckoutBuyerEmail"><?php echo $trustedshop_collectorders['email']; ?></span>
+	<span id="tsCheckoutOrderAmount"><?php echo $trustedshop_collectorders['total']; ?></span>
+	<span id="tsCheckoutOrderCurrency">EUR</span>
+	<span id="tsCheckoutOrderPaymentType"><?php echo $trustedshop_collectorders['payment_method']; ?></span>
+	<span id="tsCheckoutOrderEstDeliveryDate"><?php echo date('Y-m-d', time()+259200); ?></span>
+</div>
+		
+				<div class="checkout_success_trusted">
+			<!-- TS Buyer Protection Classic via Trust Badge -->
+		</div>
+
+
+<?php } ?>			
+<script type="text/javascript">
+  (function () { 
+    var _tsid = 'XFAB332EF7D0070F4F0E8F4B2561D47EA'; 
+    _tsConfig = { 
+      'yOffset': '0', /* offset from page bottom */
+      'variant': 'reviews', /* default, reviews, custom, custom_reviews */
+      'customElementId': '', /* required for variants custom and custom_reviews */
+      'trustcardDirection': '', /* for custom variants: topRight, topLeft, bottomRight, bottomLeft */
+      'customBadgeWidth': '', /* for custom variants: 40 - 90 (in pixels) */
+      'customBadgeHeight': '', /* for custom variants: 40 - 90 (in pixels) */
+      'disableResponsive': 'false', /* deactivate responsive behaviour */
+      'disableTrustbadge': 'false' /* deactivate trustbadge */
+    };
+    var _ts = document.createElement('script');
+    _ts.type = 'text/javascript'; 
+    _ts.charset = 'utf-8'; 
+    _ts.async = true; 
+    _ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js'; 
+    var __ts = document.getElementsByTagName('script')[0];
+    __ts.parentNode.insertBefore(_ts, __ts);
+  })();
+</script>
+
+]]></add>
+		</operation>
+	</file>
+</modification>

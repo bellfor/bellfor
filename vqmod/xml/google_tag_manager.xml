@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Google Tag manager</id>
+	<version>1.1</version>
+	<vqmver>2.5.0</vqmver>
+	<author>yuri.korolov@gmail.com</author> 
+<file name="admin/view/template/setting/setting.tpl">
+<operation>
+			<search position="after"><![CDATA[
+			<textarea name="config_comment" rows="5" placeholder="<?php echo $entry_comment; ?>" id="input-comment" class="form-control"><?php echo $config_comment; ?></textarea>
+			]]></search>
+			<add><![CDATA[
+				</div>
+			</div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label" for="input-comment"><span data-toggle="tooltip" data-container="#tab-general" title="<?php echo $entry_google_tag_manager_head; ?>"><?php echo $entry_google_tag_manager_head; ?></span></label>
+                <div class="col-sm-10">
+                  <textarea name="config_gtm_code_head" row="10"  placeholder="" id="input-config_gtm_code_head" class="form-control"><?php if(isset($config_gtm_code_head)){ echo $config_gtm_code_head; } ?></textarea>
+
+				</div>
+			</div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label" for="input-comment"><span data-toggle="tooltip" data-container="#tab-general" title="<?php echo $entry_google_tag_manager_body; ?>"><?php echo $entry_google_tag_manager_body; ?></span></label>
+                <div class="col-sm-10">
+                  <textarea name="config_gtm_code_body" row="10"  placeholder="" id="input-config_gtm_code_body" class="form-control"><?php if(isset($config_gtm_code_body)){ echo $config_gtm_code_body; } ?></textarea>
+
+				</div>
+			</div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label" for="input-entry_product_data_layer"><span data-toggle="tooltip" data-container="#tab-general" title="<?php echo $entry_product_data_layer; ?>"><?php echo $entry_product_data_layer; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="checkbox" id="input-config_product_datalayer" name="config_product_datalayer" value="1" class="form-control" <?php if(isset($config_product_datalayer) && ($config_product_datalayer) ) { echo 'checked="checked"'; } ?> >
+                  	
+			]]></add>
+		</operation>
+</file>
+
+<file name="admin/controller/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$data['heading_title'] = $this->language->get('heading_title');
+			]]></search>
+			<add><![CDATA[
+			$data['entry_google_tag_manager_head'] = 'Google Tag Code Header section';
+			$data['entry_google_tag_manager_body'] = 'Google Tag Code Body section';
+			$data['entry_product_data_layer'] = 'Product Data Layer';
+                    
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+			$this->load->model('tool/image');
+			]]></search>
+			<add><![CDATA[
+			if (isset($this->request->post['config_gtm_code_head'])) {
+						$data['config_gtm_code_head'] = $this->request->post['config_gtm_code_head'];
+					} else {
+						$data['config_gtm_code_head'] = $this->config->get('config_gtm_code_head');
+					}
+
+				if (isset($this->request->post['config_gtm_code_body'])) {
+						$data['config_gtm_code_body'] = $this->request->post['config_gtm_code_body'];
+					} else {
+						$data['config_gtm_code_body'] = $this->config->get('config_gtm_code_body');
+					}
+				if (isset($this->request->post['config_product_datalayer'])) {
+						$data['config_product_datalayer'] = $this->request->post['config_product_datalayer'];
+					} else {
+						$data['config_product_datalayer'] = $this->config->get('config_product_datalayer');
+					}
+			]]></add>
+		</operation>
+</file>
+
+<file name="catalog/controller/checkout/confirm.php">
+		<operation>
+			<search position="before"><![CDATA[
+			'text'  => $this->currency->format($total['value'], $this->session->data['currency'])
+			]]></search>
+			<add><![CDATA[
+			'custom_value'  => $total['value'],
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="replace"><![CDATA[
+			$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
+			]]></search>
+			<add><![CDATA[
+			$data['emp_orderid'] =  $this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
+			]]></add>
+		</operation>
+</file>
+
+<file name="catalog/view/theme/*/template/checkout/confirm.tpl">
+<operation>
+			<search position="before"><![CDATA[
+			<?php if (!isset($redirect)) { ?>
+			]]></search>
+			<add><![CDATA[
+			<?php 
+			//echo "<pre>"; print_r($totals);echo "</pre>";
+			foreach($totals as $t1)
+			{
+				switch(trim($t1['title']))
+				{
+					case 'Total':
+						$_SESSION['datalayer']['transactionTotal'] = $t1['custom_value'];
+					break;
+				}
+			}
+			
+				$_SESSION['datalayer']['transactionId'] = $emp_orderid;
+				$_SESSION['datalayer']['products'] = $products;
+			?>
+			]]></add>
+		</operation>
+</file>
+
+<!-- /opt/lampp/htdocs/oc2/catalog/controller/common/header.php -->
+<file name="catalog/controller/common/header.php">
+
+		<operation>
+			<search position="before"><![CDATA[public function index() {]]></search>
+			<add><![CDATA[
+			
+			
+
+public function getOrderDiscount($order_id){
+$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_total WHERE code = 'coupon' AND order_id = '" . $order_id . "' LIMIT 1");
+
+return $query->row;
+
+}
+
+public function getOrderTax($order_id){
+$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_total WHERE code = 'tax' AND order_id = '" . $order_id . "' LIMIT 1");
+
+return $query->row;
+
+}
+
+public function getOrderShipping($order_id){
+$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_total WHERE code = 'shipping' AND order_id = '" . $order_id . "' LIMIT 1");
+
+return $query->row;
+
+}
+			
+public function getOrderProducts($order_id){
+$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . $order_id . "'");
+
+return $query->rows;
+
+}	
+			
+
+
+			
+			
+			]]></add>
+		</operation>	
+
+<operation>
+			<search position="after"><![CDATA[$this->load->model('catalog/product');]]></search>
+			<add><![CDATA[
+			$data['datalayer'] = $this->config->get('config_product_datalayer');
+			$data['gtm_code_head'] = $this->config->get('config_gtm_code_head');
+			$data['gtm_code_body'] = $this->config->get('config_gtm_code_body');
+
+			//fixed by oppo webiprog.com  22.01.2018
+			// MAR-180 replace tag manager code in the austrian shop at.bellfor.info (on all pages)
+			$config_store_id = $this->config->get('config_store_id');
+			// check http://at.bellfor.info/
+			if($config_store_id == 1) {
+              $data['gtm_code_head'] = str_replace("GTM-MPSGTW", "GTM-PF2CTJ2", $data['gtm_code_head']);
+              $data['gtm_code_body'] = str_replace("GTM-MPSGTW", "GTM-PF2CTJ2", $data['gtm_code_body']);
+			}
+			//END fixed by oppo webiprog.com  22.01.2018
+
+			]]></add>
+</operation>
+
+		<operation>
+			<search position="after"><![CDATA[$data['telephone'] = $this->config->get('config_telephone');]]></search>
+			<add><![CDATA[
+			
+					
+            if (isset($this->request->get['route'])) {
+	        $data['route'] = (string)$this->request->get['route'];
+            } else {
+	        $data['route'] = 'common/home';
+            }	
+			
+			if (($data['route'] == 'checkout/success') && isset($this->session->data['last_order_id'])) {
+			$data['order_id'] = $this->session->data['last_order_id'];
+			
+		$this->load->model('checkout/order');
+		$order_info = $this->model_checkout_order->getOrder($this->session->data['last_order_id']);	 
+		$order_shipping = $this->getOrderShipping($this->session->data['last_order_id']);
+		$order_tax = $this->getOrderTax($this->session->data['last_order_id']);		
+		$order_discount = $this->getOrderDiscount($this->session->data['last_order_id']);			
+
+        $data['order'] = array(
+		'id' => $this->session->data['last_order_id'],
+		'info' => $order_info,
+		'discount' => $order_discount,		
+		'shipping' => $order_shipping,
+		'tax' => $order_tax
+		);
+		
+			$this->load->model('catalog/product');
+			$products = $this->getOrderProducts($data['order']['id']);	
+			
+		$data['products'] = array();
+		
+		foreach ($products as $product) {
+		$product_data = $this->model_catalog_product->getProduct($product['product_id']);
+		$category_data = $this->model_catalog_product->getMainCategory($product['product_id']);
+		
+		$product['price_main'] = $product_data['price'];
+		$product['category'] = $category_data['name'];
+		$data['products'][] = $product;
+     	}
+			
+			}
+			
+
+
+			
+			
+			]]></add>
+		</operation>	
+</file>
+
+<file name="catalog/view/theme/*/template/common/header.tpl">
+	<operation>
+			<search position="after"><![CDATA[<head>]]></search>
+			<add><![CDATA[
+			<?php
+			if(isset($gtm_code_head) && $gtm_code_head !=''){ 
+			if($datalayer){ 
+			//print_r($_SESSION);
+			if( isset($_REQUEST['route']) ){
+			  if(($_REQUEST['route'] == "checkout/success")){
+
+			  ?>
+			  <script type="text/javascript">
+			   dataLayer = [
+               ];
+			  dataLayer.push({
+              "event": "transaction",
+              "ecommerce": {
+              "purchase": {
+              "actionField": {
+              "id": "<?php echo $order['id']; ?>",  
+              "revenue": <?php echo $order['info']['total']; ?>,                             
+              "tax": "<?php echo $order['tax']['value']; ?>",                                      
+              "shipping": <?php echo $order['shipping']['value']; ?>                               
+              },
+             "products": [
+			 <?php foreach ($products as $product) { ?> 
+			 {
+             "id": "<?php echo $product['model'] ?>",                      
+             "name": "<?php echo $product['name'] ?>",  
+             "price": "<?php echo $product['price_main'] ?>",                     
+             "category": "<?php echo $product['category'] ?>",        
+             "quantity": <?php echo $product['quantity'] ?>,    
+             "offerprice": "<?php echo $product['price'] ?>" 
+             },
+			 <?php } ?>
+             ]
+    }
+  }
+});
+			</script>
+			  <?php
+			   } else { ?>
+<script>
+        dataLayer = [
+        ];
+</script>			  
+			<?php }
+			  } else { ?>
+<script>
+        dataLayer = [
+        ];
+</script>			  
+			<?php }
+			  } // if datalayer exist
+				echo html_entity_decode($gtm_code_head);
+			  } // if condition end $gtm_code_head exist
+			
+			  
+
+			  ?>
+			]]></add>
+		</operation>
+        <operation>
+			<search position="after"><![CDATA[<body class="<?php echo $class; ?>">]]></search>
+			<add><![CDATA[
+			<?php
+			if(isset($gtm_code_body) && $gtm_code_body !=''){
+            echo html_entity_decode($gtm_code_body);
+            }	?>		
+			]]></add>
+		</operation>			
+</file>
+
+<file name="catalog/model/catalog/product.php">
+	<operation>
+			<search position="before"><![CDATA[public function getCategories($product_id) {]]></search>
+			<add><![CDATA[
+	public function getMainCategory($product_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_category pc LEFT JOIN " . DB_PREFIX . "category_description cd ON (pc.category_id = cd.category_id) WHERE pc.product_id = '" . (int)$product_id . "' AND pc.main_category=1 LIMIT 1");
+
+		return $query->row;
+	}
+			]]></add>
+	</operation>
+</file>	
+
+<file name="catalog/controller/checkout/cart.php">
+	<operation>
+			<search position="before"><![CDATA[$data['products'] = array();]]></search>
+			<add><![CDATA[
+			$this->load->model('catalog/product');
+			]]></add>
+	</operation>
+	
+	<operation>
+			<search position="before"><![CDATA[$data['products'][] = array(]]></search>
+			<add><![CDATA[
+			$product_data = $this->model_catalog_product->getProduct($product['product_id']);
+			$category_data = $this->model_catalog_product->getMainCategory($product['product_id']);
+			]]></add>
+	</operation>	
+	
+	<operation>
+			<search position="after"><![CDATA[$data['products'][] = array(]]></search>
+			<add><![CDATA[
+			'price_main'   => $this->tax->calculate($product_data['price'], $product_data['tax_class_id'], $this->config->get('config_tax')),
+			'category'   => $category_data['name'],
+			]]></add>
+	</operation>		
+</file>	
+
+
+<file name="catalog/view/theme/*/template/checkout/cart.tpl">
+	<operation>
+			<search position="before"><![CDATA[<?php foreach ($products as $product) { ?>]]></search>
+			<add><![CDATA[
+			<?php $layerproducts = ''; ?>
+			]]></add>
+	</operation>
+	<operation>
+			<search position="after"><![CDATA[<?php foreach ($products as $product) { ?>]]></search>
+			<add><![CDATA[
+		<?php $layerproducts .= '{
+          "id": "'.$product['model'].'",                      
+          "name": "'.$product['name'].'",  
+          "price": "'.$product['price_main'].'",                     
+          "category": "'.$product['category'].'",        
+          "quantity": '.$product['quantity'].',    
+          "offerprice": "'.str_replace(array(" EUR", ","), array("", "."), $product['price']).'"
+         },'; 
+		?>
+			]]></add>
+	</operation>	
+	<operation>
+			<search position="replace"><![CDATA[<button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><i class="fa fa-times-circle"></i></button>]]></search>
+			<add><![CDATA[
+			<button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>');pushlayer('<?php echo $product['model']; ?>', '<?php echo $product['name']; ?>', '<?php echo $product['price_main']; ?>', '<?php echo $product['category']; ?>', '<?php echo $product['quantity']; ?>', '<?php echo str_replace(array(" EUR", ","), array("", "."), $product['price']); ?>');"><i class="fa fa-times-circle"></i></button>
+			]]></add>
+	</operation>	
+	<operation>
+			<search position="before"><![CDATA[<?php foreach ($vouchers as $voucher) { ?>]]></search>
+			<add><![CDATA[
+            <script type="text/javascript"><!--
+            dataLayer.push({
+            "event": "cart",
+             "ecommerce": {
+               "checkout": {
+                "products": [
+	            <?php echo $layerproducts; ?>
+	            ]
+                           }
+                          }
+                           });
+            //--></script>
+			]]></add>
+	</operation>	
+	<operation>
+			<search position="before"><![CDATA[<?php echo $footer; ?>]]></search>
+			<add><![CDATA[
+<script type="text/javascript"><!--
+function pushlayer (model, title, price, category, quantity, offerprice) {
+
+dataLayer.push({
+  "event": "removeFromCart", 
+  "ecommerce": {
+  
+    "remove": {
+      "products": [{
+
+        "id": model,                
+        "name": title,  
+        "price": price,             
+        "category": category,        
+        "quantity": quantity,                
+	    "offerprice": offerprice    
+      }]
+    }
+ }         
+});
+}
+//--></script>	
+			]]></add>
+	</operation>	
+</file>		
+
+<file name="catalog/controller/product/product.php">
+	<operation>
+			<search position="after"><![CDATA[$data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);]]></search>
+			<add><![CDATA[
+			$category_data = $this->model_catalog_product->getMainCategory($this->request->get['product_id']);	
+			$data['category'] = $category_data['name'];
+			]]></add>
+	</operation>
+</file>	
+
+
+<file name="catalog/view/theme/*/template/product/product.tpl">
+	<operation>
+			<search position="before"><![CDATA[<?php if ($discounts) { ?>]]></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			var offrs = new Array(); 
+			offrs[1] = <?php echo $price_full; ?>;
+			//--></script>
+			]]></add>
+	</operation>
+	<operation>
+			<search position="after"><![CDATA[<?php foreach ($discounts as $discount) { ?>]]></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			offrs[<?php echo $discount['quantity']; ?>] = <?php echo $discount['price_full']; ?>;
+			//--></script>
+			]]></add>
+	</operation>	
+</file>	
+<file name="catalog/controller/checkout/checkout.php">
+	<operation>
+			<search position="before"><![CDATA[foreach ($products as $product) {]]></search>
+			<add><![CDATA[
+			$this->load->model('catalog/product');
+			$data['products'] = array();
+			]]></add>
+	</operation>
+	<operation>
+			<search position="after"><![CDATA[foreach ($products as $product) {]]></search>
+			<add><![CDATA[
+			$product_data = $this->model_catalog_product->getProduct($product['product_id']);
+			$category_data = $this->model_catalog_product->getMainCategory($product['product_id']);			
+            $product['category'] = $category_data['name'];
+            $product['price_main'] = $this->tax->calculate($product_data['price'], $product_data['tax_class_id'], $this->config->get('config_tax'));		
+
+			$data['products'][] = $product;
+			]]></add>
+	</operation>	
+</file>
+
+<file name="catalog/view/theme/*/template/checkout/checkout.tpl">
+	<operation>
+			<search position="after"><![CDATA[<?php echo $header; ?>]]></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			dataLayer.push({
+            "event": "checkout",
+            "ecommerce": {
+            "checkout": {
+            "products": [
+			<?php foreach ($products as $product) { ?>
+			{
+            "id": "<?php echo $product['model']; ?>",                      
+            "name": "<?php echo $product['name']; ?>",  
+            "price": "<?php echo $product['price_main']; ?>",                     
+            "category": "<?php echo $product['category']; ?>",        
+            "quantity": <?php echo $product['quantity']; ?>,    
+            "offerprice": "<?php echo $product['price']; ?>" 
+			},
+            <?php } ?>
+     ]
+    }
+  }
+});
+
+			//--></script>
+			]]></add>
+		</operation>	
+</file>			
+
+
+<file name="catalog/controller/payment/amazon_login_pay.php">
+	<operation>
+			<search position="after"><![CDATA[$this->load->model('payment/amazon_login_pay');]]></search>
+			<add><![CDATA[
+					
+    		$products = $this->cart->getProducts();
+
+			$this->load->model('catalog/product');
+			$data['products'] = array();
+			
+			
+		foreach ($products as $product) {
+			$product_data = $this->model_catalog_product->getProduct($product['product_id']);
+			$category_data = $this->model_catalog_product->getMainCategory($product['product_id']);			
+            $product['category'] = $category_data['name'];
+            $product['price_main'] = $this->tax->calculate($product_data['price'], $product_data['tax_class_id'], $this->config->get('config_tax'));		
+
+			$data['products'][] = $product;
+		}
+			
+			]]></add>
+	</operation>
+</file>
+
+<file name="catalog/view/theme/*/template/payment/amazon_login_pay_address.tpl">
+	<operation>
+			<search position="after"><![CDATA[<?php echo $header; ?>]]></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			dataLayer.push({
+            "event": "checkout",
+            "ecommerce": {
+            "checkout": {
+            "products": [
+			<?php foreach ($products as $product) { ?>
+			{
+            "id": "<?php echo $product['model']; ?>",                      
+            "name": "<?php echo $product['name']; ?>",  
+            "price": "<?php echo $product['price_main']; ?>",                     
+            "category": "<?php echo $product['category']; ?>",        
+            "quantity": <?php echo $product['quantity']; ?>,    
+            "offerprice": "<?php echo $product['price']; ?>" 
+			},
+            <?php } ?>
+     ]
+    }
+  }
+});
+
+			//--></script>
+			]]></add>
+		</operation>	
+</file>			
+
+<file name="catalog/view/theme/*/template/product/product.tpl">
+	<operation>
+			<search position="after"><![CDATA[<?php echo $description; ?>]]></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			dataLayer.push({
+      "ecommerce": {
+	   "detail": {
+       "actionField": {"list": "Product Page"},
+       "currencyCode": "EUR",
+       "products": [{
+         "id": "<?php echo $model; ?>",
+         "name": "<?php echo $heading_title; ?>",
+         "price": "<?php echo $price_full; ?>",
+         "category": "<?php echo $category; ?>"   
+        }]
+	      }
+           }
+            });
+
+			//--></script>
+			]]></add>
+	</operation>
+</file>		
+
+<file name="catalog/controller/product/category.php">
+	<operation>
+			<search position="before"><![CDATA[$data['products'][] = array(]]></search>
+			<add><![CDATA[
+			$category_data = $this->model_catalog_product->getMainCategory($result['product_id']);
+            $discounts = array();
+            $discounts_data = $this->model_catalog_product->getProductDiscounts($result['product_id']);
+			if (!empty($discounts_data)) {
+			foreach ($discounts_data as $discount)
+			{
+			$discount['price_full'] = $this->tax->calculate($discount['price'], $result['tax_class_id'], $this->config->get('config_tax'));
+			$discounts[] = $discount;
+			}
+			}			
+			]]></add>
+	</operation>
+	<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[
+			'price_full'       => $this->tax->calculate($price, $result['tax_class_id'], $this->config->get('config_tax')),
+			'discounts'       => $discounts,
+			'category' => $category_data['name'],
+			'model' => $result['model'],			
+			]]></add>
+	</operation>
+</file>	
+
+<file name="catalog/view/theme/*/template/product/category.tpl">
+	<operation>
+			<search position="before"><![CDATA[<?php echo $footer; ?>]]></search>
+			<add><![CDATA[
+<script type="text/javascript"><!--
+function pushlayer (model, title, price, category, quantity, offerprice, offrs) {
+if (offrs.length>1) {
+offrs_last = offrs[offrs.length-1];
+} else {
+offrs_last = offrs[1];
+}
+if (quantity >= offrs.indexOf(offrs_last)) {	
+	offerprice = offrs_last;
+} else {
+	for (i = quantity; i > 0; i--) {
+	if (typeof offrs[i] !== 'undefined'){
+	offerprice = offrs[i];
+	break;
+	}
+	}	
+}
+
+dataLayer.push({
+  "event": "addToCart", 
+  "ecommerce": {
+  
+    "add": {
+      "products": [{
+
+        "id": model,                
+        "name": title,  
+        "price": price,             
+        "category": category,        
+        "quantity": quantity,                
+	    "offerprice": offerprice    
+
+      }]
+    }
+ }         
+});
+}
+//--></script>]]></add>
+	</operation>
+	<operation>
+			<search position="replace"><![CDATA[<button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green"><?php echo $button_cart; ?></button>]]></search>
+			<add><![CDATA[<button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());pushlayer('<?php echo $product['model']; ?>', '<?php echo $product['name']; ?>', '<?php echo $product['price_full']; ?>', '<?php echo $product['category']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val(), '<?php echo $product['price_full']; ?>', offrs_<?php echo $product['product_id']; ?>);" class="button_green"><?php echo $button_cart; ?></button>]]></add>
+	</operation>		
+	<operation>
+			<search position="after"><![CDATA[<?php echo $product['description']; ?>]]></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			var offrs_<?php echo $product['product_id']; ?> = new Array(); 
+			offrs_<?php echo $product['product_id']; ?>[1] = <?php echo $product['price_full']; ?>;
+			<?php foreach ($product['discounts'] as $discount) { ?>
+			offrs_<?php echo $product['product_id']; ?>[<?php echo $discount['quantity']; ?>] = <?php echo $discount['price_full']; ?>;
+			<?php } ?>
+			//--></script>			
+			]]></add>
+	</operation>	
+</file>		
+
+<file name="catalog/controller/product/search.php">
+	<operation>
+			<search position="before"><![CDATA[$data['products'][] = array(]]></search>
+			<add><![CDATA[
+			$category_data = $this->model_catalog_product->getMainCategory($result['product_id']);
+            $discounts = array();
+            $discounts_data = $this->model_catalog_product->getProductDiscounts($result['product_id']);
+			if (!empty($discounts_data)) {
+			foreach ($discounts_data as $discount)
+			{
+			$discount['price_full'] = $this->tax->calculate($discount['price'], $result['tax_class_id'], $this->config->get('config_tax'));
+			$discounts[] = $discount;
+			}
+			}			
+			]]></add>
+	</operation>
+	<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[
+			'price_full'       => $this->tax->calculate($price, $result['tax_class_id'], $this->config->get('config_tax')),
+			'discounts'       => $discounts,
+			'category' => $category_data['name'],
+			'model' => $result['model'],			
+			]]></add>
+	</operation>
+</file>	
+
+<file name="catalog/view/theme/*/template/product/search.tpl">
+	<operation>
+			<search position="before"><![CDATA[<?php echo $footer; ?>]]></search>
+			<add><![CDATA[
+<script type="text/javascript"><!--
+function pushlayer (model, title, price, category, quantity, offerprice, offrs) {
+if (offrs.length>1) {
+offrs_last = offrs[offrs.length-1];
+} else {
+offrs_last = offrs[1];
+}
+if (quantity >= offrs.indexOf(offrs_last)) {	
+	offerprice = offrs_last;
+} else {
+	for (i = quantity; i > 0; i--) {
+	if (typeof offrs[i] !== 'undefined'){
+	offerprice = offrs[i];
+	break;
+	}
+	}	
+}
+
+dataLayer.push({
+  "event": "addToCart", 
+  "ecommerce": {
+  
+    "add": {
+      "products": [{
+
+        "id": model,                
+        "name": title,  
+        "price": price,             
+        "category": category,        
+        "quantity": quantity,                
+	    "offerprice": offerprice    
+
+      }]
+    }
+ }         
+});
+
+
+}
+//--></script>	
+			]]></add>
+	</operation>
+	<operation>
+			<search position="replace"><![CDATA[<button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green"><?php echo $button_cart; ?></button>]]></search>
+			<add><![CDATA[<button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());pushlayer('<?php echo $product['model']; ?>', '<?php echo $product['name']; ?>', '<?php echo $product['price_full']; ?>', '<?php echo $product['category']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val(), '<?php echo $product['price_full']; ?>', offrs_<?php echo $product['product_id']; ?>);" class="button_green"><?php echo $button_cart; ?></button>]]></add>
+	</operation>		
+	<operation>
+			<search position="after"><![CDATA[<?php echo $product['description']; ?>]]></search>
+			<add><![CDATA[
+			<script type="text/javascript"><!--
+			var offrs_<?php echo $product['product_id']; ?> = new Array(); 
+			offrs_<?php echo $product['product_id']; ?>[1] = <?php echo $product['price_full']; ?>;
+			<?php foreach ($product['discounts'] as $discount) { ?>
+			offrs_<?php echo $product['product_id']; ?>[<?php echo $discount['quantity']; ?>] = <?php echo $discount['price_full']; ?>;
+			<?php } ?>
+			//--></script>			
+			]]></add>
+	</operation>		
+</file>	
+
+<file name="catalog/controller/account/register.php">
+		<operation>
+			<search position="before"><![CDATA[$this->response->redirect($this->url->link('account/success'));]]></search>
+			<add><![CDATA[
+			if (isset($this->request->post['newsletter']) && ($this->request->post['newsletter']==1)) {
+			$this->session->data['newsletter_subscribed'] = 1;
+			}
+			]]></add>
+		</operation>
+</file>
+<file name="catalog/controller/account/success.php">
+		<operation>
+			<search position="before"><![CDATA[$this->response->setOutput($this->load->view('common/success', $data));]]></search>
+			<add><![CDATA[
+			if (isset($this->session->data['newsletter_subscribed']) && ($this->session->data['newsletter_subscribed']==1)) {
+			$data['newsletter_subscribed'] = 1;
+			} else {
+			$data['newsletter_subscribed'] = 0;
+			}
+			]]></add>
+		</operation>
+</file>
+<file name="catalog/view/theme/*/template/common/success.tpl">
+	<operation>
+			<search position="after"><![CDATA[<?php echo $header; ?>]]></search>
+			<add><![CDATA[
+				<?php if(isset($newsletter_subscribed) && ($newsletter_subscribed==1)) { ?>
+				<script>dataLayer.push({'event': 'newsletter_subscribed'});</script>
+				<?php }		?>
+		    ]]></add>
+		</operation>
+</file>
+			
+</modification>
+
+

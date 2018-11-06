@@ -1,0 +1,25 @@
+&lt;strong&gt;Bellfor Kaninchenohren - Natur&lt;/strong&gt;&lt;br&gt;
+&lt;br&gt;
+Bellfor Kaninchenohren (Natur) ist der gesunde Hundesnack für Ihren Hund.&lt;br&gt;
+Die&amp;nbsp;Kaninchenohren stammen zu 100% von dem Kaninchen und sind ohne Zusätze und Geschmacksverstärker hergestellt und lassen sich gut als Belohnungssnack füttern.&lt;br&gt;
+Dieser ideal verträgliche Kausnacks ist für alle Hunderasse und für ernährungssensible Hunde geeignet.&lt;br&gt;
+Aufgrund der weichen Konsistenz ist dieser Kausnack auch für jüngere und ältere Hunde geeignet.&lt;br&gt;
+Passend zu unserer ausgesuchten Bellfor Qualität können wir Ihnen diese gesunde Belohnung aus regionaler Herkunft anbieten.&amp;nbsp;&lt;br&gt;
+Für unsere Produkte wählen wir unsere Zulieferer nach strengsten Kontrollen aus. &lt;script&gt;
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76656941-1', 'auto');
+  ga('send', 'pageview');
+
+&lt;/script&gt; &lt;!-- Google Tag Manager --&gt; &lt;noscript&gt;&amp;amp;amp;lt;iframe src=&quot;//www.googletagmanager.com/ns.html?id=GTM-MPSGTW&quot;
+height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&amp;amp;amp;gt;&amp;amp;amp;lt;/iframe&amp;amp;amp;gt;&lt;/noscript&gt; &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MPSGTW');&lt;/script&gt; &lt;!-- End Google Tag Manager --&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;/style&gt;

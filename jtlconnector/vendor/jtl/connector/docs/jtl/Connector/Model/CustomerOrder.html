@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>jtl\Connector\Model\CustomerOrder | JTL-Connector documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+    
+    
+    </head>
+
+    <body id="class" data-name="class:jtl_Connector_Model_CustomerOrder" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">JTL-Connector documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../jtl.html">jtl</a></li>
+                                        <li><a href="../../../jtl/Connector.html">Connector</a></li>
+                                        <li><a href="../../../jtl/Connector/Model.html">Model</a></li>
+    
+                <li>CustomerOrder</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>CustomerOrder</h1>
+    </div>
+
+    <p>    class
+    <strong>CustomerOrder</strong>        extends <a href="../../../jtl/Connector/Model/DataModel.html"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a></p>
+
+            <div class="description">
+            <p>Customer order properties.</p>                    </div>
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>PAYMENT_STATUS_COMPLETED</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>PAYMENT_STATUS_PARTIALLY</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>PAYMENT_STATUS_UNPAID</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>STATUS_CANCELLED</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>STATUS_PARTIALLY_SHIPPED</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>STATUS_SHIPPED</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>()
+                                            <p>Constructor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Core\Model\multitype:">multitype:</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getProperties">getProperties</a>()
+                                            <p>Get the Model Properties</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Core/Model/Model.html#method_getProperties"><abbr title="jtl\Connector\Core\Model\Model">Model</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\DataModel">DataModel</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setOptions">setOptions</a>(<abbr title="jtl\Connector\Model\stdClass">stdClass</abbr> $object = null, array $options = null)
+                                            <p>Sets Properties with matching Array Values</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Model/DataModel.html#method_setOptions"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Model\stdClass">stdClass</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPublic">getPublic</a>(array $publics = array(&#039;fields&#039;, &#039;isEncrypted&#039;, &#039;identities&#039;, &#039;_type&#039;))
+                                            <p>Convert the Model into stdClass Object</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Model/DataModel.html#method_getPublic"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_toJson">toJson</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Core/Model/Model.html#method_toJson"><abbr title="jtl\Connector\Core\Model\Model">Model</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Core\Model\mixed:string">mixed:string</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFields">getFields</a>()
+                                            <p>Fields Getter</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Core/Model/DataModel.html#method_getFields"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_validate">validate</a>()
+                                            <p>Object Validation</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Core/Model/DataModel.html#method_validate"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Core\Model\mixed:string">mixed:string</abbr>|NULL
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getField">getField</a>(boolean $toWawi = false, string $key)
+                                            <p>Get a Model Member Name</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Core/Model/DataModel.html#method_getField"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_map">map</a>(boolean $toWawi = false, <abbr title="jtl\Connector\Core\Model\stdClass">stdClass</abbr> $obj = null)
+                                            <p>Object Mapping</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Core/Model/DataModel.html#method_map"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Type/DataType.html"><abbr title="jtl\Connector\Type\DataType">DataType</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getModelType">getModelType</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Model/DataModel.html#method_getModelType"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isEncrypted">isEncrypted</a>()
+                                            <p>Encrypted Status</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../jtl/Connector/Model/DataModel.html#method_isEncrypted"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCustomerId">setCustomerId</a>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\Identity">Identity</abbr> $customerId)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/Identity.html"><abbr title="jtl\Connector\Model\Identity">Identity</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCustomerId">getCustomerId</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setId">setId</a>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\Identity">Identity</abbr> $id)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/Identity.html"><abbr title="jtl\Connector\Model\Identity">Identity</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getId">getId</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setBillingAddress">setBillingAddress</a>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderBillingAddress">CustomerOrderBillingAddress</abbr> $billingAddress = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderBillingAddress">CustomerOrderBillingAddress</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getBillingAddress">getBillingAddress</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCarrierName">setCarrierName</a>(string $carrierName)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCarrierName">getCarrierName</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCreationDate">setCreationDate</a>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $creationDate = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCreationDate">getCreationDate</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCurrencyIso">setCurrencyIso</a>(string $currencyIso)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCurrencyIso">getCurrencyIso</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setEstimatedDeliveryDate">setEstimatedDeliveryDate</a>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $estimatedDeliveryDate = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getEstimatedDeliveryDate">getEstimatedDeliveryDate</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLanguageISO">setLanguageISO</a>(string $languageISO)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLanguageISO">getLanguageISO</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setNote">setNote</a>(string $note)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getNote">getNote</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setOrderNumber">setOrderNumber</a>(string $orderNumber)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOrderNumber">getOrderNumber</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPaymentDate">setPaymentDate</a>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $paymentDate = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPaymentDate">getPaymentDate</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPaymentInfo">setPaymentInfo</a>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderPaymentInfo">CustomerOrderPaymentInfo</abbr> $paymentInfo = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderPaymentInfo">CustomerOrderPaymentInfo</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPaymentInfo">getPaymentInfo</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPaymentModuleCode">setPaymentModuleCode</a>(string $paymentModuleCode)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPaymentModuleCode">getPaymentModuleCode</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPaymentStatus">setPaymentStatus</a>(string $paymentStatus)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPaymentStatus">getPaymentStatus</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setShippingAddress">setShippingAddress</a>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderShippingAddress">CustomerOrderShippingAddress</abbr> $shippingAddress = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderShippingAddress">CustomerOrderShippingAddress</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getShippingAddress">getShippingAddress</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setShippingDate">setShippingDate</a>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $shippingDate = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getShippingDate">getShippingDate</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setShippingInfo">setShippingInfo</a>(string $shippingInfo)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getShippingInfo">getShippingInfo</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setShippingMethodName">setShippingMethodName</a>(string $shippingMethodName)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getShippingMethodName">getShippingMethodName</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setStatus">setStatus</a>(string $status)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getStatus">getStatus</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTotalSum">setTotalSum</a>(double $totalSum)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    double
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTotalSum">getTotalSum</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addAttribute">addAttribute</a>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderAttr">CustomerOrderAttr</abbr> $attribute)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setAttributes">setAttributes</a>(array $attributes)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderAttr">CustomerOrderAttr</abbr>[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAttributes">getAttributes</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clearAttributes">clearAttributes</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addItem">addItem</a>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderItem">CustomerOrderItem</abbr> $item)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setItems">setItems</a>(array $items)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderItem">CustomerOrderItem</abbr>[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getItems">getItems</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clearItems">clearItems</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 233</div>
+        <code>                    
+    <strong>__construct</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Constructor</p>                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProperties">
+        <div class="location">in <a href="../../../jtl/Connector/Core/Model/Model.html#method_getProperties"><abbr title="jtl\Connector\Core\Model\Model">Model</abbr></a> at line 33</div>
+        <code>                    <abbr title="jtl\Connector\Core\Model\multitype:">multitype:</abbr>
+    <strong>getProperties</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get the Model Properties</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Core\Model\multitype:">multitype:</abbr></td>
+            <td>string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOptions">
+        <div class="location">in <a href="../../../jtl/Connector/Model/DataModel.html#method_setOptions"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a> at line 125</div>
+        <code>                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\DataModel">DataModel</abbr>
+    <strong>setOptions</strong>(<abbr title="jtl\Connector\Model\stdClass">stdClass</abbr> $object = null, array $options = null)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Properties with matching Array Values</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\stdClass">stdClass</abbr></td>
+                <td>$object</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\DataModel">DataModel</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPublic">
+        <div class="location">in <a href="../../../jtl/Connector/Model/DataModel.html#method_getPublic"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a> at line 70</div>
+        <code>                    <abbr title="jtl\Connector\Model\stdClass">stdClass</abbr>
+    <strong>getPublic</strong>(array $publics = array(&#039;fields&#039;, &#039;isEncrypted&#039;, &#039;identities&#039;, &#039;_type&#039;))</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Convert the Model into stdClass Object</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$publics</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Model\stdClass">stdClass</abbr></td>
+            <td>$object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toJson">
+        <div class="location">in <a href="../../../jtl/Connector/Core/Model/Model.html#method_toJson"><abbr title="jtl\Connector\Core\Model\Model">Model</abbr></a> at line 115</div>
+        <code>                    
+    <strong>toJson</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFields">
+        <div class="location">in <a href="../../../jtl/Connector/Core/Model/DataModel.html#method_getFields"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a> at line 34</div>
+        <code>                    <abbr title="jtl\Connector\Core\Model\mixed:string">mixed:string</abbr>
+    <strong>getFields</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Fields Getter</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Core\Model\mixed:string">mixed:string</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validate">
+        <div class="location">in <a href="../../../jtl/Connector/Core/Model/DataModel.html#method_validate"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a> at line 44</div>
+        <code>                    
+    <strong>validate</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Object Validation</p>                                </div>
+                <div class="tags">
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../jtl/Connector/Core/Exception/SchemaException.html"><abbr title="jtl\Connector\Core\Exception\SchemaException">SchemaException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getField">
+        <div class="location">in <a href="../../../jtl/Connector/Core/Model/DataModel.html#method_getField"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a> at line 58</div>
+        <code>                    <abbr title="jtl\Connector\Core\Model\mixed:string">mixed:string</abbr>|NULL
+    <strong>getField</strong>(boolean $toWawi = false, string $key)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get a Model Member Name</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>boolean</td>
+                <td>$toWawi</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Core\Model\mixed:string">mixed:string</abbr>|NULL</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_map">
+        <div class="location">in <a href="../../../jtl/Connector/Core/Model/DataModel.html#method_map"><abbr title="jtl\Connector\Core\Model\DataModel">DataModel</abbr></a> at line 80</div>
+        <code>                    
+    <strong>map</strong>(boolean $toWawi = false, <abbr title="jtl\Connector\Core\Model\stdClass">stdClass</abbr> $obj = null)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Object Mapping</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>boolean</td>
+                <td>$toWawi</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td><abbr title="jtl\Connector\Core\Model\stdClass">stdClass</abbr></td>
+                <td>$obj</td>
+                <td>Object to map</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getModelType">
+        <div class="location">in <a href="../../../jtl/Connector/Model/DataModel.html#method_getModelType"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a> at line 42</div>
+        <code>                    <a href="../../../jtl/Connector/Type/DataType.html"><abbr title="jtl\Connector\Type\DataType">DataType</abbr></a>
+    <strong>getModelType</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Type/DataType.html"><abbr title="jtl\Connector\Type\DataType">DataType</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEncrypted">
+        <div class="location">in <a href="../../../jtl/Connector/Model/DataModel.html#method_isEncrypted"><abbr title="jtl\Connector\Model\DataModel">DataModel</abbr></a> at line 59</div>
+        <code>                    boolean
+    <strong>isEncrypted</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Encrypted Status</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCustomerId">
+        <div class="location">at line 244</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setCustomerId</strong>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\Identity">Identity</abbr> $customerId)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\Identity">Identity</abbr></td>
+                <td>$customerId</td>
+                <td>Optional reference to customer.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'Identity'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCustomerId">
+        <div class="location">at line 252</div>
+        <code>                    <a href="../../../jtl/Connector/Model/Identity.html"><abbr title="jtl\Connector\Model\Identity">Identity</abbr></a>
+    <strong>getCustomerId</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/Identity.html"><abbr title="jtl\Connector\Model\Identity">Identity</abbr></a></td>
+            <td>Optional reference to customer.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setId">
+        <div class="location">at line 262</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setId</strong>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\Identity">Identity</abbr> $id)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\Identity">Identity</abbr></td>
+                <td>$id</td>
+                <td>Unique customerOrder id</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'Identity'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getId">
+        <div class="location">at line 270</div>
+        <code>                    <a href="../../../jtl/Connector/Model/Identity.html"><abbr title="jtl\Connector\Model\Identity">Identity</abbr></a>
+    <strong>getId</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/Identity.html"><abbr title="jtl\Connector\Model\Identity">Identity</abbr></a></td>
+            <td>Unique customerOrder id</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBillingAddress">
+        <div class="location">at line 280</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setBillingAddress</strong>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderBillingAddress">CustomerOrderBillingAddress</abbr> $billingAddress = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderBillingAddress">CustomerOrderBillingAddress</abbr></td>
+                <td>$billingAddress</td>
+                <td>Billing address</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'CustomerOrderBillingAddress'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBillingAddress">
+        <div class="location">at line 288</div>
+        <code>                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderBillingAddress">CustomerOrderBillingAddress</abbr>
+    <strong>getBillingAddress</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderBillingAddress">CustomerOrderBillingAddress</abbr></td>
+            <td>Billing address</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCarrierName">
+        <div class="location">at line 297</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setCarrierName</strong>(string $carrierName)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$carrierName</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCarrierName">
+        <div class="location">at line 305</div>
+        <code>                    string
+    <strong>getCarrierName</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCreationDate">
+        <div class="location">at line 315</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setCreationDate</strong>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $creationDate = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+                <td>$creationDate</td>
+                <td>Date of creation</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'DateTime'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCreationDate">
+        <div class="location">at line 323</div>
+        <code>                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getCreationDate</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>Date of creation</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCurrencyIso">
+        <div class="location">at line 332</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setCurrencyIso</strong>(string $currencyIso)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$currencyIso</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrencyIso">
+        <div class="location">at line 340</div>
+        <code>                    string
+    <strong>getCurrencyIso</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEstimatedDeliveryDate">
+        <div class="location">at line 350</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setEstimatedDeliveryDate</strong>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $estimatedDeliveryDate = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+                <td>$estimatedDeliveryDate</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'DateTime'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEstimatedDeliveryDate">
+        <div class="location">at line 358</div>
+        <code>                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getEstimatedDeliveryDate</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLanguageISO">
+        <div class="location">at line 367</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setLanguageISO</strong>(string $languageISO)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$languageISO</td>
+                <td>Locale set when customerOrder was finished. Important for further E-Mail message and notification localization.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLanguageISO">
+        <div class="location">at line 375</div>
+        <code>                    string
+    <strong>getLanguageISO</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>Locale set when customerOrder was finished. Important for further E-Mail message and notification localization.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setNote">
+        <div class="location">at line 384</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setNote</strong>(string $note)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$note</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNote">
+        <div class="location">at line 392</div>
+        <code>                    string
+    <strong>getNote</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOrderNumber">
+        <div class="location">at line 401</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setOrderNumber</strong>(string $orderNumber)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$orderNumber</td>
+                <td>Optional order number (usually set by ERP System later)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOrderNumber">
+        <div class="location">at line 409</div>
+        <code>                    string
+    <strong>getOrderNumber</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>Optional order number (usually set by ERP System later)</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPaymentDate">
+        <div class="location">at line 419</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setPaymentDate</strong>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $paymentDate = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+                <td>$paymentDate</td>
+                <td>Payment date</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'DateTime'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPaymentDate">
+        <div class="location">at line 427</div>
+        <code>                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getPaymentDate</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>Payment date</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPaymentInfo">
+        <div class="location">at line 437</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setPaymentInfo</strong>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderPaymentInfo">CustomerOrderPaymentInfo</abbr> $paymentInfo = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderPaymentInfo">CustomerOrderPaymentInfo</abbr></td>
+                <td>$paymentInfo</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'CustomerOrderPaymentInfo'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPaymentInfo">
+        <div class="location">at line 445</div>
+        <code>                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderPaymentInfo">CustomerOrderPaymentInfo</abbr>
+    <strong>getPaymentInfo</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderPaymentInfo">CustomerOrderPaymentInfo</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPaymentModuleCode">
+        <div class="location">at line 454</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setPaymentModuleCode</strong>(string $paymentModuleCode)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$paymentModuleCode</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPaymentModuleCode">
+        <div class="location">at line 462</div>
+        <code>                    string
+    <strong>getPaymentModuleCode</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPaymentStatus">
+        <div class="location">at line 471</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setPaymentStatus</strong>(string $paymentStatus)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$paymentStatus</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPaymentStatus">
+        <div class="location">at line 479</div>
+        <code>                    string
+    <strong>getPaymentStatus</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setShippingAddress">
+        <div class="location">at line 489</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setShippingAddress</strong>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderShippingAddress">CustomerOrderShippingAddress</abbr> $shippingAddress = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderShippingAddress">CustomerOrderShippingAddress</abbr></td>
+                <td>$shippingAddress</td>
+                <td>Shipping address</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'CustomerOrderShippingAddress'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getShippingAddress">
+        <div class="location">at line 497</div>
+        <code>                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderShippingAddress">CustomerOrderShippingAddress</abbr>
+    <strong>getShippingAddress</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderShippingAddress">CustomerOrderShippingAddress</abbr></td>
+            <td>Shipping address</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setShippingDate">
+        <div class="location">at line 507</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setShippingDate</strong>(<a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $shippingDate = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+                <td>$shippingDate</td>
+                <td>Shipping date</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the provided argument is not of type 'DateTime'.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getShippingDate">
+        <div class="location">at line 515</div>
+        <code>                    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getShippingDate</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>Shipping date</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setShippingInfo">
+        <div class="location">at line 524</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setShippingInfo</strong>(string $shippingInfo)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$shippingInfo</td>
+                <td>Additional shipping info</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getShippingInfo">
+        <div class="location">at line 532</div>
+        <code>                    string
+    <strong>getShippingInfo</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>Additional shipping info</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setShippingMethodName">
+        <div class="location">at line 541</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setShippingMethodName</strong>(string $shippingMethodName)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$shippingMethodName</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getShippingMethodName">
+        <div class="location">at line 549</div>
+        <code>                    string
+    <strong>getShippingMethodName</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setStatus">
+        <div class="location">at line 558</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setStatus</strong>(string $status)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$status</td>
+                <td>Shipping status</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStatus">
+        <div class="location">at line 566</div>
+        <code>                    string
+    <strong>getStatus</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>Shipping status</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTotalSum">
+        <div class="location">at line 575</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setTotalSum</strong>(double $totalSum)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>double</td>
+                <td>$totalSum</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTotalSum">
+        <div class="location">at line 583</div>
+        <code>                    double
+    <strong>getTotalSum</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>double</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addAttribute">
+        <div class="location">at line 592</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>addAttribute</strong>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderAttr">CustomerOrderAttr</abbr> $attribute)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderAttr">CustomerOrderAttr</abbr></td>
+                <td>$attribute</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAttributes">
+        <div class="location">at line 602</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setAttributes</strong>(array $attributes)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAttributes">
+        <div class="location">at line 611</div>
+        <code>                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderAttr">CustomerOrderAttr</abbr>[]
+    <strong>getAttributes</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderAttr">CustomerOrderAttr</abbr>[]</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearAttributes">
+        <div class="location">at line 619</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>clearAttributes</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addItem">
+        <div class="location">at line 629</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>addItem</strong>(<abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderItem">CustomerOrderItem</abbr> $item)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderItem">CustomerOrderItem</abbr></td>
+                <td>$item</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setItems">
+        <div class="location">at line 639</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>setItems</strong>(array $items)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$items</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getItems">
+        <div class="location">at line 648</div>
+        <code>                    <abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderItem">CustomerOrderItem</abbr>[]
+    <strong>getItems</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="jtl\Connector\Model\jtl\Connector\Model\CustomerOrderItem">CustomerOrderItem</abbr>[]</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearItems">
+        <div class="location">at line 656</div>
+        <code>                    <a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a>
+    <strong>clearItems</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../jtl/Connector/Model/CustomerOrder.html"><abbr title="jtl\Connector\Model\CustomerOrder">CustomerOrder</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

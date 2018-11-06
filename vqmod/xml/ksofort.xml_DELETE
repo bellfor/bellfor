@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id><![CDATA[Sofort Payment Method]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.3.2]]></vqmver>
+	<author><![CDATA[opencart.design]]></author>
+	<file name="catalog/view/theme/*/template/checkout/payment_method.tpl">
+		<operation>
+			<search position="after"><![CDATA[<?php echo $payment_method['title']; ?>]]></search>
+			<add><![CDATA[<?php if($payment_method['code'] == "ksofort") { ?>
+			<br /><br /><a onclick="javascript:window.open('https://images.sofort.com/de/su/landing.php','Kundeninformationen','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1020, height=900');" style="float:left; width:auto; cursor:pointer; margin-left: -25px;">
+		<img src="https://images.sofort.com/de/su/banner_300x100.png" alt="SOFORT Überweisung" title="SOFORT Überweisung"></a>
+			<?php } ?>
+			]]></add>
+		</operation>		
+	</file>
+</modification>

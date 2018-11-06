@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Custom language variables</id>
+	<version>1.1.0</version>
+	<vqmver>2.4.0</vqmver>
+	<author>opencart.design</author>
+
+	<file name="catalog/controller/common/header.php">	
+		<operation>
+			<search position="after"><![CDATA[$data['text_all'] = $this->language->get('text_all');]]></search>
+			<add><![CDATA[
+            $data['text_contact'] = $this->language->get('text_contact');
+			$data['text_login_to_account'] = $this->language->get('text_login_to_account');
+			$data['text_blog'] = $this->language->get('text_blog');
+			$data['text_email'] = $this->language->get('text_email');
+			$data['text_password'] = $this->language->get('text_password');
+			$data['text_forgot_password'] = $this->language->get('text_forgot_password');
+			$data['text_free_consult'] = $this->language->get('text_free_consult');
+			]]></add>
+		</operation>	
+		</file>
+		
+</modification>

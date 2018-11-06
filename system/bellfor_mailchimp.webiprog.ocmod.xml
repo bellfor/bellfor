@@ -1,0 +1,143 @@
+<modification>
+	<name><![CDATA[<b style="color:#ff6633">Bellfor Mailchimp Abonnement</b>]]></name>
+	<code>mailchimp-abonnement</code>
+	<version>1.0.0</version>
+	<author><![CDATA[webiprog]]></author>
+	<link>http://www.bellfor.info</link>
+	<jbond>oppo</jbond>
+
+        <file path="catalog/controller/common/footer.php">
+        <operation info="add the include to set the variable">
+            <search><![CDATA[$this->load->language('common/footer');]]></search>
+            <add position="before"><![CDATA[
+		//fixed by oppo webiprog.com  06.02.2018
+		$data['bellformailchimp_status'] = $this->config->get('bellformailchimp_status');
+        
+		$this->language->load('module/bellformailchimp');
+
+		$data['text_mailchimp_success'] = $this->language->get('text_mailchimp_success');
+		$data['error_mailchimp_exists'] = $this->language->get('error_mailchimp_exists');
+		$data['error_mailchimp_email_duplicate'] = $this->language->get('error_mailchimp_email_duplicate');
+		$data['error_mailchimp_email_invalid'] = $this->language->get('error_mailchimp_email_invalid');
+		$data['error_mailchimp_email_required'] = $this->language->get('error_mailchimp_email_required');
+		$data['error_mailchimp_fail'] = $this->language->get('error_mailchimp_fail');
+		//END fixed by oppo webiprog.com  06.02.2018
+
+            ]]></add>
+        </operation>
+    </file>
+
+
+
+
+
+  <file path="catalog/view/theme/*/template/common/footer.tpl">
+    <operation>
+      <search trim="true"><![CDATA[</footer>]]></search>
+      <add position="after">
+        <![CDATA[
+		
+		<?php
+		//fixed by oppo webiprog.com  06.02.2018
+		if(empty($error_mailchimp_email_invalid)) {
+		$error_mailchimp_email_invalid = 'Invalid email address' ;
+		}
+		if(empty($error_mailchimp_email_required)) {
+		$error_mailchimp_email_required = 'E-mail is required!' ;
+		}
+		?>
+
+		<script type="text/javascript"><!--
+		$('#anmeldung').on('click', '.button-inner', function(e) {
+		   e.preventDefault();
+		   var $email = $('.container-Newsletter input[name=email]').val();
+		   var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				if($email != "")
+				{
+					if(!emailpattern.test($email))
+					{
+						$("#subscribeModalLabel").removeClass("has-error");
+						$("#subscribeModalLabel").html('<?php echo $error_mailchimp_email_invalid; ?>');
+						$("#subscribeModalLabel").addClass("has-error");
+						$('#subscribeModal').modal('show');
+						return false;
+					}
+					else
+					{
+						$.ajax({
+							url: 'index.php?route=module/bellformailchimp',
+							type: 'post',
+							data: 'email=' + $email+'&task=subscribe',
+							dataType: 'json',
+							success: function(json) {
+								console.log('Message: '+ json.message);
+								if (json.status == 'error') {
+									$("#subscribeModalLabel").removeClass("has-error");
+									$("#subscribeModalLabel").html(json.message);
+									$("#subscribeModalLabel").addClass("has-error");
+									$('#subscribeModal').modal('show');
+									return true;
+								}
+								else {
+									$("#subscribeModalLabel").removeClass("has-error");
+									$("#subscribeModalLabel").html(json.message);
+									$('#subscribeModal').modal('show');
+									return true;
+								}
+							}
+								, error: function (jqXHR, exception) {
+								 // Our error logic here
+									var msg = '';
+									if (jqXHR.status === 0) {
+										msg = 'Not connect.\n Verify Network.';
+									} else if (jqXHR.status == 404) {
+										msg = 'Requested page not found. [404]';
+									} else if (jqXHR.status == 500) {
+										msg = 'Internal Server Error [500].';
+									} else if (exception === 'parsererror') {
+										msg = 'Requested JSON parse failed.';
+									} else if (exception === 'timeout') {
+										msg = 'Time out error.';
+									} else if (exception === 'abort') {
+										msg = 'Ajax request aborted.';
+									} else {
+										msg = 'Uncaught Error.\n' + jqXHR.responseText;
+									}
+								//console.log('full Error '+ jqXHR);
+								console.log('Error msg '+ msg);
+							},
+						});
+
+						return false;
+					}
+				}
+				else
+				{
+						$("#subscribeModalLabel").removeClass("has-error");
+						$("#subscribeModalLabel").html('<?php echo $error_mailchimp_email_required ; ?>');
+						$("#subscribeModalLabel").addClass("has-error");
+						$('#subscribeModal').modal('show');
+
+						return false;
+				}
+
+		 });
+
+		//--></script>
+		<style type="text/css"><!--
+		.modal-content .has-error{
+		  color: #cc0000!important;
+		}
+		#anmeldung .button-inner{
+			background-color: #7e842e;background-image: url(catalog/view/theme/default/image/gradient-reflection.png);    background-position: left center;background-repeat: repeat-x;border: 1px solid #7e842e;color: #FFF;display: inline-block; font-family: Arial,Helvetica,sans-serif;font-size: 11px;font-style: normal;font-weight: 400;padding: 4px 10px;    text-decoration: none;	cursor:pointer;
+			}
+		#anmeldung .button-inner:hover{background-image:none;background-color:#7e842e;cursor:pointer;text-decoration:none;}
+		--></style>
+         <!-- end  bellformailchimp -->
+]]>
+      </add>
+    </operation>
+
+  </file>
+
+</modification>

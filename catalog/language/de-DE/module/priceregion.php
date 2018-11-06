@@ -1,0 +1,13 @@
+<?php
+// *	@copyright	OPENCART.DESIGN 2015 - 2016.
+// *	@forum	http://forum.opencart.design
+// *	@source		See SOURCE.txt for source and other copyright.
+// *	@license	GNU General Public License version 3; see LICENSE.txt
+
+// Text
+$_['text_price']  	= 'Preis nach Ihrer Region <strong>%s</strong> = <strong>%s</strong>';
+
+$_['error_api_key']      = 'An API key is needed from OpenExchangeRates.org to continue.';
+$_['error_no_value']     = 'geoPlugin class Notice: currencyConverter has no value.';
+$_['error_numeric']      = 'geoPlugin class Warning: The amount passed to geoPlugin::convert is not numeric.';
+$_['error_http_200']     = 'API did not response with HTTP 200, got HTTP %s instead';

@@ -1,0 +1,119 @@
+.modal-dialog h3 {
+    color: #7e842e;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+.modal-dialog .link_password {
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.modal-dialog .link_password:hover {
+    text-decoration: underline;
+}
+
+.login-modal-link {
+    color: #7e842e;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.header_onepagecheckout {
+    color: #7e842e;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 0;
+}
+
+.amazon_pay .t-head {
+    color: #7e842e;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.amazon_pay {
+    padding-right: 15px;
+    padding-left: 15px;
+    min-height: 30px;
+    padding-bottom: 25px;
+}
+
+.checkout-data__margin_fix {
+    margin-top: 23px;
+}
+
+.checkout-data .table > tbody > tr > td,
+.checkout-data .table > tbody > tr > th,
+.checkout-data .table > tfoot > tr > td,
+.checkout-data .table > tfoot > tr > th,
+.checkout-data .table > thead > tr > td,
+.checkout-data .table > thead > tr > th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: 1px solid #ddd;
+}
+
+.checkout-data .table > caption + thead > tr:first-child > td,
+.checkout-data .table > caption + thead > tr:first-child > th,
+.checkout-data .table > colgroup + thead > tr:first-child > td,
+.checkout-data .table > colgroup + thead > tr:first-child > th,
+.checkout-data .table > thead:first-child > tr:first-child > td,
+.checkout-data .table > thead:first-child > tr:first-child > th {
+    border-top: 1px solid #ddd;
+}
+
+.row_forInputs .left_input {
+    width: 50%;
+    float: left;
+    padding-right: 5px;
+}
+
+.row_forInputs .right_input {
+    width: 50%;
+    float: left;
+    padding-left: 5px;
+}
+
+.error {
+    color: red;
+}
+
+.margin_fix_inForm {
+    margin-top: 30px;
+}
+
+.checkboxes_for_payment {
+    margin-top: 20px;
+}
+
+.checkbox_agree {
+	margin-right: 0 !important;
+	margin-top: 10px;
+}
+
+.fix_checkbox_button .checkbox_wraper p {
+    margin-top: 10px;
+}
+
+.cart-info {
+	overflow-x: unset !important;
+}
+
+.product_name_onepagecheckout{
+white-space: initial;
+}

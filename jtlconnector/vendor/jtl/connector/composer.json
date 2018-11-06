@@ -1,0 +1,31 @@
+{
+    "name": "jtl/connector",
+    "type": "library",
+    "description": "JTL-Connector protocol library and classes",
+    "keywords": ["jtl", "connector", "protocol", "model", "data"],
+    "homepage": "http://www.jtl-software.de",
+    "license": "GPL",
+    "authors": [{
+        "name": "JTL Software GmbH",
+        "email": "info@jtl-software.de",
+        "homepage": "http://www.jtl-software.de",
+        "role": "Founder"
+    }],
+    "require": {
+        "php": ">=5.4.0",
+        "monolog/monolog": "~1.11",
+        "jms/serializer": "~1.0",
+        "doctrine/collections": "~1.2",
+        "symfony/event-dispatcher": "~2.7",
+        "symfony/finder": "~2.7"
+    },
+    "require-dev": {
+        "evert/phpdoc-md": "~0.1"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-0": {
+            "jtl\\Connector\\": "src/"
+        }
+    }
+}

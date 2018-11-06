@@ -1,0 +1,63 @@
+<modification>
+
+    <id>OpenCart Easy Stripe Module</id>
+    <version>2.2.5</version>
+    <vqmver>2.1.7</vqmver>
+    <author>Ben W - ben@forlent.com</author>
+    <file name="admin/view/template/common/dashboard.tpl">
+        <operation>
+            <search position="before"><![CDATA[
+           <?php if ($error_install) { ?>
+           ]]></search>
+            <add><![CDATA[
+            <?php
+
+            if (true) {
+                //load version number from XML file
+                $fil=@file_get_contents('../vqmod/xml/easy_stripe.xml');
+                $ver=@preg_match('@<version>(.*)</version>@Ui', $fil, $vmatch);
+
+                $product='STRIPE';
+                $version=@$vmatch[1];
+
+                if ($version && function_exists('curl_init')) {
+                    $ch = @curl_init("http://www.forlent.com/checkupgrade.php?product=".$product."&version=".$version);
+                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+                    $res=@curl_exec($ch);
+                    curl_close($ch);
+
+                    if ($res) {
+                        $res=@unserialize($res);
+                        if (!empty($res['upgrade_url'])) {
+                            ?>
+                            <div>There is a new version of OpenCart Easy Stripe Module available. Latest version is <?php echo $res['upgrade_ver'] ?>, you're running <?php echo $version ?>. <a href="<?php echo htmlentities($res['upgrade_url']) ?>">More information.</a></div><br>
+                            <?php
+                        }
+                    }
+                }
+            }
+           ?>
+
+           ]]></add>
+        </operation>
+    </file>
+
+
+    <file name="catalog/view/theme/journal2/template/journal2/checkout/checkout.tpl">
+        <operation error="skip">
+            <search position="before"><![CDATA[
+            if ($btn.attr('href')) {
+           ]]></search>
+            <add><![CDATA[
+            if (typeof runStripe!=='undefined') {
+                runStripe();
+                return false;
+            }
+            ]]></add>
+        </operation>
+
+    </file>
+
+</modification>

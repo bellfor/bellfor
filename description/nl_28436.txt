@@ -1,0 +1,28 @@
+&lt;h3&gt;NATURGUT-SCHMAUS - Insekten - getreidefrei kaltgepresst&lt;/h3&gt;
+&lt;style type=&quot;text/css&quot;&gt; &lt;!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+	--&gt;
+&lt;/style&gt;
+&lt;p style=&quot;margin-bottom: 0cm&quot;&gt;&lt;font face=&quot;Arial, sans-serif&quot;&gt;Wie bei allen unseren Produkten haben wir auch in die Entwicklung des Naturgut-Schmaus sehr viel Sorgfalt gesteckt.&lt;br&gt;
+Auf diese Weise ist es uns gelungen ein hochwertiges getreidefreies Hundefutter auf Insektenbasis herzustellen. &lt;/font&gt;&lt;br&gt;
+&lt;font face=&quot;Arial, sans-serif&quot;&gt;Wir sind uns sicher, dass auch ihr Hund unseren Naturgut-Schmaus lieben wird.&lt;br&gt;
+Vor allem die folgenden Produkteigenschaften machen ihn zu einem erstklassigen Hundefutter für eine artgerechte Ernährung.&lt;/font&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Getreidefreies Hundetrockenfutter hergestellt im KaltpressverfahrenI&lt;/li&gt;
+	&lt;li&gt;Insektenprotein (82%) mit hoher Verdaulichkeit&lt;/li&gt;
+	&lt;li&gt;Proteinquelle mit sehr niedrigem Allergiepotenzial&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;http://www.bellfor.info/info/Nachhaltiges-Hundefutter.html&quot; target=&quot;_blank&quot;&gt;Nachhaltiges Hundetrockenfutter&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;Reich an&amp;nbsp;natürlichen&amp;nbsp;Vitaminen, Mineralien (Spurenelemente) und Antioxidantien&lt;/li&gt;
+	&lt;li&gt;Hoher Anteil an Omega-3-Fettsäuren&lt;/li&gt;
+	&lt;li&gt;Inulien (FOS) für eine gesunde und abwehrstarke Darmflora&lt;/li&gt;
+	&lt;li&gt;Prebiotika steigern die Effizienz der Immunabwehr&lt;/li&gt;
+	&lt;li&gt;Lebensmittelqualität&lt;/li&gt;
+	&lt;li&gt;Optimal für ernährungssensible Hunde&lt;/li&gt;
+	&lt;li&gt;Krokettegröße ca. 1cm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;strong&gt;Zutaten:&amp;nbsp;&lt;/strong&gt;&lt;br&gt;
+Insekten, erntefrische Kartoffeln, Kartoffelmehl, erntefrische Erbsen, tierisches Fett, erntefrische Süßkartoffeln, Bierhefe, Mineralstoffe, Leinsamen, Lachsöl, Inulin (FOS), erntefrische Karotten, erntefrische Tomaten, erntefrischer Apfel, Mango, Pflaume, Banane, Cranberry, &lt;span class=&quot;tooltip_wrap&quot;&gt;&lt;span class=&quot;tooltip_link&quot; onmouseout=&quot;tooltipHide()&quot; onmouseover=&quot;tooltipShow(this)&quot;&gt;Brennnessel&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;tooltip_wrap&quot;&gt;&lt;span class=&quot;tooltip_link&quot; onmouseout=&quot;tooltipHide()&quot; onmouseover=&quot;tooltipShow(this)&quot;&gt;Echinacea, Thymian&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;tooltip_wrap&quot;&gt;&lt;span class=&quot;tooltip_link&quot; onmouseout=&quot;tooltipHide()&quot; onmouseover=&quot;tooltipShow(this)&quot;&gt;Basilikum&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;tooltip_wrap&quot;&gt;&lt;span class=&quot;tooltip_link&quot; onmouseout=&quot;tooltipHide()&quot; onmouseover=&quot;tooltipShow(this)&quot;&gt;Sellerie&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;tooltip_wrap&quot;&gt;&lt;span class=&quot;tooltip_link&quot; onmouseout=&quot;tooltipHide()&quot; onmouseover=&quot;tooltipShow(this)&quot;&gt;Spirulina&lt;/span&gt;&lt;/span&gt;, Yucca-Schidigera-Extrakt&lt;br&gt;
+&lt;br&gt;
+&amp;nbsp;   &lt;!-- End Google Tag Manager --&gt;
