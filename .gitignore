@@ -1,6 +1,6 @@
 .htaccess
 .idea/
-config.php
+/config.php
 admin/config.php
 
 !index.html
@@ -31,3 +31,9 @@ _20171219_161800.htaccess
 _20180119_195929.htaccess
 
 image_webiprog_.zip
+
+admin/error_log
+/error_log
+php-error.log
+.user.ini
+jtlconnector/db/connector.s3db
