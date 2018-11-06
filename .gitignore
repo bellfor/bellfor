@@ -35,5 +35,6 @@ image_webiprog_.zip
 admin/error_log
 /error_log
 php-error.log
+description/php-error.log
 .user.ini
 jtlconnector/db/connector.s3db

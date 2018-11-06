@@ -39,19 +39,21 @@ class ControllerCommonFooter extends Controller {
 			}
 		}
 
-        foreach ($this->config->get('config_custom_link') as $result) {
-            if ($result) {
-                $articles[] = array(
-                    'name' => $result['name'],
-                    'href' => $result['href']
-                );
+		if ($this->request->server['REQUEST_URI'] == '/') {
+            foreach ($this->config->get('config_custom_link') as $result) {
+                if ($result) {
+                    $articles[] = array(
+                        'name' => $result['name'],
+                        'href' => $result['href']
+                    );
 
+                }
             }
-        }
 
-        if (isset($articles)){
-            $data['articles'] = null;
-            $data['articles'] = array_chunk(array_slice($articles, 0, 15), 5);
+            if (isset($articles)){
+                $data['articles'] = null;
+                $data['articles'] = array_chunk(array_slice($articles, 0, 15), 5);
+            }
         }
 
 		$data['contact'] = $this->url->link('information/contact');
