@@ -1,8 +1,0 @@
-[23-Oct-2017 08:58:51 Etc/UTC] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (2) in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 17
-[23-Oct-2017 08:58:51 Etc/UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 17
-[23-Oct-2017 09:05:14 Etc/UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 47
-[23-Oct-2017 09:12:46 Etc/UTC] PHP Fatal error:  Call to undefined method mysqli_stmt::fetch_assoc() in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 48
-[12-Mar-2018 16:18:12 Etc/UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 54
-[12-Mar-2018 16:18:12 Etc/UTC] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 59
-[12-Mar-2018 16:18:12 Etc/UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 54
-[12-Mar-2018 16:18:12 Etc/UTC] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /var/www/bellfor/data/www/bellfor.info/description/extract.php on line 59
