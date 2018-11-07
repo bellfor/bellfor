@@ -105,7 +105,7 @@ $stunl = strpos($base, 'nl.bellfor.info', 7);
 <header class="header">
     <div class="container">
 
-        <div class="row">
+        <div class="row header-fixed-line">
             <div class="col-md-12" >
                 <!-- cart -->
                 <div class="border-cont visible-xs" style="width: 220px; position: absolute;">

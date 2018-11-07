@@ -517,7 +517,7 @@ input {
         padding: 7px;
     }
     .border-cont {
-        margin-top: 18px;
+        margin-top: 14px;
     }
 }
 
@@ -3263,5 +3263,22 @@ span.free {
 @media (max-width: 430px) {
     .header-menu-mobile {
         width: 100%;
+    }
+}
+@media (max-width: 767px) {
+    .header-fixed-line {
+        width: 100%;
+        height: 56px;
+        background: linear-gradient(to bottom, #f3f3f3 0, #c1c1c0 100%);
+        position: fixed;
+        opacity: 0.9;
+        z-index: 99;
+    }
+}
+@media (max-width: 648px) {
+    body #tsbadgeResponsiveTop_db8d3657bdbe440c985ae127463eaad4 {
+        position: fixed;
+        bottom: 0px;
+        z-index: 99999999;
     }
 }
