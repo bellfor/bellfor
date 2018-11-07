@@ -2740,7 +2740,9 @@ div#shipping-terms {
 
     .header .menu ul {
         clear: both;
-        max-width: 473.5px
+        max-width: 473.5px;
+        height: 400px;
+        overflow-y: scroll;
     }
 }
 

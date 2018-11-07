@@ -137,9 +137,51 @@ $stunl = strpos($base, 'nl.bellfor.info', 7);
                                     <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
                                 <?php } ?>
                             <?php } ?>
+                            <?php
+                            //fixed by oppo webiprog.com   MAR-164 move logo 14.12.2017
+                            if($sub == 'bellfor' || !$sub ) { ?>
+                                <style type="text/css"><!--
+                                    .header .trusted-shop {
+                                        display: block !important;
+                                        background: url(https://widgets.trustedshops.com/images/trustmark_32x32.png) no-repeat !important;
+                                        background-color: transparent !important; width: 32px !important; height: 32px !important; display: block; background-size: 100%; text-decoration: none; left: -25px; top: -3px; outline: 0; text-align: center; position: absolute;
+                                    }
+                                    --></style>
+                                <li class="hidden-xs"  style="position: relative;width: 45px !importanlot;"><a title="Trusted Shops" class="trusted-shop" href="https://www.trustedshops.de/bewertung/info_XFAB332EF7D0070F4F0E8F4B2561D47EA.html" rel="nofollow"></a></li>
+                            <?php } ; ?>
+                            <li><a href="<?php echo str_replace('index.php?route=common/home', '', $home); ?>" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                            <li><a href="<?php echo $contact; ?>" ><?php echo $text_contact; ?></a></li>
+                            <?php if (!$logged) { ?>
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $text_login_to_account; ?> <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+                                    <div class="customer_login_inside dropdown-menu">
+                                        <form action="<?php echo $login; ?>" method="post">
+                                            <label><?php echo $text_email; ?></label><br>
+                                            <input type="text" name="email" value="" class="input-text" autocomplete="off"><br>
+                                            <label><?php echo $text_password; ?></label><br>
+                                            <input type="password" name="password" value="" class="input-text" autocomplete="off"><br>
+                                            <div class="submit-container"><button type="submit" class="button_blue button_set"><span class="button-outer"><span class="button-inner"><?php echo $text_login; ?></span></span></button></div>
+                                            <div class="customer_login_links">
+                                                <a href="<?php echo $register; ?>">
+                                                    <?php echo $text_register; ?>
+                                                </a><br>
+                                                <a href="index.php?route=account/forgotten">
+                                                    <?php echo $text_forgot_password; ?>
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                                <li><a href="<?php echo $wishlist; ?>" ><?php echo $text_wishlist; ?></a></li>
+                                <li><a href="<?php echo $shopping_cart; ?>" ><?php echo $text_shopping_cart; ?></a></li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo $wishlist; ?>" ><?php echo $text_wishlist; ?></a></li>
+                                <li><a href="<?php echo $shopping_cart; ?>" ><?php echo $text_shopping_cart; ?></a></li>
+                                <li><a href="index.php?route=account/edit"><?php echo $text_account; ?></a></li>
+                                <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+                            <?php } ?>
                         </ul>
                     <?php } ?>
-                    <ul class="grey-menu-right">
+                    <ul class="grey-menu-right hidden-xs">
                         <?php
                         //fixed by oppo webiprog.com   MAR-164 move logo 14.12.2017
                         if($sub == 'bellfor' || !$sub ) { ?>
