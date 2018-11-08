@@ -2743,6 +2743,7 @@ div#shipping-terms {
         max-width: 473.5px;
         height: 400px;
         overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
