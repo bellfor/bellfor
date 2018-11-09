@@ -26,6 +26,8 @@ $_['text_trial_description'] = 'U betaalt %s elke %d %s(en) gedurende %d betalin
 $_['text_payment_description'] = '%s elke %d %s(en) gedurende %d betaling(en).';
 $_['text_payment_cancel'] 		= 'U betaalt %s elke %d %s(en) tot het volledige bedrag is voldaan.';
 
+$_['count_item']		= ' Product(en)';
+
 // Column
 $_['column_image']    = 'Afbeelding';
 $_['column_name']     = 'Product';

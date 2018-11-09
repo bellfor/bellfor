@@ -34,6 +34,8 @@ $_['text_trial_description']	= '%s jede(n) %d %s(s) für %d Zahlung(en) dann ';
 $_['text_payment_description']	= '%s jede(n) %d %s(s) für %d Zahlung(en)';
 $_['text_payment_until_canceled_description'] = '%s jede(n) %d %s(s) bis Stornierung';
 
+$_['count_item']		= ' Produkt';
+
 // Column
 $_['column_image']      		= 'Bild';
 $_['column_name']       		= 'Name';

@@ -3,7 +3,7 @@
         <img src="catalog/view/theme/default/image/icon-grey-basket-big.png" class="icon-basket">
         <div class="shopping-cart text-right">
             <div class="shopping-cart-text">
-                <span id="cart-text"><?php echo $text_cart; ?></span> <span id="cart-items"><?php echo $text_items; ?></span>
+                <span id="cart-text"><?php echo $text_cart; ?></span> <div id="cart-items"><?php echo $text_items; ?></div>
             </div>
         </div>
     </a>
@@ -11,7 +11,7 @@
         <img src="catalog/view/theme/default/image/icon-grey-basket-big.png" style="float: left;" class="icon-basket">
         <div class="shopping-cart text-right">
             <div class="shopping-cart-text" style="float: left;">
-                <span id="cart-items"><?php echo $count_item; ?></span>
+                <span id="cart-items-mobile"><?php echo $count_item; ?></span>
             </div>
         </div>
     </a>
