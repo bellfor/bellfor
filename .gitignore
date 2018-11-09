@@ -38,3 +38,4 @@ php-error.log
 description/php-error.log
 .user.ini
 jtlconnector/db/connector.s3db
+edgar/error_log
