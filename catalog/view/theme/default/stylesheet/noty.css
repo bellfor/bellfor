@@ -10,10 +10,11 @@
 #noty_layout__center,
 #noty_layout__centerLeft,
 #noty_layout__centerRight {
-    position: fixed;
+    position: absolute;
+    bottom: 50%;
     margin: 0;
     padding: 0;
-    z-index: 9999999;
+    z-index: 9999999999;
     -webkit-transform: translateZ(0) scale(1, 1);
     transform: translateZ(0) scale(1, 1);
     -webkit-backface-visibility: hidden;
@@ -77,7 +78,7 @@
 }
 
 #noty_layout__center {
-    top: 50%;
+    top: 30%;
     left: 50%;
     /*width: 325px;*/
     -webkit-transform: translate(-webkit-calc(-50% - .5px), -webkit-calc(-50% - .5px)) translateZ(0) scale(1, 1);
@@ -349,7 +350,23 @@
     top: 0;
     left: 0;
 }
-.related-shadow-box:hover{
+.noty_theme__mint.noty_type__success a.related-btn-cart {
+    background-color: #7e842e;
+    background-image: url(/catalog/view/theme/default/image/gradient-reflection.png);
+    background-position: left center;
+    background-repeat: repeat-x;
+    border: 1px solid #7e842e;
+    color: #FFF;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 4px 10px;
+    text-decoration: none;
+    margin-top: 15px;
+}
+.related-shadow-box:hover {
     box-shadow: 5px 5px 7px 0px #d5d5d5;
     border-radius: 5px;
     border: 1px solid #d5d5d5;
@@ -372,6 +389,10 @@
 }
 .height-title {
     height: 56px;
+}
+.size-img {
+    width: 22px;
+    padding-bottom: 3px;
 }
 @media (max-width: 1530px) {
     .height-title {
@@ -415,6 +436,9 @@
     }
 }
 @media (max-width: 767px) {
+    .size-img {
+        width: 15px;
+    }
     .related-title{
         font-size: 14px;
     }

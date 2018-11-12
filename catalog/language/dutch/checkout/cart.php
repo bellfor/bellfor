@@ -3,7 +3,7 @@
 $_['heading_title']         = 'Winkelwagen';
 
 // Text
-$_['text_success']     	     = 'U heeft <a href="%s">%s</a> in uw <a href="%s">winkelwagen</a> geplaatst.';
+$_['text_success']     	     = 'U heeft <a href="%s">%s</a> in uw <a href="%s" style="white-space: nowrap;"><img src="catalog/view/theme/default/image/icon-grey-basket-big.png" class="icon-basket size-img">winkelwagen</a> geplaatst.';
 $_['text_remove']            = 'Succes: Uw winkelwagen is aangepast!';
 $_['text_login']             = 'U moet <a href="%s">inloggen</a> of u <a href="%s">registreren</a> om de prijzen te bekijken!';
 $_['text_items']             = '%s product(en) - %s';
@@ -26,7 +26,8 @@ $_['text_trial_description'] = 'U betaalt %s elke %d %s(en) gedurende %d betalin
 $_['text_payment_description'] = '%s elke %d %s(en) gedurende %d betaling(en).';
 $_['text_payment_cancel'] 		= 'U betaalt %s elke %d %s(en) tot het volledige bedrag is voldaan.';
 
-$_['count_item']		= ' Product(en)';
+$_['count_item']		     = ' Product(en)';
+$_['button_go_cart']		 = 'Naar winkelwagen';
 
 // Column
 $_['column_image']    = 'Afbeelding';
