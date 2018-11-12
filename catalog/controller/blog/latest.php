@@ -17,7 +17,8 @@ class ControllerBlogLatest extends Controller {
 			$sort = $this->request->get['sort'];
 			$this->document->setRobots('noindex,follow');
 		} else {
-			$sort = 'p.date_added';
+//			$sort = 'p.date_added';
+			$sort = 'p.viewed';
 		}
 		
 
