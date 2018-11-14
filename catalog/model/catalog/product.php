@@ -239,6 +239,9 @@ class ModelCatalogProduct extends Model {
         if (in_array(65, $filters) || in_array(66, $filters)) {
             $temp_product_data[] = $this->filterExceptions(array(145, 167));
         }
+        if (in_array(66, $filters)) {
+            $temp_product_data[] = $this->filterExceptions(array(180, 112));
+        }
 
         if (!empty($data['filter_filter']) && !isset($data['check'])) {
 
@@ -642,5 +645,11 @@ class ModelCatalogProduct extends Model {
         }
 
         return $result;
+    }
+
+    public function getProductCustomLinks($product_id) {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_custom_links` WHERE product_id = '" . (int)$product_id . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        return $query->rows;
     }
 }
