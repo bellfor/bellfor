@@ -31,6 +31,9 @@ $_['text_trial_description'] 	              = '%s every %d %s(s) for %d payment(
 $_['text_payment_description'] 	              = '%s every %d %s(s) for %d payment(s)';
 $_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
 
+$_['count_item']		       = ' item(s)';
+$_['button_go_cart']		   = 'To the cart';
+
 // Column
 $_['column_image']          = 'Image';
 $_['column_name']           = 'Product Name';
