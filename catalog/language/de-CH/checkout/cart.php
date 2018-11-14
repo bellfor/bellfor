@@ -11,7 +11,7 @@
 $_['heading_title']				= 'Warenkorb';
 
 // Text
-$_['text_success']				= '<a href="%s">%s</a> wurde dem <a href="%s" style="white-space: nowrap;"><img src="catalog/view/theme/default/image/icon-grey-basket-big.png" class="icon-basket size-img">Warenkorb</a> hinzugefügt.';
+$_['text_success']				= '<a href="%s">%s</a> wurde erfolgreich hinzugefügt.';
 $_['text_remove']				= 'Warenkorb erfolgreich aktualisiert.';
 $_['text_login']				= 'Um Preise zu sehen bitte entweder <a href="%s">anmelden</a> oder <a href="%s">registrieren</a>.';
 $_['text_items']				= '%s Artikel - %s';

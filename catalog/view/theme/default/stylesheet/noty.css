@@ -365,6 +365,10 @@
     padding: 4px 10px;
     text-decoration: none;
     margin-top: 15px;
+    opacity: 0.8;
+}
+.noty_theme__mint.noty_type__success a.related-btn-cart:hover {
+    opacity: 1;
 }
 .related-shadow-box:hover {
     box-shadow: 5px 5px 7px 0px #d5d5d5;
