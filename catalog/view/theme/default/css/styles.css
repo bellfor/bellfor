@@ -3,22 +3,69 @@ body.TplPDF {
 	background: #fff;
 	}
 
-/* Eigenschaften für alle "h" Elemente */
-h1, h2, h3, h4{
-	padding: 0px;
-	margin: 0px;
-	text-transform:uppercase;
+/* Eigenschaften fï¿½r alle "h" Elemente */
+/*h1, h2, h3, h4{*/
+	/*padding: 0px;*/
+	/*margin: 0px;*/
+	/*text-transform:uppercase;*/
+/*}*/
+/*h1, h2{*/
+	/*font-size: 24px;*/
+	/*font-weight: bold;*/
+	/*margin-bottom: 10px;*/
+/*}*/
+
+/*h1{*/
+	/*margin-bottom: 30px;*/
+/*}*/
+h1 {
+	color: #7e842e;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	font-style: normal;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
-h1, h2{
-	font-size: 24px;
-	font-weight: bold;
+h2 {
+	color: #6f6f6f;
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
 	margin-bottom: 10px;
+	margin-top: 20px;
+	text-transform: unset;
 }
-
-h1{
-	margin-bottom: 30px;
+h3 {
+	color: #6f6f6f;
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	margin-bottom: 13px;
+	margin-top: 13px;
+	text-align: start;
+	text-decoration: none;
+	text-transform: unset;
 }
-
+h4 {
+	color: #6f6f6f;
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 700;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-transform: unset;
+}
+h5 {
+	color: #6f6f6f;
+	margin-bottom: 15px;
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: 600;
+}
 
 #content_inhaltstpl h3.fragen_headline
 {
@@ -26,24 +73,24 @@ h1{
     margin: 50px 0 25px;
 }
 
-/* Eigenschaften für alle "img" Elemente */
+/* Eigenschaften fï¿½r alle "img" Elemente */
 img	{
 	border: 0px;
 	}																	
 
-/* Eigenschaften für alle "form" Elemente */
+/* Eigenschaften fï¿½r alle "form" Elemente */
 form {
 	padding: 0px; 
 	margin: 0px;
 	}
 
-/* Eigenschaften für alle "label" Elemente */
+/* Eigenschaften fï¿½r alle "label" Elemente */
 label {
 	padding: 0px; 
 	margin: 0px;
 	}	
 
-/* Eigenschaften für alle "input" Elemente des Types "text" und "password", "textarea" und "select" */
+/* Eigenschaften fï¿½r alle "input" Elemente des Types "text" und "password", "textarea" und "select" */
 
 input[type=text],
 input[type=password],
@@ -55,7 +102,7 @@ select{
 	outline:none;
 }
 
-/* Eigenschaften für alle "input" Elemente des Types "submit" und "textarea" */
+/* Eigenschaften fï¿½r alle "input" Elemente des Types "submit" und "textarea" */
 
 input[type=submit],
 input[type=button],
@@ -72,20 +119,20 @@ button.no_style{
 	padding: 0;
 }
 
-/* Eigenschaften für alle "p" Elemente */
+/* Eigenschaften fï¿½r alle "p" Elemente */
 p {
 	padding: 0px; 
 	margin: 0px;
 	}
 	
-/* Eigenschaften für alle "ul" Elemente */
-ul {
-	padding: 0px; 
-	margin: 0px;
-	list-style: none;
-	}	
+/* Eigenschaften fï¿½r alle "ul" Elemente */
+/*ul {*/
+	/*padding: 0px; */
+	/*margin: 0px;*/
+	/*list-style: none;*/
+	/*}	*/
 
-/* Eigenschaften für alle "table" und "td" Elemente */
+/* Eigenschaften fï¿½r alle "table" und "td" Elemente */
 table {
 	margin: 0px;
 	padding: 0px;
@@ -106,7 +153,7 @@ td {
 }
 
 	
-/* Eigenschaften für alle "a" Elemente */
+/* Eigenschaften fï¿½r alle "a" Elemente */
 a,
 a:link, 
 a:visited, 
@@ -146,7 +193,7 @@ p.text a, p.text2 a
 }
 
 
-/* Styles für die Fehlermeldungen */
+/* Styles fï¿½r die Fehlermeldungen */
 .box_notify,
 .box_error,
 .box_success,
@@ -483,7 +530,7 @@ td.trusted_shops_td_footer input {
 	}
 
 /*##########################################################################################*/
-/* Styles für Buttons */
+/* Styles fï¿½r Buttons */
 /*##########################################################################################*/
 .button,
 .button_back {
@@ -505,7 +552,7 @@ td.trusted_shops_td_footer input {
 	border: 1px solid #000000;
 }
 
-/* Weiter-Button mit runden Ecken & Pfeilen für Input-Elemente in grau */
+/* Weiter-Button mit runden Ecken & Pfeilen fï¿½r Input-Elemente in grau */
 div.button_next {
 	background: url(../images/web/backgrounds/btn_next_left_cornor.png) left top no-repeat;
 	padding: 0px 0px 0px 9px;
@@ -764,7 +811,7 @@ a.button_back:hover {
 	text-decoration:none;
 }
 
-/* Styles für die Statusanzeige des Bestellablaufes  */
+/* Styles fï¿½r die Statusanzeige des Bestellablaufes  */
 .checkout_state {
 	margin: 0px 0px 60px 0px;
 	height: 50px;
@@ -816,7 +863,7 @@ a.button_back:hover {
 }
 
 
-/* Styles für die Eigenschaft Clear  */
+/* Styles fï¿½r die Eigenschaft Clear  */
 .clear {
 	clear: both; 
 	padding: 0px !important; 
@@ -843,7 +890,7 @@ a.button_back:hover {
 	}
 
 
-/* Styles für die Liste zur Auswahl der Lieferadresse  */
+/* Styles fï¿½r die Liste zur Auswahl der Lieferadresse  */
 div.combined_address {
 	padding: 10px 0px 0px 20px;	
 }
@@ -919,7 +966,7 @@ ul.combined_address div.btn_next {
 	margin-bottom: 5px;
 }
 
-/* Styles für das dreispaltige (bzw. zweispaltige beim Checkout) Grundgerüst  */
+/* Styles fï¿½r das dreispaltige (bzw. zweispaltige beim Checkout) Grundgerï¿½st  */
 #column_left {
 	padding: 0px; 
 	margin: 0;
@@ -957,7 +1004,7 @@ ul.combined_address div.btn_next {
 	}
 
 
-/* Styles für die 2spaltigkeit im Contentbereich */
+/* Styles fï¿½r die 2spaltigkeit im Contentbereich */
 .content_column_right {
 	float: right;
 	width: 586px;	
@@ -976,7 +1023,7 @@ ul.combined_address div.btn_next {
 }
 
 
-/* Styles für das dreispaltige (bzw. zweispaltige beim Checkout) Grundgerüst  */
+/* Styles fï¿½r das dreispaltige (bzw. zweispaltige beim Checkout) Grundgerï¿½st  */
 .AddrAdditionalInfos {
 	width: 378px;
 	margin: 0px 0px 20px 0px;
@@ -1214,7 +1261,7 @@ ul.combined_address div.btn_next {
 
 
 /*###############################################################################################################*/
-/* Styleangaben für die Inhalts- und Formular-Seiten */
+/* Styleangaben fï¿½r die Inhalts- und Formular-Seiten */
 /*###############################################################################################################*/
 #content_inhaltstpl {
     margin: 0 auto;
@@ -1424,7 +1471,7 @@ p.h_filterbox {
 
 
 
-/* Allgemeine Styles für floatende Elemente */
+/* Allgemeine Styles fï¿½r floatende Elemente */
 
 .float_left {
 	float: left !important;
@@ -1482,7 +1529,7 @@ h2.pr_name {
 	color: #000000;
 }
 
-/* Styles für Überschriften */
+/* Styles fï¿½r ï¿½berschriften */
 .hauptueberschrift {
 	background: #e3e3e3;
 	color: #000000;
@@ -1493,7 +1540,7 @@ h2.pr_name {
 
 
 
-/* Styles für die Suchmaschinenzeile  */
+/* Styles fï¿½r die Suchmaschinenzeile  */
 .head_suma {
 	background: #fff;
 	margin: 0px auto 10px auto;
@@ -1506,7 +1553,7 @@ h2.pr_name {
 	font-size: 11px;
 	}
 
-/* Styles für die Darstellung der OrderHistoryData auf dem Template ws_order_history */
+/* Styles fï¿½r die Darstellung der OrderHistoryData auf dem Template ws_order_history */
 .historydata {
 	width: 475px;
 	height: auto;
@@ -1517,7 +1564,7 @@ h2.pr_name {
 }
 
 
-/* Styles für Eingabefelder */
+/* Styles fï¿½r Eingabefelder */
 .inputfield {
 	border: 1px solid #999;
 	font-size: 11px; 
@@ -1783,7 +1830,7 @@ select
 	text-decoration: none;
 }
 
-/* Großbild */
+/* Groï¿½bild */
 .colorbox_mbs {
 	height:100%;
 }
@@ -3513,7 +3560,7 @@ a.CatSortAscPriceUp_selected {
 
 
 
-/* Tabelle für die Spaltigkeit der Buttons */
+/* Tabelle fï¿½r die Spaltigkeit der Buttons */
 .table_button {
 	width: 100%;
 	margin: 20px 0px 20px 0px;
@@ -3539,7 +3586,7 @@ a.CatSortAscPriceUp_selected {
 	text-align:left;
 }
 
-/* Styles für Textangaben  */
+/* Styles fï¿½r Textangaben  */
 .text_marked	 {
 	font-weight: bold; 
 	}
@@ -3565,7 +3612,7 @@ a.CatSortAscPriceUp_selected {
 
 
 
-/* Kasten für die Darstellung der TopNavigation */
+/* Kasten fï¿½r die Darstellung der TopNavigation */
 .topnavi_search {
 	clear: both;
 	margin: 0px 0px 20px 0px;
@@ -3713,7 +3760,7 @@ a.CatSortAscPriceUp_selected {
 	float: left;
 	margin: 0px 10px 0px 0px;
 }
-/* Drop-Down-Menü  */
+/* Drop-Down-Menï¿½  */
 
 .ws_menu .wrapper.produkt_menu
 {
@@ -4071,7 +4118,7 @@ a.CatSortAscPriceUp_selected {
 
 
 
-/* Begrenzungs-DIV für die PDF-Ansicht */
+/* Begrenzungs-DIV fï¿½r die PDF-Ansicht */
 #wrapper_pdf {
 	width:650px; 
 	padding: 10px; 
@@ -4096,7 +4143,7 @@ a.CatSortAscPriceUp_selected {
 	margin: 0px 0px 15px 0px;
 }
 
-/* Styles für die PDF-Ansicht */
+/* Styles fï¿½r die PDF-Ansicht */
 
 .seiteninhalt.produkt_einzel_ansicht.pdf .produkt-details .content_links
 {
@@ -4137,7 +4184,7 @@ a.CatSortAscPriceUp_selected {
 	color: #87856E !important;
 }
 
-/* Styles für die Druck-Ansicht */
+/* Styles fï¿½r die Druck-Ansicht */
 
 body.druck
 {
@@ -4584,7 +4631,7 @@ body.druck
 	border: 1px solid #000;
 	}
 
-/* Produktmenüpfad */
+/* Produktmenï¿½pfad */
 .cat_path	{
 	color: #87856E;
 	width: 920px;
@@ -4643,7 +4690,7 @@ a.cat_path:hover, a.cat_path:active
 	padding-left: 7px;
 }
 
-/* Div-Container für das Produktmenü */
+/* Div-Container fï¿½r das Produktmenï¿½ */
 #cat_ul	{
 	padding: 10px 0px 5px 0px; 
 	margin: 0px 0px 10px 0px; 
@@ -4652,7 +4699,7 @@ a.cat_path:hover, a.cat_path:active
 
 
 
-/* Tablelle für CrossLinks & CrossSellingL1nks */
+/* Tablelle fï¿½r CrossLinks & CrossSellingL1nks */
 .cross_links_table {
 	width: 100%;
 	margin: 20px 0px 20px 0px;
@@ -4902,7 +4949,7 @@ a.cat_path:hover, a.cat_path:active
 	}
 
 
-/* Styles für Zahlungsarten und Versandkosten */
+/* Styles fï¿½r Zahlungsarten und Versandkosten */
 .ws_deliverydiv_main,
 .ws_paymentdiv_main {
     margin: 0px 0px 0px 0px;
@@ -5079,7 +5126,7 @@ a.glossary_link:hover {
 	padding:4px;
 	}
 
-/* Fehlerstyles für die Produktbewertung */
+/* Fehlerstyles fï¿½r die Produktbewertung */
 .input_ok {
 	background-color:#FFFFFF;
 }
@@ -5089,7 +5136,7 @@ a.glossary_link:hover {
 	border: 1px solid #CC0000;
 }
 
-/* Javascript Container für die Funktion des Ein- und Ausblendens der Inhalte für Lieferadressen, Bankdaten und Kreditkartendaten (noscript und script Variante beachten)*/
+/* Javascript Container fï¿½r die Funktion des Ein- und Ausblendens der Inhalte fï¿½r Lieferadressen, Bankdaten und Kreditkartendaten (noscript und script Variante beachten)*/
 /*"Alle Anzeigen" & "Alle Ausblenden"*/
 #expansion {
 	text-align: right;
@@ -5184,7 +5231,7 @@ a.glossary_link:hover {
 	width: 135px;
 	}
 	
-/* Javascript Container für die Funktion des Ein- und Ausblendens der Inhalte für Lieferadressen, Bankdaten und Kreditkartendaten ENDE*/
+/* Javascript Container fï¿½r die Funktion des Ein- und Ausblendens der Inhalte fï¿½r Lieferadressen, Bankdaten und Kreditkartendaten ENDE*/
 
 /* Diese Klasse wird DIV-Containern gegeben welche nur bei aktiviertem JavaScript sichtbar sein sollen. Diese werden dann automatisch angezeigt */
 .jsonly {
@@ -5192,7 +5239,7 @@ a.glossary_link:hover {
 }
 
 /*###############################################################################################*/
-/* Menü für die Inhaltsseiten */
+/* Menï¿½ fï¿½r die Inhaltsseiten */
 /*###############################################################################################*/
 
 .menue_headline {
@@ -5253,7 +5300,7 @@ a.glossary_link:hover {
 	vertical-align: top;
 }
 
-/* Blättern von Listen/Produkten */
+/* Blï¿½ttern von Listen/Produkten */
 a.paging_link:link,
 a.paging_link:visited,
 a.paging_link:active {
@@ -5341,7 +5388,7 @@ a.paging_link:hover {
 	}
 
 	
-/* Styles für das Menü in der Kategorieansicht */
+/* Styles fï¿½r das Menï¿½ in der Kategorieansicht */
 
 .kategorie_ansicht .ws_menu ul,
 .kategorie_ansicht .ws_menu li
@@ -5497,7 +5544,7 @@ a.paging_link:hover {
 	margin: 0 0 0 15px;
 }
 
-/* Styles für die Produktendarstellung in der Kategorieansicht */
+/* Styles fï¿½r die Produktendarstellung in der Kategorieansicht */
 
 .kategorie_ansicht .schon_gewusst
 {
@@ -6139,7 +6186,7 @@ background:url(../images/web/kat_view_galerie.png) no-repeat;
 }
 
 
-/* Styles für die Produkteinzelansicht */
+/* Styles fï¿½r die Produkteinzelansicht */
 
 .sonderbuttons{
 	width: 54px;
@@ -6589,7 +6636,7 @@ a.pr_rezept_button:hover .rezept_info
 	float: right;
 }
 
-/* Styles für die Darstellung der 6er-Pack auf der Produkteinzelansicht*/
+/* Styles fï¿½r die Darstellung der 6er-Pack auf der Produkteinzelansicht*/
 
 .dosen .pr_depvariation_box{
 	width: 265px;
@@ -6619,7 +6666,7 @@ a.pr_rezept_button:hover .rezept_info
 	background-image: url("../images/web/pr_menge_sparpack_44.png");
 }
 
-/*Testmodus grüne Buttons für Sparpack Sixpack*/
+/*Testmodus grï¿½ne Buttons fï¿½r Sparpack Sixpack*/
 .gruen .dosen .pr_depvariation_box .menge .bg_wrapper.sixpack{
 	background-image: url("../images/web/pr_menge_ecke_sparpack_44gruen.png");
 }
@@ -6635,7 +6682,7 @@ a.pr_rezept_button:hover .rezept_info
 .gruen .dosen .pr_depvariation_box .menge .bg_wrapper.selected a{
 	background-image: url("../images/web/pr_menge_active_44.png");
 }
-/*ENDE - Testmodus grüne Buttons für Sparpack Sixpack - ENDE*/
+/*ENDE - Testmodus grï¿½ne Buttons fï¿½r Sparpack Sixpack - ENDE*/
 .dosen .pr_depvariation_box .menge .bg_wrapper.selected{
 	background-image: url("../images/web/pr_menge_ecke_active_44.png");
 }
@@ -6781,7 +6828,7 @@ html .produkt-details .content_links ul.tabs li.active a
 	width: 708px;
 }
 
-/* Styles für Produkt-Details rechte Spalte */
+/* Styles fï¿½r Produkt-Details rechte Spalte */
 
 .produkt-details .content_rechts .box1,
 .produkt-details .content_rechts .box2,
@@ -6797,7 +6844,7 @@ html .produkt-details .content_links ul.tabs li.active a
 }
 
 
-/* "Element für Weiterempfehlen, Fragen zum Produkt etc. */
+/* "Element fï¿½r Weiterempfehlen, Fragen zum Produkt etc. */
 .pr_use_element {
 	width: 735px;
 	height: 35px;
@@ -6838,7 +6885,7 @@ html .produkt-details .content_links ul.tabs li.active a
 	cursor: pointer;
 }
 
-/* "Tabelle für Variationen (nur bei Platzierung im Template durch ~PR-Variations~) */
+/* "Tabelle fï¿½r Variationen (nur bei Platzierung im Template durch ~PR-Variations~) */
 .pr_var_table {
 	border:1px dotted #cccccc; 
 	margin-top:6px; 
@@ -7203,7 +7250,7 @@ html .produkt-details .content_links ul.tabs li.active a
 
 
 
-/* Informationskasten für den Designer unten auf den Templates */
+/* Informationskasten fï¿½r den Designer unten auf den Templates */
 .testmodus{
 	background-color: #eca324;
     color: #fff;
@@ -7301,7 +7348,7 @@ p.templateinfo_head {
 	z-index: 1000; 
 }
 
-/* Adressfelder für Wunschliste (automatisch generiert)*/
+/* Adressfelder fï¿½r Wunschliste (automatisch generiert)*/
 .wishlist_addr_table  {
 	width: 100%;
 	margin: 20px 0px 20px 0px;
@@ -7364,7 +7411,7 @@ p.templateinfo_head {
 	background: #FFFF80;
 	}
 
-/* eMail versenden für Wunschliste (nicht automatisch generiert) */
+/* eMail versenden fï¿½r Wunschliste (nicht automatisch generiert) */
 .wishlist_email_text {
 	}
 	
@@ -7627,7 +7674,7 @@ p.templateinfo_head {
 	padding: 5px;
 	}
 	
-/* ***** Für Partnerprogramm "wsaffiluser" ***** */
+/* ***** Fï¿½r Partnerprogramm "wsaffiluser" ***** */
 #wsaffiluser #menu_oben {
 	margin: 0px 0px 0px 0px;
 	}
@@ -7636,7 +7683,7 @@ p.templateinfo_head {
 	height: 160px;
 	}
 
-/*von V7 übernommen:*/	
+/*von V7 ï¿½bernommen:*/	
 .wsaffil_paging_table			{}
 .wsaffil_pagingcell_left		{}
 .wsaffil_pagingcell_middle		{padding:0px 5px 0px 5px;}
@@ -7647,7 +7694,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 .wsaffil_paging_text			{font-size:12px; text-decoration:none; font-weight:bold; margin:0px 2px 0px 2px;}
 .wsaffil_headline				{ margin: 10px 0px 10px 0px;}
 .wsaffil_headline	td			{color: #FFFFFF;font-weight: bold; padding: 5px 10px 5px 10px; font-size: 12px; background-color: #F5A000;}
-/* ***** Für Partnerprogramm "wsaffiluser" ENDE ***** */
+/* ***** Fï¿½r Partnerprogramm "wsaffiluser" ENDE ***** */
 
 /* Colorbox */
 #colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; z-index:9999;}
@@ -7723,7 +7770,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
     font-size: 11px;
 }
 
-/*Design für die Tierdaten in Bestellprozess*/ 
+/*Design fï¿½r die Tierdaten in Bestellprozess*/ 
 
 .adress_combined .tier_1
 {
@@ -7748,7 +7795,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 }
 
 
-/*Design für die Hover-Effekte bei den Besonderen Zutaten aus dem ws-csutomer-bereich */
+/*Design fï¿½r die Hover-Effekte bei den Besonderen Zutaten aus dem ws-csutomer-bereich */
 .box_right_prod_icons_ul{
 	list-style-type: none; 
 	width:250px;
@@ -7825,7 +7872,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 	
 
 
-/*Styles für "Über uns" */
+/*Styles fï¿½r "ï¿½ber uns" */
 
 .ueber_uns .zutat 
 {
@@ -7955,7 +8002,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
     text-align: center;
 	}
 
-/* Über uns - Team */
+/* ï¿½ber uns - Team */
 
 .ueber_uns .image_map_team div.area_team
 {
@@ -8107,7 +8154,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 }
 
 
-/* Über uns - Gut zu wissen - Hund */
+/* ï¿½ber uns - Gut zu wissen - Hund */
 
 .ueber_uns .image_map_hund
 {
@@ -8247,7 +8294,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 }
 
 
-/* Über uns - Gut zu wissen - Katze */
+/* ï¿½ber uns - Gut zu wissen - Katze */
 
 .ueber_uns .image_map_katze
 {
@@ -8402,7 +8449,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 }
 
 
-/* Über uns - Jobs */
+/* ï¿½ber uns - Jobs */
 
 .jobanzeige{
   background-color: #FFFFFF;
@@ -8431,7 +8478,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 
 
 
-/* Über uns - Was fütterst du */
+/* ï¿½ber uns - Was fï¿½tterst du */
 
 .wfd.ueber_uns .wfd_img{
 	margin-left: 70px;
@@ -8495,7 +8542,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
 
 
 
-/* Design für den Geo-IP Layer, Bonuspunkte Layer, Auktions Layer und Produkt-Quicklogin*/	
+/* Design fï¿½r den Geo-IP Layer, Bonuspunkte Layer, Auktions Layer und Produkt-Quicklogin*/	
 	
 #redirect_layer,
 #bonuspoints_layer,
@@ -8582,7 +8629,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
     padding: 0;
 }
 
-/* Styles für den Redirect-Layer */
+/* Styles fï¿½r den Redirect-Layer */
 #redirect_layer .text.float_left{
 /*	width: 385px;*/
 	}
@@ -8677,7 +8724,7 @@ a.wsaffil_paging_link			{font-size:12px; text-decoration:none; font-weight:bold;
     width: 140px;
 	}
 	
-/* Styles für den Dosenartikel-Layer */
+/* Styles fï¿½r den Dosenartikel-Layer */
 
 #dosen_layer{
 	display: none;
@@ -8732,7 +8779,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d61d26', end
 	font-size: 24px;
 }
 
-/* Styles für den Dosenartikel-Tooltip */
+/* Styles fï¿½r den Dosenartikel-Tooltip */
 .pr_quantity{
 	position: relative;
 }
@@ -8795,7 +8842,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d61d26', end
 }
 
 	
-/* Styles für die SuperUser-Funktion */
+/* Styles fï¿½r die SuperUser-Funktion */
 
 .super_user_info{
 	background-color: #f5f3e6;
