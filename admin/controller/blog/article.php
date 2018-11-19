@@ -585,6 +585,17 @@ class ControllerBlogArticle extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
+        $article_custom_links = $this->model_blog_article->getArticleCustomLinks($this->request->get['article_id']);
+
+        if (!empty($article_custom_links)) {
+            foreach ($article_custom_links as $custom_link) {
+                $data['custom_links'][$custom_link['language_id']][] = array(
+                    'name' => $custom_link['name'],
+                    'href' => $custom_link['href']
+                );
+            }
+        }
+
 		if (isset($this->request->post['article_description'])) {
 			$data['article_description'] = $this->request->post['article_description'];
 		} elseif (isset($this->request->get['article_id'])) {

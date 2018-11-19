@@ -57,5 +57,11 @@ class ModelBlogCategory extends Model {
 	public function getTotalCategoriesByCategoryId($parent_id = 0) {
 		return count($this->getCategories((int)$parent_id));
 	}
+
+    public function getBlogLatestCustomLinks() {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "blog_latest_custom_links` WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        return $query->rows;
+    }
 }
 ?>

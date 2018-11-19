@@ -29,6 +29,7 @@
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
             <li><a href="#tab-feed" data-toggle="tab">Product feed</a></li>
+            <li><a href="#tab-custom-links" data-toggle="tab">Custom link footer</a></li>
             <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
             <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
             <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
@@ -131,6 +132,55 @@
                               <div class="text-danger"><?php echo $error_product_parent_id; ?></div>
                           <?php } ?>
                       </div>
+                  </div>
+              </div>
+              <div class="tab-pane" id="tab-custom-links">
+                  <div class="form-group">
+                  <ul class="nav nav-tabs" id="language-custom-link">
+                      <?php foreach ($languages as $language) { ?>
+                          <li><a href="#language-custom-link<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
+                      <?php } ?>
+                  </ul>
+                  <div class="tab-content">
+                      <?php foreach ($languages as $language) { ?>
+                          <div class="tab-pane" id="language-custom-link<?php echo $language['language_id']; ?>">
+                          <div class="table-responsive">
+                              <table id="custom-links<?php echo $language['language_id']; ?>" class="table table-striped table-bordered table-hover">
+                                  <thead>
+                                  <tr>
+                                      <td class="text-left">Name Link</td>
+                                      <td class="text-left">Link</td>
+                                      <td></td>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <?php $custom_link_row = 0; ?>
+                                  <?php foreach ($custom_links[$language['language_id']] as $custom_link) { ?>
+                                      <tr class="custom-link<?php echo $language['language_id']; ?>" id="custom_link_row<?php echo $custom_link_row; ?>_<?php echo $language['language_id']; ?>">
+                                          <td class="text-left" style="width: 40%;">
+                                              <input type="text" name="custom_links[<?php echo $language['language_id']; ?>][<?php echo $custom_link_row; ?>][name]" value="<?php echo $custom_link['name']; ?>" placeholder="Enter name link" class="form-control" />
+                                          </td>
+                                          <td class="text-left">
+                                              <div class="input-group">
+                                                  <input name="custom_links[<?php echo $language['language_id']; ?>][<?php echo $custom_link_row; ?>][href]" value="<?php echo $custom_link['href']; ?>" placeholder="Enter link" class="form-control">
+                                              </div>
+                                          </td>
+                                          <td class="text-left"><button type="button" onclick="$('#custom_link_row<?php echo $custom_link_row; ?>_<?php echo $language['language_id']; ?>').remove();" data-toggle="tooltip" title="Delete link" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                                      </tr>
+                                      <?php $custom_link_row++; ?>
+                                  <?php } ?>
+                                  </tbody>
+                                  <tfoot>
+                                  <tr>
+                                      <td colspan="2"></td>
+                                      <td class="text-left"><button id="button-add-row<?php echo $language['language_id']; ?>" type="button" onclick="addCustomLinkRow(<?php echo $language['language_id']; ?>, <?php echo $custom_link_row; ?>);" data-toggle="tooltip" title="Added custom link" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                                  </tr>
+                                  </tfoot>
+                              </table>
+                          </div>
+                          </div>
+                      <?php } ?>
+                  </div>
                   </div>
               </div>
             <div class="tab-pane" id="tab-data">
@@ -1068,6 +1118,25 @@
       </div>
     </div>
   </div>
+    <script type="text/javascript">
+        function addCustomLinkRow(language_id, custom_link_row) {
+            html = '';
+                html += '<tr class="custom-link' + language_id + '" id="custom_link_row' + custom_link_row + '_' + language_id + '">';
+                html += '  <td class="text-left" style="width: 20%;"><input type="text" name="custom_links[' + language_id + '][' + custom_link_row + '][name]" value="" placeholder="Enter name link" class="form-control" /></td>';
+                html += '  <td class="text-left">';
+                html += '<div class="input-group"><input name="custom_links[' + language_id + '][' + custom_link_row + '][href]" value="" placeholder="Enter link" class="form-control"></div>';
+                html += '  </td>';
+                html += '  <td class="text-left"><button type="button" onclick="$(\'#custom_link_row' + custom_link_row + '_'+language_id+'\').remove(); minus('+custom_link_row+');" data-toggle="tooltip" title="Delete link" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+                html += '</tr>';
+            if (($('.custom-link' + language_id).size() + 1) <= 15){
+                $('#custom-links' + language_id + ' tbody ').append(html);
+                custom_link_row++;
+                $('#button-add-row' + language_id).replaceWith('<button id="button-add-row'+language_id+'" type="button" onclick="addCustomLinkRow('+language_id+', '+custom_link_row+');" data-toggle="tooltip" title="Added custom link" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>');
+            }else{
+                return false;
+            }
+        }
+    </script>
   <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
 $('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300});
@@ -1582,6 +1651,7 @@ $('.datetime').datetimepicker({
 //--></script>
   <script type="text/javascript"><!--
 $('#language-without-weight a:first').tab('show');
+$('#language-custom-link a:first').tab('show');
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
 //--></script></div>

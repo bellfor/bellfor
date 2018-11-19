@@ -26,4 +26,10 @@ class ModelCatalogInformation extends Model {
 			return 0;
 		}
 	}
+
+    public function getInformationCustomLinks($information_id) {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "information_custom_links` WHERE information_id = '" . (int)$information_id . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        return $query->rows;
+    }
 }

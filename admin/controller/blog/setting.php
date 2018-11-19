@@ -15,6 +15,12 @@ class ControllerBlogSetting extends Controller {
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+		    if (isset($this->request->post['custom_links'])) {
+                $this->load->model('blog/category');
+                $this->model_blog_category->editBlogLatestCustomLinks($this->request->post['custom_links']);
+		        unset($this->request->post['custom_links']);
+            }
+
 			$this->model_setting_setting->editSetting('configblog', $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -65,6 +71,10 @@ class ControllerBlogSetting extends Controller {
 		$data['tab_general'] = $this->language->get('tab_general');
 		$data['tab_option'] = $this->language->get('tab_option');
 		$data['tab_image'] = $this->language->get('tab_image');
+
+        $this->load->model('localisation/language');
+
+        $data['languages'] = $this->model_localisation_language->getLanguages();
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
@@ -133,6 +143,19 @@ class ControllerBlogSetting extends Controller {
 		$data['cancel'] = $this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL');
 
 		$data['token'] = $this->session->data['token'];
+
+		$this->load->model('blog/category');
+
+        $custom_links = $this->model_blog_category->getBlogLatestCustomLinks();
+
+        if (!empty($custom_links)) {
+            foreach ($custom_links as $custom_link) {
+                $data['custom_links'][$custom_link['language_id']][] = array(
+                    'name' => $custom_link['name'],
+                    'href' => $custom_link['href']
+                );
+            }
+        }
 		
 		if (isset($this->request->post['configblog_article_limit'])) {
 			$data['configblog_article_limit'] = $this->request->post['configblog_article_limit'];

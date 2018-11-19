@@ -399,6 +399,17 @@ class ControllerCatalogInformation extends Controller {
 
         $data['languages'] = $this->model_localisation_language->getLanguages();
 
+        $information_custom_links = $this->model_catalog_information->getInformationCustomLinks($this->request->get['information_id']);
+
+        if (!empty($information_custom_links)) {
+            foreach ($information_custom_links as $custom_link) {
+                $data['custom_links'][$custom_link['language_id']][] = array(
+                    'name' => $custom_link['name'],
+                    'href' => $custom_link['href']
+                );
+            }
+        }
+
         if (isset($this->request->post['information_description'])) {
             $data['information_description'] = $this->request->post['information_description'];
         } elseif (isset($this->request->get['information_id'])) {

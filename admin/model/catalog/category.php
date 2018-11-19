@@ -33,6 +33,16 @@ class ModelCatalogCategory extends Model {
 
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "category_path` SET `category_id` = '" . (int)$category_id . "', `path_id` = '" . (int)$category_id . "', `level` = '" . (int)$level . "'");
 
+        //Custom links
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "category_custom_links SET category_id = '" . (int)$category_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        ////////////////
+
 		if (isset($data['category_filter'])) {
 			foreach ($data['category_filter'] as $filter_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "category_filter SET category_id = '" . (int)$category_id . "', filter_id = '" . (int)$filter_id . "'");
@@ -144,6 +154,18 @@ class ModelCatalogCategory extends Model {
 			$this->db->query("REPLACE INTO `" . DB_PREFIX . "category_path` SET category_id = '" . (int)$category_id . "', `path_id` = '" . (int)$category_id . "', level = '" . (int)$level . "'");
 		}
 
+        //Custom link
+        $this->db->query("DELETE FROM " . DB_PREFIX . "category_custom_links WHERE category_id = '" . (int)$category_id . "'");
+
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "category_custom_links SET category_id = '" . (int)$category_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        /////////////
+
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
 
 		if (isset($data['category_filter'])) {
@@ -225,7 +247,8 @@ class ModelCatalogCategory extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category WHERE category_id = '" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_description WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "category_custom_links WHERE product_id = '" . (int)$category_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_to_store WHERE category_id = '" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_to_layout WHERE category_id = '" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$category_id . "'");
@@ -456,4 +479,10 @@ class ModelCatalogCategory extends Model {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_path WHERE path_id = '" . (int)$parent_id . "'");
 		return $query->rows;
 	}
+
+    public function getCategoryCustomLinks($category_id) {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "category_custom_links` WHERE category_id = '" . (int)$category_id . "'");
+
+        return $query->rows;
+    }
 }

@@ -1170,6 +1170,17 @@ class ControllerCatalogProduct extends Controller {
 
         }
 
+        $product_custom_links = $this->model_catalog_product->getProductCustomLinks($this->request->get['product_id']);
+
+        if (!empty($product_custom_links)) {
+            foreach ($product_custom_links as $custom_link) {
+                $data['custom_links'][$custom_link['language_id']][] = array(
+                    'name' => $custom_link['name'],
+                    'href' => $custom_link['href']
+                );
+            }
+        }
+
 		if (isset($this->request->post['image'])) {
 			$data['image'] = $this->request->post['image'];
 		} elseif (!empty($product_info)) {

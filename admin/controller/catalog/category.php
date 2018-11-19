@@ -379,6 +379,17 @@ class ControllerCatalogCategory extends Controller {
 			$data['parent_id'] = 0;
 		}
 
+        $category_custom_links = $this->model_catalog_category->getCategoryCustomLinks($this->request->get['category_id']);
+
+        if (!empty($category_custom_links)) {
+            foreach ($category_custom_links as $custom_link) {
+                $data['custom_links'][$custom_link['language_id']][] = array(
+                    'name' => $custom_link['name'],
+                    'href' => $custom_link['href']
+                );
+            }
+        }
+
 		$this->load->model('catalog/filter');
 
 		if (isset($this->request->post['category_filter'])) {

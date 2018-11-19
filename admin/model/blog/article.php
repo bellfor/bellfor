@@ -12,6 +12,16 @@ class ModelBlogArticle extends Model {
 
         $article_id = $this->db->getLastId();
 
+        //Custom links
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "article_custom_links SET article_id = '" . (int)$article_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        ////////////////
+
         if (isset($data['image'])) {
             $this->db->query("UPDATE " . DB_PREFIX . "article SET image = '" . $this->db->escape($data['image']) . "' WHERE article_id = '" . (int)$article_id . "'");
         }
@@ -170,6 +180,18 @@ class ModelBlogArticle extends Model {
             }
         }
 
+        //Custom link
+        $this->db->query("DELETE FROM " . DB_PREFIX . "article_custom_links WHERE article_id = '" . (int)$article_id . "'");
+
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "article_custom_links SET article_id = '" . (int)$article_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        /////////////
+
         $this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'article_id=" . (int)$article_id . "'");
 
         $this->cache->delete('seo_pro');
@@ -223,6 +245,7 @@ class ModelBlogArticle extends Model {
 
         $this->db->query("DELETE FROM " . DB_PREFIX . "article WHERE article_id = '" . (int)$article_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "article_description WHERE article_id = '" . (int)$article_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "article_custom_links WHERE article_id = '" . (int)$article_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "article_image WHERE article_id = '" . (int)$article_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "article_related WHERE article_id = '" . (int)$article_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "article_related WHERE related_id = '" . (int)$article_id . "'");
@@ -294,6 +317,12 @@ class ModelBlogArticle extends Model {
         }
 
         $query = $this->db->query($sql);
+
+        return $query->rows;
+    }
+
+    public function getArticleCustomLinks($article_id) {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "article_custom_links` WHERE article_id = '" . (int)$article_id . "'");
 
         return $query->rows;
     }

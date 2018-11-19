@@ -433,6 +433,12 @@ class ModelBlogArticle extends Model {
 		
 		return $article_data;
 	}
+
+    public function getArticleCustomLinks($article_id) {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "article_custom_links` WHERE article_id = '" . (int)$article_id . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        return $query->rows;
+    }
 		
 }
 ?>

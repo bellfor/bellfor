@@ -71,4 +71,10 @@ class ModelCatalogCategory extends Model {
 
 		return $query->row['total'];
 	}
+
+    public function getCategoryCustomLinks($category_id) {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "category_custom_links` WHERE category_id = '" . (int)$category_id . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        return $query->rows;
+    }
 }

@@ -340,4 +340,21 @@ class ModelBlogCategory extends Model {
 		
 		return $category_data;
 	}
+
+    public function editBlogLatestCustomLinks($data) {
+        $this->db->query("DELETE FROM " . DB_PREFIX . "blog_latest_custom_links");
+
+        foreach ($data as $language_id => $custom_links) {
+            foreach ($custom_links as $custom_link) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "blog_latest_custom_links SET language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+            }
+        }
+
+    }
+
+    public function getBlogLatestCustomLinks () {
+	    $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "blog_latest_custom_links`");
+
+	    return $query->rows;
+    }
 }

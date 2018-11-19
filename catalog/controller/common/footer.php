@@ -39,21 +39,43 @@ class ControllerCommonFooter extends Controller {
 			}
 		}
 
-		if ($this->request->server['REQUEST_URI'] == '/') {
-            foreach ($this->config->get('config_custom_link') as $result) {
-                if ($result) {
-                    $articles[] = array(
-                        'name' => $result['name'],
-                        'href' => $result['href']
-                    );
+		//Custom links for SEO footer
+        $data['articles'] = array();
 
-                }
-            }
+        if ($this->request->get['route'] == 'product/category' && isset($this->request->get['path'])) {
 
-            if (isset($articles)){
-                $data['articles'] = null;
-                $data['articles'] = array_chunk(array_slice($articles, 0, 15), 5);
-            }
+            $this->load->model('catalog/category');
+
+            $data['articles'] = $this->customLinks($this->model_catalog_category->getCategoryCustomLinks($this->request->get['path']));
+
+        } elseif ($this->request->get['route'] == 'product/product' && isset($this->request->get['product_id'])) {
+
+            $this->load->model('catalog/product');
+
+            $data['articles'] = $this->customLinks($this->model_catalog_product->getProductCustomLinks($this->request->get['product_id']));
+
+        } elseif ($this->request->get['route'] == 'blog/latest') {
+
+            $this->load->model('blog/category');
+
+            $data['articles'] = $this->customLinks($this->model_blog_category->getBlogLatestCustomLinks());
+
+        } elseif ($this->request->get['route'] == 'blog/article' && isset($this->request->get['article_id'])) {
+
+            $this->load->model('blog/article');
+
+            $data['articles'] = $this->customLinks($this->model_blog_article->getArticleCustomLinks($this->request->get['article_id']));
+
+        } elseif ($this->request->get['route'] == 'information/information' && isset($this->request->get['information_id'])) {
+
+            $this->load->model('catalog/information');
+
+            $data['articles'] = $this->customLinks($this->model_catalog_information->getInformationCustomLinks($this->request->get['information_id']));
+
+        } elseif ($this->request->get['route'] != 'checkout/cart' && $this->request->get['route'] != 'checkout/onepagecheckout' ) {
+
+            $data['articles'] = $this->customLinks($this->config->get('config_custom_link'));
+
         }
 
 		$data['contact'] = $this->url->link('information/contact');
@@ -101,4 +123,21 @@ class ControllerCommonFooter extends Controller {
 			return $this->load->view('default/template/common/footer.tpl', $data);
 		}
 	}
+
+	public function customLinks($custom_links) {
+	    $result = array();
+
+	    foreach ($custom_links as $custom_link) {
+            $articles[] = array(
+                'name' => $custom_link['name'],
+                'href' => $custom_link['href']
+            );
+        }
+
+        if (isset($articles)){
+            $result = array_chunk(array_slice($articles, 0, 15), 5);
+        }
+
+        return $result;
+    }
 }

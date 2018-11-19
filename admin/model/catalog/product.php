@@ -23,6 +23,8 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+
+		//Product feed
         if (isset($data['product_name_without_weight'])) {
             foreach ($data['product_name_without_weight'] as $language_id => $name_without_weight) {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "product_feed SET product_id = '" . (int)$product_id . "', parent_product_id = '" . (isset($data['product_parent_id']) ? $data['product_parent_id'] : '') . "', language_id = '" . (int)$language_id . "', name_without_weight = '" . $name_without_weight . "'");
@@ -30,6 +32,16 @@ class ModelCatalogProduct extends Model {
         } elseif (isset($data['product_parent_id'])) {
             $this->db->query("INSERT INTO " . DB_PREFIX . "product_feed SET product_id = '" . (int)$product_id . "', parent_product_id = '" . (int)$data['product_parent_id'] . "'");
         }
+
+        //Custom links
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "product_custom_links SET product_id = '" . (int)$product_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        ////////////////
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "product SET image = '" . $this->db->escape($data['image']) . "' WHERE product_id = '" . (int)$product_id . "'");
@@ -186,7 +198,7 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
-        ///////////////feed//////////////
+        //Product feed
         $this->db->query("DELETE FROM " . DB_PREFIX . "product_feed WHERE product_id = '" . (int)$product_id . "'");
 
         if (isset($data['product_name_without_weight'])) {
@@ -196,7 +208,18 @@ class ModelCatalogProduct extends Model {
         } elseif (isset($data['product_parent_id'])) {
             $this->db->query("INSERT INTO " . DB_PREFIX . "product_feed SET product_id = '" . (int)$product_id . "', parent_product_id = '" . (int)$data['product_parent_id'] . "'");
         }
-        ////////////////////////////////////////
+
+        //Custom link
+        $this->db->query("DELETE FROM " . DB_PREFIX . "product_custom_links WHERE product_id = '" . (int)$product_id . "'");
+
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "product_custom_links SET product_id = '" . (int)$product_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        /////////////
 		
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "product SET image = '" . $this->db->escape($data['image']) . "' WHERE product_id = '" . (int)$product_id . "'");
@@ -415,6 +438,7 @@ class ModelCatalogProduct extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_custom_links WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "product_feed WHERE product_id = '" . (int)$product_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "product_discount WHERE product_id = '" . (int)$product_id . "'");
@@ -474,6 +498,12 @@ class ModelCatalogProduct extends Model {
         $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_feed` WHERE product_id = '" . (int)$product_id . "'");
 
         return $query->rows;
+    }
+
+    public function getProductCustomLinks($product_id) {
+	    $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_custom_links` WHERE product_id = '" . (int)$product_id . "'");
+
+	    return $query->rows;
     }
 
 	public function getProductCatNames($product_id) {

@@ -12,6 +12,16 @@ class ModelCatalogInformation extends Model {
 
 		$information_id = $this->db->getLastId();
 
+        //Custom links
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "information_custom_links SET information_id = '" . (int)$information_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        ////////////////
+
 		foreach ($data['information_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "information_description SET information_id = '" . (int)$information_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
@@ -46,6 +56,18 @@ class ModelCatalogInformation extends Model {
 		$this->event->trigger('pre.admin.information.edit', $data);
 
 		$this->db->query("UPDATE " . DB_PREFIX . "information SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "', race_id = '" . (int)$data['race_id'] . "', status_consultant = '" . (int)$data['status_consultant'] . "', noindex = '" . (int)$data['noindex'] . "' WHERE information_id = '" . (int)$information_id . "'");
+
+        //Custom link
+        $this->db->query("DELETE FROM " . DB_PREFIX . "information_custom_links WHERE information_id = '" . (int)$information_id . "'");
+
+        if (isset($data['custom_links'])){
+            foreach ($data['custom_links'] as $language_id => $custom_links) {
+                foreach ($custom_links as $custom_link) {
+                    $this->db->query("INSERT INTO " . DB_PREFIX . "information_custom_links SET information_id = '" . (int)$information_id . "', language_id = '" . $language_id . "', name = '" . $custom_link['name'] . "', href = '" . $custom_link['href'] . "'");
+                }
+            }
+        }
+        /////////////
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "information_description WHERE information_id = '" . (int)$information_id . "'");
 
@@ -95,7 +117,8 @@ class ModelCatalogInformation extends Model {
 		$this->event->trigger('pre.admin.information.delete', $information_id);
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "information WHERE information_id = '" . (int)$information_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "information_description WHERE information_id = '" . (int)$information_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "information_custom_links WHERE information_id = '" . (int)$information_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "information_description WHERE information_id = '" . (int)$information_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "information_to_store WHERE information_id = '" . (int)$information_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "information_to_layout WHERE information_id = '" . (int)$information_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'information_id=" . (int)$information_id . "'");
@@ -161,6 +184,12 @@ class ModelCatalogInformation extends Model {
 			return $information_data;
 		}
 	}
+
+    public function getInformationCustomLinks($information_id) {
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "information_custom_links` WHERE information_id = '" . (int)$information_id . "'");
+
+        return $query->rows;
+    }
 
 	public function getInformationDescriptions($information_id) {
 		$information_description_data = array();
