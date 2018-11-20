@@ -311,7 +311,7 @@
                                                   </td>
                                                   <td class="text-left">
                                                       <div class="input-group">
-                                                          <input name="custom_links[<?php echo $language['language_id']; ?>][<?php echo $custom_link_row; ?>][href]" value="<?php echo $custom_link['href']; ?>" placeholder="Enter link" class="form-control">
+                                                          <input name="custom_links[<?php echo $language['language_id']; ?>][<?php echo $custom_link_row; ?>][href]" maxlength="60" value="<?php echo $custom_link['href']; ?>" placeholder="Enter link" class="form-control">
                                                       </div>
                                                   </td>
                                                   <td class="text-left"><button type="button" onclick="$('#custom_link_row<?php echo $custom_link_row; ?>_<?php echo $language['language_id']; ?>').remove();" data-toggle="tooltip" title="Delete link" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
