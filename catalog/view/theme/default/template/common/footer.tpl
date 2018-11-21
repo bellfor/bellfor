@@ -45,9 +45,9 @@
    <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="MailchimpModalLabel">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
-            <div class="modal-body" id="subscribeModalBody">
-               <h4 class="modal-title" id="subscribeModalLabel">Danke fürs anmeldung!</h4>
+            <div class="modal-body mailchimp-popup" id="subscribeModalBody">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <h2 class="modal-title" id="subscribeModalLabel">Danke fürs anmeldung!</h2>
             </div>
          </div>
       </div>
@@ -83,7 +83,7 @@ if(false) { ?>
         lid: 'a4ad26a3f6'
     };
 
-    // No edits below this line are required
+    // No edits below thmc_embed_signupis line are required
     var chimpPopupLoader = document.createElement("script");
     chimpPopupLoader.src = '//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js';
     chimpPopupLoader.setAttribute('data-dojo-config', 'usePlainJson: true, isDebug: false');
@@ -101,10 +101,18 @@ if(false) { ?>
     });
 //--></script>
 
-<?php }
+<?php } ?>
 // END fixed by oppo webiprog.com  12.02.2018 MAR-147
-; ?>
     <script type="text/javascript">
+        function visiblePopup() {
+            setTimeout(function () {
+                if ($('#mce-success-response').css('display') === 'block'){
+                    $('#mce-responses').css('display', 'block');
+                } else if ($('#mce-error-response').css('display') === 'block') {
+                    $('#mce-responses').css('display', 'block');
+                }
+            }, 2000);
+        }
         <?php echo file_get_contents("catalog/view/javascript/bootstrap/js/bootstrap.min.js");?>
     </script>
     <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />

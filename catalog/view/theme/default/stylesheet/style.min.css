@@ -2337,11 +2337,20 @@ div#cart-info {
 }
 
 #subscribeModalLabel {
-    float: left;
+    /*float: left;*/
     color: #7e842e;
-    font-size: 15px;
+    /*font-size: 15px;*/
     font-style: normal;
-    font-weight: 700
+    font-weight: 700;
+    position: inherit;
+    top: 40%;
+}
+
+.mailchimp-popup {
+    background-color: white;
+    border-radius: 5px;
+    height: 100px;
+    text-align: center;
 }
 
 .container_article .info_wrapper a, .container_article h1 {
