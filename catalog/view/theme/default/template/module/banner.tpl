@@ -15,7 +15,7 @@
     <?php if ($banner['link']) { ?>
     <?php
     $bannercount++;
-    $bannerautoPlay=3000;
+    $bannerautoPlay=6500;
 	$bannertransition="fade";
     ?>
     <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive" /></a>
@@ -28,7 +28,7 @@
 <?php
     if ($bannercount > 1) {
 	$bannertransition="fade";
-	$bannerautoPlay=3000;
+	$bannerautoPlay=6500;
     }else{
     $bannertransition="none";
 	$bannerautoPlay=0;
@@ -36,7 +36,7 @@
     ?>
 <script type="text/javascript"><!--
 $('#banner<?php echo $module; ?>').owlCarousel({
-	<?php echo $bannerautoPlay?'items: 6, autoPlay: 3000':'autoPlay: false' ; ?>,
+	<?php echo $bannerautoPlay?'items: 6, autoPlay: 6500':'autoPlay: false' ; ?>,
 	singleItem: true,
 	navigation: false,
 	pagination: false,
