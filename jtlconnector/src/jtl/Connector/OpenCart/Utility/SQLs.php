@@ -691,7 +691,7 @@ final class SQLs
     public static function paymentPaypalPlus($limit)
     {
         return sprintf('
-            SELECT o.order_id as id, o.order_id, o.date_added, o.total as amount, o.payer_id as transaction_id, o.payment_code
+            SELECT o.order_id as id, o.order_id, o.date_added, o.total * o.currency_value as amount, o.payer_id as transaction_id, o.payment_code
             FROM oc_order o 
             LEFT JOIN jtl_connector_link l ON o.order_id = l.endpointId AND l.type = %d
             WHERE payment_code = \'pp_plus\'

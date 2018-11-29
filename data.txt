@@ -1,1 +1,1 @@
-{"message":"Sorry. You have already receive coupon"}
+{"message":"Den Gutschein Code erhalten Sie per Email"}

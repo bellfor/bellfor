@@ -19,7 +19,9 @@ class Payment
         'cod'                     => PaymentTypes::TYPE_CASH_ON_DELIVERY,
         'amazon_login_pay'        => "pm_amazon_payments",
         'ksofort'                 => "pm_sofort",
-        'stripe'                  => PaymentTypes::TYPE_CREDITCALL
+        'stripe'                  => PaymentTypes::TYPE_CREDITCALL,
+        'sisowideal'              => "iDEAL",
+        'sisoweps'                => 'EPS'
     ];
 
     private static $standardPayment = "bank_transfer";
@@ -31,6 +33,7 @@ class Payment
             return self::$paymentMapping[$code];
 
         mail("edgar.haak@edd-on.de", "OpenCart: Neue PaymentCode", "Wichtig: Neue PaymentCode gefunden.\nCode: $code");
+
         return self::$paymentMapping[self::$standardPayment];
     }
 
