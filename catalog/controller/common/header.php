@@ -82,7 +82,6 @@ class ControllerCommonHeader extends Controller {
         $data['icon_shipping'] = $this->language->get('icon_shipping');
         $data['icon_money_back'] = $this->language->get('icon_money_back');
         $data['icon_phone_title'] = $this->language->get('icon_phone_title');
-        $data['icon_idealo'] = $this->language->get('icon_idealo');
 
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
@@ -104,6 +103,11 @@ class ControllerCommonHeader extends Controller {
         $data['config_money_back'] = $this->config->get('config_money_back');
 
         $data['store_id'] = $this->config->get('config_store_id');
+
+        if ($data['store_id'] == 3 || $data['store_id'] == 1) {
+            $data['icon_payment_method'] = $this->language->get('icon_payment_method');
+            $data['icon_img'] = $this->language->get('icon_img');
+        }
 
 		$status = true;
 

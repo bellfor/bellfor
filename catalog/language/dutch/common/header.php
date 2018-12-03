@@ -51,4 +51,5 @@ $_['icon_delivery']     = 'Verzending';
 $_['icon_shipping']     = 'Verzending binnen';
 $_['icon_money_back']   = 'Geld-terug-garantie';
 $_['icon_phone_title']  = 'Gratis telefonisch advies en bestelling';
-$_['icon_idealo']       = 'Betalen met iDEAL';
+$_['icon_payment_method'] = 'Betalen met iDEAL';
+$_['icon_img']          = '/image/elements/icon/ideal_logo_header_blue.png';

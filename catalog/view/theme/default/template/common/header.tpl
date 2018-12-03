@@ -18,46 +18,20 @@
         <meta name="keywords" content= "<?php echo $keywords; ?>" />
     <?php } ?>
     <!-- jquery-2.1.1.min.js -->
-    <!--    <script type="text/javascript">-->
-    <!--        --><?php //echo file_get_contents("catalog/view/javascript/jquery/jquery-2.1.1.min.js");?>
-    <!--    </script>-->
     <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js?v1" type="text/javascript"></script>
     <!-- query_func_with_documentation-v1.1.min.js -->
-    <!--    <script type="text/javascript">-->
-    <!--        --><?php //echo file_get_contents("catalog/view/javascript/query_func_with_documentation-v1.1.min.js");?>
-    <!--    </script>-->
     <script src="catalog/view/javascript/query_func_with_documentation-v1.1.min.js?v1" type="text/javascript"></script>
-
     <!-- bootstrap.min.css -->
-    <!-- <link rel="stylesheet" type="text/css" href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" /> -->
-    <!--    <style>-->
-    <!--        --><?php //echo file_get_contents("catalog/view/javascript/bootstrap/css/bootstrap.min.css");?>
-    <!--    </style>-->
     <link rel="stylesheet" href="catalog/view/javascript/bootstrap/css/bootstrap.min.css?v1" type="text/css" />
     <!-- style.min.css -->
-    <!--    <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/style.min.css?--><?php //echo time();?><!--" type="text/css" />-->
     <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/style.min.css?v1" type="text/css" />
-    <!--    <style type="text/css">-->
-    <!--        --><?php //echo file_get_contents("catalog/view/theme/default/stylesheet/style.min.css");?>
-    <!--    </style>-->
     <!-- responsive.min.css -->
-    <!--    <style type="text/css">-->
-    <!--        --><?php //echo file_get_contents("catalog/view/theme/default/stylesheet/responsive.min.css");?>
-    <!--    </style>-->
     <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/responsive.min.css?v1" type="text/css" />
-
     <?php foreach ($styles as $style) { ?>
         <!-- <?php echo $style['href']."\n";?> -->
-        <!--        <style type="text/css">-->
-        <!--            --><?php //echo file_get_contents($style['href']);?>
-        <!--        </style>-->
         <link rel="stylesheet" href="<?php echo $style['href'];?>?v1" type="text/css" />
     <?php } ?>
-
     <!-- common.min.js -->
-    <!--    <script type="text/javascript">-->
-    <!--        --><?php //echo file_get_contents("catalog/view/javascript/common.min.js");?>
-    <!--    </script>-->
     <script src="catalog/view/javascript/common.min.js?v1" type="text/javascript"></script>
     <?php foreach ($links as $link) { ?>
         <!-- <?php echo $link['rel']."\n";?> -->
@@ -65,10 +39,6 @@
     <?php } ?>
     <?php foreach ($scripts as $script) { ?>
         <!-- <?php echo trim($script)."\n";?> -->
-        <!--        <script type="text/javascript">-->
-        <!--            --><?php //echo file_get_contents($script);?>
-        <!--            -->
-        <!--        </script>-->
         <script src="<?php echo $script;?>?v1" type="text/javascript"></script>
     <?php } ?>
 
@@ -289,7 +259,7 @@ $stunl = strpos($base, 'nl.bellfor.info', 7);
 
                     */
                     ; ?>
-                    <div class="<?php echo $store_id == 3 ? 'col-lg-6 col-md-7 col-xs-12' : 'col-md-5 col-sm-7 col-xs-12'; ?> div-icon-phone">
+                    <div class="<?php echo $store_id == 3 || $store_id == 1 ? 'col-lg-6 col-md-7 col-xs-12' : 'col-md-5 col-sm-7 col-xs-12'; ?> div-icon-phone">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0 5px;">
                             <p class="phone-title"><?php echo $icon_phone_title; ?></p>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 icon-padding" style="margin-bottom: 10px;">
@@ -302,17 +272,17 @@ $stunl = strpos($base, 'nl.bellfor.info', 7);
                             </div>
                         </div>
                         <div class="col-md-12 icon-padding">
-                            <?php if ($store_id == 3) { ?>
+                            <?php if ($store_id == 3 || $store_id == 1) { ?>
                                 <div class="col-md-3 col-sm-3 col-xs-3 icon-padding icon-mobile">
                                     <div class="icon-list">
-                                        <img class="icon-image" src="/image/elements/icon/ideal_logo_header_blue.png">
+                                        <img class="icon-image" src="<?php echo $icon_img; ?>">
                                     </div>
                                     <div class="icon-div-content icon-list">
-                                        <p class="icon-title"><?php echo $icon_idealo; ?></p>
+                                        <p class="icon-title"><?php echo $icon_payment_method; ?></p>
                                     </div>
                                 </div>
                             <?php } ?>
-                            <div class="<?php echo $store_id == 3 ? 'col-md-3 col-sm-3 col-xs-3' : 'col-md-4 col-sm-4 col-xs-4'; ?> icon-padding icon-mobile">
+                            <div class="<?php echo $store_id == 3 || $store_id == 1 ? 'col-md-3 col-sm-3 col-xs-3' : 'col-md-4 col-sm-4 col-xs-4'; ?> icon-padding icon-mobile">
                                 <div class="icon-list">
                                     <img class="icon-image" src="/image/elements/icon/shipping.png">
                                 </div>
@@ -321,7 +291,7 @@ $stunl = strpos($base, 'nl.bellfor.info', 7);
                                     <p class="icon-info"><?php echo $config_shipping; ?></p>
                                 </div>
                             </div>
-                            <div class="<?php echo $store_id == 3 ? 'col-md-3 col-sm-3 col-xs-3' : 'col-md-4 col-sm-4 col-xs-4'; ?> icon-padding icon-mobile">
+                            <div class="<?php echo $store_id == 3 || $store_id == 1 ? 'col-md-3 col-sm-3 col-xs-3' : 'col-md-4 col-sm-4 col-xs-4'; ?> icon-padding icon-mobile">
                                 <div class="icon-list">
                                     <img class="icon-image" src="/image/elements/icon/delivery_time.png">
                                 </div>
@@ -330,7 +300,7 @@ $stunl = strpos($base, 'nl.bellfor.info', 7);
                                     <p class="icon-info"><?php echo $config_fre_delivery; ?></p>
                                 </div>
                             </div>
-                            <div class="<?php echo $store_id == 3 ? 'col-md-3 col-sm-3 col-xs-3' : 'col-md-4 col-sm-4 col-xs-4'; ?> icon-padding icon-mobile">
+                            <div class="<?php echo $store_id == 3 || $store_id == 1 ? 'col-md-3 col-sm-3 col-xs-3' : 'col-md-4 col-sm-4 col-xs-4'; ?> icon-padding icon-mobile">
                                 <div class="icon-list">
                                     <img class="icon-image" src="/image/elements/icon/garantie_test.png">
                                 </div>
