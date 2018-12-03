@@ -414,7 +414,7 @@
                           <?php } ?>
                         </div>
                       </div>
-                      <div class="form-group required">
+                      <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-zone<?php echo $address_row; ?>"><?php echo $entry_zone; ?></label>
                         <div class="col-sm-10">
                           <select name="address[<?php echo $address_row; ?>][zone_id]" id="input-zone<?php echo $address_row; ?>" class="form-control">
@@ -736,7 +736,7 @@ function addAddress() {
     html += '      </select></div>';
 	html += '  </div>';
 
-	html += '  <div class="form-group required">';
+	html += '  <div class="form-group">';
 	html += '    <label class="col-sm-2 control-label" for="input-zone' + address_row + '"><?php echo $entry_zone; ?></label>';
 	html += '    <div class="col-sm-10"><select name="address[' + address_row + '][zone_id]" id="input-zone' + address_row + '" class="form-control"><option value=""><?php echo $text_none; ?></option></select></div>';
 	html += '  </div>';

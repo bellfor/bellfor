@@ -300,6 +300,16 @@
               <?php } ?>
             </div>
           </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-zone"><?php echo $entry_zone; ?></label>
+            <div class="col-sm-10">
+              <select name="zone_id" id="input-zone" class="form-control">
+              </select>
+              <?php if ($error_zone) { ?>
+              <div class="text-danger"><?php echo $error_zone; ?></div>
+              <?php } ?>
+            </div>
+          </div>
           <?php foreach ($custom_fields as $custom_field) { ?>
           <?php if ($custom_field['location'] == 'address') { ?>
           <?php if ($custom_field['type'] == 'select') { ?>
