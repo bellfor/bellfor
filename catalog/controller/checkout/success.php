@@ -38,28 +38,15 @@ class ControllerCheckoutSuccess extends Controller {
             //Add payment id
             $this->load->model('checkout/order');
 
-            if (isset($this->request->get['paymentId']) || isset($this->request->get['PayerID']) || isset($this->request->get['token'])) {
-                $payment_info = array();
-
-                if (isset($this->request->get['paymentId'])){
-                    $payment_info['payment_id'] = $this->request->get['paymentId'];
-                } else {
-                    $payment_info['payment_id'] = '';
-                }
+            if (isset($this->request->get['PayerID'])) {
 
                 if (isset($this->request->get['PayerID'])) {
-                    $payment_info['payer_id'] = $this->request->get['PayerID'];
+                    $payer_id = $this->request->get['PayerID'];
                 } else {
-                    $payment_info['payer_id'] = '';
+                    $payer_id = '';
                 }
 
-                if (isset($this->request->get['token'])) {
-                    $payment_info['payment_token'] = $this->request->get['token'];
-                } else {
-                    $payment_info['payment_token'] = '';
-                }
-
-                $this->model_checkout_order->updateOrderPaymentInfo($this->session->data['order_id'], $payment_info);
+                $this->model_checkout_order->updateOrderPaymentInfo($this->session->data['order_id'], $payer_id);
 
             }
 

@@ -905,25 +905,13 @@ class ModelCheckoutOrder extends Model {
 //		if (isset($this->request->get['paymentId']) || isset($this->request->get['PayerID']) || isset($this->request->get['token'])) {
             $payment_info = array();
 
-            if (isset($this->request->get['paymentId'])){
-                $payment_info['payment_id'] = $this->request->get['paymentId'];
-            } else {
-                $payment_info['payment_id'] = '';
-            }
-
             if (isset($this->request->get['PayerID'])) {
-                $payment_info['payer_id'] = $this->request->get['PayerID'];
+                $payer_id = $this->request->get['PayerID'];
             } else {
-                $payment_info['payer_id'] = '';
+                $payer_id = '';
             }
 
-            if (isset($this->request->get['token'])) {
-                $payment_info['payment_token'] = $this->request->get['token'];
-            } else {
-                $payment_info['payment_token'] = '';
-            }
-
-            $this->updateOrderPaymentInfo($order_id, $payment_info);
+            $this->updateOrderPaymentInfo($order_id, $payer_id);
 //        }
 	}
 
@@ -955,7 +943,22 @@ class ModelCheckoutOrder extends Model {
         return $data;
     }
 
-    public function updateOrderPaymentInfo($order_id, $data){
-        $this->db->query("UPDATE `" . DB_PREFIX . "order` SET payment_id = '" . $this->db->escape($data['payment_id']) . "', payer_id = '" . $this->db->escape($data['payer_id']) . "', payment_token = '" . $this->db->escape($data['payment_token']) . "' WHERE order_id = '" . (int)$order_id . "'");
+    public function updateOrderPaymentInfo($order_id, $payer_id){
+        $this->db->query("UPDATE `" . DB_PREFIX . "order` SET payer_id = '" . $this->db->escape($payer_id) . "'WHERE order_id = '" . (int)$order_id . "'");
+    }
+
+    public function getOrderPayPal($payer_id){
+	    $result = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE payer_id = '" . $payer_id . "'");
+	    $data = array();
+
+	    $data['order_id'] = $result->row['order_id'];
+	    $data['payer_id'] = $result->row['payer_id'];
+	    $data['transaction_id'] = isset($result->row['transaction_id']) ? $result->row['transaction_id'] : '';
+
+	    return $data;
+    }
+
+    public function updateOderPayPal($data) {
+	    $this->db->query("UPDATE `" . DB_PREFIX . "order` SET transaction_id = '" . $data['transaction_id'] . "' WHERE order_id = '" . $data['order_id'] . "' AND payer_id = '" . $data['payer_id'] . "'");
     }
 }
