@@ -2,13 +2,16 @@
 class ControllerIpnIpn extends Controller {
     public function index() {
 
+        $_POST['payer_id'] = 'RZP7M6V5UPLEL';
+        $_POST['address_status'] = 'confirmed';
+
         if (count($_POST)) {
+            sleep(5);
             if (isset($_POST['payer_id']) && isset($_POST['address_status']) && $_POST['address_status'] == 'confirmed') {
                 $this->load->model('checkout/order');
                 $order_info = $this->model_checkout_order->getOrderPayPal($_POST['payer_id']);
-//                $order_info = $this->model_checkout_order->getOrderPayPal('KABXP92BZG9QL');
 
-                if (isset($order_info['order_id']) && $order_info['payer_id'] == $_POST['payer_id'] && !isset($order_info['transaction_id'])) {
+                if (isset($order_info['order_id']) && ($order_info['payer_id'] == $_POST['payer_id']) && empty($order_info['transaction_id'])) {
 
                     $data = array();
 
@@ -21,6 +24,7 @@ class ControllerIpnIpn extends Controller {
             }
 
             $file = fopen(__DIR__ . 'testlogs.txt', 'a');
+            fwrite($file, date('d-m-Y h:m:s') . PHP_EOL);
             if (is_array($_POST)) {
                 foreach ($_POST as $k => $value) {
                     if (is_array($value)) {

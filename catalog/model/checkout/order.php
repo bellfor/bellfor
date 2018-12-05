@@ -948,17 +948,17 @@ class ModelCheckoutOrder extends Model {
     }
 
     public function getOrderPayPal($payer_id){
-	    $result = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE payer_id = '" . $payer_id . "'");
-	    $data = array();
+        $result = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE payer_id = '" . $payer_id . "' ORDER BY `date_added` DESC LIMIT 1");
+        $data = array();
 
-	    $data['order_id'] = $result->row['order_id'];
-	    $data['payer_id'] = $result->row['payer_id'];
-	    $data['transaction_id'] = isset($result->row['transaction_id']) ? $result->row['transaction_id'] : '';
+        $data['order_id'] = $result->row['order_id'];
+        $data['payer_id'] = $result->row['payer_id'];
+        $data['transaction_id'] = isset($result->row['transaction_id']) ? $result->row['transaction_id'] : '';
 
-	    return $data;
+        return $data;
     }
 
-    public function updateOderPayPal($data) {
-	    $this->db->query("UPDATE `" . DB_PREFIX . "order` SET transaction_id = '" . $data['transaction_id'] . "' WHERE order_id = '" . $data['order_id'] . "' AND payer_id = '" . $data['payer_id'] . "'");
+    public function updateOrderPayPal($data) {
+        $this->db->query("UPDATE `" . DB_PREFIX . "order` SET transaction_id = '" . $data['transaction_id'] . "' WHERE order_id = '" . $data['order_id'] . "' AND payer_id = '" . $data['payer_id'] . "'");
     }
 }
