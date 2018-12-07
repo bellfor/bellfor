@@ -162,7 +162,7 @@
                                           </td>
                                           <td class="text-left">
                                               <div class="input-group">
-                                                  <input name="custom_links[<?php echo $language['language_id']; ?>][<?php echo $custom_link_row; ?>][href]" maxlength="60" value="<?php echo $custom_link['href']; ?>" placeholder="Enter link" class="form-control">
+                                                  <input name="custom_links[<?php echo $language['language_id']; ?>][<?php echo $custom_link_row; ?>][href]" maxlength="120" value="<?php echo $custom_link['href']; ?>" placeholder="Enter link" class="form-control">
                                               </div>
                                           </td>
                                           <td class="text-left"><button type="button" onclick="$('#custom_link_row<?php echo $custom_link_row; ?>_<?php echo $language['language_id']; ?>').remove();" data-toggle="tooltip" title="Delete link" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
@@ -1124,7 +1124,7 @@
                 html += '<tr class="custom-link' + language_id + '" id="custom_link_row' + custom_link_row + '_' + language_id + '">';
                 html += '  <td class="text-left" style="width: 20%;"><input type="text" name="custom_links[' + language_id + '][' + custom_link_row + '][name]" value="" placeholder="Enter name link" class="form-control" /></td>';
                 html += '  <td class="text-left">';
-                html += '<div class="input-group"><input name="custom_links[' + language_id + '][' + custom_link_row + '][href]" maxlength="60" value="" placeholder="Enter link" class="form-control"></div>';
+                html += '<div class="input-group"><input name="custom_links[' + language_id + '][' + custom_link_row + '][href]" maxlength="120" value="" placeholder="Enter link" class="form-control"></div>';
                 html += '  </td>';
                 html += '  <td class="text-left"><button type="button" onclick="$(\'#custom_link_row' + custom_link_row + '_'+language_id+'\').remove(); minus('+custom_link_row+');" data-toggle="tooltip" title="Delete link" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
                 html += '</tr>';
