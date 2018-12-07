@@ -42,37 +42,37 @@ class ControllerCommonFooter extends Controller {
 		//Custom links for SEO footer
         $data['articles'] = array();
 
-        if ($this->request->get['route'] == 'product/category' && isset($this->request->get['path'])) {
+        if (isset($this->request->get['route']) && $this->request->get['route'] == 'product/category' && isset($this->request->get['path'])) {
 
             $this->load->model('catalog/category');
 
             $data['articles'] = $this->customLinks($this->model_catalog_category->getCategoryCustomLinks($this->request->get['path']));
 
-        } elseif ($this->request->get['route'] == 'product/product' && isset($this->request->get['product_id'])) {
+        } elseif (isset($this->request->get['route']) && $this->request->get['route'] == 'product/product' && isset($this->request->get['product_id'])) {
 
             $this->load->model('catalog/product');
 
             $data['articles'] = $this->customLinks($this->model_catalog_product->getProductCustomLinks($this->request->get['product_id']));
 
-        } elseif ($this->request->get['route'] == 'blog/latest') {
+        } elseif (isset($this->request->get['route']) && $this->request->get['route'] == 'blog/latest') {
 
             $this->load->model('blog/category');
 
             $data['articles'] = $this->customLinks($this->model_blog_category->getBlogLatestCustomLinks());
 
-        } elseif ($this->request->get['route'] == 'blog/article' && isset($this->request->get['article_id'])) {
+        } elseif (isset($this->request->get['route']) && $this->request->get['route'] == 'blog/article' && isset($this->request->get['article_id'])) {
 
             $this->load->model('blog/article');
 
             $data['articles'] = $this->customLinks($this->model_blog_article->getArticleCustomLinks($this->request->get['article_id']));
 
-        } elseif ($this->request->get['route'] == 'information/information' && isset($this->request->get['information_id'])) {
+        } elseif (isset($this->request->get['route']) && $this->request->get['route'] == 'information/information' && isset($this->request->get['information_id'])) {
 
             $this->load->model('catalog/information');
 
             $data['articles'] = $this->customLinks($this->model_catalog_information->getInformationCustomLinks($this->request->get['information_id']));
 
-        } elseif ($this->request->get['route'] != 'checkout/cart' && $this->request->get['route'] != 'checkout/onepagecheckout' ) {
+        } elseif (isset($this->request->get['route']) && $this->request->get['route'] != 'checkout/cart' && $this->request->get['route'] != 'checkout/onepagecheckout' ) {
 
             $data['articles'] = $this->customLinks($this->config->get('config_custom_link'));
 
