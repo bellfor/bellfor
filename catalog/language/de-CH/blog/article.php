@@ -19,7 +19,7 @@ $_['text_views'] 		= 'Ansichten:';
 $_['text_tax']          = 'Ex Tax:'; 
 $_['button_more']       = 'mehr';
 $_['text_related']       = 'Ähnliche Artikel';
-$_['text_related_product']       = 'Ähnliche Produkte';
+$_['text_related_product']       = 'Empholene Produkte';
 
 // Entry
 $_['entry_name']        = 'Ihr Name:';
