@@ -1,7 +1,8 @@
 <?php
 class ModelFeedGoogleMerchantCenter extends Model {
 	public function getTaxonomy($category_id) {
-		$query = $this->db->query("SELECT `".DB_PREFIX."feed_manager_taxonomy`.taxonomy_id, `".DB_PREFIX."feed_manager_taxonomy`.name FROM `".DB_PREFIX."feed_manager_category` RIGHT JOIN `".DB_PREFIX."feed_manager_taxonomy` ON `".DB_PREFIX."feed_manager_category`.taxonomy_id=`".DB_PREFIX."feed_manager_taxonomy`.taxonomy_id WHERE `".DB_PREFIX."feed_manager_category`.category_id LIKE '".$category_id."' OR `".DB_PREFIX."feed_manager_taxonomy`.status LIKE '1' ORDER BY `".DB_PREFIX."feed_manager_category`.category_id DESC LIMIT 1;");
+//		$query = $this->db->query("SELECT `".DB_PREFIX."feed_manager_taxonomy`.taxonomy_id, `".DB_PREFIX."feed_manager_taxonomy`.name FROM `".DB_PREFIX."feed_manager_category` RIGHT JOIN `".DB_PREFIX."feed_manager_taxonomy` ON `".DB_PREFIX."feed_manager_category`.taxonomy_id=`".DB_PREFIX."feed_manager_taxonomy`.taxonomy_id WHERE `".DB_PREFIX."feed_manager_category`.category_id LIKE '".$category_id."' OR `".DB_PREFIX."feed_manager_taxonomy`.status LIKE '1' ORDER BY `".DB_PREFIX."feed_manager_category`.category_id DESC LIMIT 1;");
+		$query = $this->db->query("SELECT `".DB_PREFIX."feed_manager_taxonomy`.taxonomy_id, `".DB_PREFIX."feed_manager_taxonomy`.name FROM `".DB_PREFIX."feed_manager_category` RIGHT JOIN `".DB_PREFIX."feed_manager_taxonomy` ON `".DB_PREFIX."feed_manager_category`.taxonomy_id=`".DB_PREFIX."feed_manager_taxonomy`.taxonomy_id WHERE `".DB_PREFIX."feed_manager_category`.category_id LIKE '".$category_id."' ORDER BY `".DB_PREFIX."feed_manager_category`.category_id DESC LIMIT 1;");
 		return $query->row;
 	}
 
