@@ -1506,7 +1506,9 @@ input {
 }
 
 .main-section .right-container .main-text-container .container-info .map-wraper, .main-section .right-container .main-text-container ul {
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #666;
 }
 
 .main-section .right-container .main-text-container h4 {
