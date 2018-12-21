@@ -2,11 +2,9 @@
 class ControllerIpnIpn extends Controller {
     public function index() {
 
-        $_POST['payer_id'] = 'RZP7M6V5UPLEL';
-
-        if (count($_POST) && !isset($this->session->data['payer_id'])) {
-            $this->session->data['payer_id'] = $_POST['payer_id'];
-            if (isset($_POST['payer_id']) && isset($_POST['payment_status']) && $_POST['payment_status'] == 'Completed') {
+        if (count($_POST)) {
+            sleep(15);
+            if (isset($_POST['payer_id']) && isset($_POST['address_status']) && $_POST['address_status'] == 'confirmed') {
                 $this->load->model('checkout/order');
                 $order_info = $this->model_checkout_order->getOrderPayPal($_POST['payer_id']);
 
@@ -21,9 +19,9 @@ class ControllerIpnIpn extends Controller {
                     $this->model_checkout_order->updateOrderPayPal($data);
                 }
             }
-var_dump($this->session->data['payer_id']);
+
             $file = fopen(__DIR__ . 'testlogs.txt', 'a');
-            fwrite($file, date('d-m-Y h:m:s') . PHP_EOL);
+            fwrite($file, gmdate('d-m-Y h:m:s') . PHP_EOL);
             if (is_array($_POST)) {
                 foreach ($_POST as $k => $value) {
                     if (is_array($value)) {
@@ -39,8 +37,6 @@ var_dump($this->session->data['payer_id']);
             }
             fwrite($file, '------------------------------------------------------' . PHP_EOL);
             fclose($file);
-        } else {
-            die('1');
         }
 
 // Reply with an empty 200 response to indicate to paypal the IPN was received correctly
