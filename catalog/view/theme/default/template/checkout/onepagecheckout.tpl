@@ -302,7 +302,7 @@
                     </table>
   <!-- fixed by oppo webiprog.com  03.05.2018 MAR-251 MAR-243 -->
   <!-- Selecting a delivery method between DPD and DHL for German customers -->
-          <div id="radio-delivery" style="display:none;margin-bottom:10px;padding:0px 8px;border:1px solid #ddd;background-color: #F3F3F3" class="wrap_radio_payment">
+          <div id="radio-delivery" style="margin-bottom:10px;padding:0px 8px;border:1px solid #ddd;background-color: #F3F3F3" class="wrap_radio_payment">
             <div style="margin-top: 13px;margin-right: 10px;" class="pull-left">
               <?php echo $text_delivery_method ; ?>:</div>
 
@@ -313,12 +313,12 @@
               </div>
             </div>
 
-            <div style="margin-left:10px" class="pull-left radio-delivery-item dpd">
-              <div class="radio" data-role="controlgroup" data-type="horizontal">
-                <input type="radio" id="deliveryDPD" name="delivery" value="DPD" />
-                <label style="margin-top: 3px;" for="deliveryDPD"><img alt="DPD" border="0" src="image/catalog/dpd_s.png" style="height:18px;margin-right:2px;" />DPD</label>
-              </div>
-            </div>
+<!--            <div style="margin-left:10px" class="pull-left radio-delivery-item dpd">-->
+<!--              <div class="radio" data-role="controlgroup" data-type="horizontal">-->
+<!--                <input type="radio" id="deliveryDPD" name="delivery" value="DPD" />-->
+<!--                <label style="margin-top: 3px;" for="deliveryDPD"><img alt="DPD" border="0" src="image/catalog/dpd_s.png" style="height:18px;margin-right:2px;" />DPD</label>-->
+<!--              </div>-->
+<!--            </div>-->
 
             <div class="clearfix"></div>
           </div>
@@ -393,12 +393,9 @@
                   <div class="errors-block"></div>
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -493,15 +490,15 @@
 	$("#radio-delivery input[name=delivery]").prop("checked", false);
 	$('#radio-delivery-text').hide();
 	$('#span-delivery-text').html('');
-	if (s == 81 || s == 14) {
+	// if (s == 81 || s == 14) {
 	    $('#radio-delivery >.dhl').show('100');
 	    $('#radio-delivery').show();
 		$("#deliveryDHL").prop("checked", true);
-	} else {
-	    $('#radio-delivery >.dhl').hide('100');
-	    $('#radio-delivery').show();
-		$("#deliveryDPD").prop("checked", true);
-	}
+	// } else {
+	//     $('#radio-delivery >.dhl').hide('100');
+	//     $('#radio-delivery').show();
+	// 	$("#deliveryDPD").prop("checked", true);
+	// }
 	SetRumun(1);
     //end fixed by oppo webiprog.com  03.05.2018
 

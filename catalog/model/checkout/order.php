@@ -952,7 +952,7 @@ class ModelCheckoutOrder extends Model {
         $data = array();
 
         $data['order_id'] = $result->row['order_id'];
-        $data['payer_id'] = $result->row['payer_id'];
+        $data['payer_id'] = $payer_id;
         $data['transaction_id'] = isset($result->row['transaction_id']) ? $result->row['transaction_id'] : '';
 
         return $data;
