@@ -302,7 +302,9 @@ class ModelCatalogProduct extends Model {
     public function filterExceptions ($data) {
         $products = array();
         foreach ($data as $product_id){
-            $products[] = $this->getProduct($product_id);
+            if ($this->getProduct($product_id)) {
+                $products[] = $this->getProduct($product_id);
+            }
         }
         return $products;
     }
