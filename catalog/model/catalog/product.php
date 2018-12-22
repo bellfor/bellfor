@@ -234,7 +234,7 @@ class ModelCatalogProduct extends Model {
             $temp_product_data[] = $this->filterExceptions(array(145));
         }
         if (in_array(83, $filters)) {
-            $temp_product_data[] = $this->filterExceptions(array(160, 137, 164));
+            $temp_product_data[] = $this->filterExceptions(array(160, 137, 164, 117, 98));
         }
         if (in_array(65, $filters) || in_array(66, $filters)) {
             $temp_product_data[] = $this->filterExceptions(array(145, 167));
@@ -242,6 +242,13 @@ class ModelCatalogProduct extends Model {
         if (in_array(66, $filters)) {
             $temp_product_data[] = $this->filterExceptions(array(180, 112));
         }
+        if (in_array(44, $filters)) {
+            $temp_product_data[] = $this->filterExceptions(array(137, 164));
+        }
+        if (!in_array(83, $filters) && in_array(74, $filters)) {
+            $temp_product_data[] = $this->filterExceptions(array(161, 162, 169, 170, 171, 176, 177, 183, 182, 188));
+        }
+
 
         if (!empty($data['filter_filter']) && !isset($data['check'])) {
 
