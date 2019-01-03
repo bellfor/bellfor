@@ -245,7 +245,7 @@ class ModelCatalogProduct extends Model {
         if (in_array(44, $filters)) {
             $temp_product_data[] = $this->filterExceptions(array(137, 164));
         }
-        if (!in_array(83, $filters) && in_array(74, $filters) || in_array(79, $filters)) {
+        if (!in_array(83, $filters) && (in_array(74, $filters) || in_array(79, $filters))) {
             $temp_product_data[] = $this->filterExceptions(array(161, 162, 169, 170, 171, 176, 177, 183, 182, 188));
         }
 
