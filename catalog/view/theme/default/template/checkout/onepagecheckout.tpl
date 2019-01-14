@@ -313,12 +313,12 @@
               </div>
             </div>
 
-<!--            <div style="margin-left:10px" class="pull-left radio-delivery-item dpd">-->
-<!--              <div class="radio" data-role="controlgroup" data-type="horizontal">-->
-<!--                <input type="radio" id="deliveryDPD" name="delivery" value="DPD" />-->
-<!--                <label style="margin-top: 3px;" for="deliveryDPD"><img alt="DPD" border="0" src="image/catalog/dpd_s.png" style="height:18px;margin-right:2px;" />DPD</label>-->
-<!--              </div>-->
-<!--            </div>-->
+            <div style="margin-left:10px" class="pull-left radio-delivery-item dpd">
+              <div class="radio" data-role="controlgroup" data-type="horizontal">
+                <input type="radio" id="deliveryDPD" name="delivery" value="DPD" />
+                <label style="margin-top: 3px;" for="deliveryDPD"><img alt="DPD" border="0" src="image/catalog/dpd_s.png" style="height:18px;margin-right:2px;" />DPD</label>
+              </div>
+            </div>
 
             <div class="clearfix"></div>
           </div>
@@ -485,20 +485,24 @@
 	} else {
 	$('#shipping-terms').text('<?php echo $text_shipping_terms_6 ; ?>');
 	}
+	//204, 195, 97, 74, 21
   //fixed by oppo webiprog.com  03.05.2018 MAR-251 MAR-243
   //Selecting a delivery method between DPD and DHL for German customers
 	$("#radio-delivery input[name=delivery]").prop("checked", false);
 	$('#radio-delivery-text').hide();
 	$('#span-delivery-text').html('');
 	// if (s == 81 || s == 14) {
+	if (s == 204 || s == 195 || s == 97 || s == 74 || s == 21) {
+	    $('#radio-delivery >.dhl').hide('100');
+        $('#radio-delivery >.dpd').show('100');
+	    $('#radio-delivery').show();
+		$("#deliveryDPD").prop("checked", true);
+	} else {
 	    $('#radio-delivery >.dhl').show('100');
+        $('#radio-delivery >.dpd').hide('100');
 	    $('#radio-delivery').show();
 		$("#deliveryDHL").prop("checked", true);
-	// } else {
-	//     $('#radio-delivery >.dhl').hide('100');
-	//     $('#radio-delivery').show();
-	// 	$("#deliveryDPD").prop("checked", true);
-	// }
+	}
 	SetRumun(1);
     //end fixed by oppo webiprog.com  03.05.2018
 
