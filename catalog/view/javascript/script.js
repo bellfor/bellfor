@@ -3,44 +3,44 @@ $(".wrap_small_card").hover(function(){var curentPathImg=$(this).find("img").att
 
 // Bellfor Modal Cookie
 
-$(document).ready(function(){
-
-  // Animation with modal
-  $('#cookie').animate({top: '1px'}, 2000);
-
-  // Cookie
-   function getCookie(bellforCookie) {
-        let cookie_arr = document.cookie.split('; ');
-        let cookie_obj = {};
-
-        for (let i=0; i<cookie_arr.length; i++) {
-            let nv = cookie_arr[i].split('=');
-            cookie_obj[nv[0]] = nv[1]; 
-        }
-
-        return cookie_obj[bellforCookie];
-    }        
-
-    let cookie_div = document.getElementById('cookie');
-
-    if ( getCookie('agree') == 'yes' ) {
-        cookie_div.style.display='none';
-    }
-
-    document.getElementById('agree')
-        .addEventListener('click', function() { 
-
-            var date = new Date(new Date().getTime() + (86400 * 60 * 60 * 1000));
-            document.cookie = "agree=yes; path=/; expires=" + date.toGMTString();
-
-            $('#cookie').fadeOut(1000);
-        });
-
-  $('#notAgree').click(function(){
-    $('#cookie').fadeOut(1000);
-  });
-
-});
+// $(document).ready(function(){
+//
+//   // Animation with modal
+//   $('#cookie').animate({top: '1px'}, 2000);
+//
+//   // Cookie
+//    function getCookie(bellforCookie) {
+//         let cookie_arr = document.cookie.split('; ');
+//         let cookie_obj = {};
+//
+//         for (let i=0; i<cookie_arr.length; i++) {
+//             let nv = cookie_arr[i].split('=');
+//             cookie_obj[nv[0]] = nv[1];
+//         }
+//
+//         return cookie_obj[bellforCookie];
+//     }
+//
+//     let cookie_div = document.getElementById('cookie');
+//
+//     if ( getCookie('agree') == 'yes' ) {
+//         cookie_div.style.display='none';
+//     }
+//
+//     document.getElementById('agree')
+//         .addEventListener('click', function() {
+//
+//             var date = new Date(new Date().getTime() + (86400 * 60 * 60 * 1000));
+//             document.cookie = "agree=yes; path=/; expires=" + date.toGMTString();
+//
+//             $('#cookie').fadeOut(1000);
+//         });
+//
+//   $('#notAgree').click(function(){
+//     $('#cookie').fadeOut(1000);
+//   });
+//
+// });
 
 
 
