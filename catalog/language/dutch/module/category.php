@@ -7,3 +7,4 @@
 // Heading
 //fixed by oppo webiprog.com  19.12.2017
 $_['heading_title'] = 'Bellfor producten';
+$_['cbd_shop'] = 'CBD-druppels voor honden';

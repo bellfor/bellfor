@@ -10,6 +10,8 @@ class ControllerModuleCategory extends Controller {
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
+		$data['cbd_shop'] = $this->language->get('cbd_shop');
+
 		if (isset($this->request->get['path'])) {
 			$parts = explode('_', (string)$this->request->get['path']);
 		} else {

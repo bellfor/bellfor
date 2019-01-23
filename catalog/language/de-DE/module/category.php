@@ -10,3 +10,4 @@
 // Heading
 //fixed by oppo webiprog.com  19.12.2017
 $_['heading_title'] = 'Bellfor Produkte';
+$_['cbd_shop'] = 'CBD Tropfen für Hunde';
