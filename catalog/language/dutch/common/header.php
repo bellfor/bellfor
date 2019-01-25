@@ -53,3 +53,5 @@ $_['icon_money_back']   = 'Geld-terug-garantie';
 $_['icon_phone_title']  = 'Gratis telefonisch advies en bestelling';
 $_['icon_payment_method'] = 'Betalen met iDEAL';
 $_['icon_img']          = '/image/elements/icon/ideal_logo_header_blue.png';
+
+$_['cbd_shop'] = 'CBD-druppels voor honden';

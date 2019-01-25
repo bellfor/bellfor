@@ -62,3 +62,5 @@ $_['icon_money_back']   = 'Geld-Zurück-Garantie';
 $_['icon_phone_title']  = 'Kostenlose Beratung und Bestellung';
 $_['icon_payment_method'] = 'Bezahlen mit EPS';
 $_['icon_img']          = '/image/elements/icon/eps.png';
+
+$_['cbd_shop'] = 'CBD Tropfen für Hunde';

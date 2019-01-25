@@ -107,6 +107,7 @@ $stunl = strpos($base, 'nl.bellfor.info', 7);
                                     <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
                                 <?php } ?>
                             <?php } ?>
+                            <li><a href="https://www.cbd-elixier.de/" target="_blank"><?php echo $cbd_shop; ?></a></li>
                             <?php
                             //fixed by oppo webiprog.com   MAR-164 move logo 14.12.2017
                             if($sub == 'bellfor' || !$sub ) { ?>

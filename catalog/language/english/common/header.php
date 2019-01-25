@@ -43,3 +43,5 @@ $_['icon_delivery']     = 'Free delivery';
 $_['icon_shipping']     = 'Shipping within';
 $_['icon_money_back']   = 'Money Back Guarantee';
 $_['icon_phone_title']  = 'Free consultation and order:';
+
+$_['cbd_shop'] = 'CBD drops for dogs';

@@ -78,6 +78,8 @@ class ControllerCommonHeader extends Controller {
 		$data['text_category'] = $this->language->get('text_category');
 		$data['text_all'] = $this->language->get('text_all');
 
+        $data['cbd_shop'] = $this->language->get('cbd_shop');
+
         $data['icon_delivery'] = $this->language->get('icon_delivery');
         $data['icon_shipping'] = $this->language->get('icon_shipping');
         $data['icon_money_back'] = $this->language->get('icon_money_back');

@@ -39,3 +39,5 @@ $_['icon_delivery']     = 'Versandkostenfrei';
 $_['icon_shipping']     = 'Versand innerhalb';
 $_['icon_money_back']   = 'Geld-Zurück-Garantie';
 $_['icon_phone_title']  = 'Kostenlose Beratung und Bestellung';
+
+$_['cbd_shop'] = 'CBD Tropfen für Hunde';
