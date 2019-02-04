@@ -492,7 +492,7 @@
 	$('#radio-delivery-text').hide();
 	$('#span-delivery-text').html('');
 	// if (s == 81 || s == 14) {
-	if (s == 204 || s == 195 || s == 97 || s == 74 || s == 21) {
+	if (s == 195 || s == 97 || s == 74 || s == 21) {
 	    $('#radio-delivery >.dhl').hide('100');
         $('#radio-delivery >.dpd').show('100');
 	    $('#radio-delivery').show();
