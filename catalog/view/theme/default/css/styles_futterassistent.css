@@ -339,7 +339,7 @@
 
 .tpl_futterassistent .wizard_img_wrapper{
 	height: 62px;
-	border: 1px dashed #87856e;
+	/*border: 1px dashed #87856e;*/
 	border-radius: 3px;
 	background:#FFFFFF;
 	cursor: pointer;
@@ -375,6 +375,7 @@
 .tpl_futterassistent .wizard_img{
 	background-repeat: no-repeat;
 	background-position: center 5px;
+	background-size: 80px;
 }
 
 
@@ -753,7 +754,7 @@
 	background-image:url(../images/web/futterassistent/seite3/hund/augen.png);
 }
 .tpl_futterassistent.wizard_type_Hund .erkrankung_Sehnen {
-	background-image:url(../images/web/futterassistent/seite3/hund/sehnen.jpg);
+	background-image:url(../images/web/futterassistent/seite3/hund/sehnen.png);
 }
 .tpl_futterassistent.wizard_type_Hund .erkrankung_Diabetes{
 	background-image:url(../images/web/futterassistent/seite3/hund/diabetis_mellitus.png);
@@ -825,7 +826,7 @@
 }
 
 .tpl_futterassistent.wizard_type_Hund .erkrankung_Würmer{
-	background-image:url(../images/web/futterassistent/seite3/hund/wurmkur.jpg);
+	background-image:url(../images/web/futterassistent/seite3/hund/wurmkur.png);
 }
 
 .tpl_futterassistent.wizard_type_Hund .erkrankung_RegenerationMuskelauf{
@@ -833,7 +834,7 @@
 }
 
 .tpl_futterassistent.wizard_type_Hund .erkrankung_Giardien{
-	background-image:url(../images/web/futterassistent/seite3/hund/giardien.jpg);
+	background-image:url(../images/web/futterassistent/seite3/hund/giardien.png);
 }
 
 .tpl_futterassistent.wizard_type_Hund .erkrankung_Kondition_Aufbau{
@@ -963,11 +964,11 @@
 }
 
 .tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Lachs {
-	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/lachs.jpg);
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/lachs.png);
 }
 
 .tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Forelle {
-	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/forelle.jpg);
+	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/forelle.png);
 }
 .tpl_futterassistent.wizard_type_Hund .unvertraeglichkeit_Hase{
 	background-image:url(../images/web/futterassistent/seite4/hund/fleisch/hase.png);
