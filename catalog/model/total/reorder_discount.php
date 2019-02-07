@@ -2,6 +2,7 @@
 class ModelTotalReorderDiscount extends Model {
 
 	public function getTotal(&$total_data, &$total, &$taxes) {
+
 		$this->load->language('total/reorder_discount');
 		$this->load->model('marketing/reorder');
 
@@ -25,11 +26,16 @@ class ModelTotalReorderDiscount extends Model {
 			$total_data[] = array(
 				'code'			=> 'reorder_discount',
 				'title'			=> $this->language->get('text_reorder_discount'),
-				'value'			=> $discount,
+				'value'			=> -$discount,
 				'sort_order'	=> $this->config->get('reorder_discount_sort_order')
 			);
       
 			$total = $total - $discount;
+			if ($total_data['products_total_minus_discount']) {
+                foreach ($total_data['products_total_minus_discount']['products'] as &$product) {
+                    $product['total'] = $product['total'] - ($product['total'] * ($current_rule['discount_size']/100));
+                }
+			}
 
 			if(count($taxes)) {
 				foreach($taxes as &$tax) {

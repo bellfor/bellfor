@@ -221,18 +221,20 @@ class ControllerCheckoutCart extends Controller {
 
 				array_multisort($sort_order, SORT_ASC, $total_data);
 			}
+            $data['totals'] = array();
 
-			$data['totals'] = array();
-
-			foreach ($total_data as $total) {
-				$data['totals'][] = array(
-					'title' => $total['title'],
-					'text'  => $this->currency->format($total['value'])
-				);
-                if($total['code'] == 'coupon'){
-                    $data['check_coupon'] = 'coupon';
+            foreach ($total_data as $key => $total) {
+                //Modification: all elements of the total are written to the array except for the added array "products_total_minus_discount"
+                if (is_numeric($key)) {
+                    $data['totals'][] = array(
+                        'title' => $total['title'],
+                        'text'  => $this->currency->format($total['value'])
+                    );
+                    if($total['code'] == 'coupon'){
+                        $data['check_coupon'] = 'coupon';
+                    }
                 }
-			}
+            }
 
 			$data['continue'] = $this->url->link('common/home');
 

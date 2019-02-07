@@ -23,6 +23,23 @@ class ModelTotalSubTotal extends Model {
 			'sort_order' => $this->config->get('sub_total_sort_order')
 		);
 
-		$total += $sub_total;
+		//Modification: record auxiliary array of product prices without tax,
+        $products = array();
+
+        foreach ($this->cart->getProducts() as $product) {
+
+            $products[] = array(
+                'product_id'   => $product['product_id'],
+                'total'        => $product['total'],
+                'tax_class_id' => $product['tax_class_id']
+            );
+        }
+
+        $total_data['products_total_minus_discount'] = array(
+            'products' => $products
+        );
+        /*------------------------------------------------------------------*/
+
+        $total += $sub_total;
 	}
 }

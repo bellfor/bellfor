@@ -18,33 +18,45 @@ class ModelTotalTotalCustomerGroupDiscount extends Model {
 
 			if($customerDiscount != 0){
 				$this->load->model('catalog/product');
-				if($this->config->get('total_customer_group_discount_tax')){
-					if($this->config->get('total_customer_group_discount_special')){
-						foreach ($this->cart->getProducts() as $product) {
-							if($this->model_catalog_product->getProductSpecial($product['product_id'], $customer['customer_group_id'])){
-								continue;
-							}
-							$sumForDiscount += $product['quantity']*$this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
-						}
-					}else{
-						foreach ($this->cart->getProducts() as $product) {
-							$sumForDiscount += $product['quantity']*$this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
-						}
-					}
-				}else{
-					if($this->config->get('total_customer_group_discount_special')){
-						foreach ($this->cart->getProducts() as $product) {
-							if($this->model_catalog_product->getProductSpecial($product['product_id'], $customer['customer_group_id'])){
-								continue;
-							}
-							$sumForDiscount += $product['quantity']*$product['price'];
-						}
-					}else{
-						foreach ($this->cart->getProducts() as $product) {
-							$sumForDiscount += $product['quantity']*$product['price'];
-						}
-					}
-				}
+                if($this->config->get('total_customer_group_discount_tax')){
+                    if($this->config->get('total_customer_group_discount_special')){
+                        foreach ($this->cart->getProducts() as $product) {
+                            if($this->model_catalog_product->getProductSpecial($product['product_id'], $customer['customer_group_id'])){
+                                continue;
+                            }
+                            $sumForDiscount += $product['quantity']*$this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
+                        }
+                    }else{
+                        foreach ($this->cart->getProducts() as $product) {
+                            $sumForDiscount += $product['quantity']*$this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
+                        }
+                    }
+                }else{
+                    if($this->config->get('total_customer_group_discount_special')){
+                        if (!$total_data['products_total_minus_discount']) {
+                            foreach ($this->cart->getProducts() as $product) {
+                                if($this->model_catalog_product->getProductSpecial($product['product_id'], $customer['customer_group_id'])){
+                                    continue;
+                                }
+                                $sumForDiscount += $product['quantity']*$product['price'];
+                            }
+                        } else {
+                            foreach ($total_data['products_total_minus_discount']['products'] as $product) {
+                                $sumForDiscount += $product['total'];
+                            }
+                        }
+                    }else{
+                        if (!$total_data['products_total_minus_discount']) {
+                            foreach ($this->cart->getProducts() as $product) {
+                                $sumForDiscount += $product['quantity']*$product['price'];
+                            }
+                        } else {
+                            foreach ($total_data['products_total_minus_discount']['products'] as $product) {
+                                $sumForDiscount += $product['total'];
+                            }
+                        }
+                    }
+                }
 
 				$subtraction = $sumForDiscount*($customerDiscount/100);
 				$total -= $subtraction;
@@ -62,7 +74,11 @@ class ModelTotalTotalCustomerGroupDiscount extends Model {
 				);
 			}
 
-
+            if ($total_data['products_total_minus_discount']) {
+                foreach ($total_data['products_total_minus_discount']['products'] as &$product) {
+                    $product['total'] = $product['total'] - ($product['total'] * ($customerDiscount/100));
+                }
+            }
 		}
 	}
 }

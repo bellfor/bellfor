@@ -141,8 +141,23 @@ class ModelTotalCoupon extends Model {
 					if ($status) {
 						if ($coupon_info['type'] == 'F') {
 							$discount = $coupon_info['discount'] * ($product['total'] / $sub_total);
+                            if ($total_data['products_total_minus_discount']) {
+                                foreach ($total_data['products_total_minus_discount']['products'] as &$product_array) {
+                                    if ($product['product_id'] == $product_array['product_id']){
+
+                                        $product_array['total'] = $product_array['total'] - $discount;
+                                    }
+                                }
+                            }
 						} elseif ($coupon_info['type'] == 'P') {
 							$discount = $product['total'] / 100 * $coupon_info['discount'];
+                            if ($total_data['products_total_minus_discount']) {
+                                foreach ($total_data['products_total_minus_discount']['products'] as &$product_array) {
+                                    if ($product['product_id'] == $product_array['product_id']){
+                                        $product_array['total'] = $product_array['total'] - ($product['total'] / 100 * $coupon_info['discount']);
+                                    }
+                                }
+                            }
 						}
 
 						if ($product['tax_class_id']) {
