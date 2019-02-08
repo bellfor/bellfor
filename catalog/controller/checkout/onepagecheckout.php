@@ -176,11 +176,13 @@ class ControllerCheckoutOnepagecheckout extends Controller
 
 
         $data['totals'] = array();
- 			foreach ($total_data as $total) {
-				$data['totals'][] = array(
-					'title' => $total['title'],
-					'text'  => $this->currency->format($total['value'])
-				);
+ 			foreach ($total_data as $key => $total) {
+                if (is_numeric($key)) {
+                    $data['totals'][] = array(
+                        'title' => $total['title'],
+                        'text' => $this->currency->format($total['value'])
+                    );
+                }
 			}
 
 
@@ -1362,11 +1364,13 @@ $this->session->data['order_data'] = $order_data;
 
 			$data['totals'] = array();
 
-			foreach ($total_data as $total) {
-				$data['totals'][] = array(
-					'title' => $total['title'],
-					'text'  => $this->currency->format($total['value'])
-				);
+			foreach ($total_data as $key => $total) {
+                if (is_numeric($key)) {
+                    $data['totals'][] = array(
+                        'title' => $total['title'],
+                        'text' => $this->currency->format($total['value'])
+                    );
+                }
 			}
 
 			$data['continue'] = $this->url->link('common/home');
