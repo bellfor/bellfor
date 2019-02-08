@@ -1308,7 +1308,7 @@ class ControllerCatalogProduct extends Controller {
         $data['prices'][0] = array(
             'price_id' => '',
             'store_id' => '0',
-            'store_img' => $store_setting_default['config_geocode'] . '.png',
+            'store_img' => strtolower($store_setting_default['config_geocode']) . '.png',
             'value' => ''
         );
 
@@ -1318,7 +1318,7 @@ class ControllerCatalogProduct extends Controller {
             $data['prices'][$store['store_id']] = array(
                 'price_id' => '',
                 'store_id' => $store['store_id'],
-                'store_img' => $store_setting['config_geocode'] . '.png',
+                'store_img' => strtolower($store_setting['config_geocode']) . '.png',
                 'value' => ''
             );
         }
@@ -1333,7 +1333,7 @@ class ControllerCatalogProduct extends Controller {
                 $data['prices'][$store['store_id']] = array(
                     'price_id' => '',
                     'store_id' => $store['store_id'],
-                    'store_img' => $store['config_geocode'] . '.png',
+                    'store_img' => strtolower($store['config_geocode']) . '.png',
                     'value' => ''
                 );
             }
@@ -1344,7 +1344,7 @@ class ControllerCatalogProduct extends Controller {
                 $data['prices'][$price['store_id']] = array(
                     'price_id' => $price['price_id'],
                     'store_id' => $price['store_id'],
-                    'store_img' => $store_setting['config_geocode'] . '.png',
+                    'store_img' => strtolower($store_setting['config_geocode']) . '.png',
                     'value' => $price['price']
                 );
             }
@@ -1681,7 +1681,7 @@ class ControllerCatalogProduct extends Controller {
 
         $data['product_discounts'][0] = array(
             'store_id'       => 0,
-            'store_img'      => $store_setting_discounts['config_geocode'] . '.png',
+            'store_img'      => strtolower($store_setting_discounts['config_geocode']) . '.png',
             'store_name'     => $store_setting_discounts['config_name'],
             'store_discounts' => array()
         );
@@ -1691,7 +1691,7 @@ class ControllerCatalogProduct extends Controller {
 
             $data['product_discounts'][$store['store_id']] = array(
                 'store_id'       => $store['store_id'],
-                'store_img'      => $store_setting_discounts['config_geocode'] . '.png',
+                'store_img'      => strtolower($store_setting_discounts['config_geocode']) . '.png',
                 'store_name'     => $store_setting_discounts['config_name'],
                 'store_discounts' => array()
             );
@@ -1724,7 +1724,7 @@ class ControllerCatalogProduct extends Controller {
 
         $data['product_specials'][0] = array(
             'store_id'       => 0,
-            'store_img'      => $store_setting_specials['config_geocode'] . '.png',
+            'store_img'      => strtolower($store_setting_specials['config_geocode']) . '.png',
             'store_name'     => $store_setting_specials['config_name'],
             'store_special' => array()
         );
@@ -1734,7 +1734,7 @@ class ControllerCatalogProduct extends Controller {
 
             $data['product_specials'][$store['store_id']] = array(
                 'store_id'       => $store['store_id'],
-                'store_img'      => $store_setting_specials['config_geocode'] . '.png',
+                'store_img'      => strtolower($store_setting_specials['config_geocode']) . '.png',
                 'store_name'     => $store_setting_specials['config_name'],
                 'store_special' => array()
             );
