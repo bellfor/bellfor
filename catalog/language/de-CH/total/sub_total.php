@@ -7,4 +7,4 @@
  * @license		GPL - www.gnu.org/copyleft/gpl.html
  */
 
-$_['text_sub_total'] = 'Zwischensumme';
+$_['text_sub_total'] = 'Zwischensumme (Netti Prices)';
