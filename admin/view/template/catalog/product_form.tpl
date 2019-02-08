@@ -248,6 +248,15 @@
                   <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
                 </div>
               </div>
+                <?php foreach ($prices as $item) { ?>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-price"><?php echo $entry_price; ?> <img src="view/image/flags/<?php echo $item['store_img']; ?>"/></label>
+                        <div class="col-sm-10">
+<!--                            <input type="text" name="prices[--><?php //echo $item['price_id'];?><!-----><?php //echo $item['store_id'];?><!--]" value="--><?php //echo $item['value']; ?><!--" placeholder="--><?php //echo $entry_price; ?><!--" id="input-price" class="form-control" />-->
+                            <input type="text" name="prices[<?php echo $item['store_id'];?>]" value="<?php echo $item['value']; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
+                        </div>
+                    </div>
+                <?php } ?>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
                 <div class="col-sm-10">
@@ -839,110 +848,144 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-discount">
-              <div class="table-responsive">
-                <table id="discount" class="table table-striped table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <td class="text-left"><?php echo $entry_customer_group; ?></td>
-                      <td class="text-right"><?php echo $entry_quantity; ?></td>
-                      <td class="text-right"><?php echo $entry_priority; ?></td>
-                      <td class="text-right"><?php echo $entry_price; ?></td>
-                      <td class="text-left"><?php echo $entry_date_start; ?></td>
-                      <td class="text-left"><?php echo $entry_date_end; ?></td>
-                      <td></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $discount_row = 0; ?>
+                <ul class="nav nav-tabs" id="sub-store-discount">
                     <?php foreach ($product_discounts as $product_discount) { ?>
-                    <tr id="discount-row<?php echo $discount_row; ?>">
-                      <td class="text-left"><select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
-                          <?php foreach ($customer_groups as $customer_group) { ?>
-                          <?php if ($customer_group['customer_group_id'] == $product_discount['customer_group_id']) { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
-                          <?php } else { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>
-                          <?php } ?>
-                          <?php } ?>
-                        </select></td>
-                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][quantity]" value="<?php echo $product_discount['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
-                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][priority]" value="<?php echo $product_discount['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>
-                      <td class="text-right"><input type="text" name="product_discount[<?php echo $discount_row; ?>][price]" value="<?php echo $product_discount['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                      <td class="text-left" style="width: 20%;"><div class="input-group date">
-                          <input type="text" name="product_discount[<?php echo $discount_row; ?>][date_start]" value="<?php echo $product_discount['date_start']; ?>" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
-                          <span class="input-group-btn">
-                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td>
-                      <td class="text-left" style="width: 20%;"><div class="input-group date">
-                          <input type="text" name="product_discount[<?php echo $discount_row; ?>][date_end]" value="<?php echo $product_discount['date_end']; ?>" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
-                          <span class="input-group-btn">
-                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td>
-                      <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
-                    </tr>
-                    <?php $discount_row++; ?>
+                        <li><a href="#sub-store-discount<?php echo $product_discount['store_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $product_discount['store_img']; ?>" title="<?php echo $product_discount['store_name']; ?>" /> <?php echo $product_discount['store_name']; ?></a></li>
                     <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="6"></td>
-                      <td class="text-left"><button type="button" onclick="addDiscount();" data-toggle="tooltip" title="<?php echo $button_discount_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
+                </ul>
+                <div class="tab-content">
+                    <?php foreach ($product_discounts as $product_discount) { ?>
+                        <div class="tab-pane" id="sub-store-discount<?php echo $product_discount['store_id']; ?>">
+                            <div class="table-responsive">
+                                <table id="discount<?php echo $product_discount['store_id']; ?>" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-left"><?php echo $entry_customer_group; ?></td>
+                                        <td class="text-right"><?php echo $entry_quantity; ?></td>
+                                        <td class="text-right"><?php echo $entry_priority; ?></td>
+                                        <td class="text-right"><?php echo $entry_price; ?></td>
+                                        <td class="text-left"><?php echo $entry_date_start; ?></td>
+                                        <td class="text-left"><?php echo $entry_date_end; ?></td>
+                                        <td></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $discount_row = 0; ?>
+                                    <?php foreach ($product_discount['store_discount'] as $store_discount) { ?>
+                                        <tr id="discount-row<?php echo $product_discount['store_id']; ?>-<?php echo $discount_row; ?>">
+                                            <td class="text-left">
+                                                <select name="product_discount[<?php echo $product_discount['store_id']; ?>][<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+                                                    <?php foreach ($customer_groups as $customer_group) { ?>
+                                                        <?php if ($customer_group['customer_group_id'] == $store_discount['customer_group_id']) { ?>
+                                                            <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
+                                                        <?php } else { ?>
+                                                            <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </select>
+                                            </td>
+                                            <td class="text-right"><input type="text" name="product_discount[<?php echo $product_discount['store_id']; ?>][<?php echo $discount_row; ?>][quantity]" value="<?php echo $store_discount['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
+                                            <td class="text-right"><input type="text" name="product_discount[<?php echo $product_discount['store_id']; ?>][<?php echo $discount_row; ?>][priority]" value="<?php echo $store_discount['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>
+                                            <td class="text-right"><input type="text" name="product_discount[<?php echo $product_discount['store_id']; ?>][<?php echo $discount_row; ?>][price]" value="<?php echo $store_discount['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
+                                            <td class="text-left" style="width: 20%;"><div class="input-group date">
+                                                    <input type="text" name="product_discount[<?php echo $product_discount['store_id']; ?>][<?php echo $discount_row; ?>][date_start]" value="<?php echo $store_discount['date_start']; ?>" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
+                                                    <span class="input-group-btn">
+                                      <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                      </span></div></td>
+                                            <td class="text-left" style="width: 20%;"><div class="input-group date">
+                                                    <input type="text" name="product_discount[<?php echo $product_discount['store_id']; ?>][<?php echo $discount_row; ?>][date_end]" value="<?php echo $store_discount['date_end']; ?>" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
+                                                    <span class="input-group-btn">
+                                      <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                      </span></div></td>
+                                            <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $product_discount['store_id']; ?>-<?php echo $discount_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                                        </tr>
+                                        <?php $discount_row++; ?>
+                                    <?php } ?>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="6"></td>
+                                        <td class="text-left"><button id="button-add-row-discount<?php echo $product_discount['store_id']; ?>" type="button" onclick="addDiscount(<?php echo $product_discount['store_id']; ?>, <?php echo $discount_row; ?>);" data-toggle="tooltip" title="<?php echo $button_discount_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    <?php }?>
+                </div>
             </div>
             <div class="tab-pane" id="tab-special">
-              <div class="table-responsive">
-                <table id="special" class="table table-striped table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <td class="text-left"><?php echo $entry_customer_group; ?></td>
-                      <td class="text-right"><?php echo $entry_priority; ?></td>
-                      <td class="text-right"><?php echo $entry_price; ?></td>
-                      <td class="text-left"><?php echo $entry_date_start; ?></td>
-                      <td class="text-left"><?php echo $entry_date_end; ?></td>
-                      <td></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $special_row = 0; ?>
+                <ul class="nav nav-tabs" id="sub-store">
                     <?php foreach ($product_specials as $product_special) { ?>
-                    <tr id="special-row<?php echo $special_row; ?>">
-                      <td class="text-left"><select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
-                          <?php foreach ($customer_groups as $customer_group) { ?>
-                          <?php if ($customer_group['customer_group_id'] == $product_special['customer_group_id']) { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
-                          <?php } else { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>
-                          <?php } ?>
-                          <?php } ?>
-                        </select></td>
-                      <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][priority]" value="<?php echo $product_special['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>
-                      <td class="text-right"><input type="text" name="product_special[<?php echo $special_row; ?>][price]" value="<?php echo $product_special['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                      <td class="text-left" style="width: 20%;"><div class="input-group date">
-                          <input type="text" name="product_special[<?php echo $special_row; ?>][date_start]" value="<?php echo $product_special['date_start']; ?>" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
-                          <span class="input-group-btn">
-                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td>
-                      <td class="text-left" style="width: 20%;"><div class="input-group date">
-                          <input type="text" name="product_special[<?php echo $special_row; ?>][date_end]" value="<?php echo $product_special['date_end']; ?>" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
-                          <span class="input-group-btn">
-                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                          </span></div></td>
-                      <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
-                    </tr>
-                    <?php $special_row++; ?>
+                        <li><a href="#sub-store<?php echo $product_special['store_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $product_special['store_img']; ?>" title="<?php echo $product_special['store_name']; ?>" /> <?php echo $product_special['store_name']; ?></a></li>
                     <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="5"></td>
-                      <td class="text-left"><button type="button" onclick="addSpecial();" data-toggle="tooltip" title="<?php echo $button_special_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
+                </ul>
+                <div class="tab-content">
+                    <?php foreach ($product_specials as $product_special) { ?>
+                        <div class="tab-pane" id="sub-store<?php echo $product_special['store_id']; ?>">
+                            <div class="table-responsive">
+                                <table id="special<?php echo $product_special['store_id']; ?>" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-left"><?php echo $entry_customer_group; ?></td>
+                                        <td class="text-right"><?php echo $entry_priority; ?></td>
+                                        <td class="text-right"><?php echo $entry_price; ?></td>
+                                        <td class="text-left"><?php echo $entry_date_start; ?></td>
+                                        <td class="text-left"><?php echo $entry_date_end; ?></td>
+                                        <td></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $special_row = 0; ?>
+                                    <?php foreach ($product_special['store_special'] as $store_special) { ?>
+                                        <tr id="special-row<?php echo $product_special['store_id']; ?>-<?php echo $special_row; ?>">
+                                            <td class="text-left">
+                                                <select name="product_special[<?php echo $product_special['store_id']; ?>][<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+                                                    <?php foreach ($customer_groups as $customer_group) { ?>
+                                                        <?php if ($customer_group['customer_group_id'] == $store_special['customer_group_id']) { ?>
+                                                            <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
+                                                        <?php } else { ?>
+                                                            <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </select>
+                                            </td>
+                                            <td class="text-right">
+                                                <input type="text" name="product_special[<?php echo $product_special['store_id']; ?>][<?php echo $special_row; ?>][priority]" value="<?php echo $store_special['priority']; ?>" placeholder="<?php echo $entry_priority; ?>" class="form-control" />
+                                            </td>
+                                            <td class="text-right">
+                                                <input type="text" name="product_special[<?php echo $product_special['store_id']; ?>][<?php echo $special_row; ?>][price]" value="<?php echo $store_special['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" />
+                                            </td>
+                                            <td class="text-left" style="width: 20%;"><div class="input-group date">
+                                                    <input type="text" name="product_special[<?php echo $product_special['store_id']; ?>][<?php echo $special_row; ?>][date_start]" value="<?php echo $store_special['date_start']; ?>" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
+                                                    <span class="input-group-btn">
+                                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                          </span></div></td>
+                                            <td class="text-left" style="width: 20%;"><div class="input-group date">
+                                                    <input type="text" name="product_special[<?php echo $product_special['store_id']; ?>][<?php echo $special_row; ?>][date_end]" value="<?php echo $store_special['date_end']; ?>" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" />
+                                                    <span class="input-group-btn">
+                                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                          </span></div></td>
+                                            <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $product_special['store_id']; ?>-<?php echo $special_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                                        </tr>
+                                        <?php $special_row++; ?>
+                                    <?php } ?>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td class="text-left">
+                                            <button id="button-add-row-special<?php echo $product_special['store_id']; ?>" type="button" onclick="addSpecial(<?php echo $product_special['store_id']; ?>, <?php echo $special_row; ?>);" data-toggle="tooltip" title="<?php echo $button_special_add; ?>" class="btn btn-primary">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    <?php }?>
+                </div>
             </div>
             <div class="tab-pane" id="tab-image">
               <div class="table-responsive">
@@ -1540,22 +1583,24 @@ function addOptionValue(option_row) {
   <script type="text/javascript"><!--
 var discount_row = <?php echo $discount_row; ?>;
 
-function addDiscount() {
-	html  = '<tr id="discount-row' + discount_row + '">';
-    html += '  <td class="text-left"><select name="product_discount[' + discount_row + '][customer_group_id]" class="form-control">';
+function addDiscount(store_id, row) {
+    html  = '<tr id="discount-row' + store_id + '-' + row + '">';
+    html += '  <td class="text-left"><select name="product_discount[' + store_id + '][' + row + '][customer_group_id]" class="form-control">';
     <?php foreach ($customer_groups as $customer_group) { ?>
     html += '    <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
     <?php } ?>
     html += '  </select></td>';
-    html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>';
-    html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><input type="text" name="product_discount[' + discount_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
-    html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
-	html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + discount_row + '][date_end]" value="" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
-	html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
-	html += '</tr>';
+    html += '  <td class="text-right"><input type="text" name="product_discount[' + store_id + '][' + row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>';
+    html += '  <td class="text-right"><input type="text" name="product_discount[' + store_id + '][' + row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
+    html += '  <td class="text-right"><input type="text" name="product_discount[' + store_id + '][' + row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
+    html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + store_id + '][' + row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
+    html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_discount[' + store_id + '][' + row + '][date_end]" value="" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
+    html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + store_id + '-' + row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+    html += '</tr>';
+    row++;
+    $('#button-add-row-discount' + store_id).replaceWith('<button id="button-add-row-discount' + store_id + '" type="button" onclick="addDiscount(' + store_id + ', ' + row + ');" data-toggle="tooltip" title="<?php echo $button_special_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>');
 
-	$('#discount tbody').append(html);
+    $('#discount' + store_id + ' tbody').append(html);
 
 	$('.date').datetimepicker({
 		pickTime: false
@@ -1567,21 +1612,23 @@ function addDiscount() {
   <script type="text/javascript"><!--
 var special_row = <?php echo $special_row; ?>;
 
-function addSpecial() {
-	html  = '<tr id="special-row' + special_row + '">';
-    html += '  <td class="text-left"><select name="product_special[' + special_row + '][customer_group_id]" class="form-control">';
+function addSpecial(store_id, row) {
+    html  = '<tr id="special-row' + store_id + '-' + row + '">';
+    html += '  <td class="text-left"><select name="product_special[' + store_id + '][' + row + '][customer_group_id]" class="form-control">';
     <?php foreach ($customer_groups as $customer_group) { ?>
     html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
     <?php } ?>
     html += '  </select></td>';
-    html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
-    html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_special[' + special_row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
-	html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_special[' + special_row + '][date_end]" value="" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
-	html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
-	html += '</tr>';
+    html += '  <td class="text-right"><input type="text" name="product_special[' + store_id + '][' + row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
+    html += '  <td class="text-right"><input type="text" name="product_special[' + store_id + '][' + row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
+    html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_special[' + store_id + '][' + row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
+    html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_special[' + store_id + '][' + row + '][date_end]" value="" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
+    html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + store_id + '-' + row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+    html += '</tr>';
+    row++;
+    $('#button-add-row-special' + store_id).replaceWith('<button id="button-add-row-special' + store_id + '" type="button" onclick="addSpecial(' + store_id + ', ' + row + ');" data-toggle="tooltip" title="<?php echo $button_special_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>');
 
-	$('#special tbody').append(html);
+    $('#special' + store_id + ' tbody').append(html);
 
 	$('.date').datetimepicker({
 		pickTime: false
@@ -1654,6 +1701,8 @@ $('#language-without-weight a:first').tab('show');
 $('#language-custom-link a:first').tab('show');
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
+$('#sub-store a:first').tab('show');
+$('#sub-store-discount a:first').tab('show');
 //--></script></div>
 <script type="text/javascript"><!--
 <?php foreach($product_tabs as $key => $tab){  ?>

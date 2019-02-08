@@ -1301,6 +1301,55 @@ class ControllerCatalogProduct extends Controller {
 			$data['price'] = '';
 		}
 
+        $this->load->model('setting/setting');
+
+        $store_setting_default = $this->model_setting_setting->getsetting('config', 0);
+
+        $data['prices'][0] = array(
+            'price_id' => '',
+            'store_id' => '0',
+            'store_img' => $store_setting_default['config_geocode'] . '.png',
+            'value' => ''
+        );
+
+        foreach ($this->model_setting_store->getStores() as $store) {
+            $store_setting = $this->model_setting_setting->getsetting('config', $store['store_id']);
+
+            $data['prices'][$store['store_id']] = array(
+                'price_id' => '',
+                'store_id' => $store['store_id'],
+                'store_img' => $store_setting['config_geocode'] . '.png',
+                'value' => ''
+            );
+        }
+
+        $prices = $this->model_catalog_product->getProductPrice($this->request->get['product_id']);
+
+        if  (isset($this->request->post['prices'])) {
+            $data['prices'] = $this->request->post['prices'];
+        } elseif (!empty($prices)) {
+
+            foreach ($this->model_setting_store->getStores() as $store) {
+                $data['prices'][$store['store_id']] = array(
+                    'price_id' => '',
+                    'store_id' => $store['store_id'],
+                    'store_img' => $store['config_geocode'] . '.png',
+                    'value' => ''
+                );
+            }
+
+            foreach ($prices as $price) {
+                $store_setting = $this->model_setting_setting->getsetting('config', $price['store_id']);
+
+                $data['prices'][$price['store_id']] = array(
+                    'price_id' => $price['price_id'],
+                    'store_id' => $price['store_id'],
+                    'store_img' => $store_setting['config_geocode'] . '.png',
+                    'value' => $price['price']
+                );
+            }
+        }
+
 		$this->load->model('catalog/recurring');
 
 		$data['recurrings'] = $this->model_catalog_recurring->getRecurrings();
@@ -1624,38 +1673,92 @@ class ControllerCatalogProduct extends Controller {
 			$product_discounts = array();
 		}
 
-		$data['product_discounts'] = array();
+        //Product discount price
 
-		foreach ($product_discounts as $product_discount) {
-			$data['product_discounts'][] = array(
-				'customer_group_id' => $product_discount['customer_group_id'],
-				'quantity'          => $product_discount['quantity'],
-				'priority'          => $product_discount['priority'],
-				'price'             => $product_discount['price'],
-				'date_start'        => ($product_discount['date_start'] != '0000-00-00') ? $product_discount['date_start'] : '',
-				'date_end'          => ($product_discount['date_end'] != '0000-00-00') ? $product_discount['date_end'] : ''
-			);
-		}
+        $this->load->model('setting/setting');
 
-		if (isset($this->request->post['product_special'])) {
-			$product_specials = $this->request->post['product_special'];
-		} elseif (isset($this->request->get['product_id'])) {
-			$product_specials = $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
-		} else {
-			$product_specials = array();
-		}
+        $store_setting_discounts = $this->model_setting_setting->getsetting('config', 0);
 
-		$data['product_specials'] = array();
+        $data['product_discounts'][0] = array(
+            'store_id'       => 0,
+            'store_img'      => $store_setting_discounts['config_geocode'] . '.png',
+            'store_name'     => $store_setting_discounts['config_name'],
+            'store_discounts' => array()
+        );
 
-		foreach ($product_specials as $product_special) {
-			$data['product_specials'][] = array(
-				'customer_group_id' => $product_special['customer_group_id'],
-				'priority'          => $product_special['priority'],
-				'price'             => $product_special['price'],
-				'date_start'        => ($product_special['date_start'] != '0000-00-00') ? $product_special['date_start'] : '',
-				'date_end'          => ($product_special['date_end'] != '0000-00-00') ? $product_special['date_end'] :  ''
-			);
-		}
+        foreach ($this->model_setting_store->getStores() as $store) {
+            $store_setting_discounts = $this->model_setting_setting->getsetting('config', $store['store_id']);
+
+            $data['product_discounts'][$store['store_id']] = array(
+                'store_id'       => $store['store_id'],
+                'store_img'      => $store_setting_discounts['config_geocode'] . '.png',
+                'store_name'     => $store_setting_discounts['config_name'],
+                'store_discounts' => array()
+            );
+        }
+
+        if (isset($this->request->post['product_discount'])) {
+            $product_discounts = $this->request->post['product_discount'];
+        } elseif (isset($this->request->get['product_id'])) {
+            $product_discounts = $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+        } else {
+            $product_discounts = array();
+        }
+
+//		$data['product_discounts'] = array();
+
+        foreach ($product_discounts as $product_discount) {
+            $data['product_discounts'][$product_discount['store_id']]['store_discount'][] = array(
+                'customer_group_id' => $product_discount['customer_group_id'],
+                'quantity'          => $product_discount['quantity'],
+                'priority'          => $product_discount['priority'],
+                'price'             => $product_discount['price'],
+                'date_start'        => ($product_discount['date_start'] != '0000-00-00') ? $product_discount['date_start'] : '',
+                'date_end'          => ($product_discount['date_end'] != '0000-00-00') ? $product_discount['date_end'] : ''
+            );
+        }
+
+        //Product special price
+
+        $store_setting_specials = $this->model_setting_setting->getsetting('config', 0);
+
+        $data['product_specials'][0] = array(
+            'store_id'       => 0,
+            'store_img'      => $store_setting_specials['config_geocode'] . '.png',
+            'store_name'     => $store_setting_specials['config_name'],
+            'store_special' => array()
+        );
+
+        foreach ($this->model_setting_store->getStores() as $store) {
+            $store_setting_specials = $this->model_setting_setting->getsetting('config', $store['store_id']);
+
+            $data['product_specials'][$store['store_id']] = array(
+                'store_id'       => $store['store_id'],
+                'store_img'      => $store_setting_specials['config_geocode'] . '.png',
+                'store_name'     => $store_setting_specials['config_name'],
+                'store_special' => array()
+            );
+        }
+
+        if (isset($this->request->post['product_special'])) {
+            $product_specials = $this->request->post['product_special'];
+        } elseif (isset($this->request->get['product_id'])) {
+            $product_specials = $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+        } else {
+            $product_specials = array();
+        }
+
+//		$data['product_specials'] = array();
+
+        foreach ($product_specials as $product_special) {
+            $data['product_specials'][$product_special['store_id']]['store_special'][] = array(
+                'customer_group_id' => $product_special['customer_group_id'],
+                'priority'          => $product_special['priority'],
+                'price'             => $product_special['price'],
+                'date_start'        => ($product_special['date_start'] != '0000-00-00') ? $product_special['date_start'] : '',
+                'date_end'          => ($product_special['date_end'] != '0000-00-00') ? $product_special['date_end'] :  '',
+            );
+        }
 
 		// Images
 		if (isset($this->request->post['product_image'])) {
