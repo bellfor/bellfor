@@ -1,7 +1,14 @@
 <?php if ($modules) { ?>
 
 <aside class="col-md-3 col-md-pull-9 col-xs-12" >
-
+    <?php if (isset($consultant)) { ?>
+    <div class="container-right-futterconsultant">
+        <div class="text-title">Futterempfehlung speziell für Ihren Hund</div>
+        <div style="padding: 0 15px;">
+            <a href="/futterconsultant" class="button_green">Ernährungsberater</a>
+        </div>
+    </div>
+    <?php } ?>
   <?php foreach ($modules as $module) { ?>
   <?php echo $module; ?>
   <?php } ?>

@@ -78,6 +78,12 @@ class ControllerCommonFooter extends Controller {
 
         }
 
+        $store_id = $this->config->get('config_store_id');
+
+        if ($store_id == 0 || $store_id == 4 || $store_id == 1) {
+            $data['consultant'] = true;
+        }
+
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', 'SSL');
 		$data['sitemap'] = $this->url->link('information/sitemap');
@@ -139,5 +145,18 @@ class ControllerCommonFooter extends Controller {
         }
 
         return $result;
+    }
+
+    public function promoCodePopUp (){
+
+        if (!isset($this->session->data['promo_code']) && !$this->customer->isLogged()) {
+            $this->session->data['promo_code'] = true;
+            $json = true;
+        } else {
+            $json = false;
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
     }
 }

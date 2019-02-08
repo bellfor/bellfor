@@ -22,6 +22,12 @@ class ControllerCommonColumnRight extends Controller {
 			$layout_id = $this->model_catalog_manufacturer->getManufacturerLayoutId($this->request->get['manufacturer_id']);
 		}
 
+		$store_id = $this->config->get('config_store_id');
+
+		if ($store_id == 0 || $store_id == 4 || $store_id == 1) {
+            $data['consultant'] = true;
+        }
+
 		if ($route == 'product/category' && isset($this->request->get['path'])) {
 			$this->load->model('catalog/category');
 

@@ -56,7 +56,40 @@
     <div id="related_popup" style="display:none;">
         <div id="related_popup_content" style="position: fixed; z-index: 100; width: 100%; height: 100%; top: 0; background-color: black; opacity: 0.4;"></div>
     </div>
+    <?php if (isset($consultant)) { ?>
+    <div id="consultant-shadow" class="displaynone display-shadow"></div>
+    <div id="consultant" class="displaynone consultant-div">
+        <div class="futterconsultant">
+            <img class="" src="/image/catalog/futterconsultant/476x714_Futter_consultant.jpg" style="max-width: 360px;" alt="">
+            <img class="close-consultant" src="/image/catalog/futterconsultant/close.png" title="Close" onclick="closeConsultant();" alt="">
+            <a href="/futterconsultant" style="text-decoration: none;">
+                <img class="redirect-consultant" src="/image/catalog/futterconsultant/cta.png" alt="">
+            </a>
+        </div>
+    </div>
+    <?php } ?>
 </footer>
+<?php if (isset($consultant)) { ?>
+<script>
+    $('body').mouseleave(function () {
+        $.ajax({
+            url: 'index.php?route=common/footer/promoCodePopUp',
+            dataType: 'json',
+            type: 'post',
+            success: function(json){
+                if (json == true) {
+                    $('#consultant-shadow').removeClass('displaynone');
+                    $('#consultant').removeClass('displaynone');
+                }
+            }
+        })
+    });
+    function closeConsultant() {
+        $('#consultant-shadow').addClass('displaynone');
+        $('#consultant').addClass('displaynone');
+    }
+</script>
+<?php } ?>
 <script>
     $('#related_popup').on('click', function () {
         $('.noty_close_button').trigger("click");
