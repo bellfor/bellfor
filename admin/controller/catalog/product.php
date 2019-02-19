@@ -1314,13 +1314,14 @@ class ControllerCatalogProduct extends Controller {
 
         foreach ($this->model_setting_store->getStores() as $store) {
             $store_setting = $this->model_setting_setting->getsetting('config', $store['store_id']);
-
-            $data['prices'][$store['store_id']] = array(
-                'price_id' => '',
-                'store_id' => $store['store_id'],
-                'store_img' => strtolower($store_setting['config_geocode']) . '.png',
-                'value' => ''
-            );
+            if ($store_setting['config_geocode']) {
+                $data['prices'][$store['store_id']] = array(
+                    'price_id' => '',
+                    'store_id' => $store['store_id'],
+                    'store_img' => strtolower($store_setting['config_geocode']) . '.png',
+                    'value' => ''
+                );
+            }
         }
 
         $prices = $this->model_catalog_product->getProductPrice($this->request->get['product_id']);
@@ -1330,12 +1331,14 @@ class ControllerCatalogProduct extends Controller {
         } elseif (!empty($prices)) {
 
             foreach ($this->model_setting_store->getStores() as $store) {
-                $data['prices'][$store['store_id']] = array(
-                    'price_id' => '',
-                    'store_id' => $store['store_id'],
-                    'store_img' => strtolower($store['config_geocode']) . '.png',
-                    'value' => ''
-                );
+                if ($store_setting['config_geocode']) {
+                    $data['prices'][$store['store_id']] = array(
+                        'price_id' => '',
+                        'store_id' => $store['store_id'],
+                        'store_img' => strtolower($store['config_geocode']) . '.png',
+                        'value' => ''
+                    );
+                }
             }
 
             foreach ($prices as $price) {
@@ -1689,12 +1692,14 @@ class ControllerCatalogProduct extends Controller {
         foreach ($this->model_setting_store->getStores() as $store) {
             $store_setting_discounts = $this->model_setting_setting->getsetting('config', $store['store_id']);
 
-            $data['product_discounts'][$store['store_id']] = array(
-                'store_id'       => $store['store_id'],
-                'store_img'      => strtolower($store_setting_discounts['config_geocode']) . '.png',
-                'store_name'     => $store_setting_discounts['config_name'],
-                'store_discounts' => array()
-            );
+            if ($store_setting_discounts['config_name']) {
+                $data['product_discounts'][$store['store_id']] = array(
+                    'store_id'       => $store['store_id'],
+                    'store_img'      => strtolower($store_setting_discounts['config_geocode']) . '.png',
+                    'store_name'     => $store_setting_discounts['config_name'],
+                    'store_discounts' => array()
+                );
+            }
         }
 
         if (isset($this->request->post['product_discount'])) {
@@ -1731,13 +1736,14 @@ class ControllerCatalogProduct extends Controller {
 
         foreach ($this->model_setting_store->getStores() as $store) {
             $store_setting_specials = $this->model_setting_setting->getsetting('config', $store['store_id']);
-
-            $data['product_specials'][$store['store_id']] = array(
-                'store_id'       => $store['store_id'],
-                'store_img'      => strtolower($store_setting_specials['config_geocode']) . '.png',
-                'store_name'     => $store_setting_specials['config_name'],
-                'store_special' => array()
-            );
+            if ($store_setting_specials['config_name']) {
+                $data['product_specials'][$store['store_id']] = array(
+                    'store_id'       => $store['store_id'],
+                    'store_img'      => strtolower($store_setting_specials['config_geocode']) . '.png',
+                    'store_name'     => $store_setting_specials['config_name'],
+                    'store_special' => array()
+                );
+            }
         }
 
         if (isset($this->request->post['product_special'])) {
