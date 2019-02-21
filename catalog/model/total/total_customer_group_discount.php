@@ -73,7 +73,13 @@ class ModelTotalTotalCustomerGroupDiscount extends Model {
 					'sort_order' => $this->config->get('total_customer_group_discount_sort_order')
 				);
 			}
-
+            /*Added in modification "Discount by Group Price fix"
+             <operation>
+                <search><![CDATA[if ($total_data['products_total_minus_discount']) {]]></search>
+                <add position="replace"><![CDATA[
+                    if ($total_data['products_total_minus_discount'] && $subtraction != 0) {
+                ]]></add>
+             </operation>*/
             if ($total_data['products_total_minus_discount']) {
                 foreach ($total_data['products_total_minus_discount']['products'] as &$product) {
                     $product['total'] = $product['total'] - ($product['total'] * ($customerDiscount/100));
