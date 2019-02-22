@@ -58,6 +58,7 @@ class ModelCatalogProduct extends Model {
 
 		foreach ($data['product_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "product_description_amazon_ebay` SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', title_amazon = '" . $this->db->escape($value['amazon_ebay_feeds']['title_amazon']) . "', bullet_1 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_1']) . "', bullet_2 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_2']) . "', bullet_3 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_3']) . "', bullet_4 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_4']) . "', bullet_5 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_5']) . "', amazon_search_terms = '" . $this->db->escape($value['amazon_ebay_feeds']['amazon_search_terms']) . "', title_ebay = '" . $this->db->escape($value['amazon_ebay_feeds']['title_ebay']) . "', main_ingredient = '" . $this->db->escape($value['amazon_ebay_feeds']['main_ingredient']) . "', supplement = '" . $this->db->escape($value['amazon_ebay_feeds']['supplement']) . "', application = '" . $this->db->escape($value['amazon_ebay_feeds']['application']) . "'");
 		}
 
 		if (isset($data['product_store'])) {
@@ -249,9 +250,11 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description_amazon_ebay WHERE product_id = '" . (int)$product_id . "'");
 
 		foreach ($data['product_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "product_description_amazon_ebay` SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', title_amazon = '" . $this->db->escape($value['amazon_ebay_feeds']['title_amazon']) . "', bullet_1 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_1']) . "', bullet_2 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_2']) . "', bullet_3 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_3']) . "', bullet_4 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_4']) . "', bullet_5 = '" . $this->db->escape($value['amazon_ebay_feeds']['bullet_5']) . "', amazon_search_terms = '" . $this->db->escape($value['amazon_ebay_feeds']['amazon_search_terms']) . "', title_ebay = '" . $this->db->escape($value['amazon_ebay_feeds']['title_ebay']) . "', main_ingredient = '" . $this->db->escape($value['amazon_ebay_feeds']['main_ingredient']) . "', supplement = '" . $this->db->escape($value['amazon_ebay_feeds']['supplement']) . "', application = '" . $this->db->escape($value['amazon_ebay_feeds']['application']) . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_store WHERE product_id = '" . (int)$product_id . "'");
@@ -467,6 +470,7 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_custom_links WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "product_description_amazon_ebay WHERE product_id = '" . (int)$product_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "product_feed WHERE product_id = '" . (int)$product_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "product_discount WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_filter WHERE product_id = '" . (int)$product_id . "'");
@@ -678,6 +682,8 @@ class ModelCatalogProduct extends Model {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");
 
 		foreach ($query->rows as $result) {
+            $amazon_ebay = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_description_amazon_ebay` WHERE product_id = '" . (int)$product_id . "' AND language_id = '" . (int)$result['language_id'] . "'");
+
 			$product_description_data[$result['language_id']] = array(
 				'name'             => $result['name'],
 				'description'      => $result['description'],
@@ -685,7 +691,20 @@ class ModelCatalogProduct extends Model {
 				'meta_h1'	       => $result['meta_h1'],
 				'meta_description' => $result['meta_description'],
 				'meta_keyword'     => $result['meta_keyword'],
-				'tag'              => $result['tag']
+				'tag'              => $result['tag'],
+                'amazon_ebay_feeds'=> array(
+                    'title_amazon'        => $amazon_ebay->row['title_amazon'],
+                    'bullet_1'            => $amazon_ebay->row['bullet_1'],
+                    'bullet_2'            => $amazon_ebay->row['bullet_2'],
+                    'bullet_3'            => $amazon_ebay->row['bullet_3'],
+                    'bullet_4'            => $amazon_ebay->row['bullet_4'],
+                    'bullet_5'            => $amazon_ebay->row['bullet_5'],
+                    'amazon_search_terms' => $amazon_ebay->row['amazon_search_terms'],
+                    'title_ebay'          => $amazon_ebay->row['title_ebay'],
+                    'main_ingredient'     => $amazon_ebay->row['main_ingredient'],
+                    'supplement'          => $amazon_ebay->row['supplement'],
+                    'application'         => $amazon_ebay->row['application']
+                )
 			);
 		}
 

@@ -102,6 +102,79 @@
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][tag]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['tag'] : ''; ?>" placeholder="<?php echo $entry_tag; ?>" id="input-tag<?php echo $language['language_id']; ?>" class="form-control" />
                     </div>
                   </div>
+                    <!--Custom fields-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-title-amazon<?php echo $language['language_id']; ?>">Тitle amazon</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][title_amazon]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['title_amazon'] : ''; ?>" placeholder="Тitle amazon" id="input-title-amazon<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-bullet-1<?php echo $language['language_id']; ?>">Bullet-points 1</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][bullet_1]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['bullet_1'] : ''; ?>" placeholder="Bullet-points 1" maxlength="200" id="input-bullet-1<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-bullet-2<?php echo $language['language_id']; ?>">Bullet-points 2</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][bullet_2]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['bullet_2'] : ''; ?>" placeholder="Bullet-points 2" maxlength="200" id="input-bullet-2<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-bullet-3<?php echo $language['language_id']; ?>">Bullet-points 3</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][bullet_3]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['bullet_3'] : ''; ?>" placeholder="Bullet-points 3" maxlength="200" id="input-bullet-3<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-bullet-4<?php echo $language['language_id']; ?>">Bullet-points 4</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][bullet_4]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['bullet_4'] : ''; ?>" placeholder="Bullet-points 4" maxlength="200" id="input-bullet-4<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-bullet-5<?php echo $language['language_id']; ?>">Bullet-points 5</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][bullet_5]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['bullet_5'] : ''; ?>" placeholder="Bullet-points 5" maxlength="200" id="input-bullet-5<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-amazon-search-terms<?php echo $language['language_id']; ?>">Amazon Search Terms and Keywords</label>
+                        <div class="col-sm-10">
+                            <textarea name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][amazon_search_terms]" rows="5" placeholder="Amazon Search Terms and Keywords" id="input-amazon-search-terms<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['amazon_search_terms'] : ''; ?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-title-ebay<?php echo $language['language_id']; ?>">Title ebay</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][title_ebay]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['title_ebay'] : ''; ?>" placeholder="Title ebay" id="input-title-ebay<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-main-ingredient<?php echo $language['language_id']; ?>">Zutaten (Main Ingredient)</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][main_ingredient]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['main_ingredient'] : ''; ?>" placeholder="Zutaten (Main Ingredient)" id="input-main-ingredient<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-supplement<?php echo $language['language_id']; ?>">Zusätze (Supplement)</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][supplement]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['supplement'] : ''; ?>" placeholder="Zusätze (Supplement)" id="input-supplement<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-application<?php echo $language['language_id']; ?>">Verabreichung (Application)</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][amazon_ebay_feeds][application]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['amazon_ebay_feeds']['application'] : ''; ?>" placeholder="Verabreichung (Application)" id="input-application<?php echo $language['language_id']; ?>" class="form-control" />
+                        </div>
+                    </div>
                 </div>
                 <?php } ?>
               </div>
