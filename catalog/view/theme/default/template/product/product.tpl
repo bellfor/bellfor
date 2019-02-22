@@ -128,6 +128,9 @@ if(!empty($priceregion)) {
                   <a class="" href="#"><?php echo $text_versand ; ?></a>
                 </span>
             <?php } ?>
+                  <?php if(!$tax_rate) { ?>
+                      <span class="small"><?php echo $text_none_tax; ?></span>
+                  <?php }?>
               </div>
             </div>
 

@@ -17,6 +17,7 @@ $_['text_points']		= 'Preis in Bonuspunkten';
 $_['text_stock']		= 'Verfügbarkeit';
 $_['text_instock']		= 'Lagernd';
 $_['text_tax']			= 'inkl.';
+$_['text_none_tax']		= 'exkl. MwSt.';
 $_['text_discount']		= ' oder weitere ';
 $_['text_option']       = 'Mögliche Optionen';
 $_['text_minimum']      = '(Mindestbestellmenge %s Stück)';
