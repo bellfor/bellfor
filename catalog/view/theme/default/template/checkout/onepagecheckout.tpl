@@ -313,6 +313,13 @@
               </div>
             </div>
 
+            <div style="margin-left:10px; display: none;" class="pull-left radio-delivery-item dhle">
+              <div class="radio" data-role="controlgroup" data-type="horizontal">
+                <input type="radio" id="deliveryDHLE" name="delivery" value="DHL Express" />
+                <label style="margin-top: 3px;" for="deliveryDHLE"><img alt="DHL Express" border="0" src="image/catalog/dhl express_s.png" style="height:18px;margin-right:2px;" />DHL Express</label>
+              </div>
+            </div>
+
             <div style="margin-left:10px" class="pull-left radio-delivery-item dpd">
               <div class="radio" data-role="controlgroup" data-type="horizontal">
                 <input type="radio" id="deliveryDPD" name="delivery" value="DPD" />
@@ -421,64 +428,8 @@
   });
 
   function getShipping(s) {
-    $.ajax({
-        url: 'index.php?route=checkout/onepagecheckout/getshipping',
-        type: 'post',
-        data: 'country_id=' + s,
-        dataType: 'json',
-        beforeSend: function () {
-        },
-        success: function (json) {
-          $('.alert, .text-danger').remove();
-          if (json['error']) {
-            if (json['error']['warning']) {
-              alert(json['error']['warning']);
-            }
-          } else {
-            sh = json;
-            $.ajax({
-                url: 'index.php?route=checkout/onepagecheckout/setshipping',
-                type: 'post',
-                data: sh,
-                dataType: 'json',
-                beforeSend: function () {
-
-                },
-                success: function (json) {
-                  if (json['error']) {
-                    if (json['error']['warning']) {
-                      alert(json['error']['warning']);
-                    }
-                  } else {
-                    $.ajax({
-                      url: 'index.php?route=checkout/onepagecheckout/totals',
-                      type: 'get',
-                      success: function (json) {
-                        $('#totals tbody').remove();
-                        $('#totals').append('<tbody></tbody');
-                        for (t in json['totals']) {
-							if(json['totals'][t]["text"]!=='0,00 EUR') {
-                          $('#totals tbody').append('<tr class="name subtotal"><td class="name subtotal"><strong>' + json['totals'][t]['title'] + '</strong></td><td class="price">' + json['totals'][t]["text"] + '</td></tr>');
-							}
-						}
-                      }
-                    });
-                    // Update Totalsi!
-                  }
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                  alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-              }
-            );
-
-          }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-      }
-    ); //ajax
+    shipping(s);
+     //ajax
 
 	if (s == 81) {
 	$('#shipping-terms').text('<?php echo $text_shipping_terms_3 ; ?>');
@@ -503,12 +454,74 @@
 	    $('#radio-delivery').show();
 		$("#deliveryDHL").prop("checked", true);
 	}
+	if (s == 81) {
+        $('#radio-delivery >.dhle').show('100');
+    }
 	SetRumun(1);
     //end fixed by oppo webiprog.com  03.05.2018
 
   }
 
+    function shipping(s, sm = '') {
+        $.ajax({
+                url: 'index.php?route=checkout/onepagecheckout/getshipping',
+                type: 'post',
+                data: 'country_id=' + s + '&shipping_method=' + sm,
+                dataType: 'json',
+                beforeSend: function () {
+                },
+                success: function (json) {
+                    $('.alert, .text-danger').remove();
+                    if (json['error']) {
+                        if (json['error']['warning']) {
+                            alert(json['error']['warning']);
+                        }
+                    } else {
+                        sh = json;
+                        $.ajax({
+                                url: 'index.php?route=checkout/onepagecheckout/setshipping',
+                                type: 'post',
+                                data: sh,
+                                dataType: 'json',
+                                beforeSend: function () {
 
+                                },
+                                success: function (json) {
+                                    if (json['error']) {
+                                        if (json['error']['warning']) {
+                                            alert(json['error']['warning']);
+                                        }
+                                    } else {
+                                        $.ajax({
+                                            url: 'index.php?route=checkout/onepagecheckout/totals',
+                                            type: 'get',
+                                            success: function (json) {
+                                                $('#totals tbody').remove();
+                                                $('#totals').append('<tbody></tbody>');
+                                                for (t in json['totals']) {
+                                                    if(json['totals'][t]["text"]!=='0,00 EUR') {
+                                                        $('#totals tbody').append('<tr class="name subtotal"><td class="name subtotal"><strong>' + json['totals'][t]['title'] + '</strong></td><td class="price">' + json['totals'][t]["text"] + '</td></tr>');
+                                                    }
+                                                }
+                                            }
+                                        });
+                                        // Update Totalsi!
+                                    }
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                }
+                            }
+                        );
+
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            }
+        );
+    }
 
   //fixed by oppo webiprog.com  02.05.2018 MAR-251 MAR-243
   //Selecting a delivery method between DPD and DHL for German customers
@@ -554,6 +567,9 @@
       });
       $('#payments-load').on('click', function () {
           SetRumun();
+          if ($('#deliveryDHLE').prop("checked")) {
+            shipping(81, 'DHLE');
+          }
       });
   });
   //end fixed by oppo webiprog.com  02.05.2018
@@ -625,7 +641,6 @@
 
 	});
 
-  });
-  //--></script>
+  });//--></script>
 
 <?php echo $footer; ?>

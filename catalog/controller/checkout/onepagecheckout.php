@@ -1142,98 +1142,147 @@ $this->session->data['order_data'] = $order_data;
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "geo_zone ORDER BY name");
 
-		foreach ($query->rows as $result)
-		{
-			if ($this->config->get('weight_' . $result['geo_zone_id'] . '_status'))
-			{
-				$free = false;
-				if (!empty($this->config->get('weight_' . $result['geo_zone_id'] . '_free')) && intval($this->config->get('weight_' . $result['geo_zone_id'] . '_free')) > 0
-						)
-				{
-					if ($total >= intval($this->config->get('weight_' . $result['geo_zone_id'] . '_free')))
-					{
-						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$result['geo_zone_id'] . "' AND country_id = '" . (int)$country_id . "'");
+		if ($this->request->post['shipping_method'] != 'DHLE') {
+            foreach ($query->rows as $result)
+            {
+                if ($this->config->get('weight_' . $result['geo_zone_id'] . '_status'))
+                {
+                    $free = false;
+                    if (!empty($this->config->get('weight_' . $result['geo_zone_id'] . '_free')) && intval($this->config->get('weight_' . $result['geo_zone_id'] . '_free')) > 0
+                    )
+                    {
+                        if ($total >= intval($this->config->get('weight_' . $result['geo_zone_id'] . '_free')))
+                        {
+                            $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$result['geo_zone_id'] . "' AND country_id = '" . (int)$country_id . "'");
 
-						if ($query->num_rows)
-						{
-							$quote_data = array('code' => 'weight.weight_' . $result['geo_zone_id'],
-								'title' => '',
-								'cost' => 0,
-								'tax_class_id' => $this->config->get('weight_tax_class_id'),
-								'text' => ''
-								);
-							$free = true;
-							$status = false;
-							break;
-						}
-					}
-				}
+                            if ($query->num_rows)
+                            {
+                                $quote_data = array('code' => 'weight.weight_' . $result['geo_zone_id'],
+                                    'title' => '',
+                                    'cost' => 0,
+                                    'tax_class_id' => $this->config->get('weight_tax_class_id'),
+                                    'text' => ''
+                                );
+                                $free = true;
+                                $status = false;
+                                break;
+                            }
+                        }
+                    }
 
-				if ($free === false)
-				{
-					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$result['geo_zone_id'] . "' AND country_id = '" . (int)$country_id . "'");
+                    if ($free === false)
+                    {
+                        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$result['geo_zone_id'] . "' AND country_id = '" . (int)$country_id . "'");
 
-					if ($query->num_rows)
-					{
-						$status = true;
-					}
-					else
-					{
-						$status = false;
-					}
-				}
-			}
-			else
-			{
-				$status = false;
-			}
+                        if ($query->num_rows)
+                        {
+                            $status = true;
+                        }
+                        else
+                        {
+                            $status = false;
+                        }
+                    }
+                }
+                else
+                {
+                    $status = false;
+                }
 
-			if ($status)
-			{
-				$cost = '';
-				$weight = $this->cart->getWeight();
+                if ($status)
+                {
+                    $cost = '';
+                    $weight = $this->cart->getWeight();
 
-				$rates = explode(',', $this->config->get('weight_' . $result['geo_zone_id'] . '_rate'));
+                    $rates = explode(',', $this->config->get('weight_' . $result['geo_zone_id'] . '_rate'));
 
-				$highest = 0;
+                    $highest = 0;
 
-				foreach ($rates as $rate)
-				{
-					$data = explode(':', $rate);
+                    foreach ($rates as $rate)
+                    {
+                        $data = explode(':', $rate);
 
-					if ($data[0] >= $weight)
-					{
-						if (isset($data[1]))
-						{
-							$cost = $data[1];
-						}
+                        if ($data[0] >= $weight)
+                        {
+                            if (isset($data[1]))
+                            {
+                                $cost = $data[1];
+                            }
 
-						break;
-					}
+                            break;
+                        }
 
-					if (isset($data[1]) && $data[1] > $highest)
-					{
-						$highest = $data[1];
-					}
-				}
+                        if (isset($data[1]) && $data[1] > $highest)
+                        {
+                            $highest = $data[1];
+                        }
+                    }
 
-				if ($cost == '')
-				{
-					$cost = $highest;
-				}
+                    if ($cost == '')
+                    {
+                        $cost = $highest;
+                    }
 
-				if ((string)$cost != '')
-				{
-					$quote_data = array('code' => 'weight.weight_' . $result['geo_zone_id'],
-						'title' => $result['name'] . '  (' . $this->language->get('text_weight') . ' ' . $this->weight->format($weight, $this->config->get('config_weight_class_id')) . ')',
-						'cost' => $cost,
-						'tax_class_id' => $this->config->get('weight_tax_class_id'),
-						'text' => $this->currency->format($this->tax->calculate($cost, $this->config->get('weight_tax_class_id'), $this->config->get('config_tax')))
-						);
-				}
-			}
-		} // end foreach
-		$method_data = array();
+                    if ((string)$cost != '')
+                    {
+                        $quote_data = array('code' => 'weight.weight_' . $result['geo_zone_id'],
+                            'title' => $result['name'] . '  (' . $this->language->get('text_weight') . ' ' . $this->weight->format($weight, $this->config->get('config_weight_class_id')) . ')',
+                            'cost' => $cost,
+                            'tax_class_id' => $this->config->get('weight_tax_class_id'),
+                            'text' => $this->currency->format($this->tax->calculate($cost, $this->config->get('weight_tax_class_id'), $this->config->get('config_tax')))
+                        );
+                    }
+                }
+            } // end foreach
+        } else {
+		    // If create new geo zone for DHL Express check hem id and change this id "geo_zone_id  = '27'"
+            $geo_zone = $this->db->query("SELECT * FROM " . DB_PREFIX . "geo_zone WHERE geo_zone_id  = '27' ORDER BY name");
+
+            $cost = '';
+            $weight = $this->cart->getWeight();
+
+            $rates = explode(',', $this->config->get('weight_' . $geo_zone->row['geo_zone_id'] . '_rate'));
+
+            $highest = 0;
+
+            foreach ($rates as $rate)
+            {
+                $data = explode(':', $rate);
+
+                if ($data[0] >= $weight)
+                {
+
+                    if (isset($data[1]))
+                    {
+                        $cost = $data[1];
+                    }
+
+                    break;
+                }
+
+                if (isset($data[1]) && $data[1] > $highest)
+                {
+                    $highest = $data[1];
+                }
+            }
+
+            if ($cost == '')
+            {
+                $cost = $highest;
+            }
+
+            if ((string)$cost != '')
+            {
+                $quote_data = array('code' => 'weight.weight_' . $geo_zone->row['geo_zone_id'],
+                    'title' => $geo_zone->row['name'] . '  (' . $this->language->get('text_weight') . ' ' . $this->weight->format($weight, $this->config->get('config_weight_class_id')) . ')',
+                    'cost' => $cost,
+                    'tax_class_id' => $this->config->get('weight_tax_class_id'),
+                    'text' => $this->currency->format($this->tax->calculate($cost, $this->config->get('weight_tax_class_id'), $this->config->get('config_tax')))
+                );
+            }
+		}
+
+        $method_data = array();
 
 		if ($quote_data)
 		{
