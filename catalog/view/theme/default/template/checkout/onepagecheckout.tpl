@@ -63,26 +63,26 @@
                       <div class="fields-group row_forInputs">
                         <?php if($c_logged) { ?>
                         <div class="left_input">
-                          <label for="firstname-ch"> <?=$text_first_name?>:</label><br>
+                          <label for="firstname-ch"> <?php echo $text_first_name; ?>:</label><br>
                           <input type="text" class="form-control large-field" id="firstname-ch" name="firstname"
                                  value="<?php echo $f_name; ?>"/><!-- logged in -->
                           <span class="error"></span>
                         </div>
                         <div class="right_input">
-                          <label for="lastname-ch"> <?=$text_last_name?>:</label><br>
+                          <label for="lastname-ch"> <?php echo $text_last_name; ?>:</label><br>
                           <input type="text" class="form-control large-field" id="lastname-ch" name="lastname"
                                  value="<?php echo $l_name; ?>"/><!-- logged in -->
                           <span class="error"></span>
                         </div>
                         <?php } else { ?>
                         <div class="fields-group left_input">
-                          <label for="firstname-ch"><?=$text_first_name?><span class="required">*</span>:</label><br>
+                          <label for="firstname-ch"><?php echo $text_first_name; ?><span class="required">*</span>:</label><br>
                           <input type="text" id="firstname-ch" name="firstname" value=""
                                  class="form-control large-field">
                         <span class="error"></span>
                         </div>
                         <div class="fields-group right_input">
-                          <label for="lastname-ch"><?=$text_last_name?><span class="required">*</span>:</label><br>
+                          <label for="lastname-ch"><?php echo $text_last_name; ?><span class="required">*</span>:</label><br>
                           <input type="text" id="lastname-ch" name="lastname" value=""
                                  class="form-control large-field">
                         <span class="error"></span>
@@ -90,20 +90,20 @@
                         <?php }?>
                       </div>
                       <div class="fields-group">
-                        <label for="address-ch"><?=$text_address?><span class="required">*</span>:</label><br>
+                        <label for="address-ch"><?php echo $text_address; ?><span class="required">*</span>:</label><br>
                         <input type="text" id="address-ch" name="address_1" value="<?php echo $address_1; ?>"
                                class="form-control large-field">
                         <span class="error"></span>
                       </div>
                       <div class="row_forInputs clearfix">
                         <div class="fields-group left_input">
-                          <label for="zip-ch"><?=$text_zip?><span class="required">*</span>:</label><br>
+                          <label for="zip-ch"><?php echo $text_zip; ?><span class="required">*</span>:</label><br>
                           <input type="text" id="zip-ch" name="zip" value="<?php echo $zip; ?>"
                                  class="form-control large-field">
                           <span class="error"></span>
                         </div>
                         <div class="fields-group right_input">
-                          <label for="city-ch"><?=$text_town?><span class="required">*</span>:</label><br>
+                          <label for="city-ch"><?php echo $text_town; ?><span class="required">*</span>:</label><br>
                           <input type="text" id="city-ch" name="city" value="<?php echo $city; ?>"
                                  class="form-control large-field">
                           <span class="error"></span>
@@ -127,14 +127,14 @@
                         <span class="error"></span>
                       </div>
                       <div class="fields-group">
-                        <label for="email-ch"><?=$text_email?><span class="required">*</span>:</label><br>
+                        <label for="email-ch"><?php echo $text_email; ?><span class="required">*</span>:</label><br>
                         <input type="text" id="email-ch" name="email" value="<?php echo $email; ?>"
                                class="form-control large-field">
                         <span class="error"></span>
 
                       </div>
                       <div class="fields-group">
-                        <label for="telephone-ch"><?=$text_telephone?>:</label><br>
+                        <label for="telephone-ch"><?php echo $text_telephone; ?>:</label><br>
                         <input type="tel" id="telephone-ch" name="telephone"
                                value="<?php echo $telephone; ?>" class="form-control large-field">
                         <span class="error"></span>
@@ -148,21 +148,21 @@
                                    checked="checked">
                             <label for="checkbox_belf111"></label>
                           </div>
-                          <p><?=$text_create_account?></p>
+                          <p><?php echo $text_create_account; ?></p>
                         </div>
                         <div class="checkbox_wraper">
                           <div class="checkbox_belf">
                             <input type="checkbox" id="checkbox_is_show_form_address" name="payment_address_different">
                             <label for="checkbox_is_show_form_address"></label>
                           </div>
-                          <p><?=$text_payment_address_different?></p>
+                          <p><?php echo $text_payment_address_different; ?></p>
                         </div>
                       </div>
                       <div id="form_address_2" class="cleafix" style="display: none;">
                         <div class="fields-group row_forInputs">
                           <?php if($c_logged) { ?>
                           <div class="left_input">
-                            <label for="shipping-firstname-ch"><?=$text_first_name?>:</label><br>
+                            <label for="shipping-firstname-ch"><?php echo $text_first_name; ?>:</label><br>
                             <input type="text" class="form-control large-field" id="shipping-firstname-ch" name="shipping_firstname"
                                    value="<?php echo $f_name; ?>" />
                           </div>
@@ -173,12 +173,12 @@
                           </div>
                           <?php } else { ?>
                           <div class="left_input">
-                            <label for="shipping-firstname-ch"><?=$text_first_name?><span class="required">*</span>:</label><br>
+                            <label for="shipping-firstname-ch"><?php echo $text_first_name; ?><span class="required">*</span>:</label><br>
                             <input type="text" id="shipping-firstname-ch" name="shipping_firstname" value=""
                                    class="form-control large-field">
                           </div>
                           <div class="right_input">
-                            <label for="shipping-lastname-ch"><?=$text_last_name?><span class="required">*</span>:</label><br>
+                            <label for="shipping-lastname-ch"><?php echo $text_last_name; ?><span class="required">*</span>:</label><br>
                             <input type="text" id="shipping-lastname-ch" name="shipping_lastname" value=""
                                    class="form-control large-field">
                           </div>
@@ -186,20 +186,20 @@
                           <?php }?>
                         </div>
                         <div class="fields-group">
-                          <label for="shipping-address-ch"><?=$text_address?><span class="required">*</span>:</label><br>
+                          <label for="shipping-address-ch"><?php echo $text_address; ?><span class="required">*</span>:</label><br>
                           <input type="text" id="shipping-address-ch" name="shipping_address_1" value="<?php echo $address_1; ?>"
                                  class="form-control large-field">
                           <span class="error"></span>
                         </div>
                         <div class="row_forInputs clearfix">
                           <div class="fields-group left_input">
-                            <label for="shipping-zip-ch"><?=$text_zip?><span class="required">*</span>:</label><br>
+                            <label for="shipping-zip-ch"><?php echo $text_zip; ?><span class="required">*</span>:</label><br>
                             <input type="text" id="shipping-zip-ch" name="shipping_zip" value="<?php echo $zip; ?>"
                                    class="form-control large-field">
                             <span class="error"></span>
                           </div>
                           <div class="fields-group right_input">
-                            <label for="shipping-city-ch"><?=$text_town?><span class="required">*</span>:</label><br>
+                            <label for="shipping-city-ch"><?php echo $text_town; ?><span class="required">*</span>:</label><br>
                             <input type="text" id="shipping-city-ch" name="shipping_city" value="<?php echo $city; ?>"
                                    class="form-control large-field">
                             <span class="error"></span>
@@ -223,7 +223,7 @@
                           <span class="error"></span>
                         </div>
                         <div class="fields-group">
-                          <label for="shipping-telephone-ch"><?=$text_telephone?>:</label><br>
+                          <label for="shipping-telephone-ch"><?php echo $text_telephone; ?>:</label><br>
                           <input type="tel" id="shipping-telephone-ch" name="shipping_telephone"
                                  value="<?php echo $telephone; ?>" class="form-control large-field">
                           <span class="error"></span>
@@ -231,7 +231,7 @@
                         </div>
                       </div>
                       <div class="fields-group">
-                        <label for="comment_field">  <?=$text_comment?>:</label><br>
+                        <label for="comment_field">  <?php echo $text_comment; ?>:</label><br>
                         <input type="text" id="comment_field" class="form-control large-field" name="comment"
                                value="<?php echo $comment ?>">
                       </div>
@@ -241,7 +241,7 @@
                             <input type="checkbox" value="1" id="checkbox_newsletter" name="newsletter" checked="checked">
                             <label for="checkbox_newsletter"></label>
                           </div>
-                          <p><?=$text_optin?></p>
+                          <p><?php echo $text_optin; ?></p>
                       </div>
 					  </div>
                       <input type="hidden" name="shipping_method" value="">
@@ -253,9 +253,9 @@
                     <table class="table">
                       <thead>
                       <tr>
-                        <td class="name t-head">  <?=$text_product?></td>
-                        <td class="price t-head"><?=$text_price?></td>
-                        <td class="quantity t-head"><?=$text_quantity?></td>
+                        <td class="name t-head">  <?php echo $text_product; ?></td>
+                        <td class="price t-head"><?php echo $text_price; ?></td>
+                        <td class="quantity t-head"><?php echo $text_quantity; ?></td>
                       </tr>
                       </thead>
                       <tbody>
@@ -339,6 +339,7 @@
 
 					<div id="shipping-terms">
 					</div>
+                    <?php echo $content_bottom; ?>
 					<div id="payment-methods-container">
 
 					</div>
@@ -353,7 +354,9 @@
                   </div>
                   <div class="hiden_payment_info fields-group"></div>
                   <div class="col-xs-12 checkout-subinfo">
-                    <?=$content_bottom?>
+                    <?php if (isset($content_bottom)) {?>
+                        <?php echo $content_bottom; ?>
+                    <?php } ?>
                   </div>
                 </div>
               </div>
@@ -557,6 +560,16 @@
               }
           });
       }
+  $('#deliveryDHLE').on('click', function () {
+      $('#dhl-express').removeClass('hide');
+      $('#shipping-terms').addClass('hide');
+  });
+
+  $('#deliveryDHL').on('click', function () {
+    $('#dhl-express').addClass('hide');
+    $('#shipping-terms').removeClass('hide');
+  });
+
   $(document).ready(function () {
 
       $("#radio-delivery input[name=delivery]").change(function() {

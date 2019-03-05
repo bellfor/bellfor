@@ -80,7 +80,7 @@ class ControllerCommonFooter extends Controller {
 
         $store_id = $this->config->get('config_store_id');
 
-        if ($store_id == 0 || $store_id == 4 || $store_id == 1) {
+        if (($store_id == 0 || $store_id == 4 || $store_id == 1) && !isset($this->request->cookie['promo_code'])) {
             $data['consultant'] = true;
         }
 
@@ -149,8 +149,8 @@ class ControllerCommonFooter extends Controller {
 
     public function promoCodePopUp (){
 
-        if (!isset($this->session->data['promo_code']) && !$this->customer->isLogged()) {
-            $this->session->data['promo_code'] = true;
+        if (!isset($this->request->cookie['promo_code']) && !$this->customer->isLogged()) {
+            setcookie('promo_code', true, time() + 3600 * 24 * 90);
             $json = true;
         } else {
             $json = false;

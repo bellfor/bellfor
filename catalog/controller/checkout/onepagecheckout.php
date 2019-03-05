@@ -22,6 +22,8 @@ class ControllerCheckoutOnepagecheckout extends Controller
         }
         $this->document->addStyle('catalog/view/theme/default/stylesheet/onepagecheckout.css');
 
+        $data['content_bottom'] = $this->load->controller('common/content_bottom');
+
         // Validate minimum quantity requirements.
         $products = $this->cart->getProducts();
         $this->load->language('checkout/onepagecheckout');
