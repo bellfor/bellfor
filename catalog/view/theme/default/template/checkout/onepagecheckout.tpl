@@ -320,7 +320,7 @@
               </div>
             </div>
 
-            <div style="margin-left:10px" class="pull-left radio-delivery-item dpd">
+            <div style="margin-left:10px; display: none;" class="pull-left radio-delivery-item dpd">
               <div class="radio" data-role="controlgroup" data-type="horizontal">
                 <input type="radio" id="deliveryDPD" name="delivery" value="DPD" />
                 <label style="margin-top: 3px;" for="deliveryDPD"><img alt="DPD" border="0" src="image/catalog/dpd_s.png" style="height:18px;margin-right:2px;" />DPD</label>
@@ -459,13 +459,20 @@
 	}
 	if (s == 81) {
         $('#radio-delivery >.dhle').show('100');
+    } else {
+        $('#radio-delivery >.dhle').hide('100');
     }
 	SetRumun(1);
     //end fixed by oppo webiprog.com  03.05.2018
 
   }
 
-    function shipping(s, sm = '') {
+    function shipping(s, sm) {
+      if (!sm) {
+
+          sm = null;
+      }
+        console.log(sm);
         $.ajax({
                 url: 'index.php?route=checkout/onepagecheckout/getshipping',
                 type: 'post',
@@ -514,16 +521,14 @@
                                 error: function (xhr, ajaxOptions, thrownError) {
                                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                                 }
-                            }
-                        );
+                        });
 
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                 }
-            }
-        );
+        });
     }
 
   //fixed by oppo webiprog.com  02.05.2018 MAR-251 MAR-243
