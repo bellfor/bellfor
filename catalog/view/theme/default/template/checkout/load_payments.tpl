@@ -84,11 +84,6 @@
 </div>
 <div id="confirm">
     <div class="payment">
-        <a href='index.php?route=checkout/cart' class="button_orange button_set">
-                                <span class="button-outer">
-                                  <span class="button-inner"><?php echo $text_cart; ?></span>
-                                </span>
-        </a>
         <div id="ajax-button-confirm" class="button_blue button_set button_green">
                                 <span class="button-outer">
                                   <span class="button-inner"><?php echo $text_confirm; ?></span>
