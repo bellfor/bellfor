@@ -343,7 +343,7 @@
 					<div id="payment-methods-container">
 
 					</div>
-                        <div class="button_blue button_set" id="payments-load">
+                        <div class="button_blue button_set margin-button-checkout" id="payments-load">
                                 <span class="button-outer">
                                   <span class="button-inner"><?php echo $text_display_payment_methods ;
 								  //fixed by oppo webiprog.com  18.12.2017

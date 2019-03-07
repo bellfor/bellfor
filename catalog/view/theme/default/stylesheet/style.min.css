@@ -3372,3 +3372,6 @@ span.free {
 .close-consultant:hover {
     box-shadow: 0px 0px 20px -3px white;
 }
+.margin-button-checkout {
+    margin-bottom: 20px;
+}
