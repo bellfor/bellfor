@@ -593,14 +593,12 @@ class ModelExtensionModuleAutoAddProducts extends Model {
 			$this->logMessage("\n" . '"' . $row['name'] . '" passed all rules, so the following products will be auto-added: ' . substr(print_r($row['product'], true), 5));
 			
 			// Calculate quantity to add
-//			$quantity_to_add = 1;
-			$quantity_to_add = 0;
+			$quantity_to_add = 1;
 
 			if (isset($rules['category']) || isset($rules['manufacturer']) || isset($rules['product']) || isset($rules['product_group'])) {
 				if (empty($rules['quantity']) && empty($rules['total']) && empty($rules['volume']) && empty($rules['weight'])) {
 					foreach ($product_keys as $product_key) {
-//						$quantity_to_add = max($quantity_to_add, $quantitys[$product_key]);
-                        $quantity_to_add += $quantitys[$product_key];
+						$quantity_to_add = max($quantity_to_add, $quantitys[$product_key]);
 					}
 				}
 			}
