@@ -1331,6 +1331,7 @@ class ControllerCatalogProduct extends Controller {
         } elseif (!empty($prices)) {
 
             foreach ($this->model_setting_store->getStores() as $store) {
+                $store_setting = $this->model_setting_setting->getsetting('config', $store['store_id']);
                 if ($store_setting['config_geocode']) {
                     $data['prices'][$store['store_id']] = array(
                         'price_id' => '',
