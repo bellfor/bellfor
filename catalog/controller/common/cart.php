@@ -38,7 +38,9 @@ class ControllerCommonCart extends Controller {
 			$sort_order = array();
 
 			foreach ($total_data as $key => $value) {
-				$sort_order[$key] = $value['sort_order'];
+                if ($key != 'products_total_minus_discount') {
+                    $sort_order[$key] = $value['sort_order'];
+                }
 			}
 
 			array_multisort($sort_order, SORT_ASC, $total_data);
@@ -131,12 +133,13 @@ class ControllerCommonCart extends Controller {
 		}
 
 		$data['totals'] = array();
-
-		foreach ($total_data as $result) {
-			$data['totals'][] = array(
-				'title' => $result['title'],
-				'text'  => $this->currency->format($result['value']),
-			);
+		foreach ($total_data as $key => $result) {
+		    if ($key != 'products_total_minus_discount'){
+                $data['totals'][] = array(
+                    'title' => $result['title'],
+                    'text'  => $this->currency->format($result['value']),
+                );
+            }
 		}
 
 		$data['cart'] = $this->url->link('checkout/cart');
