@@ -106,9 +106,11 @@ class ModelBlogArticle extends Model {
             $this->db->query("UPDATE " . DB_PREFIX . "article SET image = '" . $this->db->escape($data['image']) . "' WHERE article_id = '" . (int)$article_id . "'");
         }
 
-        $this->db->query("DELETE FROM " . DB_PREFIX . "article_description WHERE article_id = '" . (int)$article_id . "'");
+//        $this->db->query("DELETE FROM " . DB_PREFIX . "article_description WHERE article_id = '" . (int)$article_id . "'");
 
         foreach ($data['article_description'] as $language_id => $value) {
+            $this->db->query("DELETE FROM " . DB_PREFIX . "article_description WHERE article_id = '" . (int)$article_id . "' AND language_id = '" . (int)$language_id . "'");
+
             $this->db->query("INSERT INTO " . DB_PREFIX . "article_description SET article_id = '" . (int)$article_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
         }
 
@@ -200,6 +202,8 @@ class ModelBlogArticle extends Model {
         if ($data['keyword']) {
             $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'article_id=" . (int)$article_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
         }
+
+        $this->logForArticle('edit', $article_id);
 
         $this->cache->delete('article');
 
@@ -475,6 +479,23 @@ class ModelBlogArticle extends Model {
         $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "race_dogs`");
 
         return $query->rows;
+    }
+
+    public function logForArticle ($key, $id) {
+
+        $article = $this->getArticle($id);
+        $result = '(^.^)';
+
+        if ($key == 'edit' && count($article) > 0) {
+            $result = 'success';
+        } else {
+            $result = 'false';
+        }
+
+        $file = fopen(DIR_APPLICATION . 'article_logs.txt', 'a');
+        fwrite($file, gmdate('d-m-Y') . ' / ' . 'user_id - ' . $this->session->data['user_id'] . ' / article_id - ' . $id . " / " . $key .  ' / ' . $result.  PHP_EOL);
+        fwrite($file, '------------------------------------------------------' . PHP_EOL);
+        fclose($file);
     }
 
 }

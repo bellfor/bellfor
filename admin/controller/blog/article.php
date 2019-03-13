@@ -529,6 +529,12 @@ class ControllerBlogArticle extends Controller {
             $data['error_race'] = '';
         }
 
+        if (isset($this->error['description'])) {
+            $data['error_description'] = $this->error['description'];
+        } else {
+            $data['error_description'] = '';
+        }
+
 		$url = '';
 
 		if (isset($this->request->get['filter_name'])) {
@@ -866,6 +872,10 @@ class ControllerBlogArticle extends Controller {
 			if ((utf8_strlen($value['meta_h1']) < 0) || (utf8_strlen($value['meta_h1']) > 255)) {
 				$this->error['meta_h1'][$language_id] = $this->language->get('error_meta_h1');
 			}
+
+			if (utf8_strlen($value['description']) > 60000) {
+                $this->error['description'][$language_id] = 'Maximum number of characters in descriptor field exceeded!';
+            }
 		}
 
 		if (utf8_strlen($this->request->post['keyword']) > 0) {
