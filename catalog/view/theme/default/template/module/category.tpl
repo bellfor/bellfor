@@ -27,6 +27,5 @@
   <?php } ?>
   </li>
   <?php } ?>
-      <li><a href="https://www.cbd-elixier.de/" target="_blank"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><?php echo $cbd_shop; ?></a></li>
   </ul>
 </div>
