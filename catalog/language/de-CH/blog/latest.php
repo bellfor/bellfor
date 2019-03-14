@@ -5,6 +5,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Heading
+$_['heading_title']     = 'Hunderatgeber';
 $_['text_blog']         = 'Blog';
 $_['text_refine']       = 'Suche einschränken';
 $_['text_product']      = 'Artikel';
