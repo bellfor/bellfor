@@ -24,7 +24,7 @@ $_['text_all']           = 'Show All';
 //Custom language variables
 $_['text_contact']			= 'Contact';
 $_['text_login_to_account']			= 'Login to account';
-$_['text_blog']			= 'Blog';
+$_['text_blog']			= 'Dogs Guide';
 $_['text_email']			= 'E-Mail';
 $_['text_password']			= 'Password';
 $_['text_forgot_password']			= 'Forgot password?';
