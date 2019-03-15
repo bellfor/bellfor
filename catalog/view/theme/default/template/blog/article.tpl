@@ -19,7 +19,7 @@
             <div class="main-container clearfix">
                 <?php echo $column_left; ?>
                 <div id="content" class="col-md-9 col-md-push-3 col-xs-12 right-container "><?php echo $content_top; ?>
-                    <div class="container_article">
+                    <div class="container_article col-md-12 padding_fix">
                         <h1><?php echo $heading_title; ?></h1>
                         <div class="tab-content">
                             <div id="description"><?php echo $description; ?></div>
