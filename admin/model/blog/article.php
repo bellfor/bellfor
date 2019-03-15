@@ -263,6 +263,8 @@ class ModelBlogArticle extends Model {
 
         $this->cache->delete('article');
 
+        $this->logForArticle('delete', $article_id);
+
         $this->event->trigger('post.admin.article.delete', $article_id);
     }
 
@@ -494,7 +496,7 @@ class ModelBlogArticle extends Model {
 
         $result = '(^.^)';
 
-        if ($key == 'edit' && count($article) > 0) {
+        if (($key == 'edit' && count($article) > 0) || $key == 'delete') {
             $result = 'success';
         } else {
             $result = 'false';
