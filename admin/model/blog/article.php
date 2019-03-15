@@ -483,7 +483,12 @@ class ModelBlogArticle extends Model {
 
     public function logForArticle ($key, $id) {
 
-        $user_ip = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` WHERE user_id = '" . (int)$this->session->data['user_id'] . "'");
+
+        if (!isset($_SERVER['REMOTE_ADDR'])) {
+            $user_ip = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` WHERE user_id = '" . (int)$this->session->data['user_id'] . "'")->row['ip'];
+        } else {
+            $user_ip = $_SERVER['REMOTE_ADDR'];
+        }
 
         $article = $this->getArticle($id);
 
@@ -496,7 +501,7 @@ class ModelBlogArticle extends Model {
         }
 
         $file = fopen(DIR_APPLICATION . 'article_logs.txt', 'a');
-        fwrite($file, gmdate('d-m-Y') . ' / ' . 'user_id - ' . $this->session->data['user_id'] . ' / article_id - ' . $id . " / user_ip - " . $user_ip->row['ip'] . " / " . $key .  ' / ' . $result.  PHP_EOL);
+        fwrite($file, gmdate('d-m-Y') . ' / ' . 'user_id - ' . $this->session->data['user_id'] . ' / article_id - ' . $id . " / user_ip - " . $user_ip . " / " . $key .  ' / ' . $result.  PHP_EOL);
         fwrite($file, '------------------------------------------------------' . PHP_EOL);
         fclose($file);
     }
