@@ -484,8 +484,6 @@ class ModelBlogArticle extends Model {
     }
 
     public function logForArticle ($key, $id) {
-
-
         if (!isset($_SERVER['REMOTE_ADDR'])) {
             $user_ip = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` WHERE user_id = '" . (int)$this->session->data['user_id'] . "'")->row['ip'];
         } else {

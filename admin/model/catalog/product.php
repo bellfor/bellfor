@@ -415,6 +415,8 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		$this->logForProduct('edit', $product_id);
+
 		$this->cache->delete('product');
 
 		$this->event->trigger('post.admin.product.edit', $product_id);
@@ -491,6 +493,8 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_tab WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_tab_desc WHERE product_id = '" . (int)$product_id . "'");
+
+        $this->logForProduct('delete', $product_id);
 
 		$this->cache->delete('product');
 
@@ -1044,4 +1048,27 @@ class ModelCatalogProduct extends Model {
 
 		return $query->row['total'];
 	}
+
+    public function logForProduct ($key, $id) {
+        if (!isset($_SERVER['REMOTE_ADDR'])) {
+            $user_ip = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` WHERE user_id = '" . (int)$this->session->data['user_id'] . "'")->row['ip'];
+        } else {
+            $user_ip = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $product = $this->getProduct($id);
+
+        $result = '(^.^)';
+
+        if (($key == 'edit' && count($product) > 0) || $key == 'delete') {
+            $result = 'success';
+        } else {
+            $result = 'false';
+        }
+
+        $file = fopen(DIR_APPLICATION . 'product_logs.txt', 'a');
+        fwrite($file, gmdate('d-m-Y') . ' / ' . 'user_id - ' . $this->session->data['user_id'] . ' / product_id - ' . $id . " / user_ip - " . $user_ip . " / " . $key .  ' / ' . $result.  PHP_EOL);
+        fwrite($file, '------------------------------------------------------' . PHP_EOL);
+        fclose($file);
+    }
 }
