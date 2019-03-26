@@ -1,0 +1,1 @@
+[27-Feb-2019 13:45:37 UTC] PHP Warning:  Use of undefined constant CONNECTOR_DIR - assumed 'CONNECTOR_DIR' (this will throw an Error in a future version of PHP) in /home/bellfor/public_html/jtlconnector/vendor/jtl/connector/src/jtl/Connector/Core/Logger/Logger.php on line 44

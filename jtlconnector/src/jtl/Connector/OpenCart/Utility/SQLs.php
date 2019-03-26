@@ -691,13 +691,13 @@ final class SQLs
     public static function paymentPaypalPlus($limit)
     {
         return sprintf('
-            SELECT o.order_id as id, o.order_id, o.date_added, o.total * o.currency_value as amount, o.payer_id as transaction_id, o.payment_code
+            SELECT o.order_id as id, o.order_id, o.date_added, o.total * o.currency_value as amount, o.transaction_id as transaction_id, o.payment_code
             FROM oc_order o 
             LEFT JOIN jtl_connector_link l ON o.order_id = l.endpointId AND l.type = %d
             WHERE payment_code = \'pp_plus\'
             AND o.order_status_id = 1
             AND l.hostId IS NULL
-            AND o.payer_id != \'\'
+            AND o.transaction_id != \'\'
             LIMIT %d',
             IdentityLinker::TYPE_PAYMENT, $limit
         );
@@ -1347,4 +1347,11 @@ final class SQLs
         );
     }
     // </editor-fold>
+
+	public static function productSpecificData()
+	{
+		return sprintf('select p.model as product_number, l.code as iso_code ,pd.* 
+								from oc_product_description_amazon_ebay pd 
+								JOIN oc_product p ON p.product_id = pd.product_id JOIN oc_language l ON l.language_id = pd.language_id');
+	}
 }

@@ -217,6 +217,7 @@ class System extends BaseLoader
     {
         $v = trim($v);
         $last = strtolower($v[strlen($v) - 1]);
+        $v = (int) $v;
         switch ($last) {
             case 'g':
                 $v *= 1024;

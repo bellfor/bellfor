@@ -17,7 +17,7 @@ use jtl\Connector\OpenCart\Mapper\Order\OrderItemShippingMapper;
 use jtl\Connector\OpenCart\Utility\Constants;
 use jtl\Connector\OpenCart\Utility\SQLs;
 
-class CustomerOrderItem extends BaseController
+class CustomerOrderItemTest extends BaseController
 {
     private $tax;
     private $orderId;
@@ -108,7 +108,7 @@ class CustomerOrderItem extends BaseController
 	                //$price = $price * ((100+$this->tax) / 100);
 	                foreach($product_price_rel as $temp_vat => $rel)
 	                {
-	                	$add_tax += $price * $rel * ($temp_vat / 100);
+	                	$add_tax += $price * $rel * ($temp_vat/ 100);
 	                }
 
 	                $price = $price + $add_tax;

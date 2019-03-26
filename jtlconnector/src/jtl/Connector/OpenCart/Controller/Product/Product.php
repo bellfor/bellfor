@@ -51,6 +51,15 @@ class Product extends MainEntityController
         return SQLs::productPull($limit);
     }
 
+	public function pullSpecificData(array $data, $model, $limit = null)
+	{
+		$groupPriceQuery = SQLs::productSpecificData();
+		$result = $this->database->query($groupPriceQuery);
+
+		return $result;
+	}
+
+
     protected function pushData(ProductModel $data, $model)
     {
         $id = $data->getId()->getEndpoint();

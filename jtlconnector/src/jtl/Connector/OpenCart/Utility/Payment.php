@@ -21,7 +21,8 @@ class Payment
         'ksofort'                 => "pm_sofort",
         'stripe'                  => PaymentTypes::TYPE_CREDITCALL,
         'sisowideal'              => "iDEAL",
-        'sisoweps'                => 'EPS'
+        'sisoweps'                => 'EPS',
+	    'sisowvisa'               => PaymentTypes::TYPE_CREDITCALL,
     ];
 
     private static $standardPayment = "bank_transfer";
