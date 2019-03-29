@@ -4,7 +4,6 @@
     <div class="container-fluid">
       <div class="pull-right">
           <a class="btn btn-info" href="<?php echo $backup_order_email; ?>"><i class="fa fa-print"></i></a>
-        <button type="submit" form="form-order-email" data-toggle="tooltip" title="<?php echo $button_invoice_print; ?>" class="btn btn-info"><i class="fa fa-print"></i></button>
       </div>
       <h1><?php echo $heading_title; ?></h1>
       <ul class="breadcrumb">
@@ -52,7 +51,7 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
       </div>
 		<?php } ?>
-        <form method="post" action="" enctype="multipart/form-data" target="_blank" id="form-order">
+        <form method="post" action="" enctype="multipart/form-data" target="_blank" id="form-order-email">
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
               <thead>

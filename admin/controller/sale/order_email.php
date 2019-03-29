@@ -265,8 +265,6 @@ class ControllerSaleOrderEmail extends Controller {
             $this->load->model('sale/order');
 
             $this->response->setOutput($this->model_sale_order->backup());
-
-            $this->response->redirect($this->url->link('sale/order_email', 'token=' . $this->session->data['token'], 'SSL'));
        } else {
             $this->session->data['error'] = $this->language->get('error_permission');
 
