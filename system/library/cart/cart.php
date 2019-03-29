@@ -40,6 +40,8 @@ class Cart {
 
 			$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_store p2s LEFT JOIN " . DB_PREFIX . "product p ON (p2s.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2s.product_id = '" . (int)$cart['product_id'] . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
 
+			$product_to_customer = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_to_customer_groups` WHERE p2cg_product_id = '" . (int)$cart['product_id'] . "' AND p2cg_customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "'");
+
             $price_shop = $this->getProductPrice((int)$cart['product_id'], $this->config->get('config_store_id'));
 
 			if ($product_query->num_rows && ($cart['quantity'] > 0)) {
@@ -240,6 +242,7 @@ class Cart {
 				$product_data[] = array(
 					'cart_id'         => $cart['cart_id'],
 					'product_id'      => $product_query->row['product_id'],
+                    'p2cg_product_id' => $product_to_customer->row['p2cg_product_id'],
 					'name'            => $product_query->row['name'],
 					'model'           => $product_query->row['model'],
 					'shipping'        => $product_query->row['shipping'],

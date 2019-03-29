@@ -147,6 +147,7 @@ class ControllerBlogArticle extends Controller {
 			$data['text_note'] = $this->language->get('text_note');
 			$data['text_share'] = $this->language->get('text_share');
 			$data['text_wait'] = $this->language->get('text_wait');
+            $data['button_go_product'] = $this->language->get('button_go_product');
 			$data['button_cart'] = $this->language->get('button_cart');
 			$data['button_wishlist'] = $this->language->get('button_wishlist');
 			$data['button_compare'] = $this->language->get('button_compare');
@@ -210,7 +211,8 @@ class ControllerBlogArticle extends Controller {
             $data['status_consultant'] = $article_info['status_consultant'];
 
 			$data['articles'] = array();
-			
+
+            $data['button_go_product'] = $this->language->get('button_go_product');
 			$data['button_more'] = $this->language->get('button_more');
 			$data['text_views'] = $this->language->get('text_views');
 			
@@ -283,6 +285,7 @@ class ControllerBlogArticle extends Controller {
 							
 				$data['products'][] = array(
 					'product_id' => $result['product_id'],
+                    'p2cg_product_id'  => $result['p2cg_product_id'],
 					'thumb'   	 => $image,
 					'name'    	 => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('configblog_article_description_length')) . '..',

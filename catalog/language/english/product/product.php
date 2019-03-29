@@ -65,3 +65,12 @@ $_['text_versand']			= 'shipping';
 $_['text_mwst']			= 'VAT';
 $_['text_mwst_full']			= 'Shipping weight per piece';
 $_['text_je'] = '';
+
+//Order email
+
+$_['title_order_email'] =   'Please enter here the email address of the puppy buyer';
+$_['error_max_product'] =   'Order limit exceeded. The maximum possible number of products - 25 pcs.';
+$_['error_required'] =      'Fill in the field.';
+$_['error_email'] =         'Invalid email address.';
+$_['error_email_already'] = 'This email address is already in use.';
+$_['error_unique'] =        'Please enter a unique email address.';

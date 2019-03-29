@@ -95,13 +95,19 @@
                                  <?php } ?>
                               </td>
                               <td class="text-left"><?php echo $product['model']; ?></td>
-                              <td class="text-left">
+                              <td class="text-center">
                                  <div class="input_group_card input-group btn-block" style="max-width: 200px;">
-                                    <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]"
-                                       value="<?php echo $product['quantity']; ?>" size="1" class="form-control"/>
-                                    <span class="input-group-btn">
-                                    <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>"
-                                       class="btn btn-primary fix_bg_color"><i class="fa fa-refresh"></i></button>
+                                     <?php if (empty($product['p2cg_product_id'])) { ?>
+                                         <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]"
+                                                value="<?php echo $product['quantity']; ?>" size="1" class="form-control"/>
+                                         <span class="input-group-btn">
+                                        <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>"
+                                                class="btn btn-primary fix_bg_color"><i class="fa fa-refresh"></i></button>
+                                     <?php } else { ?>
+                                        <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]"
+                                                    value="<?php echo $product['quantity']; ?>" size="1" class="form-control" readonly/>
+                                        <span class="input-group-btn">
+		                             <?php } ?>
                                     <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>"
                                        class="btn btn-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><i
                                        class="fa fa-times-circle"></i></button>

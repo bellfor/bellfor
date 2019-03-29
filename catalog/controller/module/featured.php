@@ -12,6 +12,7 @@ class ControllerModuleFeatured extends Controller {
 
 		$data['text_tax'] = $this->language->get('text_tax');
 
+        $data['button_go_product'] = $this->language->get('button_go_product');
 		$data['button_cart'] = $this->language->get('button_cart');
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
 		$data['button_compare'] = $this->language->get('button_compare');
@@ -72,6 +73,7 @@ class ControllerModuleFeatured extends Controller {
 						'special'     => $special,
 						'tax'         => $tax,
 						'rating'      => $rating,
+                        'p2cg_product_id'  => $product_info['p2cg_product_id'],
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
 					);
 				}

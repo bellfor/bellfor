@@ -357,6 +357,46 @@ class ModelCheckoutOrder extends Model {
 
 			$this->db->query("INSERT INTO " . DB_PREFIX . "order_history SET order_id = '" . (int)$order_id . "', order_status_id = '" . (int)$order_status_id . "', notify = '" . (int)$notify . "', comment = '" . $this->db->escape($comment) . "', date_added = NOW()");
 
+            if (isset($this->session->data['order_email'])) {
+                foreach ($this->session->data['order_email'] as $email) {
+                    $this->db->query("INSERT INTO `" . DB_PREFIX . "order_email` SET user_id = '" . (int)$this->session->data['customer_id'] . "', order_id = '" . (int)$order_id . "', order_status_id = '" . (int)$order_status_id . "', email = '" . $this->db->escape($email) . "', date_added = NOW()");
+                }
+
+                $send_email = $this->config->get('config_order_email');
+
+                if (isset($send_email)) {
+                    $language = new Language($order_info['language_directory']);
+                    $language->load($order_info['language_directory']);
+                    $language->load('mail/order');
+
+                    $subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_id);
+
+                    $message  = $language->get('text_update_order') . ' ' . $order_id . "\n";
+                    $message .= $language->get('text_update_date_added') . ' ' . date($language->get('date_format_short'), strtotime($order_info['date_added'])) . "\n\n";
+
+                    foreach ($this->session->data['order_email'] as $email) {
+                        $message .= $email . "\n\n";
+                    }
+
+                    $mail = new Mail();
+                    $mail->protocol = $this->config->get('config_mail_protocol');
+                    $mail->parameter = $this->config->get('config_mail_parameter');
+                    $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+                    $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+                    $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+                    $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+                    $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+                    $mail->setTo($send_email);
+                    $mail->setFrom($this->config->get('config_email'));
+                    $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+                    $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+                    $mail->setText($message);
+                    $mail->send();
+                }
+
+            }
+
 			// If old order status is the processing or complete status but new status is not then commence restock, and remove coupon, voucher and reward history
 			if (in_array($order_info['order_status_id'], array_merge($this->config->get('config_processing_status'), $this->config->get('config_complete_status'))) && !in_array($order_status_id, array_merge($this->config->get('config_processing_status'), $this->config->get('config_complete_status')))) {
 				// Restock
@@ -394,7 +434,6 @@ class ModelCheckoutOrder extends Model {
 			}
 
 			$this->cache->delete('product');
-
 
 			// If order status is 0 then becomes greater than 0 send main html email
 			if (!$order_info['order_status_id'] && $order_status_id) {
@@ -849,7 +888,6 @@ class ModelCheckoutOrder extends Model {
 
 			}
 
-
 			// If order status is not 0 then send update text email
 			if ($order_info['order_status_id'] && $order_status_id && $notify) {
 
@@ -966,5 +1004,11 @@ class ModelCheckoutOrder extends Model {
 
     public function updateOrderPayPal($data) {
         $this->db->query("UPDATE `" . DB_PREFIX . "order` SET transaction_id = '" . $data['transaction_id'] . "' WHERE order_id = '" . $data['order_id'] . "' AND payer_id = '" . $data['payer_id'] . "'");
+    }
+
+    public function getEmail($email){
+        $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_email` WHERE email = '" . $this->db->escape($email) . "'");
+
+        return $query->row;
     }
 }

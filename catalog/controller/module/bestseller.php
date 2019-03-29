@@ -12,6 +12,7 @@ class ControllerModuleBestSeller extends Controller {
 
 		$data['text_tax'] = $this->language->get('text_tax');
 
+        $data['button_go_product'] = $this->language->get('button_go_product');
 		$data['button_cart'] = $this->language->get('button_cart');
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
 		$data['button_compare'] = $this->language->get('button_compare');
@@ -58,6 +59,7 @@ class ControllerModuleBestSeller extends Controller {
 
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
+                    'p2cg_product_id'  => $result['p2cg_product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',

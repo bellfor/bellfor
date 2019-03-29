@@ -26,33 +26,12 @@
     <div class="col-xs-12">
         <div class="main-container">
             <div class="row">
-
-
                 <div class="col-md-9 col-md-push-3 col-xs-12 right-container">
                     <div class="row">
                         <div id="carousel-generic" class="carousel slide" data-ride="carousel">
                             <!-- Wrapper for slides -->
                             <?php echo $content_top; ?>
-
                         </div>
-                        <main class="main-text-container" id="content">
-                            <h1><?php echo $heading_title; ?></h1>
-                            <?php if ($description) { //MAR-93 fixed by oppo webiprog.com  29.11.2017 ?>
-                                <div class="main-description-oppo">
-                                    <div id="text-vision"
-                                         class="<?php echo str_word_count($description, 0) > 200 ? 'text-vision' : ''; ?> hidden-xs">
-                                        <?php echo $description; ?>
-                                    </div>
-                                    <?php if (str_word_count($description, 0) > 200) { ?>
-                                        <div class="more more-read-description hidden-xs">
-                                            <a href="#">>><?php echo $text_read_more; ?></a>
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                                <div class="clr clearfix"></div>
-                            <?php } ?>
-                        </main>
-
                         <div class="panel">
                             <form action="#" method="get">
                                 <div class="panel-sort sort-first-cat">
@@ -87,10 +66,7 @@
                                         </select>
                                     </div>
                                 </div>
-
-
                                 <div class="panel-viewmode">
-
                                     <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip"
                                             title="<?php echo $button_list; ?>"><img class="png-fix"
                                                                                      src="image/elements/panel/view_mode_default_on.png"
@@ -101,16 +77,12 @@
                                                                                      alt=""></button>
 
                                 </div>
-
                             </form>
                             <div class="panel-pagination">
                                 <?php echo $results; ?>
                             </div>
                         </div>
-
                         <div class="container-Empfehlungen">
-
-
                             <div class="row">
                                 <?php $counter = 1;
                                 $dl_products = '';
@@ -139,7 +111,6 @@
                                                     <a href="<?php echo $product['href']; ?>">
                                                         <?php if (!$product['special']) { ?>
                                                         <?php echo $product['price_full_formatted']; ?>
-<!--                                                        --><?php //var_dump($product['price_full_formatted']); die('1');?>
                                                         <?php if ($product['weight'] < 1) { ?>
                                                         <span class="small"> <?php if ($product['currency_position'] == 'l') {
                                                                 echo $product['currency'];
@@ -172,7 +143,7 @@
                                             <?php } ?>
 
                                         </div>
-                                        <div class="article-list-item-bottom">
+                                        <div class="article-list-item-bottom text-center">
                                             <div class="article-list-item-delivery">
                                                 <p>
                                                     <span class="label-list">Versandgewicht je Stück: </span> <?php echo round($product['weight'], 1); ?>
@@ -180,13 +151,16 @@
                                                 </p>
                                             </div>
                                             <div class="article-list-item-button payment_buttons">
+                                                <?php if (empty($product['p2cg_product_id'])) {?>
                                                 <span class="quantity_container">
                                                   <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>"
                                                          class="article-count-input" value="<?php echo $product['minimum']; ?>">
                                                 </span>
                                                 <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());"
                                                         class="button_green"><?php echo $button_cart; ?></button>
-
+                                                <?php } else {?>
+                                                    <a class="button_green" href="<?php echo $product['href']; ?>"><?php echo $button_go_product; ?></a>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </section>
@@ -274,14 +248,25 @@
                     <div class="panel-pagination-info">
                         <?php echo $pagination; ?>
                     </div>
-
-
+                    <main class="main-text-container" id="content">
+                        <h1><?php echo $heading_title; ?></h1>
+                        <?php if ($description) { //MAR-93 fixed by oppo webiprog.com  29.11.2017 ?>
+                            <div class="main-description-oppo">
+                                <div id="text-vision"
+                                     class="<?php echo str_word_count($description, 0) > 200 ? 'text-vision' : ''; ?> hidden-xs">
+                                    <?php echo $description; ?>
+                                </div>
+                                <?php if (str_word_count($description, 0) > 200) { ?>
+                                    <div class="more more-read-description hidden-xs">
+                                        <a href="#">>><?php echo $text_read_more; ?></a>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="clr clearfix"></div>
+                        <?php } ?>
+                    </main>
                 </div><!-- end right container -->
-
-
                 <?php echo $column_right; ?>
-
-
             </div>
         </div>
     </div>

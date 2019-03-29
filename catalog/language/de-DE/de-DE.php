@@ -29,6 +29,7 @@ $_['text_loading']			= 'Lade ..';
 $_['text_related_title']    = 'Kennt dein Hund schon die leckeren Belohnungen von Bellfor?';
 
 // Buttons
+$_['button_go_product']     = 'zum Produkt';
 $_['button_add_address']	= 'Neue Adresse';
 $_['button_back']			= 'Zurück';
 $_['button_continue']		= 'Weiter';

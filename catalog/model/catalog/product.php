@@ -58,7 +58,9 @@ class ModelCatalogProduct extends Model {
                 'status'           => $query->row['status'],
                 'date_added'       => $query->row['date_added'],
                 'date_modified'    => $query->row['date_modified'],
-                'viewed'           => $query->row['viewed']
+                'viewed'           => $query->row['viewed'],
+                'p2cg_customer_group_id' => $query->row['p2cg_customer_group_id'],
+                'p2cg_product_id'        => $query->row['p2cg_product_id']
             );
         } else {
             return false;

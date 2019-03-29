@@ -26,6 +26,7 @@ $_['text_loading']          = 'Loading...';
 $_['text_related_title']    = 'Does your dog already know the delicious rewards from Bellfor?';
 
 // Buttons
+$_['button_go_product']     = 'to the Product';
 $_['button_address_add']    = 'Add Address';
 $_['button_back']           = 'Back';
 $_['button_continue']       = 'Continue';

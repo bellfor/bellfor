@@ -276,6 +276,13 @@ class ControllerProductProduct extends Controller {
 			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
 			$data['text_loading'] = $this->language->get('text_loading');
 
+			$data['title_order_email']   = $this->language->get('title_order_email');
+			$data['error_max_product']   = $this->language->get('error_max_product');
+			$data['error_required']      = $this->language->get('error_required');
+			$data['error_email']         = $this->language->get('error_email');
+			$data['error_email_already'] = $this->language->get('error_email_already');
+			$data['error_unique']        = $this->language->get('error_unique');
+
 			$data['entry_qty'] = $this->language->get('entry_qty');
 			$data['entry_name'] = $this->language->get('entry_name');
 			$data['entry_review'] = $this->language->get('entry_review');
@@ -765,4 +772,38 @@ class ControllerProductProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+    public function emailValidation() {
+        $this->load->model('checkout/order');
+        $json = array();
+
+        if (isset($this->request->post['email'])) {
+            $json['not_unique_email'] = null;
+            $json['duplicat_email'] = null;
+            foreach ($this->request->post['email'] as $key_order_email => $order_email) {
+                foreach ($this->request->post['email'] as $key_temp_email => $temp_email) {
+                    if ($key_order_email != $key_temp_email) {
+                        if ($order_email == $temp_email && !in_array($temp_email, $json['duplicat_email'])) {
+                            $json['duplicat_email'][] = $temp_email;
+                        }
+                    }
+                }
+                $email = $this->model_checkout_order->getEmail($order_email);
+
+                if (isset($email['email'])) {
+                    $json['not_unique_email'][] = $email['email'];
+                }
+                if (isset($this->session->data['cart_email'])) {
+                    foreach ($this->session->data['cart_email'] as $cart_email) {
+                        if ($cart_email == $order_email) {
+                            $json['not_unique_email'][] = $order_email;
+                        }
+                    }
+                }
+            }
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
 }

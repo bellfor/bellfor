@@ -459,4 +459,89 @@ class ModelSaleOrder extends Model {
 
 		return $query->row['total'];
 	}
+
+    public function getEmails($data = array()) {
+
+        $sql = "SELECT oe.*, CONCAT(c.firstname, ' ', c.lastname) AS customer FROM `" . DB_PREFIX . "order_email` oe LEFT JOIN " . DB_PREFIX . "customer c ON (oe.user_id = c.customer_id) WHERE oe.order_status_id > '0'";
+
+        if (!empty($data['filter_order_id'])) {
+            $sql .= " AND oe.order_id = '" . (int)$data['filter_order_id'] . "'";
+        }
+
+        if (!empty($data['filter_customer'])) {
+            $sql .= " AND CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape($data['filter_customer']) . "%'";
+        }
+
+        if (!empty($data['filter_date_added'])) {
+            $sql .= " AND DATE(oe.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
+        }
+
+        $sort_data = array(
+            'oe.order_id',
+            'customer',
+            'oe.date_added'
+        );
+
+        if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+            $sql .= " ORDER BY " . $data['sort'];
+        } else {
+            $sql .= " ORDER BY oe.order_id";
+        }
+
+        if (isset($data['order']) && ($data['order'] == 'DESC')) {
+            $sql .= " DESC";
+        } else {
+            $sql .= " ASC";
+        }
+
+        if (isset($data['start']) || isset($data['limit'])) {
+            if ($data['start'] < 0) {
+                $data['start'] = 0;
+            }
+
+            if ($data['limit'] < 1) {
+                $data['limit'] = 20;
+            }
+
+            $sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+        }
+
+        $query = $this->db->query($sql);
+
+        return $query->rows;
+    }
+
+    public function getTotalEmails($data = array()) {
+        $sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order_email` oe LEFT JOIN " . DB_PREFIX . "customer c ON (oe.user_id = c.customer_id) WHERE oe.order_status_id > '0'";
+
+        if (!empty($data['filter_order_id'])) {
+            $sql .= " AND oe.order_id = '" . (int)$data['filter_order_id'] . "'";
+        }
+
+        if (!empty($data['filter_customer'])) {
+            $sql .= " AND CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape($data['filter_customer']) . "%'";
+        }
+
+        if (!empty($data['filter_date_added'])) {
+            $sql .= " AND DATE(oe.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
+        }
+
+        $query = $this->db->query($sql);
+
+        return $query->row['total'];
+    }
+
+    public function backup() {
+	     $results = $this->db->query("SELECT email FROM `" . DB_PREFIX . "order_email` WHERE order_status_id > '0'");
+
+	     $output = '';
+
+	     foreach ($results->rows as $result) {
+             $output .= $result['email'] . ";\n";
+         }
+
+        $this->event->trigger('post.admin.backup');
+
+	    return $output;
+	}
 }

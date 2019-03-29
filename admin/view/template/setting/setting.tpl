@@ -668,6 +668,12 @@
               </fieldset>
               <fieldset>
                 <legend><?php echo $text_checkout; ?></legend>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-order-email">E-mail for orders</label>
+                      <div class="col-sm-10">
+                          <input type="text" name="config_order_email" value="<?php echo $config_order_email; ?>" placeholder="Entry E-mail" id="input-order-email" class="form-control" />
+                      </div>
+                  </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-invoice-prefix"><span data-toggle="tooltip" title="<?php echo $help_invoice_prefix; ?>"><?php echo $entry_invoice_prefix; ?></span></label>
                   <div class="col-sm-10">

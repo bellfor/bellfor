@@ -64,3 +64,12 @@ $_['text_versand']			= 'expédition';
 $_['text_mwst']			= 'VAT';
 $_['text_mwst_full']			= 'Poids d\'expédition par pièce';
 $_['text_je'] = '';
+
+//Order email
+
+$_['title_order_email'] =   'S\'il vous plaît entrer ici l\'adresse email de l\'acheteur de chiot';
+$_['error_max_product'] =   'Limite de commande dépassée. Le nombre maximum de produits possible - 25 pièces.';
+$_['error_required'] =      'Remplissez le champ.';
+$_['error_email'] =         'Adresse e-mail invalide.';
+$_['error_email_already'] = 'Cet e-mail est déjà utilisé.';
+$_['error_unique'] =        'S\'il vous plaît entrer un e-mail clair.';

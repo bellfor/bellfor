@@ -882,6 +882,14 @@ class ControllerSettingSetting extends Controller {
 			$data['config_invoice_prefix'] = 'INV-' . date('Y') . '-00';
 		}
 
+        if (isset($this->request->post['config_order_email'])) {
+            $data['config_order_email'] = $this->request->post['config_order_email'];
+        } elseif ($this->config->get('config_order_email')) {
+            $data['config_order_email'] = $this->config->get('config_order_email');
+        } else {
+            $data['config_order_email'] = '';
+        }
+
 		if (isset($this->request->post['config_order_status_id'])) {
 			$data['config_order_status_id'] = $this->request->post['config_order_status_id'];
 		} else {

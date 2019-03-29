@@ -45,6 +45,7 @@ $_['text_manufacturer']					= 'Hersteller';
 $_['text_module']						= 'Module';
 $_['text_option']						= 'Optionen';
 $_['text_order']						= 'Aufträge';
+$_['text_order_email']                  = 'Orders E-mail';
 $_['text_order_status']					= 'Auftragsstati';
 $_['text_payment']						= 'Zahlarten';
 $_['text_paypal']						= 'PayPal';

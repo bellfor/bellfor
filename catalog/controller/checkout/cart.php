@@ -168,6 +168,7 @@ class ControllerCheckoutCart extends Controller {
 					'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
 					'price'     => $price,
 					'total'     => $total,
+                    'p2cg_product_id'  => $product['p2cg_product_id'],
 					'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 				);
 			}
@@ -546,4 +547,12 @@ class ControllerCheckoutCart extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+    public function setEmail() {
+        if (isset($this->session->data['order_email'])) {
+            unset($this->session->data['order_email']);
+        }
+        $this->session->data['order_email'] = $this->request->post['email'];
+        $this->session->data['cart_email'] = $this->request->post['email'];
+    }
 }

@@ -156,6 +156,7 @@ class ControllerProductSearch extends Controller {
 		$data['entry_search'] = $this->language->get('entry_search');
 		$data['entry_description'] = $this->language->get('entry_description');
 
+        $data['button_go_product'] = $this->language->get('button_go_product');
 		$data['button_search'] = $this->language->get('button_search');
 		$data['button_cart'] = $this->language->get('button_cart');
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
@@ -263,7 +264,8 @@ class ControllerProductSearch extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
-					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
+                    'p2cg_product_id'  => $product['p2cg_product_id']
 				);
 			}
 

@@ -63,3 +63,12 @@ $_['text_versand'] = 'Verzenden';
 $_['text_mwst'] = 'BTW';
 $_['text_mwst_full'] = 'Verzendgewicht per stuk';
 $_['text_je'] = '';
+
+//Order email
+
+$_['title_order_email'] =   'Voer hier het e-mailadres van de puppy-koper in';
+$_['error_max_product'] =   'Bestellingslimiet overschreden. Het maximaal mogelijke aantal producten - 25 stuks.';
+$_['error_required'] =      'Vul het veld in.';
+$_['error_email'] =         'Ongeldig e-mailadres.';
+$_['error_email_already'] = 'Deze e-mail is al in gebruik.';
+$_['error_unique'] =        'Voer een duidelijke e-mail in.';

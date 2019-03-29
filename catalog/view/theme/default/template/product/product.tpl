@@ -138,10 +138,19 @@ if(!empty($priceregion)) {
 
       <div class="price-container-button">
 
-          <span class="quantity_container">
-            <input type="text" name="products_qty" id="qty" class="article-count-input" value="1">
-          </span>
-          <a href="#"  onclick="cart.add('<?php echo $product_id; ?>', $('#qty').val()); return false;" class="button_green" id="addtocart"><img src="catalog/view/theme/default/image/icon-white-shoppingcart.png" alt=""><?php echo $button_cart; ?></a>
+          <?php if (!isset($customer_group_id)) { ?>
+            <span class="quantity_container">
+    	        <input type="text" name="products_qty" id="qty" class="article-count-input" value="1">
+            </span>
+            <a href="#"  onclick="cart.add('<?php echo $product_id; ?>', $('#qty').val()); return false;" class="button_green" id="addtocart"><img src="catalog/view/theme/default/image/icon-white-shoppingcart.png" alt=""><?php echo $button_cart; ?></a>
+          <?php } else { ?>
+              <p class="hidden" id="error-qty" style="color: red;"><?php echo $error_max_product; ?></p>
+            <span class="quantity_container">
+    	        <input type="text" name="products_qty" id="qty" class="article-count-input" max="25" value="1">
+            </span>
+            <a href="#"  onclick="emailInput(); return false;" class="button_green" id="addtocart"><img src="catalog/view/theme/default/image/icon-white-shoppingcart.png" alt=""><?php echo $button_cart; ?></a>
+          <?php } ?>
+
       </div>
 
       <div class="leaflet"><a href="#" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product_id; ?>'); return false;" class="button_details_add_wishlist"><?php echo $button_wishlist; ?></a></div>
@@ -152,6 +161,9 @@ if(!empty($priceregion)) {
 
   </div>
           </div>
+            <?php if (isset($customer_group_id)) { ?>
+                <div id="mail-send"></div>
+            <?php } ?>
         </div>
     </div>
      <div class="text-container">
@@ -288,10 +300,14 @@ if(!empty($priceregion)) {
             <span class="small"> <?php echo $product['price_weight']; ?> <?php echo $currency; ?> <?php echo $text_pro_kg ; ?><br /></span>
         </div>
         <div class="article-list-item-button payment_buttons">
-            <span class="quantity_container">
-              <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="<?php echo $product['minimum']; ?>">
-            </span>
-            <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green"><?php echo $button_cart; ?></button>
+            <?php if (empty($product['p2cg_product_id'])) {?>
+                <span class="quantity_container">
+    	            <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="<?php echo $product['minimum']; ?>">
+                </span>
+                <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green"><?php echo $button_cart; ?></button>
+            <?php } else {?>
+                <a class="button_green" href="<?php echo $product['href']; ?>"><?php echo $button_go_product; ?></a>
+            <?php } ?>
         </div>
   </div>
 
@@ -310,7 +326,105 @@ if(!empty($priceregion)) {
           </div>
         </div>
     </div>
+<?php if (isset($customer_group_id)) {?>
+    <style>
+        .error {
+            border: solid 1px red;
+        }
+    </style>
+    <script type="text/javascript"><!--
+        function emailInput() {
+            if ($('#qty').val() <= 25) {
+                var mail_input = '';
+                var mail_input = '<div style="margin-bottom: 40px; text-align: right;">';
+                mail_input += '<div class="title" style="margin-bottom: 15px;"><h2><?php echo $title_order_email; ?></h2></div>';
+                mail_input += '<div id="email-inputs" class="col-md-12 input-mail padding_fix" style="margin-bottom: 10px;">';
+                for (var i = 0; i < $('#qty').val(); i++) {
+                    mail_input += '<div class="col-md-12 input-mail padding_fix" style="margin-bottom: 10px;">';
+                    mail_input += '<div class="hidden" id="error-email-' + i + '" style="color: red; margin-left: 50px;"></div>';
+                    mail_input += '<label class="text-right" for="email-input-' + i + '" style="padding-top: 5px; margin-right: 5px;">E-mail : </label>';
+                    mail_input += '<input class="" name="email-' + i + '" id="email-input-' + i + '" type="email" placeholder="Enter e-mail" value="" style="width: 250px;" required>';
+                    mail_input += '</div>';
+                }
+                mail_input += '</div>';
+                mail_input += '<div>';
+                mail_input += '<a href="#" onclick="emailValidation(); return false;" class="button_green " id="addtocart"><i class="fa fa-paper-plane" style="margin-right: 5px;"></i>In den Warenkorb</a>';
+                mail_input += '</div>';
+                mail_input += '</div>';
+                $('#mail-send').html(mail_input);
+                $('#qty').removeClass('error');
+                $('#error-qty').addClass('hidden');
+            } else {
+                $('#qty').addClass('error');
+                $('#error-qty').removeClass('hidden');
+            }
+        }
+        function emailValidation() {
+            var email = [];
+            var error = true;
+            for (var i = 0; i < $('#qty').val(); i++) {
+                if (!$('#email-input-' + i ).val()){
+                    $('#email-input-' + i ).addClass('error');
+                    $('#error-email-' + i ).removeClass('hidden');
+                    $('#error-email-' + i ).html('<?php echo $error_required; ?>');
+                    error = false;
+                } else if (!$('#email-input-' + i ).val().match(/.+?\@.+/g)){
+                    $('#email-input-' + i ).addClass('error');
+                    $('#error-email-' + i ).removeClass('hidden');
+                    $('#error-email-' + i ).html('<?php echo $error_email; ?>');
+                    error = false;
+                } else {
+                    email[i] = ""+$('#email-input-' + i ).val()+"";
+                    $('#email-input-' + i ).removeClass('error');
+                    $('#error-email-' + i ).addClass('hidden');
+                }
+            }
 
+            if (error){
+                $.ajax({
+                    url:  'index.php?route=product/product/emailValidation',
+                    type: 'post',
+                    data: {email: email},
+                    dataType: 'json',
+                    success: function(json) {
+                        if (json.not_unique_email !== null || json.duplicat_email !== null) {
+                            if (json.not_unique_email !== null) {
+                                for (var j = 0; j < $('#qty').val(); j++) {
+                                    for (var i = 0; json.not_unique_email.length > i; i++) {
+                                        if (json.not_unique_email[i] == $('#email-input-' + j).val()) {
+                                            $('#email-input-' + j).addClass('error');
+                                            $('#error-email-' + j).html('<?php echo $error_email_already; ?>');
+                                            $('#error-email-' + j).removeClass('hidden');
+                                        }
+                                    }
+                                }
+                            }
+                            if (json.duplicat_email !== null) {
+                                for (var i = 0; json.duplicat_email.length > i; i++) {
+                                    for (var j = 0; j < $('#qty').val(); j++) {
+                                        if (json.duplicat_email[i] == $('#email-input-' + j).val()) {
+                                            $('#email-input-' + j).addClass('error');
+                                            $('#error-email-' + j).html('<?php echo $error_unique; ?>');
+                                            $('#error-email-' + j ).removeClass('hidden');
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            cart.add(<?php echo $product_id; ?>, $('#qty').val());
+                            $.ajax({
+                                url: 'index.php?route=checkout/cart/setEmail',
+                                type: 'post',
+                                data: {email: email},
+                                dataType: 'json'
+                            });
+                        }
+                    },
+                });
+            }
+        }
+        //--></script>
+<?php } ?>
 <?php // MAR-119 fix style by oppo webiprog.com  29.11.2017 ; ?>
 <style type="text/css"><!--
 .price-container .main-price{

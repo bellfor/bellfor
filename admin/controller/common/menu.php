@@ -61,6 +61,7 @@ class ControllerCommonMenu extends Controller {
 		$data['text_module'] = $this->language->get('text_module');
 		$data['text_option'] = $this->language->get('text_option');
 		$data['text_order'] = $this->language->get('text_order');
+		$data['text_order_email'] = $this->language->get('text_order_email');
 		$data['text_order_status'] = $this->language->get('text_order_status');
 		$data['text_opencart'] = $this->language->get('text_opencart');
 		$data['text_payment'] = $this->language->get('text_payment');
@@ -172,6 +173,7 @@ class ControllerCommonMenu extends Controller {
 		$data['module'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
 		$data['option'] = $this->url->link('catalog/option', 'token=' . $this->session->data['token'], 'SSL');
 		$data['order'] = $this->url->link('sale/order', 'token=' . $this->session->data['token'], 'SSL');
+		$data['order_email'] = $this->url->link('sale/order_email', 'token=' . $this->session->data['token'], 'SSL');
 		$data['order_status'] = $this->url->link('localisation/order_status', 'token=' . $this->session->data['token'], 'SSL');
 		$data['payment'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
 		$data['paypal_search'] = $this->url->link('payment/pp_express/search', 'token=' . $this->session->data['token'], 'SSL');

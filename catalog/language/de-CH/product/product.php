@@ -73,3 +73,12 @@ $_['text_versand']			= 'Versand';
 $_['text_mwst']			= 'MwSt';
 $_['text_mwst_full']			= 'Versandgewicht je Stück';
 $_['text_je'] = 'je';
+
+//Order email
+
+$_['title_order_email'] =   'Bitte tragen Sie hier die Emailadresse des Welpenkäufers ein';
+$_['error_max_product'] =   'Auftragslimit überschritten. Die maximal mögliche Anzahl von Produkten - 25 Stück.';
+$_['error_required'] =      'Füllen Sie das Feld aus.';
+$_['error_email'] =         'Ungültige E-Mail-Adresse.';
+$_['error_email_already'] = 'Diese E-Mail ist bereits in Verwendung.';
+$_['error_unique'] =        'Bitte geben Sie eine eindeutige E-Mail ein.';

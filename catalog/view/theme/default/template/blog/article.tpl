@@ -485,10 +485,14 @@
                                                 </div>
                                             </div>
                                             <div class="article-list-item-button payment_buttons">
-                        <span style="float: left;" class="quantity_container">
-                        <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="1">
-                        </span>
-                                                <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green article-btn-add"><?php echo $button_cart; ?></button>
+                                                <?php if (empty($product['p2cg_product_id'])) {?>
+                                                    <span style="float: left;" class="quantity_container">
+                                                        <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="1">
+                                                    </span>
+                                                    <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green article-btn-add"><?php echo $button_cart; ?></button>
+                                                <?php } else {?>
+                                                    <a class="button_green" href="<?php echo $product['href']; ?>"><?php echo $button_go_product; ?></a>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
