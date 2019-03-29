@@ -493,6 +493,20 @@ class ControllerCheckoutCart extends Controller {
 
 		// Remove
 		if (isset($this->request->post['key'])) {
+
+            if (!empty($this->session->data['cart_email'])){
+
+                $this->load->model('checkout/order');
+
+                $product_delete = $this->model_checkout_order->getProductCart($this->request->post['key']);
+
+                foreach ($this->session->data['cart_email'] as $key => $array) {
+                    if ($product_delete['product_id'] == $this->session->data['cart_email'][$key]['product_id']) {
+                        unset($this->session->data['cart_email'][$key]);
+                    }
+                }
+            }
+
 			$this->cart->remove($this->request->post['key']);
 
 			unset($this->session->data['vouchers'][$this->request->post['key']]);
@@ -553,6 +567,10 @@ class ControllerCheckoutCart extends Controller {
             unset($this->session->data['order_email']);
         }
         $this->session->data['order_email'] = $this->request->post['email'];
-        $this->session->data['cart_email'] = $this->request->post['email'];
+        $this->session->data['cart_email'][] = array(
+            'product_id' => $this->request->post['product_id'],
+            'emails' => $this->request->post['email']
+        );
+
     }
 }

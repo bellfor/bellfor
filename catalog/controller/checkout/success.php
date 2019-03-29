@@ -76,6 +76,8 @@ class ControllerCheckoutSuccess extends Controller {
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);
 			unset($this->session->data['totals']);
+            unset($this->session->data['order_email']);
+            unset($this->session->data['cart_email']);
 		}
 
 		if (! empty($this->session->data['last_order_id']) ) {

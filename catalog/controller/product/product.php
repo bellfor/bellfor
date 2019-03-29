@@ -794,7 +794,8 @@ class ControllerProductProduct extends Controller {
                     $json['not_unique_email'][] = $email['email'];
                 }
                 if (isset($this->session->data['cart_email'])) {
-                    foreach ($this->session->data['cart_email'] as $cart_email) {
+                    foreach ($this->session->data['cart_email'] as $cart_emails) {
+                        foreach ($cart_emails['emails'] as $cart_email)
                         if ($cart_email == $order_email) {
                             $json['not_unique_email'][] = $order_email;
                         }

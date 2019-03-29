@@ -1011,4 +1011,10 @@ class ModelCheckoutOrder extends Model {
 
         return $query->row;
     }
+
+    public function getProductCart ($cart_id) {
+	    $result = $this->db->query("SELECT * FROM `" . DB_PREFIX . "cart` WHERE cart_id = '" . (int)$cart_id . "'");
+
+	    return $result->row;
+    }
 }

@@ -415,7 +415,7 @@ if(!empty($priceregion)) {
                             $.ajax({
                                 url: 'index.php?route=checkout/cart/setEmail',
                                 type: 'post',
-                                data: {email: email},
+                                data: {email: email, product_id: <?php echo $product_id; ?>},
                                 dataType: 'json'
                             });
                         }
