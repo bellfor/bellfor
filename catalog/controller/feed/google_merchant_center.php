@@ -333,11 +333,22 @@ class ControllerFeedGoogleMerchantCenter extends Controller
                     //END fixed by oppo webiprog.com 2018-05-01 19:20:43
 
                     $weight = $this->weight->format($product['weight'], $product['weight_class_id']);
+
+                    if (strpos($weight, 'kg') !== false) {
+                        $item .= '<g:unit_​pricing_​measure>' . $weight . '</g:unit_​pricing_​measure>';
+                        $item .= '<g:unit_​pricing_​measure>1kg</g:unit_​pricing_​measure>';
+                    } elseif(strpos($weight, 'g') !== false) {
+                        $item .= '<g:unit_​pricing_​measure>' . $weight . '</g:unit_​pricing_​measure>';
+                        $item .= '<g:unit_​pricing_​measure>100g</g:unit_​pricing_​measure>';
+                    }
+
                     if (strpos($weight, 'g') !== false || strpos($weight, 'lb') !== false || strpos($weight, 'oz') !== false) {
                         $item .= '<g:shipping_weight>' . $weight . '</g:shipping_weight>';
                     } else {
                         $item .= '<g:shipping_weight>0 kg</g:shipping_weight>';
                     }
+
+
 
                     if ($product['quantity']==0) {
                         $item .= '<g:availability>' . $google_merchant_center_availability . '</g:availability>';
