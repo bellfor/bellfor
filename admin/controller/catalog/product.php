@@ -1336,7 +1336,7 @@ class ControllerCatalogProduct extends Controller {
                     $data['prices'][$store['store_id']] = array(
                         'price_id' => '',
                         'store_id' => $store['store_id'],
-                        'store_img' => strtolower($store['config_geocode']) . '.png',
+                        'store_img' => strtolower($store_setting['config_geocode']) . '.png',
                         'value' => ''
                     );
                 }

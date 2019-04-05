@@ -150,7 +150,7 @@
                                                 <?php } ?>
 
                                             </div>
-                                            <div class="article-list-item-bottom">
+                                            <div class="article-list-item-bottom text-center">
                                                 <div class="article-list-item-delivery">
                                                     <p>
                                                         <span class="label-list">Versandgewicht je Stück: </span> <?php echo round($product['weight'], 1); ?>
