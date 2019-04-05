@@ -30,26 +30,22 @@ if(!empty($priceregion)) {
 ; ?>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6" id="content">
-
-          <?php if ($thumb || $images) { ?>
-            <?php if ($thumb) { ?>
-          <div class="wrap_card">
-            <img class="card" src="<?php echo $thumb; ?>" data-large="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>">
-          </div>
+            <?php if ($thumb || $images) { ?>
+                <?php if ($thumb) { ?>
+                    <div class="wrap_card">
+                        <img class="card" src="<?php echo $thumb; ?>" data-large="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>">
+                    </div>
+                <?php } ?>
+                <?php if ($images) { $i=1;?>
+                    <div class="wrap_photo_card" >
+                        <?php foreach ($images as $image) { ?>
+                            <div class="wrap_small_card">
+                                <img class="for-popap-<?php echo $i; ?>" src="<?php echo $image['thumb']; ?>" data-large="<?php echo $image['popup']; ?>">
+                            </div>
+                        <?php $i++;} ?>
+                    </div>
+                <?php } ?>
             <?php } ?>
-            <?php if ($images) { $i=1;?>
-          <div class="wrap_photo_card" >
-            <?php foreach ($images as $image) { ?>
-			  <div class="wrap_small_card">
-          <img class="for-popap-<?php echo $i; ?>" src="<?php echo $image['thumb']; ?>" data-large="<?php echo $image['popup']; ?>">
-        </div>
-            <?php $i++;} ?>
-
-            <?php } ?>
-		 </div>
-          <?php } ?>
-
-
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6" >
           <div class="text-product">
