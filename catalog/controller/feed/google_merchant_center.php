@@ -335,11 +335,11 @@ class ControllerFeedGoogleMerchantCenter extends Controller
                     $weight = $this->weight->format($product['weight'], $product['weight_class_id']);
 
                     if (strpos($weight, 'kg') !== false) {
-                        $item .= '<g:unit_​pricing_​measure>' . $weight . '</g:unit_​pricing_​measure>';
-                        $item .= '<g:unit_​pricing_​measure>1kg</g:unit_​pricing_​measure>';
+                        $item .= '<g:unit_pricing_measure>' . $weight . '</g:unit_pricing_measure>';
+                        $item .= '<g:unit_pricing_base_measure>1kg</g:unit_pricing_base_measure>';
                     } elseif(strpos($weight, 'g') !== false) {
-                        $item .= '<g:unit_​pricing_​measure>' . $weight . '</g:unit_​pricing_​measure>';
-                        $item .= '<g:unit_​pricing_​measure>100g</g:unit_​pricing_​measure>';
+                        $item .= '<g:unit_pricing_measure>' . $weight . '</g:unit_pricing_measure>';
+                        $item .= '<g:unit_pricing_base_measure>100g</g:unit_pricing_base_measure>';
                     }
 
                     if (strpos($weight, 'g') !== false || strpos($weight, 'lb') !== false || strpos($weight, 'oz') !== false) {
