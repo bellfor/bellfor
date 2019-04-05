@@ -26,14 +26,11 @@
     <div class="col-xs-12">
         <div class="main-container">
             <div class="row">
-
-
                 <div class="col-md-9 col-md-push-3 col-xs-12 right-container">
                     <div class="row">
                         <div id="carousel-generic" class="carousel slide" data-ride="carousel">
                             <!-- Wrapper for slides -->
                             <?php echo $content_top; ?>
-
                         </div>
                         <main class="main-text-container" id="content">
                             <h1><?php echo $heading_title; ?></h1>
@@ -52,7 +49,6 @@
                                 <div class="clr clearfix"></div>
                             <?php } ?>
                         </main>
-
                         <div class="panel">
                             <form action="#" method="get">
                                 <div class="panel-sort sort-first-cat">
@@ -87,10 +83,7 @@
                                         </select>
                                     </div>
                                 </div>
-
-
                                 <div class="panel-viewmode">
-
                                     <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip"
                                             title="<?php echo $button_list; ?>"><img class="png-fix"
                                                                                      src="image/elements/panel/view_mode_default_on.png"
@@ -101,16 +94,12 @@
                                                                                      alt=""></button>
 
                                 </div>
-
                             </form>
                             <div class="panel-pagination">
                                 <?php echo $results; ?>
                             </div>
                         </div>
-
                         <div class="container-Empfehlungen">
-
-
                             <div class="row">
                                 <?php $counter = 1;
                                 $dl_products = '';
@@ -138,35 +127,40 @@
                                                 <div class="price">
                                                     <a href="<?php echo $product['href']; ?>">
                                                         <?php if (!$product['special']) { ?>
-                                                        <?php echo $product['price_full_formatted']; ?>
-<!--                                                        --><?php //var_dump($product['price_full_formatted']); die('1');?>
-                                                        <?php if ($product['weight'] < 1) { ?>
-                                                        <span class="small"> <?php if ($product['currency_position'] == 'l') {
-                                                                echo $product['currency'];
-                                                            }
-                                                            echo round($product['price_full'] / $product['weight'] / 10, 2);
-                                                            if ($product['currency_position'] == 'r') {
-                                                                echo $product['currency'];
-                                                            } ?> pro 100 g<br></span></a>
-                                                    <?php } else { ?>
-                                                        <span class="small"> <?php if ($product['currency_position'] == 'l') {
-                                                                echo $product['currency'];
-                                                            }
-                                                            echo round($product['price_full'] / $product['weight'], 2);
-                                                            if ($product['currency_position'] == 'r') {
-                                                                echo $product['currency'];
-                                                            } ?> pro kg<br></span></a>
-                                                    <?php } ?>
-                                                    <?php } else { ?>
-                                                        <span class="price-new"><?php echo $product['special']; ?></span>
-                                                        <span class="price-old"><?php echo $product['price']; ?></span>
-                                                    <?php } ?>
+                                                            <?php echo $product['price_full_formatted']; ?>
+                                                            <?php if ($product['weight'] < 1) { ?>
+                                                                <span class="small">
+                                                                    <?php if ($product['currency_position'] == 'l') {
+                                                                        echo $product['currency'];
+                                                                    }
+                                                                    echo round($product['price_full'] / $product['weight'] / 10, 2);
+                                                                    if ($product['currency_position'] == 'r') {
+                                                                        echo $product['currency'];
+                                                                    } ?>
+                                                                    pro 100 g<br>
+                                                                </span>
                                                     </a>
-                                                    <?php if ($product['tax']) { ?>
-                                                        <span class="small tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
-                                                            <a class="" href="#">Versand</a></span>
-
-
+                                                            <?php } else { ?>
+                                                            <span class="small">
+                                                                <?php if ($product['currency_position'] == 'l') {
+                                                                    echo $product['currency'];
+                                                                }
+                                                                echo round($product['price_full'] / $product['weight'], 2);
+                                                                if ($product['currency_position'] == 'r') {
+                                                                    echo $product['currency'];
+                                                                } ?> pro kg<br></span></a>
+                                                            <?php } ?>
+                                                        <?php } else { ?>
+                                                            <span class="price-new"><?php echo $product['special']; ?></span>
+                                                            <span class="price-old"><?php echo $product['price']; ?></span>
+                                                        <?php } ?>
+                                                    </a>
+                                                    <?php if ($product['tax_rate']) { ?>
+                                                        <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
+                                                            <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                                                        </span>
+                                                    <?php } else { ?>
+                                                        <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                                                     <?php } ?>
                                                 </div>
                                             <?php } ?>
@@ -274,14 +268,25 @@
                     <div class="panel-pagination-info">
                         <?php echo $pagination; ?>
                     </div>
-
-
+                    <main class="main-text-container" id="content">
+                        <h1><?php echo $heading_title; ?></h1>
+                        <?php if ($description) { //MAR-93 fixed by oppo webiprog.com  29.11.2017 ?>
+                            <div class="main-description-oppo">
+                                <div id="text-vision"
+                                     class="<?php echo str_word_count($description, 0) > 200 ? 'text-vision' : ''; ?> hidden-xs">
+                                    <?php echo $description; ?>
+                                </div>
+                                <?php if (str_word_count($description, 0) > 200) { ?>
+                                    <div class="more more-read-description hidden-xs">
+                                        <a href="#">>><?php echo $text_read_more; ?></a>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="clr clearfix"></div>
+                        <?php } ?>
+                    </main>
                 </div><!-- end right container -->
-
-
                 <?php echo $column_right; ?>
-
-
             </div>
         </div>
     </div>

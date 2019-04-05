@@ -41,6 +41,29 @@ class ControllerModuleFeatured extends Controller {
 
 					if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 						$price = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')));
+
+                        $tax_rates_raw = $this->tax->getRates($product_info['product_id'], $product_info['tax_class_id']);
+                        $tax_rate = array();
+                        foreach($tax_rates_raw as $tax_rate_raw)
+                        {
+                            $tax_rate[] = $tax_rate_raw;
+                        }
+                        $price_without_symbol = $product_info['price'];
+                        $price_full = round($price_without_symbol + $price_without_symbol * ($tax_rate[0]['rate']/100), 2);
+                        $price_full_formatted = $this->currency->format($price_full, false);
+                        if ('' !== $this->currency->getSymbolRight($this->session->data['currency']))
+                        {
+                            $currency_symbol = $this->currency->getSymbolRight($this->session->data['currency']);
+                            $price_symbol_position = 'r';
+                        } elseif ('' !== $this->currency->getSymbolLeft($this->session->data['currency'])) {
+                            $currency_symbol = $this->currency->getSymbolLeft($this->session->data['currency']);
+                            $price_symbol_position = 'l';
+                        } else {
+                            $currency_symbol = $this->session->data['currency'];
+                            $price_symbol_position = 'r';
+                        }
+                        $price_full = str_replace(",", ".", str_replace($currency_symbol, "", $price_full_formatted));
+
 					} else {
 						$price = false;
 					}
@@ -63,15 +86,37 @@ class ControllerModuleFeatured extends Controller {
 						$rating = false;
 					}
 
-					$data['products'][] = array(
+                    $category_data = $this->model_catalog_product->getMainCategory($product_info['product_id']);
+                    $discounts = array();
+                    $discounts_data = $this->model_catalog_product->getProductDiscounts($product_info['product_id']);
+                    if (!empty($discounts_data)) {
+                        foreach ($discounts_data as $discount)
+                        {
+                            $discount['price_full'] = $this->tax->calculate($discount['price'], $product_info['tax_class_id'], $this->config->get('config_tax'));
+                            $discounts[] = $discount;
+                        }
+                    }
+
+                    $data['products'][] = array(
 						'product_id'  => $product_info['product_id'],
-						'thumb'       => $image,
+                        'weight'      => $product_info['weight'],
+                        'thumb'       => $image,
 						'name'        => $product_info['name'],
 						'description' => utf8_substr(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 						'price'       => $price,
-						'special'     => $special,
+//                        'price_full'  => $this->tax->calculate($price, $result['tax_class_id'], $this->config->get('config_tax')),
+                        'discounts'   => $discounts,
+                        'category'    => $category_data['name'],
+                        'model'       => $product_info['model'],
+                        'special'     => $special,
 						'tax'         => $tax,
-						'rating'      => $rating,
+                        'tax_rate'    => $tax_rate,
+                        'price_without_symbol' => $price_without_symbol,
+                        'price_full'  => $price_full,
+                        'price_full_formatted' => $price_full_formatted,
+                        'currency'    => $currency_symbol,
+                        'currency_position' => $price_symbol_position,
+                        'rating'      => $rating,
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
 					);
 				}

@@ -51,3 +51,6 @@ $_['error_minimum']     		= 'Für %s müssen mindestens %s Stück bestellt werde
 $_['error_required']    		= '%s wird benötigt!';
 $_['error_product']     		= 'Hinweis: Es sind keine Artikel im Warenkorb';
 $_['error_recurring_required']	= 'Bitte ein Aboprofil wählen';
+
+$_['text_tax']		= 'Inkl.';
+$_['text_pro_kg']			= 'pro kg';

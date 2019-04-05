@@ -33,13 +33,44 @@
                         <?php } ?>
                         <a href="<?php echo $product['href']; ?>">
                             <?php if (!$product['special']) { ?>
-                            <?php echo $product['price']; ?>
-                            <?php } else { ?>
-                            <span class="price-new"><?php echo $product['special']; ?></span> <span
-                                    class="price-old"><?php echo $product['price']; ?></span>
-                            <?php } ?>
-
+                                <?php echo $product['price_full_formatted']; ?>
+                                <?php if ($product['weight'] < 1) { ?>
+                                    <span class="small">
+                                        <?php if ($product['currency_position'] == 'l') { ?>
+                                            <?php echo $product['currency']; ?>
+                                        <?php } ?>
+                                        <?php echo round($product['price_full'] / $product['weight'] / 10, 2); ?>
+                                        <?php if ($product['currency_position'] == 'r') { ?>
+                                            <?php echo $product['currency']; ?>
+                                        <?php } ?>
+                                        pro 100 g<br>
+                                    </span>
                         </a>
+                                <?php } else { ?>
+                                    <span class="small">
+                                        <?php if ($product['currency_position'] == 'l') { ?>
+                                            <?php echo $product['currency']; ?>
+                                        <?php } ?>
+                                        <?php echo round($product['price_full'] / $product['weight'], 2); ?>
+                                        <?php if ($product['currency_position'] == 'r') { ?>
+                                            <?php echo $product['currency']; ?>
+                                        <?php } ?>
+                                        pro kg<br>
+                                    </span>
+                        </a>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <span class="price-new"><?php echo $product['special']; ?></span>
+                                <span class="price-old"><?php echo $product['price']; ?></span>
+                            <?php } ?>
+                        </a>
+                        <?php if ($product['tax_rate']) { ?>
+                            <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
+                                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                            </span>
+                        <?php } else { ?>
+                                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                        <?php } ?>
                     </div>
                     <?php } ?>
 					      <div class="article-list-item-button payment_buttons">

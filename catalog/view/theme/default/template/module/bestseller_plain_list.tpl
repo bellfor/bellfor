@@ -12,6 +12,14 @@
           <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
           <?php } ?>
         </span>
+            <span class="small right-price-vat"> <?php echo $product['price_weight']; ?> <?php echo $currency; ?> <?php echo $text_pro_kg ; ?><br /></span>
+            <?php if ($product['tax_rate']) { ?>
+                <span class="small bestseller-font-size-tax right-price-vat"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
+                    <a class="bestseller-font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                </span>
+            <?php } else { ?>
+                <a class="bestseller-font-size-shipping right-price-vat" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+            <?php } ?>
         <?php } ?>
   
     </div>

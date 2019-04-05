@@ -10,4 +10,4 @@
 // Heading
 $_['heading_title']	= 'Unsere Empfehlungen';
 // Text
-$_['text_tax']		= 'ohne Steuer';
+$_['text_tax']		= 'inkl.';

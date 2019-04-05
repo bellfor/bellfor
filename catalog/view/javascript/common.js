@@ -109,7 +109,6 @@ $(document).ready(function() {
 		$('.payment_buttons').attr('class', 'article-list-item-button payment_buttons article-grid-item-button');
     $('.article-list-item-delivery').attr('class', 'article-list-item-delivery displaynone');
 		$('.article-list-item-main .description').attr('class', 'description displaynone');
-		$('span.tax').attr('class', 'small tax displaynone');
 		$('.product-container').attr('class', 'col-md-12 col-sm-12 product-container');
 		$('.product-list-image').attr('class', 'product-list-image');
 		heightBlock($(".article-grid-item .product-container"));
