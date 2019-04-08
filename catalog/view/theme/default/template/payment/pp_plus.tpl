@@ -1,6 +1,6 @@
 <div class="buttons">
   <div class="pull-right">
-    <input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="button_blue button_set" data-loading-text="<?php echo $text_loading; ?>" onclick="PAYPAL.apps.PPP.doCheckout();" />
+    <input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="button_blue button_set" data-loading-text="<?php echo $text_loading; ?>"/>
   </div>
 </div>
 <script type="text/javascript"><!--

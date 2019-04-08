@@ -31,11 +31,14 @@ _20171219_161800.htaccess
 _20180119_195929.htaccess
 
 image_webiprog_.zip
-
+admin/article_logs.txt
+admin/product_logs.txt
 admin/error_log
 /error_log
 php-error.log
 description/php-error.log
 .user.ini
 jtlconnector/db/connector.s3db
+jtlconnector/error_log
 edgar/error_log
+catalog/controller/order_log.txt

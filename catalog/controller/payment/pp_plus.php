@@ -21,6 +21,8 @@ class ControllerPaymentPPPlus extends Controller {
 			$this->load->model('checkout/order');
 
 			$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('pp_plus_order_status_id'));
+
+            $this->load->controller('checkout/order_log');
 		}
 	}
 	
