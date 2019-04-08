@@ -32,9 +32,6 @@
                             <!-- Wrapper for slides -->
                             <?php echo $content_top; ?>
                         </div>
-                        <main class="main-text-container" id="content">
-                            <h1><?php echo $heading_title; ?></h1>
-                        </main>
                         <div class="panel">
                             <form action="#" method="get">
                                 <div class="panel-sort sort-first-cat">
