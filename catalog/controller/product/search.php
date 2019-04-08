@@ -164,6 +164,8 @@ class ControllerProductSearch extends Controller {
 		$data['button_list'] = $this->language->get('button_list');
 		$data['button_grid'] = $this->language->get('button_grid');
 
+        $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+
 		$data['compare'] = $this->url->link('product/compare');
 
 		$this->load->model('catalog/category');

@@ -1257,19 +1257,24 @@ input {
 
 .bestsellers-row .price, .main-section .right-container .container-Empfehlungen .price {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
     align-content: center;
-    margin-top: 10px
+    margin-top: 10px;
+    text-align: center;
 }
 
 .bestsellers-row .price {
-    display: inline-flex;
-    float: right;
-    margin: 0
+    /*display: inline-flex;*/
+    /*float: right;*/
+    text-align: center;
+    margin-bottom: 5px
 }
 
-.bestsellers-row .caption .price, .main-section .right-container .container-Empfehlungen .price a {
+.bestsellers-row .caption .price,
+.product-thumb .price a,
+.main-section .right-container .container-Empfehlungen .price a {
     color: #7e842e;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
@@ -1286,7 +1291,8 @@ input {
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    display: block
+    display: block;
+    text-align: center;
 }
 
 .main-section .right-container .article-grid-item .product-container {
@@ -1302,7 +1308,8 @@ input {
 
 .main-section .right-container .article-grid-item .product-container .price {
     align-self: flex-end;
-    text-align: right;
+    flex-direction: column;
+    text-align: center;
     width: 100%;
     margin-top: 35px
 }
@@ -1431,8 +1438,9 @@ input {
 }
 
 .article-list-item-button {
-    float: right;
-    display: inline-block
+    display: inline-block;
+    width: 100%;
+    text-align: center;
 }
 
 .article-list-item-button .quantity_container input {
@@ -3271,6 +3279,10 @@ span.free {
 .article-product-rating {
     margin-right: 2px;
 }
+.article-product-price {
+    display: flex;
+    flex-wrap: wrap;
+}
 .article-btn-add {
     float: left;
     height: 25px;
@@ -3302,6 +3314,9 @@ span.free {
     padding: 4px 10px;
     text-decoration: none
 }
+.article-price-mobile {
+    margin-bottom: 5px;
+}
 @media (max-width: 430px) {
     .header-menu-mobile {
         width: 100%;
@@ -3315,6 +3330,9 @@ span.free {
         position: fixed;
         opacity: 0.9;
         z-index: 99;
+    }
+    .article-price-mobile {
+        text-align: left !important;
     }
 }
 @media (max-width: 648px) {
@@ -3376,4 +3394,42 @@ span.free {
 }
 .margin-button-checkout {
     margin-bottom: 20px;
+}
+/*----Style for tax and sipinng info----*/
+.product-thumb .price .small.font-size-tax,
+.main-section .right-container .container-Empfehlungen .price .small.font-size-tax{
+    font-size: 10px;
+    text-align: center;
+    color: #666;
+    font-weight: 500;
+}
+.product-thumb .price a.font-size-shipping,
+.main-section .right-container .container-Empfehlungen .price a.font-size-shipping{
+    font-size: 12px;
+    text-decoration: underline;
+    color: #666;
+    font-weight: 500;
+}
+.weight {
+    color: #666;
+    font-weight: 500;
+}
+.new-row-price {
+    display: flex;
+    flex-wrap: wrap;
+}
+.right-price-vat {
+    display: block;
+    text-align: right;
+}
+span a.bestseller-font-size-shipping {
+    font-size: 12px;
+    text-decoration: underline;
+    color: #666;
+    font-weight: 500;
+}
+span.bestseller-font-size-tax{
+    font-size: 10px;
+    color: #666;
+    font-weight: 500;
 }

@@ -391,17 +391,32 @@ class ControllerCheckoutCart extends Controller {
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
 				$json['button_go_cart'] = $this->language->get('button_go_cart');
 
+				$json['text_tax'] = $this->language->get('text_tax');
+				$json['text_pro_kg'] = $this->language->get('text_pro_kg');
+
+                $json['link_versand'] = $this->url->link('information/information', 'information_id=112');
+
                 $related_products = $this->model_catalog_product->getProductRelated($product_id);
 
                 if (isset($related_products)) {
                     foreach ($related_products as $related_product) {
+
+                        $tax_rates_raw = $this->tax->getRates($related_product['product_id'], $related_product['tax_class_id']);
+                        $tax_rate = array();
+                        foreach($tax_rates_raw as $tax_rate_raw)
+                        {
+                            $tax_rate[] = $tax_rate_raw;
+                        }
+
                         $json['related_product'][] = array(
                             'product_id' => $related_product['product_id'],
                             'href'       => $this->url->link('product/product&product_id=' . $related_product['product_id']),
                             'image'      => 'image/' . $related_product['image'],
                             'title'      => $related_product['name'],
+                            'tax_rate'   => $tax_rate,
                             'price'      => $this->currency->format($this->tax->calculate($related_product['price'], $related_product['tax_class_id'], $this->config->get('config_tax'))),
                             'special'    => (float)$related_product['special'] ? $this->currency->format($this->tax->calculate($related_product['special'], $related_product['tax_class_id'], $this->config->get('config_tax'))) : '',
+                            'price_weight'=> round($this->tax->calculate($related_product['price'], $related_product['tax_class_id'], $this->config->get('config_tax'))/$related_product['weight'], 2),
                             'rating'     => $related_product['rating']
                         );
                     }

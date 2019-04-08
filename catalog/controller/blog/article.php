@@ -188,7 +188,9 @@ class ControllerBlogArticle extends Controller {
 			$data['article_id'] = $this->request->get['article_id'];
 			
 			$data['review_status'] = $this->config->get('configblog_review_status');
-			
+
+            $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+
 			if ($this->config->get('configblog_review_guest') || $this->customer->isLogged()) {
 				$data['review_guest'] = true;
 			} else {
@@ -259,7 +261,30 @@ class ControllerBlogArticle extends Controller {
 				}
 				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
-				} else {
+
+                    $tax_rates_raw = $this->tax->getRates($result['product_id'], $result['tax_class_id']);
+                    $tax_rate = array();
+                    foreach($tax_rates_raw as $tax_rate_raw)
+                    {
+                        $tax_rate[] = $tax_rate_raw;
+                    }
+                    $price_without_symbol = $result['price'];
+                    $price_full = round($price_without_symbol + $price_without_symbol * ($tax_rate[0]['rate']/100), 2);
+                    $price_full_formatted = $this->currency->format($price_full, false);
+                    if ('' !== $this->currency->getSymbolRight($this->session->data['currency']))
+                    {
+                        $currency_symbol = $this->currency->getSymbolRight($this->session->data['currency']);
+                        $price_symbol_position = 'r';
+                    } elseif ('' !== $this->currency->getSymbolLeft($this->session->data['currency'])) {
+                        $currency_symbol = $this->currency->getSymbolLeft($this->session->data['currency']);
+                        $price_symbol_position = 'l';
+                    } else {
+                        $currency_symbol = $this->session->data['currency'];
+                        $price_symbol_position = 'r';
+                    }
+                    $price_full = str_replace(",", ".", str_replace($currency_symbol, "", $price_full_formatted));
+
+                } else {
 					$price = false;
 				}
 						
@@ -285,15 +310,21 @@ class ControllerBlogArticle extends Controller {
 							
 				$data['products'][] = array(
 					'product_id' => $result['product_id'],
+                    'weight'     => $result['weight'],
                     'p2cg_product_id'  => $result['p2cg_product_id'],
 					'thumb'   	 => $image,
 					'name'    	 => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('configblog_article_description_length')) . '..',
-					'price'   	 => $price,
+                    'tax_rate'    => $tax_rate,
+                    'price_without_symbol' => $price_without_symbol,
+                    'price_full'  => $price_full,
+                    'price_full_formatted' => $price_full_formatted,
+                    'currency_position' => $price_symbol_position,
+                    'price'   	 => $price,
 					'special' 	 => $special,
 					'rating'     => $rating,
 					'tax'        => $tax,
-					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
+					'minimum'    => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
 					'href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
 				);

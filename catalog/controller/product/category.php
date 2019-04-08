@@ -142,6 +142,8 @@ class ControllerProductCategory extends Controller {
             $data['text_read_more'] = $this->language->get('text_read_more');
             $data['text_hide'] = $this->language->get('text_hide');
 
+            $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+
 			// Set the last category breadcrumb
 			$data['breadcrumbs'][] = array(
 				'text' => $category_info['name'],

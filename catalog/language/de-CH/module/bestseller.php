@@ -10,4 +10,5 @@
 // Heading
 $_['heading_title']	= 'Bestseller';
 // Text
-$_['text_tax']		= 'ohne Steuer';
+$_['text_tax']		= 'Inkl.';
+$_['text_pro_kg']			= 'pro kg';

@@ -17,7 +17,13 @@ class ControllerModuleBestSeller extends Controller {
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
 		$data['button_compare'] = $this->language->get('button_compare');
 
-		$this->load->model('catalog/product');
+        $data['text_tax'] = $this->language->get('text_tax');
+        $data['text_pro_kg'] = $this->language->get('text_pro_kg');
+
+        $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+
+
+        $this->load->model('catalog/product');
 
 		$this->load->model('tool/image');
 
@@ -57,6 +63,13 @@ class ControllerModuleBestSeller extends Controller {
 					$rating = false;
 				}
 
+                $tax_rates_raw = $this->tax->getRates($result['product_id'], $result['tax_class_id']);
+                $tax_rate = array();
+                foreach($tax_rates_raw as $tax_rate_raw)
+                {
+                    $tax_rate[] = $tax_rate_raw;
+                }
+
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
                     'p2cg_product_id'  => $result['p2cg_product_id'],
@@ -65,8 +78,10 @@ class ControllerModuleBestSeller extends Controller {
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
+                    'tax_rate'    => $tax_rate,
 					'tax'         => $tax,
 					'rating'      => $rating,
+                    'price_weight'=> round($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'))/$result['weight'], 2),
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
 				);
 			}

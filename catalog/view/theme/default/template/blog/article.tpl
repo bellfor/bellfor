@@ -456,7 +456,7 @@
                                                 </h4>
                                                 <p><?php echo $product['description']; ?></p>
                                             </div>
-                                            <div class="price">
+                                            <div class="price article-price-mobile">
                                                 <div class="rating_wrap rating_product" style="height: 25px;">
                                                     <?php if ($review_status) { ?>
                                                         <?php for ($i = 1; $i <= 5; $i++) { ?>
@@ -474,13 +474,42 @@
                                                 </div>
                                                 <div>
                                                     <?php if ($product['price']) { ?>
-                                                        <a class="article-price" href="<?php echo $product['href']; ?>">
-                                                            <?php if (!$product['special']) { ?>
-                                                                <?php echo $product['price']; ?>
-                                                            <?php } else { ?>
-                                                                <span class="price-new">><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-                                                            <?php } ?>
-                                                        </a>
+                                                    <a href="<?php echo $product['href']; ?>" class="article-product-price">
+                                                        <?php if (!$product['special']) { ?>
+                                                            <?php echo $product['price_full_formatted']; ?>
+                                                        <?php } else { ?>
+                                                            <span class="price-new"><?php echo $product['special']; ?></span>
+                                                            <span class="price-old"><?php echo $product['price']; ?></span>
+                                                        <?php } ?>
+                                                    </a>
+                                                        <?php if ($product['weight'] < 1) { ?>
+                                                            <span class="small">
+                                                                    <?php if ($product['currency_position'] == 'l') { ?>
+                                                                        <?php echo $product['currency']; ?>
+                                                                    <?php } ?>
+                                                                <?php echo round($product['price_full'] / $product['weight'] / 10, 2); ?>
+                                                                <?php if ($product['currency_position'] == 'r') { ?>
+                                                                    <?php echo $product['currency']; ?>
+                                                                <?php } ?>
+                                                                pro 100 g<br>
+                                                                </span>
+                                                        <?php } else { ?>
+                                                            <span class="small">
+                                                                    <?php if ($product['currency_position'] == 'l') { ?>
+                                                                        <?php echo $product['currency']; ?>
+                                                                    <?php } ?>
+                                                                <?php echo round($product['price_full'] / $product['weight'], 2); ?>
+                                                                <?php if ($product['currency_position'] == 'r') { ?>
+                                                                    <?php echo $product['currency']; ?>
+                                                                <?php } ?>
+                                                                pro kg<br>
+                                                                </span>
+                                                        <?php } ?>
+                                                        <?php if ($product['tax']) { ?>
+                                                            <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
+                                                                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                                                            </span>
+                                                        <?php } ?>
                                                     <?php } ?>
                                                 </div>
                                             </div>

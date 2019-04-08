@@ -310,7 +310,9 @@ class ControllerProductProduct extends Controller {
 			$data['points'] = $product_info['points'];
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 
-			if ($product_info['quantity'] <= 0) {
+            $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+
+            if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
 			} elseif ($this->config->get('config_stock_display')) {
 				$data['stock'] = $product_info['quantity'];
@@ -475,6 +477,13 @@ class ControllerProductProduct extends Controller {
 					$rating = false;
 				}
 
+                $tax_rates_raw = $this->tax->getRates($result['product_id'], $result['tax_class_id']);
+                $tax_rate = array();
+                foreach($tax_rates_raw as $tax_rate_raw)
+                {
+                    $tax_rate[] = $tax_rate_raw;
+                }
+
                 $data['products'][] = array(
                     'product_id'  => $result['product_id'],
                     'thumb'       => $image,
@@ -483,6 +492,7 @@ class ControllerProductProduct extends Controller {
                     'price'       => $price,
                     'special'     => $special,
                     'tax'         => $tax,
+                    'tax_rate'    => $tax_rate,
                     'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
                     'rating'      => $rating,
                     'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),

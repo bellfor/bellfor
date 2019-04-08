@@ -140,11 +140,12 @@
                                                             <span class="price-old"><?php echo $product['price']; ?></span>
                                                         <?php } ?>
                                                         </a>
-                                                        <?php if ($product['tax']) { ?>
-                                                            <span class="small tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
-                                                                <a class="" href="#">Versand</a></span>
-
-
+                                                        <?php if ($product['tax_rate']) { ?>
+                                                            <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
+                                                                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                                                            </span>
+                                                        <?php } else { ?>
+                                                            <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                                                         <?php } ?>
                                                     </div>
                                                 <?php } ?>

@@ -19,16 +19,23 @@
         </div>
         <?php } ?>
         <?php if ($product['price']) { ?>
-        <p class="price">
+        <div class="price">
           <?php if (!$product['special']) { ?>
           <?php echo $product['price']; ?>
           <?php } else { ?>
           <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
           <?php } ?>
-          <?php if ($product['tax']) { ?>
-          <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
+          <?php if ($product['price_weight']) {?>
+            <span class="small weight"> <?php echo $product['price_weight']; ?> <?php echo $currency; ?> <?php echo $text_pro_kg ; ?><br /></span>
           <?php } ?>
-        </p>
+            <?php if ($product['tax_rate']) { ?>
+                <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
+                    <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                </span>
+            <?php } else { ?>
+                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+            <?php } ?>
+        </div>
         <?php } ?>
       </div>
       <div class="button-group">
