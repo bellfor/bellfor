@@ -27,6 +27,7 @@ $_['text_rating_desc']  = 'Rating (Plus haut)';
 $_['text_model_asc']    = 'Modèle (A - Z)';
 $_['text_model_desc']   = 'Modèle (Z - A)';
 $_['text_limit']        = 'Montrer:';
+$_['text_pro_kg']		= 'pro kg';
 
 $_['text_read_more']	= 'En savoir plus';
 $_['text_hide']		    = 'Cacher';

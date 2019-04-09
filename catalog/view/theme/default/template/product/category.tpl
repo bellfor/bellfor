@@ -153,6 +153,7 @@
                                                         <?php } else { ?>
                                                             <span class="price-new"><?php echo $product['special']; ?></span>
                                                             <span class="price-old"><?php echo $product['price']; ?></span>
+                                                            <span class="small"> <?php echo $product['price_weight_special']; ?> <?php echo $product['currency']; ?> <?php echo $text_pro_kg ; ?><br /></span>
                                                         <?php } ?>
                                                     </a>
                                                     <?php if ($product['tax_rate']) { ?>
@@ -160,7 +161,7 @@
                                                             <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                                                         </span>
                                                     <?php } else { ?>
-                                                        <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                                                        <span><a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a></span>
                                                     <?php } ?>
                                                 </div>
                                             <?php } ?>

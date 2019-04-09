@@ -9,3 +9,4 @@ $_['heading_title'] = 'Featured';
 
 // Text
 $_['text_tax']      = 'Ex Tax:';
+$_['text_pro_kg']		= 'pro kg';

@@ -60,8 +60,11 @@
                         </a>
                                 <?php } ?>
                             <?php } else { ?>
-                                <span class="price-new"><?php echo $product['special']; ?></span>
-                                <span class="price-old"><?php echo $product['price']; ?></span>
+                                <a href="<?php echo $product['href']; ?>">
+                                    <span class="price-new"><?php echo $product['special']; ?></span>
+                                    <span class="price-old text-nowrap"><?php echo $product['price']; ?></span>
+                                </a>
+                                <span class="small"> <?php echo $product['price_weight_special']; ?> <?php echo $product['currency']; ?> <?php echo $text_pro_kg ; ?><br /></span>
                             <?php } ?>
                         </a>
                         <?php if ($product['tax_rate']) { ?>
@@ -69,7 +72,7 @@
                                 <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                             </span>
                         <?php } else { ?>
-                                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                                <span><a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a></span>
                         <?php } ?>
                     </div>
                     <?php } ?>
@@ -78,7 +81,7 @@
           <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="<?php echo $product['minimum']; ?>">
         </span>
         <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green"><?php echo $button_cart; ?></button>
-		
+
       </div>
                 </div>
             </div>

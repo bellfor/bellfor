@@ -18,7 +18,7 @@
                     <a class="bestseller-font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                 </span>
             <?php } else { ?>
-                <a class="bestseller-font-size-shipping right-price-vat" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                <span><a class="bestseller-font-size-shipping right-price-vat" href="<?php echo $link_versand; ?>" target="_blank">Versand</a></span>
             <?php } ?>
         <?php } ?>
   

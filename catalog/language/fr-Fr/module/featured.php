@@ -9,3 +9,4 @@ $_['heading_title'] = 'En vedette';
 
 // Text
 $_['text_tax']      = 'Hors taxes:';
+$_['text_pro_kg']		= 'pro kg';

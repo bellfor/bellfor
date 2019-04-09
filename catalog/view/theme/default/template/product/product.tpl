@@ -284,14 +284,22 @@ if(!empty($priceregion)) {
           <a href="<?php echo $product['href']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>"><?php echo $product['name']; ?></a>
         </div>
         <div class="price">
-            <a href="<?php echo $product['href']; ?>"> <?php echo $product['price']; ?></a>
-            <span class="small"> <?php echo $product['price_weight']; ?> <?php echo $currency; ?> <?php echo $text_pro_kg ; ?><br /></span>
+            <?php if (!$product['special']) { ?>
+                <a href="<?php echo $product['href']; ?>"> <?php echo $product['price']; ?></a>
+                <span class="small"> <?php echo $product['price_weight']; ?> <?php echo $currency; ?> <?php echo $text_pro_kg ; ?><br /></span>
+            <?php } else { ?>
+                <a href="<?php echo $product['href']; ?>">
+                    <span class="price-new"><?php echo $product['special']; ?></span>
+                    <span class="price-old"><?php echo $product['price']; ?></span>
+                </a>
+                <span class="small"> <?php echo $product['price_weight_special']; ?> <?php echo $product['currency']; ?> <?php echo $text_pro_kg ; ?><br /></span>
+            <?php } ?>
             <?php if ($product['tax_rate']) { ?>
                 <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
                     <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                 </span>
             <?php } else { ?>
-                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                <span><a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a></span>
             <?php } ?>
         </div>
         <div class="article-list-item-button payment_buttons">

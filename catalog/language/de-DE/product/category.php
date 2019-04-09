@@ -30,6 +30,7 @@ $_['text_rating_desc']	= 'Bewertung (Hoch)';
 $_['text_model_asc']	= 'Artikelnr. (A - Z)';
 $_['text_model_desc']	= 'Artikelnr. (Z - A)';
 $_['text_limit']		= 'Anzeige';
+$_['text_pro_kg']		= 'pro kg';
 
 $_['text_read_more']	= 'Lesen Sie mehr';
 $_['text_hide']		    = 'Verstecken';

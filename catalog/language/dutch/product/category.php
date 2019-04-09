@@ -22,6 +22,7 @@ $_['text_rating_desc']  = 'Hoogste beoordeling';
 $_['text_model_asc']    = 'Model A - Z';
 $_['text_model_desc']   = 'Model Z - A';
 $_['text_limit']        = 'Tonen:';
+$_['text_pro_kg']		= 'pro kg';
 
 $_['text_read_more']	= 'Meer lezen';
 $_['text_hide']		    = 'Verbergen';

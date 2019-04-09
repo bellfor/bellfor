@@ -33,7 +33,7 @@
                     <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                 </span>
             <?php } else { ?>
-                <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                <span><a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a></span>
             <?php } ?>
         </div>
         <?php } ?>

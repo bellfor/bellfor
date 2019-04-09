@@ -18,6 +18,7 @@ class ControllerModuleBestSellerPlainList extends Controller {
 
         $data['text_tax'] = $this->language->get('text_tax');
         $data['text_pro_kg'] = $this->language->get('text_pro_kg');
+        $data['currency'] = $this->config->get('config_currency');
 
         $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
 

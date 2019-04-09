@@ -15,8 +15,7 @@
 			{
 			$tax_rate[] = $tax_rate_raw;
 			}
-			$data['tax_rate'] = $tax_rate;			
-			$data['currency'] = @$currency_value;			
+			$data['tax_rate'] = $tax_rate;
 			$data['price_without_symbol'] = $product_info['price'];
 			$data['price_full'] = round($data['price_without_symbol'] + $data['price_without_symbol'] * ($tax_rate[0]['rate']/100), 2);
 			$data['price_full_formatted'] = $this->currency->format($data['price_full'], false);

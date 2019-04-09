@@ -11,3 +11,4 @@
 $_['heading_title']	= 'Unsere Empfehlungen';
 // Text
 $_['text_tax']		= 'inkl.';
+$_['text_pro_kg']		= 'pro kg';

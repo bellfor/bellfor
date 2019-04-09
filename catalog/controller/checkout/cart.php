@@ -416,6 +416,7 @@ class ControllerCheckoutCart extends Controller {
                             'price'      => $this->currency->format($this->tax->calculate($related_product['price'], $related_product['tax_class_id'], $this->config->get('config_tax'))),
                             'special'    => (float)$related_product['special'] ? $this->currency->format($this->tax->calculate($related_product['special'], $related_product['tax_class_id'], $this->config->get('config_tax'))) : '',
                             'price_weight'=> round($this->tax->calculate($related_product['price'], $related_product['tax_class_id'], $this->config->get('config_tax'))/$related_product['weight'], 2),
+                            'price_weight_special' => round($this->tax->calculate($related_product['special'], $related_product['tax_class_id'], $this->config->get('config_tax'))/$related_product['weight'], 2),
                             'rating'     => $related_product['rating']
                         );
                     }

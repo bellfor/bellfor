@@ -39,6 +39,7 @@ $_['text_week']									= 'Woche(n)';
 $_['text_semi_month']							= '14-Tägig';
 $_['text_month']								= 'Monat(e)';
 $_['text_year']									= 'Jahr(e)';
+$_['text_pro_kg']		= 'pro kg';
 
 // Entry
 $_['entry_qty']			= 'Menge';

@@ -11,6 +11,7 @@ class ControllerModuleFeatured extends Controller {
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_tax'] = $this->language->get('text_tax');
+		$data['text_pro_kg'] = $this->language->get('text_pro_kg');
 
 		$data['button_cart'] = $this->language->get('button_cart');
 		$data['button_wishlist'] = $this->language->get('button_wishlist');
@@ -104,7 +105,6 @@ class ControllerModuleFeatured extends Controller {
 						'name'        => $product_info['name'],
 						'description' => utf8_substr(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 						'price'       => $price,
-//                        'price_full'  => $this->tax->calculate($price, $result['tax_class_id'], $this->config->get('config_tax')),
                         'discounts'   => $discounts,
                         'category'    => $category_data['name'],
                         'model'       => $product_info['model'],
@@ -117,8 +117,9 @@ class ControllerModuleFeatured extends Controller {
                         'currency'    => $currency_symbol,
                         'currency_position' => $price_symbol_position,
                         'rating'      => $rating,
-						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
-					);
+						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+                        'price_weight_special' => round($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax'))/$product_info['weight'], 2)
+                    );
 				}
 			}
 		}

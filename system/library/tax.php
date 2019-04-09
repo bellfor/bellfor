@@ -83,7 +83,7 @@ final class Tax {
 				}
 			}
 
-			return $value + $amount;
+			return (float)$value + (float)$amount;
 		} else {
 			return $value;
 		}

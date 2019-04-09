@@ -304,6 +304,7 @@ class ControllerProductProduct extends Controller {
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 
             $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+            $data['currency'] = $this->config->get('config_currency');
 
             if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
@@ -489,7 +490,8 @@ class ControllerProductProduct extends Controller {
                     'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
                     'rating'      => $rating,
                     'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
-                    'price_weight'=> round($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'))/$result['weight'], 2)
+                    'price_weight'=> round($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'))/$result['weight'], 2),
+                    'price_weight_special' => round($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'))/$result['weight'], 2)
                 );
 			}
 
