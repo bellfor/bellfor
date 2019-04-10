@@ -25,7 +25,7 @@
 });
 
 			//--></script>
-<script src="https://www.paypalobjects.com/webstatic/ppplus/ppplus.min.js" type="text/javascript"></script>
+<!-- <script src="https://www.paypalobjects.com/webstatic/ppplus/ppplus.min.js" type="text/javascript"></script> -->
         <div class="col-md-4 col-md-pull-3 col-sm-4 col-sm-pull-4 col-xs-12 headernavigation">
           <?php foreach ($breadcrumbs as $breadcrumb) { ?>
           <a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
@@ -648,7 +648,9 @@
                     $('#payments-load').button('loading');
                 },
                 complete: function () {
+                    $('#payments-load').button('reset');
                     $('#payments-load').removeClass('preloader');
+                    $('#payments-load').removeClass('disabled');
 
                 },
                 success: function (html) {
