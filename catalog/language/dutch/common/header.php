@@ -49,7 +49,7 @@ $_['s4_days']			= '100 Tage';
 //Icon and phone
 $_['icon_delivery']     = 'Verzending';
 $_['icon_shipping']     = 'Verzending binnen';
-$_['icon_money_back']   = 'Geld-terug-garantie';
+$_['icon_money_back']   = 'Testfase';
 $_['icon_phone_title']  = 'Gratis telefonisch advies en bestelling';
 $_['icon_payment_method'] = 'Betalen met iDEAL';
 $_['icon_img']          = '/image/elements/icon/ideal_logo_header_blue.png';
