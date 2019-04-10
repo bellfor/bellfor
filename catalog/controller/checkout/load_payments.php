@@ -487,19 +487,28 @@ class ControllerCheckoutLoadPayments extends Controller {
 				//print_r($result)."<br /><br />"; print_r(json_decode($fields)); die();
 				$json = json_decode($result);
 
-                $this->load->controller('checkout/order_log');
-                $log = new ControllerCheckoutOrderLog();
+//                $this->load->controller('checkout/order_log');
+//                $log = new ControllerCheckoutOrderLog();
 
 				//fixed by oppo webiprog.com  04.12.2017
                 if ($json && json_last_error() == JSON_ERROR_NONE && isset($json->links)){
-                    $log->setLog($result);
+                    $this->setLog($result);
                     $link_pay=$json->links[1]->href;
                 }else {
-                    $log->setLog('PayPal not loaded');
+                    $this->setLog('PayPal not loaded');
                     $link_pay = '';
                 }
                 // END fix by oppo webiprog.com  04.12.2017
 
 				return $link_pay;
 			}
+
+    public function setLog($data) {
+        $file = fopen(__DIR__ . 'order_log.txt', 'a');
+        fwrite($file, gmdate('d-m-Y h:m:s') . PHP_EOL);
+        fwrite($file, $data . PHP_EOL);
+        fwrite($file, '------------------------------------------------------' . PHP_EOL);
+
+        fclose($file);
+    }
 }
