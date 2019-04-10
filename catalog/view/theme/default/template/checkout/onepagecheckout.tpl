@@ -546,24 +546,26 @@
           if ($checked_delivery_radio === undefined) {
               $checked_delivery_radio = '';
           }
-          $.ajax({
-              type: "POST",
-              url: "index.php?route=checkout/onepagecheckout/rumun",
-              data: {
-                  'rumun_id': $checked_delivery_radio,
-                  'country_selected': $country_selected
-              },
-              success: function (response) {
-                  //  $('#radio-delivery').hide();
-                  if (response && $hide_radio==0) {
-                      $('#radio-delivery-text').show();
-                      $('#span-delivery-text').html('<img alt="'+response+'" border="0" src="image/catalog/'+response.toLowerCase()+'_s.png" style="height:18px;margin-right:2px;" />'+response);
-                  }
-              },
-              error: function (xhr, ajaxOptions, thrownError) {
-                  console.log(thrownError);
-              }
-          });
+            if (!$('#payments-load').hasClass('disabled')) {
+                $.ajax({
+                    type: "POST",
+                    url: "index.php?route=checkout/onepagecheckout/rumun",
+                    data: {
+                        'rumun_id': $checked_delivery_radio,
+                        'country_selected': $country_selected
+                    },
+                    success: function (response) {
+                        //  $('#radio-delivery').hide();
+                        if (response && $hide_radio == 0) {
+                            $('#radio-delivery-text').show();
+                            $('#span-delivery-text').html('<img alt="' + response + '" border="0" src="image/catalog/' + response.toLowerCase() + '_s.png" style="height:18px;margin-right:2px;" />' + response);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(thrownError);
+                    }
+                });
+            }
       }
   $('#deliveryDHLE').on('click', function () {
       $('#dhl-express').removeClass('hide');
@@ -635,28 +637,28 @@
     });
 
 	$('#payments-load').on('click', function () {
+	    if (!$('#payments-load').hasClass('disabled')) {
+            $.ajax({
+                url: 'index.php?route=checkout/load_payments',
+                type: 'post',
+                data: $('.checkout-checkout .payment-data input[type=\'text\'], .checkout-checkout .payment-data input[type=\'tel\'], .checkout-checkout .payment-data input[type=\'radio\']:checked, .checkout-checkout .payment-data input[type=\'checkbox\']:checked, .checkout-checkout .payment-data  select '),
+                dataType: 'html',
+                beforeSend: function () {
+                    // $('#payments-load').addClass('preloader');
+                    $('#payments-load').button('loading');
+                },
+                complete: function () {
+                    $('#payments-load').removeClass('preloader');
 
- $.ajax({
-        url: 'index.php?route=checkout/load_payments',
-        type: 'post',
-        data: $('.checkout-checkout .payment-data input[type=\'text\'], .checkout-checkout .payment-data input[type=\'tel\'], .checkout-checkout .payment-data input[type=\'radio\']:checked, .checkout-checkout .payment-data input[type=\'checkbox\']:checked, .checkout-checkout .payment-data  select '),
-        dataType: 'html',
-        beforeSend: function () {
-          $('#payments-load').addClass('preloader');
-
-        },
-        complete: function () {
-          $('#payments-load').removeClass('preloader');
-
-        },
-        success: function (html) {
-		  $('#payment-methods-container').html(html);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                },
+                success: function (html) {
+                    $('#payment-methods-container').html(html);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
         }
-      });
-
 	});
 
   });//--></script>
