@@ -442,7 +442,7 @@ class ModelFeedUniversalFeedCommon extends Model {
         if ($setting == '0') {
             $url = HTTPS_SERVER . 'index.php?route=product/product&product_id=' . $params['product']['product_id'];
         } else {
-            $url = $this->url->link('product/product', 'product_id=' . $params['product']['product_id']);
+            $url = $this->url->link('product/product', 'product_id=' . $params['product']['product_id']) . (isset($setting) ? $setting : '');
         }
 
         return str_replace('&amp;', '&', $this->parseValue($url));
