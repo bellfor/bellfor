@@ -105,6 +105,8 @@ class ControllerFeedUniversalFeed extends Controller {
                         $result = $this->getPriceInfo($product, $feed);
                     } elseif ($field['setting'] == 'brand'){
                         $result = $product['product']['attribute'];
+                    } elseif ($field['setting'] == 'description'){
+                        $result = $this->getDescription($product);
                     } elseif ($field['setting'] == 'image_sort'){
                         $result = HTTP_SERVER . 'image/' . $product['product']['image_sort'];
                     } else {
@@ -202,7 +204,6 @@ class ControllerFeedUniversalFeed extends Controller {
 	}
 
     public function getPriceInfo($product, $feed){
-
         $VATRate = call_user_func(array($this->model_feed_universal_feed_common, 'tagCUSTOM_CODE'), $product,'return  $this->tax->getTax(100, $params[\'product\'][\'tax_class_id\']);', $feed);
         $currency = call_user_func(array($this->model_feed_universal_feed_common, 'tagCUSTOM_CODE'), $product,'return  $this->currency->getCode();', $feed);
         $output = '<NormalPriceWithoutVAT>' . round($product['product']['price'], 2) . '</NormalPriceWithoutVAT>';
@@ -211,6 +212,19 @@ class ControllerFeedUniversalFeed extends Controller {
 
         return $output;
     }
+
+    public function getDescription ($product) {
+        $result = '<Title><![CDATA[' . $product['product_description']['name'] . ']]></Title>';
+        $result .= '<Description><![CDATA[' . trim(strip_tags(html_entity_decode($product['product_description']['description'], ENT_QUOTES, 'UTF-8'))) . ']]></Description>';
+
+        $this->load->model('setting/setting');
+
+        $lang = $this->model_setting_setting->getSetting('config', '1');
+
+        $result .= '<Language><![CDATA[' . $lang['config_language'] . ']]></Language>';
+
+        return $result;
+	}
 
     public function getMerchantCategories ($product){
 
