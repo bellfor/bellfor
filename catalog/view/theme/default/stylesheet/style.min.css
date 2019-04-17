@@ -3340,6 +3340,14 @@ span.free {
         z-index: 99999999;
     }
 }
+/*----Related product popup----*/
+.container-related-product:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
 /*---- Futterconsultant ----*/
 .display-shadow {
     width: 100%;
