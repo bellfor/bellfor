@@ -219,7 +219,7 @@ class ControllerFeedUniversalFeed extends Controller {
 
         $this->load->model('setting/setting');
 
-        $lang = $this->model_setting_setting->getSetting('config', '1');
+        $lang = $this->model_setting_setting->getSetting('config', $this->config->get('config_store_id'));
 
         $result .= '<Language><![CDATA[' . $lang['config_language'] . ']]></Language>';
 
