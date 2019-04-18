@@ -1,4 +1,3 @@
-.htaccess
 .idea/
 /config.php
 admin/config.php
@@ -40,3 +39,6 @@ description/php-error.log
 jtlconnector/db/connector.s3db
 edgar/error_log
 catalog/controller/order_log.txt
+admin/article_logs.txt
+admin/product_logs.txt
+catalog/controller/checkoutorder_log.txt

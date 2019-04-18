@@ -1,0 +1,156 @@
+# 1.To use URL Alias you need to be running apache with mod_rewrite enabled.
+
+# 2. In your opencart directory rename htaccess.txt to .htaccess.
+
+# For any support issues please visit: http://www.opencart.com
+
+Options +FollowSymlinks
+
+# Prevent Directoy listing
+Options -Indexes
+
+# Prevent Direct Access to files
+<FilesMatch "(?i)((\.tpl|\.ini|\.log|(?<!robots)\.txt))">
+ Order deny,allow
+ Deny from all
+</FilesMatch>
+
+# Prevent git store access
+RedirectMatch 404 /\.git
+
+<FilesMatch "\.(html|thm|tpl)$">
+ Header set Cache-Control "max-age=604800"
+</FilesMatch>
+
+<FilesMatch "\.(js|css|txt)$">
+ Header set Cache-Control "max-age=604800"
+</FilesMatch>
+
+<FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png)$">
+ Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+# SEO URL Settings
+RewriteEngine On
+# If your opencart installation does not run on the main web folder make sure you folder it does run in ie. / becomes /shop/
+
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} !^at\. [NC]
+RewriteCond %{HTTP_HOST} !^uk\. [NC]
+RewriteCond %{HTTP_HOST} !^nl\. [NC]
+RewriteCond %{HTTP_HOST} !^ch\. [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteBase /
+RewriteRule ^sitemap.xml$ index.php?route=feed/google_sitemap [L]
+RewriteRule ^googlebase.xml$ index.php?route=feed/google_base [L]
+RewriteRule ^system/download/(.*) index.php?route=error/not_found [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
+RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
+
+Redirect 301 /wet_food /index.php?route=product/category&path=100
+RewriteCond %{QUERY_STRING} ^route=product/category&path=100
+RewriteRule ^index\.php /wet-food? [R=301,L]
+
+Redirect 301 /Muensterlaender-Landschmaus /index.php?route=product/category&path=76
+RewriteCond %{QUERY_STRING} ^route=product/category&path=76
+RewriteRule ^index\.php /muensterlaender-landschmaus? [R=301,L]
+
+Redirect 301 /country_feast_dog_food /index.php?route=product/category&path=76
+RewriteCond %{QUERY_STRING} ^route=product/category&path=76
+RewriteRule ^index\.php /country-feast-dog-food? [R=301,L]
+
+Redirect 301 /droogvoer_voor_honden /index.php?route=product/category&path=76
+RewriteCond %{QUERY_STRING} ^route=product/category&path=76
+RewriteRule ^index\.php /droogvoer-voor-honden? [R=301,L]
+
+Redirect 301 /Landschmaus---kaltgepresst /index.php?route=product/category&path=80
+RewriteCond %{QUERY_STRING} ^route=product/category&path=80
+RewriteRule ^index\.php /landschmaus-kaltgepresst? [R=301,L]
+
+Redirect 301 /country_feast_cold_pressed /index.php?route=product/category&path=80
+RewriteCond %{QUERY_STRING} ^route=product/category&path=80
+RewriteRule ^index\.php /country-feast-cold-pressed? [R=301,L]
+
+Redirect 301 /honden_droogvoer_koud_geperst /index.php?route=product/category&path=80
+RewriteCond %{QUERY_STRING} ^route=product/category&path=80
+RewriteRule ^index\.php /honden-droogvoer-koud-geperst? [R=301,L]
+
+Redirect 301 /bellfor_premium_pur /index.php?route=product/category&path=70
+RewriteCond %{QUERY_STRING} ^route=product/category&path=70
+RewriteRule ^index\.php /bellfor-premium-pur? [R=301,L]
+
+Redirect 301 /premium_pur_extra_portie_vlees /index.php?route=product/category&path=70
+RewriteCond %{QUERY_STRING} ^route=product/category&path=70
+RewriteRule ^index\.php /premium-pur-extra-portie-vlees? [R=301,L]
+
+Redirect 301 /bellfor_snacks /index.php?route=product/category&path=79
+RewriteCond %{QUERY_STRING} ^route=product/category&path=79
+RewriteRule ^index\.php /bellfor-snacks? [R=301,L]
+
+Redirect 301 /Getreidefrei-389.html /index.php?route=common/home
+RewriteCond %{QUERY_STRING} ^route=common/home
+RewriteRule ^index\.php /? [R=301,L]
+
+Redirect 301 /kehlkopfentzündung-beim-hund-ursachen-und-behandlung /index.php?route=blog/article&article_id=212
+RewriteCond %{QUERY_STRING} ^route=blog/article&article_id=212
+RewriteRule ^index\.php /kehlkopfentzuendung-beim-hund-ursachen-und-behandlung? [R=301,L]
+
+#Redirect 301 /index.php?route=blog/latest /hunderatgeber
+#RewriteCond %{QUERY_STRING} ^route=blog/latest
+#RewriteRule ^index\.php /hunderatgeber? [R=301,L]
+
+### Additional Settings that may need to be enabled for some servers
+### Uncomment the commands by removing the # sign in front of it.
+### If you get an "Internal Server Error 500" after enabling any of the following settings, restore the # as this means your host doesn't allow that.
+
+# 1. If your cart only allows you to add one item at a time, it is possible register_globals is on. This may work to disable it:
+# php_flag register_globals off
+
+# 2. If your cart has magic quotes enabled, This may work to disable it:
+# php_flag magic_quotes_gpc Off
+
+# 3. Set max upload file size. Most hosts will limit this and not allow it to be overridden but you can try
+# php_value upload_max_filesize 999M
+
+# 4. set max post size. uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value post_max_size 999M
+
+# 5. set max time script can take. uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value max_execution_time 200
+
+# 6. set max time for input to be recieved. Uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
+# php_value max_input_time 200
+
+# 7. disable open_basedir limitations
+# php_admin_value open_basedir none
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php5_module>
+   php_value default_charset "UTF-8"
+   php_value memory_limit 128M
+   php_value max_execution_time 100
+   php_value upload_max_filesize 50M
+   php_value mysql.connect_timeout 20
+   php_flag session.auto_start Off
+   php_flag session.use_only_cookies On
+   php_flag session.use_cookies On
+   php_flag session.use_trans_sid Off
+   php_value session.cookie_httponly "On;"
+   php_value session.gc_maxlifetime 3600
+   php_flag display_errors Off
+   php_flag asp_tags Off
+   php_value max_input_time 90
+   php_value max_input_vars 1000
+   php_value post_max_size 8M
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php56"
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
