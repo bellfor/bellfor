@@ -522,7 +522,7 @@ final class SQLs
             SELECT pi.image, pi.sort_order, CONCAT("p_", pi.product_id, "_", pi.product_image_id) AS id, pi.product_id AS
             foreign_key
             FROM ' . DB_PREFIX . 'product_image pi
-            LEFT JOIN jtl_connector_link l ON l.endpointId = CONCAT("p_", pi.product_id, "_", pi.product_image_id)
+            LEFT JOIN jtl_connector_link_image l ON l.endpointId = CONCAT("p_", pi.product_id, "_", pi.product_image_id)
             AND l.type = %d
             WHERE l.hostId IS NULL
             LIMIT %d',
@@ -535,7 +535,7 @@ final class SQLs
         return sprintf('
             SELECT p.image, 0 AS sort_order, CONCAT("p_", p.product_id) AS id, p.product_id AS foreign_key
             FROM ' . DB_PREFIX . 'product p
-            LEFT JOIN jtl_connector_link l ON l.endpointId = CONCAT("p_", p.product_id) AND l.type = %d
+            LEFT JOIN jtl_connector_link_image l ON l.endpointId = CONCAT("p_", p.product_id) AND l.type = %d
             WHERE l.hostId IS NULL AND p.image IS NOT NULL AND p.image != ""
             LIMIT %d',
             IdentityLinker::TYPE_IMAGE, $limit
@@ -547,7 +547,7 @@ final class SQLs
         return sprintf('
             SELECT c.image, c.sort_order, CONCAT("c_", c.category_id) AS id, c.category_id AS foreign_key
             FROM ' . DB_PREFIX . 'category c
-            LEFT JOIN jtl_connector_link l ON l.endpointId = CONCAT("c_", c.category_id) AND l.type = %d
+            LEFT JOIN jtl_connector_link_image l ON l.endpointId = CONCAT("c_", c.category_id) AND l.type = %d
             WHERE l.hostId IS NULL AND c.image IS NOT NULL AND c.image != ""
             LIMIT %d',
             IdentityLinker::TYPE_IMAGE, $limit
@@ -559,7 +559,7 @@ final class SQLs
         return sprintf('
             SELECT m.image, m.sort_order, CONCAT("m_", m.manufacturer_id) AS id, m.manufacturer_id AS foreign_key
             FROM ' . DB_PREFIX . 'manufacturer m
-            LEFT JOIN jtl_connector_link l ON l.endpointId = CONCAT("m_", m.manufacturer_id) AND l.type = %d
+            LEFT JOIN jtl_connector_link_image l ON l.endpointId = CONCAT("m_", m.manufacturer_id) AND l.type = %d
             WHERE l.hostId IS NULL AND m.image IS NOT NULL AND m.image != ""
             LIMIT %d',
             IdentityLinker::TYPE_IMAGE, $limit
@@ -571,7 +571,7 @@ final class SQLs
         return sprintf('
             SELECT ov.image, ov.sort_order, CONCAT("pvv_", ov.option_value_id) AS id, ov.option_value_id AS foreign_key
             FROM ' . DB_PREFIX . 'option_value ov
-            LEFT JOIN jtl_connector_link l ON l.endpointId = CONCAT("pvv_", ov.option_value_id) AND l.type = %d
+            LEFT JOIN jtl_connector_link_image l ON l.endpointId = CONCAT("pvv_", ov.option_value_id) AND l.type = %d
             WHERE l.hostId IS NULL AND ov.image IS NOT NULL AND ov.image != ""
             LIMIT %d',
             IdentityLinker::TYPE_IMAGE, $limit
@@ -808,30 +808,42 @@ final class SQLs
     // <editor-fold defaultstate="collapsed" desc="Primary Key Mapping">
     public static function hostId($endpointId, $type)
     {
+	    if($type === 16)
+		    $table = "jtl_connector_link_image";
+	    else $table = "jtl_connector_link";
+
         return sprintf('
             SELECT hostId
-            FROM jtl_connector_link
+            FROM %s
             WHERE endpointId = %s AND type = %s',
-            $endpointId, $type
+	        $table, $endpointId, $type
         );
     }
 
     public static function endpointId($hostId, $type, $clause)
     {
+	    if($type === 16)
+		    $table = "jtl_connector_link_image";
+	    else $table = "jtl_connector_link";
+
         return sprintf('
             SELECT endpointId
-            FROM jtl_connector_link
+            FROM %s
             WHERE hostId = %s AND type = %s%s',
-            $hostId, $type, $clause
+	        $table, $hostId, $type, $clause
         );
     }
 
     public static function mappingSave($endpointId, $hostId, $type)
     {
+    	if($type === 16)
+    		$table = "jtl_connector_link_image";
+    	else $table = "jtl_connector_link";
+
         return sprintf('
-            INSERT INTO jtl_connector_link (endpointId, hostId, type)
+            INSERT INTO %s (endpointId, hostId, type)
             VALUES ("%s", %s, %s)',
-            $endpointId, $hostId, $type
+	        $table, $endpointId, $hostId, $type
         );
     }
 
