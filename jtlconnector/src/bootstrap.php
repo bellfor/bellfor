@@ -12,7 +12,7 @@ if(isset($_GET['testOrder']))
 {
 	$order_id = $_GET['testOrder'];
 
-	$co = new \jtl\Connector\OpenCart\Controller\Order\CustomerOrderItem();
+	$co = new \jtl\Connector\OpenCart\Controller\Order\CustomerOrderItemTest();
 	echo "<pre>";
 	$data = $co->pullData(array('order_id' => $order_id, 'currency_value' => 1), null);
 	var_export($data);

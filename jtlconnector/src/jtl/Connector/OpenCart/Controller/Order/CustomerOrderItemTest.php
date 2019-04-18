@@ -78,10 +78,10 @@ class CustomerOrderItemTest extends BaseController
                         }
                 }
 
-                if(!isset($product_prices[(string)$vat]))
-	                $product_prices[(string)$vat] = 0.0;
+                if(!isset($product_prices[(int)$vat]))
+	                $product_prices[(int)$vat] = 0.0;
 
-	            $product_prices[(string)$vat] += $item['quantity'] * $item['price'];
+	            $product_prices[(int)$vat] += $item['quantity'] * $item['price'];
 	            $sum_product_prices += $item['quantity'] * $item['price'];
 
                 $return[] = $this->mapItem($type, $item, $orderItemId++, $vat, $currency_value);
@@ -104,6 +104,7 @@ class CustomerOrderItemTest extends BaseController
 
                 if($itemDiscount['code'] == 'coupon' || $itemDiscount['code'] == 'reorder_discount' || $itemDiscount['code'] == 'total_customer_group_discount')
                 {
+                	var_export($product_price_rel);
                 	$add_tax = 0.0;
 	                //$price = $price * ((100+$this->tax) / 100);
 	                foreach($product_price_rel as $temp_vat => $rel)
@@ -111,6 +112,7 @@ class CustomerOrderItemTest extends BaseController
 	                	$add_tax += $price * $rel * ($temp_vat/ 100);
 	                }
 
+	                echo "ADD TAX:" . $add_tax;
 	                $price = $price + $add_tax;
                 	//$price = $price * ((100+$this->tax) / 100);
                 }
@@ -124,6 +126,8 @@ class CustomerOrderItemTest extends BaseController
                 $item->setId(new Identity($this->orderId . '_' . $orderItemId++));
                 $return[] = $item;
             }
+
+        var_export($product_prices);
 
         return $return;
     }

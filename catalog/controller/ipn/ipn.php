@@ -20,23 +20,23 @@ class ControllerIpnIpn extends Controller {
                 }
             }
 
-            $file = fopen(__DIR__ . 'testlogs.txt', 'a');
-            fwrite($file, gmdate('d-m-Y h:m:s') . PHP_EOL);
-            if (is_array($_POST)) {
-                foreach ($_POST as $k => $value) {
-                    if (is_array($value)) {
-                        foreach ($value as $k1 => $item) {
-                            fwrite($file, $k1 . " = " . $item . PHP_EOL);
-                        }
-                    } else {
-                        fwrite($file, $k . " = " . $value . PHP_EOL);
-                    }
-                }
-            } else {
-                fwrite($file, $_POST);
-            }
-            fwrite($file, '------------------------------------------------------' . PHP_EOL);
-            fclose($file);
+//            $file = fopen(__DIR__ . 'testlogs.txt', 'a');
+//            fwrite($file, gmdate('d-m-Y h:m:s') . PHP_EOL);
+//            if (is_array($_POST)) {
+//                foreach ($_POST as $k => $value) {
+//                    if (is_array($value)) {
+//                        foreach ($value as $k1 => $item) {
+//                            fwrite($file, $k1 . " = " . $item . PHP_EOL);
+//                        }
+//                    } else {
+//                        fwrite($file, $k . " = " . $value . PHP_EOL);
+//                    }
+//                }
+//            } else {
+//                fwrite($file, $_POST);
+//            }
+//            fwrite($file, '------------------------------------------------------' . PHP_EOL);
+//            fclose($file);
         }
 
 // Reply with an empty 200 response to indicate to paypal the IPN was received correctly
