@@ -118,6 +118,7 @@ class ControllerModuleFeatured extends Controller {
                         'currency'    => $currency_symbol,
                         'currency_position' => $price_symbol_position,
                         'rating'      => $rating,
+                        'email_required' => $product_info['email_required'],
                         'p2cg_product_id'  => $product_info['p2cg_product_id'],
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
 					);

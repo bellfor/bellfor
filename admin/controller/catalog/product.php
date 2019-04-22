@@ -1293,6 +1293,14 @@ class ControllerCatalogProduct extends Controller {
 			$data['shipping'] = 1;
 		}
 
+        if (isset($this->request->post['email_required'])) {
+            $data['email_required'] = $this->request->post['email_required'];
+        } elseif (!empty($product_info)) {
+            $data['email_required'] = $product_info['email_required'];
+        } else {
+            $data['email_required'] = '';
+        }
+
 		if (isset($this->request->post['price'])) {
 			$data['price'] = $this->request->post['price'];
 		} elseif (!empty($product_info)) {

@@ -82,6 +82,7 @@ class ControllerModuleBestSeller extends Controller {
 					'tax'         => $tax,
 					'rating'      => $rating,
                     'price_weight'=> round($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'))/$result['weight'], 2),
+                    'email_required' => $result['email_required'],
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
 				);
 			}

@@ -266,6 +266,7 @@ class ControllerProductSearch extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
+                    'email_required' => $result['email_required'],
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
                     'p2cg_product_id'  => $result['p2cg_product_id']
 				);

@@ -135,11 +135,13 @@
                   <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
                   <?php } ?>
           </a>
-                  <?php if ($product['tax']) { ?>
-                  <span class="small tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?><a class="" href="#">Versand</a></span>
-
-
-                  <?php } ?>
+                     <?php if ($product['tax']) { ?>
+                         <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
+                             <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                                                            </span>
+                     <?php } else { ?>
+                         <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
+                     <?php } ?>
                  </div>
                 <?php } ?>
 
@@ -151,11 +153,14 @@
         </p>
       </div>
       <div class="article-list-item-button payment_buttons">
-        <span class="quantity_container">
-          <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="<?php echo $product['minimum']; ?>">
-        </span>
-        <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green"><?php echo $button_cart; ?></button>
-
+          <?php if (empty($product['p2cg_product_id']) || (!empty($product['p2cg_product_id']) && $product['email_required'] == '0') ) {?>
+              <span class="quantity_container">
+                <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="<?php echo $product['minimum']; ?>">
+              </span>
+              <button onclick="cart.add('<?php echo $product['product_id']; ?>', $('#qty_<?php echo $product['product_id']; ?>').val());" class="button_green"><?php echo $button_cart; ?></button>
+          <?php } else {?>
+              <a class="button_green" href="<?php echo $product['href']; ?>"><?php echo $button_go_product; ?></a>
+          <?php } ?>
       </div>
     </div>
 </section>

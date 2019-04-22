@@ -310,7 +310,13 @@ class ControllerProductProduct extends Controller {
 			$data['points'] = $product_info['points'];
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 
+			if ($product_info['email_required']) {
+                $data['email_required'] = $product_info['email_required'];
+            } else {
+                $data['email_required'] = null;
+            }
             $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+            $data['button_go_product'] = $this->language->get('button_go_product');
 
             if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
@@ -495,6 +501,7 @@ class ControllerProductProduct extends Controller {
                     'tax_rate'    => $tax_rate,
                     'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
                     'rating'      => $rating,
+                    'email_required' => $result['email_required'],
                     'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
                     'price_weight'=> round($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'))/$result['weight'], 2)
                 );

@@ -509,12 +509,14 @@
                                                             <span class="small font-size-tax"><?php echo $text_tax; ?> <?php echo $product['tax_rate'][0]['name']; ?>
                                                                 <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                                                             </span>
+                                                        <?php } else { ?>
+                                                            <a class="font-size-shipping" href="<?php echo $link_versand; ?>" target="_blank">Versand</a>
                                                         <?php } ?>
                                                     <?php } ?>
                                                 </div>
                                             </div>
                                             <div class="article-list-item-button payment_buttons">
-                                                <?php if (empty($product['p2cg_product_id'])) {?>
+                                                <?php if (empty($product['p2cg_product_id']) || (!empty($product['p2cg_product_id']) && $product['email_required'] == '0')) {?>
                                                     <span style="float: left;" class="quantity_container">
                                                         <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="1">
                                                     </span>

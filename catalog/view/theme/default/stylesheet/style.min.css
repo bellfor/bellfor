@@ -1448,6 +1448,7 @@ input {
     height: 25px
 }
 .button_green,
+.main-section .right-container .container-Empfehlungen .title a.button_green,
 .article-list-item-button .button_green {
     background-color: #7e842e;
     background-image: url(/catalog/view/theme/default/image/gradient-reflection.png);

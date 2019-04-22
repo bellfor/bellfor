@@ -74,7 +74,7 @@
                     </div>
                     <?php } ?>
 					      <div class="article-list-item-button payment_buttons">
-                              <?php if (empty($product['p2cg_product_id'])) {?>
+                              <?php if (empty($product['p2cg_product_id']) || (!empty($product['p2cg_product_id']) && $product['email_required'] == '0')) {?>
                                   <span class="quantity_container">
                                     <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="<?php echo $product['minimum']; ?>">
                                   </span>

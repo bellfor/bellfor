@@ -38,6 +38,7 @@ class ModelCatalogProduct extends Model {
                 'image'            => $query->row['image'],
                 'manufacturer_id'  => $query->row['manufacturer_id'],
                 'manufacturer'     => $query->row['manufacturer'],
+                'email_required'   => $query->row['email_required'],
                 'price'            => ($query->row['discount'] ? $query->row['discount'] : ($price_shop['price'] != 0 ? $price_shop['price'] : $query->row['price'])),
                 'special'          => $query->row['special'],
                 'reward'           => $query->row['reward'],

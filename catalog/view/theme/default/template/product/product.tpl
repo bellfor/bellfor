@@ -133,8 +133,7 @@ if(!empty($priceregion)) {
     <div class="price-container-bottom">
 
       <div class="price-container-button">
-
-          <?php if (!isset($customer_group_id)) { ?>
+          <?php if (!isset($customer_group_id) || (isset($customer_group_id) && !isset($email_required))) { ?>
             <span class="quantity_container">
     	        <input type="text" name="products_qty" id="qty" class="article-count-input" value="1">
             </span>
@@ -303,7 +302,8 @@ if(!empty($priceregion)) {
             <?php } ?>
         </div>
         <div class="article-list-item-button payment_buttons">
-            <?php if (empty($product['p2cg_product_id'])) {?>
+            <?php if (!empty($product['p2cg_product_id']) || (empty($product['p2cg_product_id']) && $product['email_required'] == '0')) { ?>
+
                 <span class="quantity_container">
     	            <input type="text" name="products_qty" id="qty_<?php echo $product['product_id']; ?>" class="article-count-input" value="<?php echo $product['minimum']; ?>">
                 </span>

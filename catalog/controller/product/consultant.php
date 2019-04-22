@@ -86,7 +86,10 @@ class ControllerProductConsultant extends Controller {
 		$data['button_list'] = $this->language->get('button_list');
 		$data['button_grid'] = $this->language->get('button_grid');
 
-		// Set the last category breadcrumb
+        $data['link_versand'] = $this->url->link('information/information', 'information_id=112');
+        $data['button_go_product'] = $this->language->get('button_go_product');
+
+        // Set the last category breadcrumb
 		$data['breadcrumbs'][] = array(
 			'text' => 'Ernährungsberater',
 			'href' => $this->url->link('product/consultant')
@@ -192,6 +195,9 @@ class ControllerProductConsultant extends Controller {
 				'price_full_formatted' => $price_full_formatted,
 				'currency' => $currency_symbol,
 				'currency_position' => $price_symbol_position,
+
+                'p2cg_product_id' => $result['p2cg_product_id'],
+                'email_required' => $result['email_required'],
 
 				'tax' => $tax,
 				'minimum' => $result['minimum'] > 0 ? $result['minimum'] : 1,
