@@ -21,7 +21,7 @@ class ModelDesignBanner extends Model
 
         // 4 = Bellfor CH	https://ch.bellfor.info/
         if ($store_id == 4) {
-            $config_language_id = 10 ;
+            $config_language_id = 8 ;
         } else {
             $config_language_id = (int)$this->config->get('config_language_id');
         }
