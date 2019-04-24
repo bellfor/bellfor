@@ -42,6 +42,7 @@ $_['error_exists']                   = 'Achtung: Email Adresse ist bereits regis
 $_['error_firstname']                = 'Der Vorname muss zwischen 1 und 32 Zeichen liegen!';
 $_['error_lastname']                 = ' Der Nachname muss zwischen 1 und 32 Zeichen liegen!';
 $_['error_email']                    = 'E-Mail-Adresse erscheint nicht gültig!';
+$_['error_email_already']            = 'Diese E-Mail-Adresse wird bereits genutzt. Sollte es Ihr Kundenkonto sein, bitte loggen Sie sich ein!';
 $_['error_telephone']                = 'Telefon muss zwischen 3 und 32 Zeichen sein!';
 $_['error_password']                 = 'Passwort muss zwischen 4 und 20 Zeichen sein!';
 $_['error_confirm']                  = 'Passwortbestätigung stimmt nicht mit dem Passwort überein!';

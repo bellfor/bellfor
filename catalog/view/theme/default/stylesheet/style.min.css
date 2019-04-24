@@ -390,19 +390,19 @@ input {
 }
 
 .modal .modal-dialog .modal-content .modal-header .close {
-    background-color: #000000 !important;
-    border: 2px solid #ffffff !important;
-    border-radius: 13px;
-    color: #ffffff;
-    font-size: 20px;
+    /*background-color: #000000 !important;*/
+    /*border: 2px solid #ffffff !important;*/
+    /*border-radius: 13px;*/
+    color: #7e842e;
+    font-size: 30px;
     font-weight: 700;
     height: 26px;
     opacity: 1;
     padding-bottom: 0;
     position: absolute;
-    right: -8px;
+    right: 5px;
     text-shadow: none;
-    top: 27px;
+    top: 5px;
     width: 26px;
     z-index: 1;
 }

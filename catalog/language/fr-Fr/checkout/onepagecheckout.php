@@ -42,6 +42,7 @@ $_['error_exists']                   = 'Avertissement: L\'adresse e-mail est dé
 $_['error_firstname']                = 'Le prénom doit comporter entre 1 et 32 caractères!';
 $_['error_lastname']                 = 'Le nom de famille doit comporter entre 1 et 32 caractères!';
 $_['error_email']                    = 'L\'adresse électronique ne semble pas être valide!';
+$_['error_email_already']            = 'Cette adresse e-mail est déjà utilisée. S\'il s\'agit de votre compte client, veuillez vous connecter!';
 $_['error_telephone']                = 'Le téléphone doit comporter entre 3 et 32 caractères!';
 $_['error_password']                 = 'Le mot de passe doit comporter entre 4 et 20 caractères!';
 $_['error_confirm']                  = 'La confirmation du mot de passe ne correspond pas au mot de passe!';

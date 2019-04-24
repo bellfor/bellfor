@@ -700,50 +700,12 @@ class ControllerCheckoutOnepagecheckout extends Controller
                     $order_data['accept_language'] = '';
                 }
 
-
-
-
-
                 if (isset($this->session->data['guest']['customer_group_id'])) {
-
-					if(isset($this->request->post['create_account']) && ($this->request->post['create_account']==1)) {
-//Create account
-     					$account_data = $this->request->post;
-						$account_data['postcode'] = $account_data['zip'];
-						$account_data['address_2'] = '';
-						$account_data['fax'] = '';
-						$account_data['zone_id'] = '';
-						$account_data['company'] = '';
-						$length = 10;
-                        $randomString = substr(str_shuffle(md5(time())),0,$length);
-                        $account_data['password'] = $randomString;
-
-	    	$this->load->model('account/customer');
-			$order_data['customer_id']= $this->model_account_customer->addCustomer($account_data);
-            $order_data['customer_group_id'] = $this->config->get('config_customer_group_id');
-			// Clear any previous login attempts for unregistered accounts.
-			$this->model_account_customer->deleteLoginAttempts($account_data['email']);
-
-			$this->customer->login($account_data['email'], $account_data['password']);
-
-			unset($this->session->data['guest']);
-
-			// Add to activity log
-			$this->load->model('account/activity');
-
-			$activity_data = array(
-				'customer_id' => $order_data['customer_id'],
-				'name'        => $account_data['firstname'] . ' ' . $account_data['lastname']
-			);
-
-			$this->model_account_activity->addActivity('register', $activity_data);
-
-//Create account END
-					} else {
-					$order_data['customer_id'] = 0;
-					$this->session->data['guest']['firstname'] = $this->request->post['firstname'];
-					$this->session->data['guest']['lastname'] = $this->request->post['lastname'];
-                    $order_data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
+					if(!isset($this->request->post['create_account']) && ($this->request->post['create_account'] != 1)) {
+                        $order_data['customer_id'] = 0;
+                        $this->session->data['guest']['firstname'] = $this->request->post['firstname'];
+                        $this->session->data['guest']['lastname'] = $this->request->post['lastname'];
+                        $order_data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
 					}
                 } else {
 					$order_data['customer_id'] = $this->customer->getId();
@@ -954,7 +916,7 @@ $this->session->data['order_data'] = $order_data;
             $data['content_bottom'] = $this->load->controller('common/content_bottom');
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
-
+            $data['logged_user'] = $this->customer->isLogged();
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/onepagecheckout.tpl')) {
 			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/onepagecheckout.tpl', $data));
 		} else {
@@ -965,8 +927,92 @@ $this->session->data['order_data'] = $order_data;
     }
 
 
+    public function createAccount() {
+        $this->load->language('checkout/onepagecheckout');
+        if ($this->validate_register()) {
 
 
+            $account_data = $this->request->post;
+            $account_data['postcode'] = $account_data['zip'];
+            $account_data['address_2'] = '';
+            $account_data['fax'] = '';
+            $account_data['zone_id'] = '';
+            $account_data['company'] = '';
+            $length = 10;
+            $randomString = substr(str_shuffle(md5(time())),0,$length);
+            $account_data['password'] = $randomString;
+
+            $this->load->model('account/customer');
+
+            $this->load->model('account/customer');
+            $order_data['customer_id']= $this->model_account_customer->addCustomer($account_data);
+            $order_data['customer_group_id'] = $this->config->get('config_customer_group_id');
+            // Clear any previous login attempts for unregistered accounts.
+            $this->model_account_customer->deleteLoginAttempts($account_data['email']);
+
+            $this->customer->login($account_data['email'], $account_data['password']);
+
+            unset($this->session->data['guest']);
+
+            // Add to activity log
+            $this->load->model('account/activity');
+
+            $activity_data = array(
+                'customer_id' => $order_data['customer_id'],
+                'name'        => $account_data['firstname'] . ' ' . $account_data['lastname']
+            );
+
+            $this->model_account_activity->addActivity('register', $activity_data);
+
+        }
+        if($this->errors) {
+            $data['errors'] = $this->errors;
+        } else {
+            $data['errors']=0;
+        }
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($data));
+    }
+
+    public function validate_register() {
+        $this->load->model('account/customer');
+
+        $this->error = [];
+        if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 42)) {
+            $data['error']['firstname'] = $this->language->get('error_firstname');
+        }
+
+        if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 42)) {
+            $data['error']['lastname'] = $this->language->get('error_lastname');
+        }
+
+        if ((utf8_strlen(trim($this->request->post['email'])) < 6) || (!strpos($this->request->post['email'], '@'))) {
+            $data['error']['email'] = $this->language->get('error_email');
+        } elseif ($this->model_account_customer->getCustomerByEmail($this->request->post['email'])) {
+            $data['error']['email'] = $this->language->get('error_email_already');
+        }
+
+        if (!isset($this->request->post['country_id']) || (int)$this->request->post['country_id'] == 0) {
+            $data['error']['country_id'] = $this->language->get('error_country');
+        }
+
+        if ((utf8_strlen(trim($this->request->post['address_1'])) < 1) || (utf8_strlen(trim($this->request->post['address_1'])) > 92)) {
+            $data['error']['address_1'] = $this->language->get('error_address_1');
+        }
+        if ((utf8_strlen(trim($this->request->post['city'])) < 1) || (utf8_strlen(trim($this->request->post['city'])) > 32)) {
+            $data['error']['city'] = $this->language->get('error_city');
+        }
+        if ((utf8_strlen(trim($this->request->post['zip'])) < 1) || (utf8_strlen(trim($this->request->post['zip'])) > 7)) {
+            $data['error']['zip'] = $this->language->get('error_postcode');
+        }
+
+        if (!empty($data['error'])) {
+            $this->errors = $data['error'];
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public function validate_form()
     {

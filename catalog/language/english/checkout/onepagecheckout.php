@@ -42,6 +42,7 @@ $_['error_exists']                   = 'Warning: E-Mail Address is already regis
 $_['error_firstname']                = 'First Name must be between 1 and 32 characters!';
 $_['error_lastname']                 = 'Last Name must be between 1 and 32 characters!';
 $_['error_email']                    = 'E-Mail address does not appear to be valid!';
+$_['error_email_already']            = 'This email address is already used! If it is your account please log in!';
 $_['error_telephone']                = 'Telephone must be between 3 and 32 characters!';
 $_['error_password']                 = 'Password must be between 4 and 20 characters!';
 $_['error_confirm']                  = 'Password confirmation does not match password!';
