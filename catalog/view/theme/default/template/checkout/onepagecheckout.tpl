@@ -25,7 +25,7 @@
 });
 
 			//--></script>
-<!-- <script src="https://www.paypalobjects.com/webstatic/ppplus/ppplus.min.js" type="text/javascript"></script> -->
+<!--<script src="https://www.paypalobjects.com/webstatic/ppplus/ppplus.min.js" type="text/javascript"></script>-->
         <div class="col-md-4 col-md-pull-3 col-sm-4 col-sm-pull-4 col-xs-12 headernavigation">
           <?php foreach ($breadcrumbs as $breadcrumb) { ?>
           <a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
@@ -142,14 +142,15 @@
                       </div>
 
                       <div class="fields-group checkboxes_for_payment">
-                        <div class="checkbox_wraper">
-                          <div class="checkbox_belf">
-                            <input type="checkbox" value="1" id="checkbox_belf111" name="create_account"
-                                   checked="checked">
-                            <label for="checkbox_belf111"></label>
-                          </div>
-                          <p><?php echo $text_create_account; ?></p>
-                        </div>
+                          <?php if (!$logged_user) {?>
+                          <div class="checkbox_wraper">
+                                <div class="checkbox_belf">
+                                <input type="checkbox" value="1" id="checkbox_belf111" name="create_account">
+                                <label for="checkbox_belf111"></label>
+                              </div>
+                              <p><?php echo $text_create_account; ?></p>
+                            </div>
+                          <?php } ?>
                         <div class="checkbox_wraper">
                           <div class="checkbox_belf">
                             <input type="checkbox" id="checkbox_is_show_form_address" name="payment_address_different">
@@ -157,6 +158,36 @@
                           </div>
                           <p><?php echo $text_payment_address_different; ?></p>
                         </div>
+                      </div>
+                      <div id="login-form" class="cleafix displaynone" style="margin-bottom: 15px;">
+                          <div class="modal-content">
+                                  <h2><strong><?php echo $text_i_am_returning_customer; ?></strong></h2>
+                                  <form method="post" enctype="multipart/form-data">
+                                      <div class="form-group">
+                                          <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
+                                          <input type="text" name="email" value="<?php echo $email; ?>"
+                                                 placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control"/>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="control-label" for="input-password"><?php echo $entry_password; ?></label>
+                                          <input type="password" name="password" value="" placeholder="<?php echo $entry_password; ?>"
+                                                 id="input-password" class="form-control"/>
+                                          <a class="link_password" href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a>
+                                      </div>
+
+                                      <div class="button_blue button_set submit-login-form" onclick="AjaxLogin('login-form');">
+                                          <span class="button-outer">
+                                            <span class="button-inner"><?php echo $button_login; ?></span>
+                                          </span>
+                                      </div>
+                                      <a href="<?php echo $register ?>" class="button_blue button_set">
+                                          <span class="button-outer">
+                                            <span class="button-inner"><?php echo $text_register; ?></span>
+                                          </span>
+                                      </a>
+                                  </form>
+                                  <div class="errors-block"></div>
+                          </div>
                       </div>
                       <div id="form_address_2" class="cleafix" style="display: none;">
                         <div class="fields-group row_forInputs">
@@ -363,7 +394,7 @@
             </div>
           </div>
           <div id="LoginModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="background-color: #fff;">
 
               <!-- Modal content-->
               <div class="modal-content">
@@ -387,7 +418,7 @@
                       <a class="link_password" href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a>
                     </div>
 
-                    <div class="button_blue button_set submit-login-form">
+                    <div class="button_blue button_set submit-login-form" onclick="AjaxLogin('LoginModal');">
                           <span class="button-outer">
                             <span class="button-inner"><?php echo $button_login; ?></span>
                           </span>
@@ -594,50 +625,90 @@
   });
   //end fixed by oppo webiprog.com  02.05.2018
 
+    function AjaxLogin(id_form) {
+        // $('#' + id_form + ' .submit-login-form').on('click', function () {
+            $.ajax({
+                    url: 'index.php?route=checkout/onepagecheckout/AjaxLogin',
+                    type: 'post',
+                    data: $('#' + id_form + ' #input-email, #' + id_form + ' #input-password '),
+                    dataType: 'json',
+                    beforeSend: function () {
+                    },
+                    success: function (json) {
+                        if (json.errors != 0) {
+                            if (typeof json.errors.warning != 'undefined' && json.errors.warning != '')
+                                $('#' + id_form + ' .errors-block').html(json.errors.warning);
+                            if (typeof json.errors.errors != 'undefined' && json.errors.errors != '')
+                                $('#' + id_form + ' .errors-block').append('<br>' + json.errors.error);
+                        }
+                        else if (json.errors == 0) {
+                            $('#firstname-ch').prop('value', json.f_name);
+                            $('#firstname-ch').prop('readonly', 'true');
+                            $('#lastname-ch').prop('value', json.l_name);
+                            $('#lastname-ch').prop('readonly', 'true');
+                            $('#city-ch').prop('value', json.city);
+                            $('#zip-ch').prop('value', json.zip);
+                            $('#address_1').prop('value', json.address_1);
+                            $('#email-ch').prop('value', json.email);
+                            $('#telephone-ch').prop('value', json.telephone);
+                            $('#LoginModal').modal('hide');
+                            $('#login_warning').html('');
+                            location.reload();
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                }
+            ); //ajax
+            return false;
+        // });
+    }
 
   $(document).ready(function () {
-
-    $(' #LoginModal .submit-login-form ').on('click', function () {
-      $.ajax({
-          url: 'index.php?route=checkout/onepagecheckout/AjaxLogin',
-          type: 'post',
-          data: $('#LoginModal #input-email, #LoginModal #input-password '),
-          dataType: 'json',
-          beforeSend: function () {
-
-          },
-          success: function (json) {
-            console.log(json);
-            if (json.errors != 0) {
-              if (typeof json.errors.warning != 'undefined' && json.errors.warning != '')
-                $('#LoginModal .errors-block').html(json.errors.warning);
-              if (typeof json.errors.errors != 'undefined' && json.errors.errors != '')
-                $('#LoginModal .errors-block').append('<br>' + json.errors.error);
-            }
-            else if (json.errors == 0) {
-              $('#firstname-ch').prop('value', json.f_name);
-			  $('#firstname-ch').prop('readonly', 'true');
-              $('#lastname-ch').prop('value', json.l_name);
-              $('#lastname-ch').prop('readonly', 'true');
-              $('#city-ch').prop('value', json.city);
-              $('#zip-ch').prop('value', json.zip);
-              $('#address_1').prop('value', json.address_1);
-              $('#email-ch').prop('value', json.email);
-              $('#telephone-ch').prop('value', json.telephone);
-              $('#LoginModal').modal('hide');
-              $('#login_warning').html('');
-            }
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-          }
-        }
-      ); //ajax
-      return false;
-    });
-
 	$('#payments-load').on('click', function () {
-	    if (!$('#payments-load').hasClass('disabled')) {
+        if ($('#checkbox_belf111').prop('checked')){
+            $.ajax({
+                url: 'index.php?route=checkout/onepagecheckout/createAccount',
+                type: 'post',
+                data: $('#firstname-ch, #lastname-ch, #city-ch, #zip-ch, #address-ch, #address-2-ch, #email-ch, #telephone-ch, #input-payment-country'),
+                dataType: 'json',
+                success: function (json) {
+
+                    if (json.errors != 0) {
+                        if (typeof json.errors.firstname != 'undefined' && json.errors.firstname != '') {
+                            $('#firstname-ch+.error').text(json.errors.firstname);
+                        }
+                        if (typeof json.errors.lastname != 'undefined' && json.errors.lastname != '') {
+                            $('#lastname-ch+.error').text(json.errors.lastname);
+                        }
+                        if (typeof json.errors.address != 'undefined' && json.errors.address != '') {
+                            $('#address-ch+.error').text(json.errors.address);
+                        }
+                        if (typeof json.errors.zip != 'undefined' && json.errors.zip != '') {
+                            $('#zip-ch+.error').text(json.errors.zip);
+                        }
+                        if (typeof json.errors.city != 'undefined' && json.errors.city != '') {
+                            $('#city-ch+.error').text(json.errors.city);
+                        }
+                        if (typeof json.errors.email != 'undefined' && json.errors.email != '') {
+                            $('#email-ch+.error').text(json.errors.email);
+                        }
+                        $('#login-form').removeClass('displaynone');
+                    } else if (json.errors == 0) {
+                        location.reload();
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        } else {
+            load_paument();
+        }
+	});
+	function load_paument() {
+        if (!$('#payments-load').hasClass('disabled')) {
             $.ajax({
                 url: 'index.php?route=checkout/load_payments',
                 type: 'post',
@@ -661,8 +732,7 @@
                 }
             });
         }
-	});
-
+    }
   });//--></script>
 
 <?php echo $footer; ?>

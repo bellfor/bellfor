@@ -42,6 +42,7 @@ $_['error_exists']                   = 'Let op: Emailadres is al geregistreerd!'
 $_['error_firstname']                = 'De voornaam moet tussen 1 en 32 tekens groot zijn!';
 $_['error_lastname']                 = ' De achternaam moet tussen 1 en 32 tekens groot zijn!';
 $_['error_email']                    = 'Emailadres schijnt niet geldig te zijn!';
+$_['error_email_already']            = 'Diese E-Mail-Adresse wird bereits genutzt. Sollte es Ihr Kundenkonto sein, bitte loggen Sie sich ein!';
 $_['error_telephone']                = 'Telefoon (nummer?) moet tussen 3 en 32 tekens groot zijn!';
 $_['error_password']                 = 'Wachtwoord moet tussen 4 en 20 tekens groot zijn!';
 $_['error_confirm']                  = 'Bevestiging wachtwoord komt niet overeen met het wachtwoord!';
